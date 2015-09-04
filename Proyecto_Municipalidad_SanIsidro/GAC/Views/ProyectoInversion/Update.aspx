@@ -280,7 +280,7 @@
                         </div>
                         <div class="col-sm-12 text-center">
                               <%
-                            if (@Model.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                          if (@Model.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA || ViewBag.Error=="1")
                           { 
                           %>
                         <button id="btnGrabar" class="btn btn-primary" type="submit">Grabar</button>

@@ -144,14 +144,17 @@ namespace GAC.Controllers
                     }
                     else if (intResultado == -998)
                     {
+                        ViewBag.Error = "1";
                         ModelState.AddModelError("", "No se pueden actualizar los datos del proyecto debido a que ha cambiado de estado.");
                     }
                     else if (intResultado == -997)
                     {
+                        ViewBag.Error = "1";
                         ModelState.AddModelError("", "No se pueden actualizar los datos del proyecto debido a que el código SNIP ingresado ya existe para otro proyecto.");
                     }
                     else
                     {
+                        ViewBag.Error = "1";
                         ModelState.AddModelError("", "No se pudo actualizar el proyecto");
                     }
                 }

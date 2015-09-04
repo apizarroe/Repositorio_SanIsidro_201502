@@ -17,14 +17,6 @@
     {
     }
 </style>
-    <div id="loading">
-        <div id="loadingcontent">
-            <p id="loadingspinner">
-                Procesando...
-            </p>
-        </div>
-    </div>
-
     <section class="content-header" style="padding-bottom:5px">
         <h1>Detalle de Proyecto de Inversión</h1>
         <div>&nbsp;</div>
