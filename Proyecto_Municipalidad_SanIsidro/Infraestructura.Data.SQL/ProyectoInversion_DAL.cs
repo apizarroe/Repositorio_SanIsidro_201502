@@ -25,6 +25,7 @@ namespace Infraestructura.Data.SQL
                 objProyectoInversion.txDescripcion = pStrDescripcion;
                 objProyectoInversion.nuBeneficiarios = pIntBeneficiarios;
                 objProyectoInversion.nuValorReferencialPerfil = pDblValor;
+                objProyectoInversion.noEstado = ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA;
 
                 objContext.AddToOP_PROYECTO_INVERSION_PUBLICA(objProyectoInversion);
                 int intRows = objContext.SaveChanges();
@@ -46,22 +47,52 @@ namespace Infraestructura.Data.SQL
 
 
         public int Actualiza(int pIntIdProyecto, String pStrCodSNIP, String pStrDescripcion,
-            String pStrNombre, int pIntIdVia, String pStrUbicacion, int pIntBeneficiarios, Decimal pDblValor, int pIntIdEstado)
+            String pStrNombre, int pIntIdVia, String pStrUbicacion, int pIntBeneficiarios, Decimal pDblValor, String pStrIdEstado)
         {
             int intResultado = -999;
             try
             {
                 MuniIntegrado objContext = new MuniIntegrado();
-                OP_PROYECTO_INVERSION_PUBLICA objProyecto = objContext.OP_PROYECTO_INVERSION_PUBLICA.First(pi => pi.coProyecto == pIntIdProyecto);
-                objProyecto.coSNIP = pStrCodSNIP;
-                objProyecto.txDescripcion = pStrDescripcion;
-                objProyecto.noNombre = pStrNombre;
-                objProyecto.coVia = pIntIdVia;
-                objProyecto.txUbicacion = pStrUbicacion;
-                objProyecto.nuBeneficiarios = pIntBeneficiarios;
-                objProyecto.nuValorReferencialPerfil = pDblValor;
 
-                intResultado = objContext.SaveChanges();
+                var lstProyectosTmp = (from pi in objContext.OP_PROYECTO_INVERSION_PUBLICA
+                                       where pi.coSNIP == pStrCodSNIP && pi.coProyecto != pIntIdProyecto
+                                       select new { pi}).ToList();
+
+                if (lstProyectosTmp.Count == 0)
+                {
+                    OP_PROYECTO_INVERSION_PUBLICA objProyecto = objContext.OP_PROYECTO_INVERSION_PUBLICA.First(pi => pi.coProyecto == pIntIdProyecto);
+
+                    if (objProyecto == null)
+                    {
+                        intResultado = -996;
+                    }
+                    else
+                    {
+                        if (objProyecto.noEstado != ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                        {
+                            intResultado = -998;
+                        }
+                        else
+                        {
+                            if (pStrIdEstado != ProyectoInversion.STR_ID_ESTADO_INVIABLE)
+                            {
+                                objProyecto.coSNIP = pStrCodSNIP;
+                            }
+                            objProyecto.txDescripcion = pStrDescripcion;
+                            objProyecto.noNombre = pStrNombre;
+                            objProyecto.coVia = pIntIdVia;
+                            objProyecto.txUbicacion = pStrUbicacion;
+                            objProyecto.nuBeneficiarios = pIntBeneficiarios;
+                            objProyecto.nuValorReferencialPerfil = pDblValor;
+                            objProyecto.noEstado = pStrIdEstado;
+                            intResultado = objContext.SaveChanges();
+                        }
+                    }
+                }
+                else
+                {
+                    intResultado = -997;
+                }
             }
             catch (Exception ex)
             {
@@ -69,7 +100,7 @@ namespace Infraestructura.Data.SQL
             return intResultado;
         }
 
-        public List<ProyectoInversion> BuscarXFiltro(String pStrCodSNIP, String pStrNombre, String pStrUbicacion)
+        public List<ProyectoInversion> BuscarXFiltro(String pStrCodSNIP, String pStrNombre, String pStrUbicacion, String pStrIdEstado)
         {
             List<ProyectoInversion> lstProyectos = new List<ProyectoInversion>();
             try
@@ -85,11 +116,16 @@ namespace Infraestructura.Data.SQL
                 {
                     pStrUbicacion = "";
                 }
+                if (String.IsNullOrWhiteSpace(pStrIdEstado))
+                {
+                    pStrIdEstado = "0";
+                }
 
                 var lstProyectosTmp = (from pi in objContext.OP_PROYECTO_INVERSION_PUBLICA
                                        join via in objContext.MA_VIA on pi.coVia equals via.coVia
                                        where ((via.noTipoVia + " " + via.noNomVia + " " + pi.txUbicacion).ToLower().Contains(pStrUbicacion.ToLower()) || pStrUbicacion == "")
                                        && (pi.noNombre.ToLower().Contains(pStrNombre.ToLower()) || pStrNombre == "")
+                                       && (pi.noEstado == pStrIdEstado || pStrIdEstado == "0")
                                        select new { pi, via });
 
                 foreach (var objProyTmp in lstProyectosTmp)
@@ -101,6 +137,9 @@ namespace Infraestructura.Data.SQL
                     objProyecto.Ubicacion = objProyTmp.pi.txUbicacion;
                     objProyecto.NomVia = objProyTmp.via.noNomVia;
                     objProyecto.TipoVia = objProyTmp.via.noTipoVia;
+                    objProyecto.IdEstado = objProyTmp.pi.noEstado;
+                    objProyecto.NomEstado = ObtieneEstados().Where(e => e.IdEstado == objProyTmp.pi.noEstado).First().Nombre;
+
                     lstProyectos.Add(objProyecto);
                 }
             }
@@ -135,6 +174,8 @@ namespace Infraestructura.Data.SQL
                     objProyecto.IdVia = lstProyectosTmp[0].pi.coVia;
                     objProyecto.Ubicacion = lstProyectosTmp[0].pi.txUbicacion;
                     objProyecto.Descripcion = lstProyectosTmp[0].pi.txDescripcion;
+                    objProyecto.IdEstado = lstProyectosTmp[0].pi.noEstado;
+                    objProyecto.NomEstado = ObtieneEstados().Where(e => e.IdEstado == lstProyectosTmp[0].pi.noEstado).First().Nombre;
                     if (lstProyectosTmp[0].pi.nuBeneficiarios.HasValue)
                     {
                         objProyecto.Beneficiarios = lstProyectosTmp[0].pi.nuBeneficiarios.Value;
@@ -149,5 +190,19 @@ namespace Infraestructura.Data.SQL
             }
             return objProyecto;
         }
+
+        public List<EstadoProyectoInversion> ObtieneEstados()
+        {
+            List<EstadoProyectoInversion> lstEstados = new List<EstadoProyectoInversion>();
+
+            lstEstados.Add(new EstadoProyectoInversion { IdEstado = ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA, Nombre = "En consulta" });
+            lstEstados.Add(new EstadoProyectoInversion { IdEstado = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
+            lstEstados.Add(new EstadoProyectoInversion { IdEstado = ProyectoInversion.STR_ID_ESTADO_INVIABLE, Nombre = "Inviable" });
+            lstEstados.Add(new EstadoProyectoInversion { IdEstado = "A", Nombre = "Adjudicado" });
+            lstEstados.Add(new EstadoProyectoInversion { IdEstado = "C", Nombre = "Cerrado" });
+
+            return lstEstados;
+        }
+
     }
 }
