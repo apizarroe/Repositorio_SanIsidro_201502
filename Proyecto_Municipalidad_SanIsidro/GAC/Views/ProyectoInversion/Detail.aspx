@@ -25,7 +25,7 @@
                 <button id="btnIconCrear" type="button" class="btn btn-default" onclick="document.location.href='/proyectoinversion/index'">
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
-                <button id="btnIconModificar" type="button" class="btn btn-default">
+                <button id="btnIconModificar" type="button" class="btn btn-default" onclick="document.location.href='/proyectoinversion/update'">
                     <span class="fa fa-pencil" aria-hidden="true"></span> Modificar
                 </button>
             </div>
