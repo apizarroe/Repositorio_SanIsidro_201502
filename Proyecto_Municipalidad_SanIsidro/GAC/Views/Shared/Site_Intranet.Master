@@ -215,6 +215,19 @@
                 --> 
                 <ul class="sidebar-menu">
                     <li class="header">NAVEGACION PRINCIPAL</li>
+                    
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i><span>Obras Públicas</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="/proyectoinversion/index"><i class="fa fa-circle-o"></i>Registrar Proyectos de inversión</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
                     <li class="treeview active">
                         <a href="#">
                             <i class="fa fa-dashboard"></i><span>Quejas / Reclamos</span><i class="fa fa-angle-left pull-right"></i>
