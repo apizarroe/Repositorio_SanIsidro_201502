@@ -32,7 +32,7 @@ namespace GAC.Models.ProyectoInversion
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (this.IdEstado!=Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_INVIABLE && String.IsNullOrWhiteSpace(this.IdEstado))
+            if (this.IdEstado==Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE && String.IsNullOrWhiteSpace(this.CodSNIP))
                 yield return new ValidationResult("El campo CodSNIP es obligatorio.");
         }
 

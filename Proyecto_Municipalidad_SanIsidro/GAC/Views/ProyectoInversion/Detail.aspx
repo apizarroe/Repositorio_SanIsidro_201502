@@ -105,7 +105,13 @@
                             <%}%>
                         </div>
                         <div class="col-sm-12 text-center">
+                            <%
+                                if (ViewBag.FromUpdate != "1") { 
+                                %>
                             <button id="btnRegresar" class="btn btn-primary" onclick="window.history.back();">Regresar</button>
+                            <%
+                                }
+                                 %>
                         </div>
                     </div>
                 </div>

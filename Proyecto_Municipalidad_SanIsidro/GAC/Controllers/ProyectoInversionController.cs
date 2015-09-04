@@ -120,6 +120,7 @@ namespace GAC.Controllers
             ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
             ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(id);
 
+            ViewBag.FromUpdate = TempData["FromUpdate"];
             ViewBag.MostrarSearch = "0";
 
             return View("Detail", objProyectoInversion);
@@ -127,6 +128,7 @@ namespace GAC.Controllers
 
         public ActionResult Save_Update(UpdateProyectoInversionModel pObjModel)
         {
+            bool bolGrabaOK = false; 
             if (ModelState.IsValid)
             {
                 try
@@ -138,6 +140,7 @@ namespace GAC.Controllers
 
                     if (intResultado == 1)
                     {
+                        bolGrabaOK = true;
                         //TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
                         ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
                         //return RedirectToAction("Update");
@@ -165,7 +168,20 @@ namespace GAC.Controllers
             }
             ViewBag.MostrarSearch = "0";
 
-            return View("Update", pObjModel);
+            if (bolGrabaOK)
+            {
+                if (pObjModel.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                {
+                    return View("Update", pObjModel);
+                }
+                else {
+                    TempData["FromUpdate"] = "1";
+                    return Detail(pObjModel.IdProyecto);
+                }
+            }
+            else {
+                return View("Update", pObjModel);
+            }
         }
 
         private static string ErrorCodeToString(Int16 pIntCodError)

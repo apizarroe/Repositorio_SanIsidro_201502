@@ -29,7 +29,7 @@
                                                                                       Text = x.Nombre
                                                                                   }).OrderBy(x => x.Text);
 
-        var lstEstadoUpdate = objProyectoInversion_DAL.ObtieneEstados().Where(x => (x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE || x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_INVIABLE)).Select(x =>
+        var lstEstadoUpdate = objProyectoInversion_DAL.ObtieneEstados().Where(x => (x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE || x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_INVIABLE || x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)).Select(x =>
                                                                                   new SelectListItem
                                                                                   {
                                                                                       Value = x.IdEstado,
@@ -252,11 +252,11 @@
                             if (!bolConError  && Model.IdEstado != Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
                           { 
                           %>
-                            <%: Html.DropDownListFor(m => m.IdEstado, lstEstadoUpdate, "(Seleccione)", new { @class = "form-control", disabled="disabled" })%>
+                            <%: Html.DropDownListFor(m => m.IdEstado, lstEstadoUpdate, new { @class = "form-control", disabled="disabled" })%>
                         <%
                           }else{
                           %>
-                            <%: Html.DropDownListFor(m => m.IdEstado, lstEstadoUpdate, "(Seleccione)", new { @class = "form-control" })%>
+                            <%: Html.DropDownListFor(m => m.IdEstado, lstEstadoUpdate, new { @class = "form-control" })%>
                         <%
                           }%>
                             <%: Html.ValidationMessageFor(m => m.IdEstado) %>
@@ -279,14 +279,7 @@
                             <%} %>
                         </div>
                         <div class="col-sm-12 text-center">
-                              <%
-                          if (@Model.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA || ViewBag.Error=="1")
-                          { 
-                          %>
                         <button id="btnGrabar" class="btn btn-primary" type="submit">Grabar</button>
-                        <%
-                          }
-                          %>
                         <button id="btnLimpiar" class="btn btn-primary" type="button" onclick="document.location.href='/proyectoinversion/edit?id=<%:intIdProyecto%>'">Limpiar</button>
                         <button id="btnVoverBuscar" class="btn btn-primary" type="button" onclick="document.location.href='/proyectoinversion/update'">Volver a buscar</button>
                         </div>
