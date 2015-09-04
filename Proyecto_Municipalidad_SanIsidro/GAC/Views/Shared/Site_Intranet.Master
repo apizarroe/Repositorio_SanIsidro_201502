@@ -222,7 +222,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="/proyectoinversion/index"><i class="fa fa-circle-o"></i>Registrar Proyectos de inversión</a>
+                                <a href="/proyectoinversion/index"><i class="fa fa-circle-o"></i>Actualizar Proyectos de inversión</a>
                             </li>
                         </ul>
                     </li>
