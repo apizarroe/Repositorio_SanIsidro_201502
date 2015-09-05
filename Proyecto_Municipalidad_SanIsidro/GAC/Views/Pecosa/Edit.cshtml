@@ -1,0 +1,84 @@
+﻿@model LayerCatastro.Models.AF_Pecosa
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AF_Pecosa</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CodigoPecosa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CodigoPecosa)
+            @Html.ValidationMessageFor(model => model.CodigoPecosa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoOperacion, "AF_TipoOperacion")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TipoOperacion", String.Empty)
+            @Html.ValidationMessageFor(model => model.TipoOperacion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Periodo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Periodo)
+            @Html.ValidationMessageFor(model => model.Periodo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaEmision)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaEmision)
+            @Html.ValidationMessageFor(model => model.FechaEmision)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CodigoEmpleado, "Empleado")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CodigoEmpleado", String.Empty)
+            @Html.ValidationMessageFor(model => model.CodigoEmpleado)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CodigoDepartamento, "AF_Departamento")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CodigoDepartamento", String.Empty)
+            @Html.ValidationMessageFor(model => model.CodigoDepartamento)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Referencias)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Referencias)
+            @Html.ValidationMessageFor(model => model.Referencias)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

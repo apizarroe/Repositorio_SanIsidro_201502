@@ -1,0 +1,80 @@
+﻿@model IEnumerable<LayerCatastro.Models.AF_Pecosa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoPecosa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AF_TipoOperacion.DescripcionTipoOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periodo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEmision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AF_Departamento.DescripcionDepartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Referencias)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPecosa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AF_TipoOperacion.DescripcionTipoOperacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Periodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEmision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AF_Departamento.DescripcionDepartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Referencias)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CodigoPecosa }, htmlAttributes: new { @class = "btn btn-success btn-xs" }) |
+                @Html.ActionLink("Ver", "Details", new { id = item.CodigoPecosa }, htmlAttributes: new { @class = "btn btn-warning btn-xs" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.CodigoPecosa }, htmlAttributes: new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<script>
+    $(document).ready(function ()
+    {
+        $('#tablaReunion').DataTable();
+    });
+</script>
