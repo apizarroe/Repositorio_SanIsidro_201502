@@ -1,0 +1,64 @@
+﻿@model LayerCatastro.Models.AF_Pecosa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AF_Pecosa</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CodigoPecosa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CodigoPecosa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AF_TipoOperacion.DescripcionTipoOperacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AF_TipoOperacion.DescripcionTipoOperacion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Periodo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Periodo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FechaEmision)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaEmision)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Empleado.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Empleado.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AF_Departamento.DescripcionDepartamento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AF_Departamento.DescripcionDepartamento)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Referencias)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Referencias)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
