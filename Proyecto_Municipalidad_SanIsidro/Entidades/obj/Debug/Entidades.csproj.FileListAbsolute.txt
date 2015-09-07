@@ -1,0 +1,16 @@
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\Entidades.dll
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\Entidades.pdb
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\EntityFramework.dll
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\EntityFramework.xml
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\es\EntityFramework.resources.dll
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\obj\Debug\Entidades.dll
+D:\Proyectos\TP3\ProyectoMunicipalidad\Entidades\obj\Debug\Entidades.pdb
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\Entidades.dll
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\Entidades.pdb
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\EntityFramework.dll
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\EntityFramework.xml
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\bin\Debug\es\EntityFramework.resources.dll
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\obj\Debug\Entidades.dll
+G:\Eric\UPC\TP3\ProyectoMunicipalidad\Entidades\obj\Debug\Entidades.pdb

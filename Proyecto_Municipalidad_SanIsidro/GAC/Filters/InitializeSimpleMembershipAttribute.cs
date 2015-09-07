@@ -17,7 +17,7 @@ namespace GAC.Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // Ensure ASP.NET Simple Membership is initialized only once per app start
+            // Asegúrese de que ASP.NET Simple Membership se inicialice solo una vez por inicio de la aplicación
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }
 
@@ -33,7 +33,7 @@ namespace GAC.Filters
                     {
                         if (!context.Database.Exists())
                         {
-                            // Create the SimpleMembership database without Entity Framework migration schema
+                            // Crear la base de datos SimpleMembership sin el esquema de migración de Entity Framework
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
@@ -42,7 +42,7 @@ namespace GAC.Filters
                 }
                 catch (Exception ex)
                 {
-                    throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+                    throw new InvalidOperationException("No se pudo inicializar la base de datos de ASP.NET Simple Membership. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkId=256588", ex);
                 }
             }
         }

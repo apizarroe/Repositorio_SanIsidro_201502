@@ -1,0 +1,5 @@
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Util\bin\Debug\Util.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Util\bin\Debug\Util.pdb
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Util\obj\Debug\Util.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Util\obj\Debug\Util.pdb

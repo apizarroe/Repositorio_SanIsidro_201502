@@ -1,12 +1,12 @@
 ﻿html {
-    background-color: #ffffff;
+    background-color: #e2e2e2;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #ffffff;
-    border-top: solid 10px #00784B;
+    background-color: #fff;
+    border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -99,7 +99,7 @@ h5, h6 {
 }
 
 #body {
-    background-color: #ffffff;
+    background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;
 }
@@ -111,7 +111,7 @@ h5, h6 {
     }
 
     .featured + .main-content {
-        background: #ffffff;
+        background: url("../Images/heroAccent.png") no-repeat;
     }
 
 header .content-wrapper {
@@ -725,10 +725,10 @@ tr.pager td {
         width: auto;
     }
 
-    #loginForm .validation-error {
-        display: block;
-        margin-left: 15px;
-    }
+        #loginForm .validation-error {
+            display: block;
+            margin-left: 15px;
+        }
 
     #socialLoginForm {
         margin-left: 0;
@@ -750,7 +750,7 @@ tr.pager td {
         padding: 10px 0;
     }
 
-    footer p {
-        margin: 0;
-    }
+        footer p {
+            margin: 0;
+        }
 }
