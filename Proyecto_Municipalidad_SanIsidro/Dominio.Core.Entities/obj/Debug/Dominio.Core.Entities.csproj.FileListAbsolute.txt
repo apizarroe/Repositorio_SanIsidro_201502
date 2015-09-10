@@ -8,3 +8,8 @@ D:\Desarrollo\GAC\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.pdb
 D:\Desarrollo\GAC\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
 D:\Desarrollo\GAC\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb
 D:\Desarrollo\GAC\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.csprojResolveAssemblyReference.cache
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.pdb
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.csprojResolveAssemblyReference.cache
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb

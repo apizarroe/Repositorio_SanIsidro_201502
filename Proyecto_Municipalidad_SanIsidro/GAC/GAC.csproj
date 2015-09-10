@@ -194,8 +194,12 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\GSM\Combo.cs" />
     <Compile Include="Models\GSM\Inspeccion.cs" />
+    <Compile Include="Models\GSM\InspeccionBUS.cs" />
     <Compile Include="Models\GSM\Persona.cs" />
+    <Compile Include="Models\GSM\PersonaBUS.cs" />
     <Compile Include="Models\GSM\Servicio.cs" />
+    <Compile Include="Models\GSM\ServicioBUS.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -415,6 +419,13 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Views\Reclamo\ConsultarReclamo.aspx" />
+    <Content Include="Views\Reclamo\HistorialReclamo.aspx" />
+    <Content Include="Views\Reclamo\Index.aspx" />
+    <Content Include="Views\Reclamo\Login.aspx" />
+    <Content Include="Views\Reclamo\RegistrarReclamo.aspx" />
+    <Content Include="Views\Reclamo\_HistorialReclamos.ascx" />
+    <Content Include="Views\Reclamo\_listarReclamos.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -457,6 +468,7 @@
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Views\GSMInspeccion\Index.cshtml" />
     <Content Include="Views\GSMInspeccion\Inspeccion.cshtml" />
+    <Content Include="Views\Shared\Site_Intranet.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -466,13 +478,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{ebe7d753-f898-4d9b-a257-876a3f1ce362}</Project>
-      <Name>Entidades</Name>
+    <ProjectReference Include="..\Dominio.Core.Entities\Dominio.Core.Entities.csproj">
+      <Project>{76cc7faa-06bb-413e-9446-bded8a469b72}</Project>
+      <Name>Dominio.Core.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Negocio\Negocio.csproj">
-      <Project>{cc888bb0-ab6d-4c01-84ce-da0b7d0574fa}</Project>
-      <Name>Negocio</Name>
+    <ProjectReference Include="..\Infraestructura.Data.SQL\Infraestructura.Data.SQL.csproj">
+      <Project>{a9135ec8-f539-456f-a932-0ed8f21d66cf}</Project>
+      <Name>Infraestructura.Data.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{2bc54174-7940-4074-b2ef-f67773ccd680}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

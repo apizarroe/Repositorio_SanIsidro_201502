@@ -5,8 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using bus = Negocio.GSM.PersonaBUS;
-using ent = Entidades.GSM;
+using bus = Models.GSM.PersonaBUS;
+using ent = Dominio.Core.Entities.GSM;
 
 namespace GAC.Controllers.GSM
 {

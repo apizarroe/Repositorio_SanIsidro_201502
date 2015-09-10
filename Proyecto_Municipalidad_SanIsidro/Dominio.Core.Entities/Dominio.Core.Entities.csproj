@@ -42,6 +42,15 @@
   <ItemGroup>
     <Compile Include="Atencion.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="GSM\MA_EMPLEADO.cs" />
+    <Compile Include="GSM\MA_PERSONA.cs" />
+    <Compile Include="GSM\MA_PERSONANATURAL.cs" />
+    <Compile Include="GSM\SM_CATEGORIA_SERVICIO.cs" />
+    <Compile Include="GSM\SM_INSPECCION.cs" />
+    <Compile Include="GSM\SM_PARAMETRO.cs" />
+    <Compile Include="GSM\SM_SERVICIO.cs" />
+    <Compile Include="GSM\USP_GSM_BuscarServicio_Result.cs" />
+    <Compile Include="GSM\USP_GSM_GetInspeccion_Result.cs" />
     <Compile Include="Parametro.cs" />
     <Compile Include="Reclamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -229,10 +229,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{ebe7d753-f898-4d9b-a257-876a3f1ce362}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Util\Util.csproj">
       <Project>{2bc54174-7940-4074-b2ef-f67773ccd680}</Project>
       <Name>Util</Name>

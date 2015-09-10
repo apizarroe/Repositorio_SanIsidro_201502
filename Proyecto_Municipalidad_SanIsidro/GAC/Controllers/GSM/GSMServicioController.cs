@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using bus = Negocio.GSM.ServicioBUS;
-using ent = Entidades.GSM;
+using bus = Models.GSM.ServicioBUS;
+using ent = Dominio.Core.Entities.GSM;
 namespace GAC.Controllers.GSM
 {
     public class GSMServicioController : Controller

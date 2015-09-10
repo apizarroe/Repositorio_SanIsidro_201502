@@ -94,6 +94,7 @@ namespace AccesoDatos.GSM
         public Ent.USP_GSM_GetInspeccion Update(Ent.SM_INSPECCION nuevo)
         {
             Entity.SM_INSPECCION obj = new Entity.SM_INSPECCION();
+            obj.CodigoInspeccion = nuevo.CodigoInspeccion;
             obj.CodigoPersonaEjecutor = nuevo.CodigoPersonaEjecutor;
             obj.CodigoServicio = nuevo.CodigoServicio;
             obj.coUsuario = nuevo.coUsuario;
@@ -189,7 +190,7 @@ namespace AccesoDatos.GSM
 
                     cn.SaveChanges();
                     return 1;
-                }catch(){}
+                }catch(Exception ex){}
                 return -1;
             }
         }

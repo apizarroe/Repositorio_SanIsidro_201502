@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Models.GSM;
 
-using bus = Negocio.GSM.InspeccionBUS;
-using ent = Entidades.GSM;
+using bus = Models.GSM.InspeccionBUS;
+using ent = Dominio.Core.Entities.GSM;
 
 namespace GAC.Controllers.GSM
 {
@@ -202,5 +202,58 @@ namespace GAC.Controllers.GSM
 
             return vjson2;
         }
+   
+    
+    
+   
+             [HttpPost]
+        public JsonResult UpdateInspeccion(Inspeccion oInspeccion)
+        {
+
+            try
+            {
+                DateTime fe = DateTime.Now;
+                string[] vhi = oInspeccion.horaInicio.Split(':');
+                string[] vhf = oInspeccion.horaFin.Split(':');
+
+                TimeSpan hi = new TimeSpan(int.Parse(vhi[0]), int.Parse(vhi[1]), 0);
+                TimeSpan hf = new TimeSpan(int.Parse(vhf[0]), int.Parse(vhf[1]), 0);
+                DateTime.TryParse(oInspeccion.fechaProgramada, out fe);
+
+                ent.SM_INSPECCION obj = new ent.SM_INSPECCION();
+                obj.CodigoInspeccion = oInspeccion.IdRegistro;
+                obj.CodigoPersonaEjecutor = oInspeccion.IdPersona;
+                obj.CodigoServicio = int.Parse(oInspeccion.personaAsignada);
+                obj.coUsuario = 7; // oInspeccion.coUsuario; --> falta pagina de login
+                obj.coVia = 2; // oInspeccion.coVi a;
+                obj.Estado = (int) Util.GSM.Global.EstadoInspeccion.Programado;// oInspeccion.Estado;
+                obj.FechaCreacion = DateTime.Now;
+                obj.FechaInspeccion = fe;
+                obj.HoraFin = hf;
+                obj.HoraIni = hi;
+                obj.LugarInspeccion = oInspeccion.direccion;
+
+                var Ins = bus.GetObject().Update(obj);
+
+                var oReq = new Inspeccion();
+                oReq.IdRegistro = Ins.CodigoInspeccion;
+
+
+                var vjson = Json(new { ID = oReq.IdRegistro }, JsonRequestBehavior.AllowGet);
+                vjson.MaxJsonLength = int.MaxValue;
+
+                return vjson;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            var vjson2 = Json(new { ID = "Problemas para actualizar inspeccion" }, JsonRequestBehavior.AllowGet);
+            vjson2.MaxJsonLength = int.MaxValue;
+
+            return vjson2;
+        }
+   
     }
 }

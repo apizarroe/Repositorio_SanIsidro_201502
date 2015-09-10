@@ -1,0 +1,406 @@
+﻿@using Models
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title - Municipalidad de San Isidro</title>
+
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @{
+        Util util = new Util();
+        string path = util.getPath();
+    }
+    <script>
+        var path = '@path';
+    </script>
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/css/AdminLTE.min.css")
+    @Styles.Render("~/Content/css/skins/_all-skins.min.css")
+
+    <@* Seccion creada para agregar script en la cabecera *@>
+    @RenderSection("ScriptHeader", required: false)
+
+</head>
+<body class="fixed sidebar-mini skin-green">
+
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>SI</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                    <img src="@Url.Content("~/Content/img/logo-san-isidro.png")" class="user-image" alt="User Image">
+                </span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 4 messages</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <div style="position: relative; overflow: hidden; width: auto; height: 200px;" class="slimScrollDiv">
+                                        <ul style="overflow: hidden; width: 100%; height: 200px;" class="menu">
+                                            <li>
+                                                <!-- start message -->
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <img src="@Url.Content("~/Content/img/sinfoto1.png")" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>Support Team
+                            <small><i class="fa fa-clock-o"></i>5 mins</small>
+                                                    </h4>
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                            <!-- end message -->
+                                        </ul>
+                                        <div style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;" class="slimScrollBar"></div>
+                                        <div style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div>
+                                    </div>
+                                </li>
+                                <li class="footer"><a href="#">See All Messages</a></li>
+                            </ul>
+                        </li>
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 10 notifications</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <div style="position: relative; overflow: hidden; width: auto; height: 200px;" class="slimScrollDiv">
+                                        <ul style="overflow: hidden; width: 100%; height: 200px;" class="menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i>5 new members joined today
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;" class="slimScrollBar"></div>
+                                        <div style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div>
+                                    </div>
+                                </li>
+                                <li class="footer"><a href="#">View all</a></li>
+                            </ul>
+                        </li>
+                        <!-- Tasks: style can be found in dropdown.less -->
+                        <li class="dropdown tasks-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-flag-o"></i>
+                                <span class="label label-danger">9</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 9 tasks</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <div style="position: relative; overflow: hidden; width: auto; height: 200px;" class="slimScrollDiv">
+                                        <ul style="overflow: hidden; width: 100%; height: 200px;" class="menu">
+                                            <li>
+                                                <!-- Task item -->
+                                                <a href="#">
+                                                    <h3>Design some buttons
+                            <small class="pull-right">20%</small>
+                                                    </h3>
+                                                    <div class="progress xs">
+                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">20% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <!-- end task item -->
+                                        </ul>
+                                        <div style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;" class="slimScrollBar"></div>
+                                        <div style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div>
+                                    </div>
+                                </li>
+                                <li class="footer">
+                                    <a href="#">View all tasks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="@Url.Content("~/Content/img/sinfoto1.png")" class="user-image" alt="User Image">
+
+                                <span class="hidden-xs">Alexander Pierce Salinas</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="@Url.Content("~/Content/img/sinfoto1.png")" class="img-circle" alt="User Image">
+                                    <p>
+                                        Alexander Pierce - Web Developer
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="@Url.Content("~/Content/img/sinfoto1.png")" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p>Alexander Pierce</p>
+
+                        <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
+                            <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">NAVEPrincipalION PRINCIPAL</li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i><span>Catastro</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="../../solicitudcatastro"><i class="fa fa-circle-o"></i>Registrar Solicitud</a>
+                            </li>
+
+                            <li>
+                                <a href="../../InformacionCatastral/Create"><i class="fa fa-circle-o"></i>Mantener Informacion Cat.</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i><span>Gestión de Servicios</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="@Url.Action("Index", "GSMInspeccion")"><i class="fa fa-circle-o"></i>Inspección</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "GSMInspeccion")"><i class="fa fa-circle-o"></i>Servicios</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i>
+                            <span>Administracion</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Departamento</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Provincia</a></li>
+                            <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Distrito</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+
+        <div class="content-wrapper" style="padding-top: 0px;">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                @RenderSection("Cabecera", required: false)
+                <section class="content-header">
+                    @RenderBody()
+                </section>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0
+            </div>
+            <strong>Copyright &copy; 2014-2015 <a href="#">Municipalidad San Isidro</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!--   Globales   -->
+
+    <!-- Modal Pregunta OK-CANCEL -->
+    <div class="modal fade" id="ModalConfirm" role="dialog" aria-labelledby="headerConfirm" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <h4 class="modal-title" id="headerConfirmTitle" style="color: #000000;">...</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="contact" id="frmEntidadQuitar">
+                        <input type="hidden" id="hidModalId" name="hidModalId" value="0" />
+
+                        <table>
+                            <tr>
+                                <td id="tdMensajeConfirm">Seguro que desea realizar?<br />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAceptarModalConfirm" onclick="fn_AceptarAlert();">
+                        <span class="glyphicon glyphicon-saved"></span>&nbsp; &nbsp;Aceptar
+                    </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp; &nbsp;Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Alert -->
+    <div class="modal fade" id="ModalAlert" role="dialog" aria-labelledby="headerAlert" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <h4 class="modal-title" id="ModalAlertTitle" style="color: #000000;">...</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="contact" id="frmEntidadQuita1r">
+                        <input type="hidden" id="hidModalAlert" name="hidModalId" value="0" />
+
+                        <table>
+                            <tr>
+                                <td id="tdModalAlert">Seguro que desea realizar?<br />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnAlertCancel" class="btn btn-primary" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp; &nbsp;Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Cargando -->
+    <div class="modal fade" id="jqDialogCargando" style="z-index: 7000;" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-vertical-cargando">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel" style="color: #000000;">Cargando...</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-1">
+                            <img src="@Url.Content("~/Content/img/cargando0.gif")" alt="" class="img-responsive">
+                        </div>
+                        <div class="col-md-6 col-md-offset-1 col-xs-6 col-xs-offset-1">
+                            <h4 id="txtCargando">Espere un momento....</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  Fin Globales -->
+
+
+    <script src="@Url.Content("~/Content/custom/js/jquery-1.11.1.min.js")"></script>
+
+    <link href="@Url.Content("~/Content/kendo/css/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/css/kendo.dataviz.silver.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/css/kendo.dataviz.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/css/kendo.silver.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/kendo/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/kendo/js/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Content/kendo/js/kendo.culture.es-PE.min.js")"></script>
+    <script src="@Url.Content("~/Content/kendo/js/kendo.messages.es-ES.min.js")"></script>
+    <script src="@Url.Content("~/Content/kendo/js/jszip.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jstemplate/slimScroll/jquery.slimscroll.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jstemplate/fastclick/fastclick.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jstemplate/app.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jstemplate/demo.js")"></script>
+    <script src="@Url.Content("~/Scripts/GSM/General.js")"></script>
+
+
+    @RenderSection("ScriptsSection", required: false)
+</body>
+</html>

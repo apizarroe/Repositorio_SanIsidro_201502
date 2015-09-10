@@ -1,0 +1,1714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MUNI_INTEGRADOModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MUNI_INTEGRADOModelStoreContainer">
+    <EntitySet Name="GE_ActividadPlan" EntityType="MUNI_INTEGRADOModel.Store.GE_ActividadPlan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Adquisicion" EntityType="MUNI_INTEGRADOModel.Store.GE_Adquisicion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Comite" EntityType="MUNI_INTEGRADOModel.Store.GE_Comite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Contrato" EntityType="MUNI_INTEGRADOModel.Store.GE_Contrato" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Evaluacion" EntityType="MUNI_INTEGRADOModel.Store.GE_Evaluacion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Evento" EntityType="MUNI_INTEGRADOModel.Store.GE_Evento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Incidencia" EntityType="MUNI_INTEGRADOModel.Store.GE_Incidencia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Local" EntityType="MUNI_INTEGRADOModel.Store.GE_Local" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_PlanEvento" EntityType="MUNI_INTEGRADOModel.Store.GE_PlanEvento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_ResultadoEvaluacion" EntityType="MUNI_INTEGRADOModel.Store.GE_ResultadoEvaluacion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Tipo_Adquisicion" EntityType="MUNI_INTEGRADOModel.Store.GE_Tipo_Adquisicion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GE_Tipo_Evento" EntityType="MUNI_INTEGRADOModel.Store.GE_Tipo_Evento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_AREA" EntityType="MUNI_INTEGRADOModel.Store.MA_AREA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_CARGO" EntityType="MUNI_INTEGRADOModel.Store.MA_CARGO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_DEPARTAMENTO" EntityType="MUNI_INTEGRADOModel.Store.MA_DEPARTAMENTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_DISTRITO" EntityType="MUNI_INTEGRADOModel.Store.MA_DISTRITO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_EMPLEADO" EntityType="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_PERFIL" EntityType="MUNI_INTEGRADOModel.Store.MA_PERFIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_PERSONA" EntityType="MUNI_INTEGRADOModel.Store.MA_PERSONA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_PERSONAJURIDICA" EntityType="MUNI_INTEGRADOModel.Store.MA_PERSONAJURIDICA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_PERSONANATURAL" EntityType="MUNI_INTEGRADOModel.Store.MA_PERSONANATURAL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_Proveedor" EntityType="MUNI_INTEGRADOModel.Store.MA_Proveedor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_PROVINCIA" EntityType="MUNI_INTEGRADOModel.Store.MA_PROVINCIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_TIPODOCUMENTOIDENTIDAD" EntityType="MUNI_INTEGRADOModel.Store.MA_TIPODOCUMENTOIDENTIDAD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_USUARIO" EntityType="MUNI_INTEGRADOModel.Store.MA_USUARIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_VIA" EntityType="MUNI_INTEGRADOModel.Store.MA_VIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_ACTIVIDAD_EJECUCION" EntityType="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_ACTIVIDAD_EJECUCION_EMPLEADO" EntityType="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION_EMPLEADO" store:Type="Tables" store:Schema="dbo" store:Name="OP_ACTIVIDAD_EJECUCION_EMPLEADO">
+      <DefiningQuery>SELECT 
+      [OP_ACTIVIDAD_EJECUCION_EMPLEADO].[coActividad] AS [coActividad], 
+      [OP_ACTIVIDAD_EJECUCION_EMPLEADO].[coEmpleado] AS [coEmpleado]
+      FROM [dbo].[OP_ACTIVIDAD_EJECUCION_EMPLEADO] AS [OP_ACTIVIDAD_EJECUCION_EMPLEADO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OP_CRONOGRAMA_EJECUCION" EntityType="MUNI_INTEGRADOModel.Store.OP_CRONOGRAMA_EJECUCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_CUADERNO_OBRA" EntityType="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_CUADERNO_OBRA_MAQUINARIA" EntityType="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA_MAQUINARIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntityType="MUNI_INTEGRADOModel.Store.OP_DOCUMENTO_EXPEDIENTE_TECNICO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_ENTREGA_MATERIAL" EntityType="MUNI_INTEGRADOModel.Store.OP_ENTREGA_MATERIAL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_EXPEDIENTE_TECNICO" EntityType="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_INFORME_ACTIVIDAD" EntityType="MUNI_INTEGRADOModel.Store.OP_INFORME_ACTIVIDAD" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_ACTIVIDAD">
+      <DefiningQuery>SELECT 
+      [OP_INFORME_ACTIVIDAD].[coInforme] AS [coInforme], 
+      [OP_INFORME_ACTIVIDAD].[idActividad] AS [idActividad]
+      FROM [dbo].[OP_INFORME_ACTIVIDAD] AS [OP_INFORME_ACTIVIDAD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OP_INFORME_CUADERNO" EntityType="MUNI_INTEGRADOModel.Store.OP_INFORME_CUADERNO" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_CUADERNO">
+      <DefiningQuery>SELECT 
+      [OP_INFORME_CUADERNO].[coInforme] AS [coInforme], 
+      [OP_INFORME_CUADERNO].[coIncidencia] AS [coIncidencia]
+      FROM [dbo].[OP_INFORME_CUADERNO] AS [OP_INFORME_CUADERNO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OP_INFORME_ENTREGA" EntityType="MUNI_INTEGRADOModel.Store.OP_INFORME_ENTREGA" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_ENTREGA">
+      <DefiningQuery>SELECT 
+      [OP_INFORME_ENTREGA].[coInforme] AS [coInforme], 
+      [OP_INFORME_ENTREGA].[coEntrega] AS [coEntrega]
+      FROM [dbo].[OP_INFORME_ENTREGA] AS [OP_INFORME_ENTREGA]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OP_INFORME_OBRA" EntityType="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_INFORME_REFERENCIA" EntityType="MUNI_INTEGRADOModel.Store.OP_INFORME_REFERENCIA" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_REFERENCIA">
+      <DefiningQuery>SELECT 
+      [OP_INFORME_REFERENCIA].[coInforme] AS [coInforme], 
+      [OP_INFORME_REFERENCIA].[coInformeRef] AS [coInformeRef]
+      FROM [dbo].[OP_INFORME_REFERENCIA] AS [OP_INFORME_REFERENCIA]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OP_MAQUINARIA" EntityType="MUNI_INTEGRADOModel.Store.OP_MAQUINARIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_MATERIAL" EntityType="MUNI_INTEGRADOModel.Store.OP_MATERIAL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OP_PROYECTO_INVERSION_PUBLICA" EntityType="MUNI_INTEGRADOModel.Store.OP_PROYECTO_INVERSION_PUBLICA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_ANEXO" EntityType="MUNI_INTEGRADOModel.Store.SM_ANEXO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_ANEXOS_REQUERIDOS" EntityType="MUNI_INTEGRADOModel.Store.SM_ANEXOS_REQUERIDOS" store:Type="Tables" store:Schema="dbo" store:Name="SM_ANEXOS_REQUERIDOS">
+      <DefiningQuery>SELECT 
+      [SM_ANEXOS_REQUERIDOS].[CodigoAnexo] AS [CodigoAnexo], 
+      [SM_ANEXOS_REQUERIDOS].[CodigoInformeTecnico] AS [CodigoInformeTecnico]
+      FROM [dbo].[SM_ANEXOS_REQUERIDOS] AS [SM_ANEXOS_REQUERIDOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SM_CATEGORIA_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_CATEGORIA_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_CLAUSULA_CONTRATO" EntityType="MUNI_INTEGRADOModel.Store.SM_CLAUSULA_CONTRATO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_CONTRATO_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_CONTRATO_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_ESTADO_INSPECCION" EntityType="MUNI_INTEGRADOModel.Store.SM_ESTADO_INSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_EXPEDIENTE_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_INFORME_INSPECCION" EntityType="MUNI_INTEGRADOModel.Store.SM_INFORME_INSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_INFORME_TECNICO" EntityType="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_INSPECCION" EntityType="MUNI_INTEGRADOModel.Store.SM_INSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_OBSERVACION" EntityType="MUNI_INTEGRADOModel.Store.SM_OBSERVACION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_RECURSOS" EntityType="MUNI_INTEGRADOModel.Store.SM_RECURSOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_SOLICITUD_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_SOLICITUD_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__MA_DISTRI__idPro__1DB06A4F" Association="MUNI_INTEGRADOModel.Store.FK__MA_DISTRI__idPro__1DB06A4F">
+      <End Role="MA_PROVINCIA" EntitySet="MA_PROVINCIA" />
+      <End Role="MA_DISTRITO" EntitySet="MA_DISTRITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MA_PERSON__idDis__2180FB33" Association="MUNI_INTEGRADOModel.Store.FK__MA_PERSON__idDis__2180FB33">
+      <End Role="MA_DISTRITO" EntitySet="MA_DISTRITO" />
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MA_PERSON__idTip__22751F6C" Association="MUNI_INTEGRADOModel.Store.FK__MA_PERSON__idTip__22751F6C">
+      <End Role="MA_TIPODOCUMENTOIDENTIDAD" EntitySet="MA_TIPODOCUMENTOIDENTIDAD" />
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MA_PROVIN__idDep__1CBC4616" Association="MUNI_INTEGRADOModel.Store.FK__MA_PROVIN__idDep__1CBC4616">
+      <End Role="MA_DEPARTAMENTO" EntitySet="MA_DEPARTAMENTO" />
+      <End Role="MA_PROVINCIA" EntitySet="MA_PROVINCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_AREA" Association="MUNI_INTEGRADOModel.Store.FK_EMPLEADO_AREA">
+      <End Role="MA_AREA" EntitySet="MA_AREA" />
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_CARGO}" Association="MUNI_INTEGRADOModel.Store.FK_EMPLEADO_CARGO}">
+      <End Role="MA_CARGO" EntitySet="MA_CARGO" />
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_EMPLEADO_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MA_PERSONA_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_MA_PERSONA_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="MA_PERSONA1" EntitySet="MA_PERSONA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MA_USUARIO_MA_PERFIL" Association="MUNI_INTEGRADOModel.Store.FK_MA_USUARIO_MA_PERFIL">
+      <End Role="MA_PERFIL" EntitySet="MA_PERFIL" />
+      <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MA_USUARIO_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_MA_USUARIO_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_ACTIVIDAD_EJECUCION_EMPLEADO_MA_EMPLEADO" Association="MUNI_INTEGRADOModel.Store.FK_OP_ACTIVIDAD_EJECUCION_EMPLEADO_MA_EMPLEADO">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="OP_ACTIVIDAD_EJECUCION_EMPLEADO" EntitySet="OP_ACTIVIDAD_EJECUCION_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_actividad_ejecucion_empleado_op_actividad_ejecucion" Association="MUNI_INTEGRADOModel.Store.FK_op_actividad_ejecucion_empleado_op_actividad_ejecucion">
+      <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+      <End Role="OP_ACTIVIDAD_EJECUCION_EMPLEADO" EntitySet="OP_ACTIVIDAD_EJECUCION_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_actividad_ejecucion_op_cronograma_ejecucion" Association="MUNI_INTEGRADOModel.Store.FK_op_actividad_ejecucion_op_cronograma_ejecucion">
+      <End Role="OP_CRONOGRAMA_EJECUCION" EntitySet="OP_CRONOGRAMA_EJECUCION" />
+      <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_cronograma_ejecucion_op_expediente_tecnico" Association="MUNI_INTEGRADOModel.Store.FK_op_cronograma_ejecucion_op_expediente_tecnico">
+      <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+      <End Role="OP_CRONOGRAMA_EJECUCION" EntitySet="OP_CRONOGRAMA_EJECUCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_CUADERNO_OBRA_MA_EMPLEADO" Association="MUNI_INTEGRADOModel.Store.FK_OP_CUADERNO_OBRA_MA_EMPLEADO">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_CUADERNO_OBRA_MA_USUARIO" Association="MUNI_INTEGRADOModel.Store.FK_OP_CUADERNO_OBRA_MA_USUARIO">
+      <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+      <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_CUADERNO_OBRA_MA_USUARIO1" Association="MUNI_INTEGRADOModel.Store.FK_OP_CUADERNO_OBRA_MA_USUARIO1">
+      <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+      <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra" Association="MUNI_INTEGRADOModel.Store.FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra">
+      <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+      <End Role="OP_CUADERNO_OBRA_MAQUINARIA" EntitySet="OP_CUADERNO_OBRA_MAQUINARIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_cuaderno_obra_maquinaria_op_maquinaria" Association="MUNI_INTEGRADOModel.Store.FK_op_cuaderno_obra_maquinaria_op_maquinaria">
+      <End Role="OP_MAQUINARIA" EntitySet="OP_MAQUINARIA" />
+      <End Role="OP_CUADERNO_OBRA_MAQUINARIA" EntitySet="OP_CUADERNO_OBRA_MAQUINARIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_cuaderno_obra_op_actividad_ejecucion" Association="MUNI_INTEGRADOModel.Store.FK_op_cuaderno_obra_op_actividad_ejecucion">
+      <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+      <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_documento_op_expediente_tecnico" Association="MUNI_INTEGRADOModel.Store.FK_op_documento_op_expediente_tecnico">
+      <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+      <End Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntitySet="OP_DOCUMENTO_EXPEDIENTE_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_ENTREGA_MATERIAL_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_OP_ENTREGA_MATERIAL_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_entrega_material_op_material" Association="MUNI_INTEGRADOModel.Store.FK_op_entrega_material_op_material">
+      <End Role="OP_MATERIAL" EntitySet="OP_MATERIAL" />
+      <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA1" Association="MUNI_INTEGRADOModel.Store.FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA1">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA2" Association="MUNI_INTEGRADOModel.Store.FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA2">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_expediente_tecnico_op_proyecto_inversion_publica" Association="MUNI_INTEGRADOModel.Store.FK_op_expediente_tecnico_op_proyecto_inversion_publica">
+      <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+      <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_actividad_op_actividad_ejecucion" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_actividad_op_actividad_ejecucion">
+      <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+      <End Role="OP_INFORME_ACTIVIDAD" EntitySet="OP_INFORME_ACTIVIDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_actividad_op_informe_avance_obra" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_actividad_op_informe_avance_obra">
+      <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+      <End Role="OP_INFORME_ACTIVIDAD" EntitySet="OP_INFORME_ACTIVIDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_cuaderno_op_cuaderno_obra" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_cuaderno_op_cuaderno_obra">
+      <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+      <End Role="OP_INFORME_CUADERNO" EntitySet="OP_INFORME_CUADERNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_cuaderno_op_informe_avance_obra" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_cuaderno_op_informe_avance_obra">
+      <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+      <End Role="OP_INFORME_CUADERNO" EntitySet="OP_INFORME_CUADERNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_entrega_op_entrega_material" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_entrega_op_entrega_material">
+      <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+      <End Role="OP_INFORME_ENTREGA" EntitySet="OP_INFORME_ENTREGA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_entrega_op_informe_avance_obra" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_entrega_op_informe_avance_obra">
+      <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+      <End Role="OP_INFORME_ENTREGA" EntitySet="OP_INFORME_ENTREGA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_obra_op_proyecto_inversion_publica" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_obra_op_proyecto_inversion_publica">
+      <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+      <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_referencia_op_informe_avance_obra" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_referencia_op_informe_avance_obra">
+      <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+      <End Role="OP_INFORME_REFERENCIA" EntitySet="OP_INFORME_REFERENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_informe_avance_referencia_op_informe_avance_obra1" Association="MUNI_INTEGRADOModel.Store.FK_op_informe_avance_referencia_op_informe_avance_obra1">
+      <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+      <End Role="OP_INFORME_REFERENCIA" EntitySet="OP_INFORME_REFERENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_op_proyecto_inversion_publica_ma_via" Association="MUNI_INTEGRADOModel.Store.FK_op_proyecto_inversion_publica_ma_via">
+      <End Role="MA_VIA" EntitySet="MA_VIA" />
+      <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONAJURIDICA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_PERSONAJURIDICA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="MA_PERSONAJURIDICA" EntitySet="MA_PERSONAJURIDICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONANATURAL_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_PERSONANATURAL_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="MA_PERSONANATURAL" EntitySet="MA_PERSONANATURAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_ANEXOS_REQUERIDOS_SM_ANEXO" Association="MUNI_INTEGRADOModel.Store.FK_SM_ANEXOS_REQUERIDOS_SM_ANEXO">
+      <End Role="SM_ANEXO" EntitySet="SM_ANEXO" />
+      <End Role="SM_ANEXOS_REQUERIDOS" EntitySet="SM_ANEXOS_REQUERIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_ANEXOS_REQUERIDOS_SM_INFORME_TECNICO" Association="MUNI_INTEGRADOModel.Store.FK_SM_ANEXOS_REQUERIDOS_SM_INFORME_TECNICO">
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+      <End Role="SM_ANEXOS_REQUERIDOS" EntitySet="SM_ANEXOS_REQUERIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_clausula_contrato_sm_contrato_servicio" Association="MUNI_INTEGRADOModel.Store.FK_sm_clausula_contrato_sm_contrato_servicio">
+      <End Role="SM_CONTRATO_SERVICIO" EntitySet="SM_CONTRATO_SERVICIO" />
+      <End Role="SM_CLAUSULA_CONTRATO" EntitySet="SM_CLAUSULA_CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_contrato_servicio_sm_servicio" Association="MUNI_INTEGRADOModel.Store.FK_sm_contrato_servicio_sm_servicio">
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+      <End Role="SM_CONTRATO_SERVICIO" EntitySet="SM_CONTRATO_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_EXPEDIENTE_SERVICIO_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_SM_EXPEDIENTE_SERVICIO_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO">
+      <End Role="SM_SOLICITUD_SERVICIO" EntitySet="SM_SOLICITUD_SERVICIO" />
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_INSPECCION_SM_INSPECCION" Association="MUNI_INTEGRADOModel.Store.FK_SM_INFORME_INSPECCION_SM_INSPECCION">
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+      <End Role="SM_INFORME_INSPECCION" EntitySet="SM_INFORME_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_TECNICO_MA_EMPLEADO" Association="MUNI_INTEGRADOModel.Store.FK_SM_INFORME_TECNICO_MA_EMPLEADO">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_TECNICO_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_SM_INFORME_TECNICO_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO">
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INSPECCION_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_SM_INSPECCION_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_inspeccion_sm_servicio" Association="MUNI_INTEGRADOModel.Store.FK_sm_inspeccion_sm_servicio">
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO" Association="MUNI_INTEGRADOModel.Store.FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO">
+      <End Role="SM_CLAUSULA_CONTRATO" EntitySet="SM_CLAUSULA_CONTRATO" />
+      <End Role="SM_OBSERVACION" EntitySet="SM_OBSERVACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_OBSERVACION_SM_INFORME_INSPECCION" Association="MUNI_INTEGRADOModel.Store.FK_SM_OBSERVACION_SM_INFORME_INSPECCION">
+      <End Role="SM_INFORME_INSPECCION" EntitySet="SM_INFORME_INSPECCION" />
+      <End Role="SM_OBSERVACION" EntitySet="SM_OBSERVACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_RECURSOS_SM_INFORME_TECNICO" Association="MUNI_INTEGRADOModel.Store.FK_SM_RECURSOS_SM_INFORME_TECNICO">
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+      <End Role="SM_RECURSOS" EntitySet="SM_RECURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SERVICIO_MA_PERSONA" Association="MUNI_INTEGRADOModel.Store.FK_SM_SERVICIO_MA_PERSONA">
+      <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO">
+      <End Role="SM_CATEGORIA_SERVICIO" EntitySet="SM_CATEGORIA_SERVICIO" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO">
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SOLICITUD_SERVICIO_MA_EMPLEADO" Association="MUNI_INTEGRADOModel.Store.FK_SM_SOLICITUD_SERVICIO_MA_EMPLEADO">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="SM_SOLICITUD_SERVICIO" EntitySet="SM_SOLICITUD_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SOLICITUD_SERVICIO_MA_EMPLEADO1" Association="MUNI_INTEGRADOModel.Store.FK_SM_SOLICITUD_SERVICIO_MA_EMPLEADO1">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="SM_SOLICITUD_SERVICIO" EntitySet="SM_SOLICITUD_SERVICIO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="GE_ActividadPlan">
+    <Key>
+      <PropertyRef Name="CodigoActividad" />
+    </Key>
+    <Property Name="CodigoActividad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoPlanificacion" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="FechaActividad" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GE_Adquisicion">
+    <Key>
+      <PropertyRef Name="CodigoAdquisicion" />
+    </Key>
+    <Property Name="CodigoAdquisicion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Producto" Type="varchar" MaxLength="250" />
+    <Property Name="UnidadMedida" Type="varchar" MaxLength="250" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="PrecioUnitario" Type="decimal" Scale="2" />
+    <Property Name="NumeroFactura" Type="varchar" MaxLength="250" />
+    <Property Name="CodigoTipoAdquisicion" Type="int" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_Comite">
+    <Key>
+      <PropertyRef Name="CodigoComite" />
+    </Key>
+    <Property Name="CodigoComite" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCominte" Type="varchar" MaxLength="250" />
+    <Property Name="FechaVigenciaIniciao" Type="datetime" />
+    <Property Name="FechaVigenciaFin" Type="datetime" />
+    <Property Name="CodigoEmpleado" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_Contrato">
+    <Key>
+      <PropertyRef Name="CodigoContrato" />
+    </Key>
+    <Property Name="CodigoContrato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroContrato" Type="int" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="FechaContrato" Type="datetime" />
+    <Property Name="CodigoProveedor" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_Evaluacion">
+    <Key>
+      <PropertyRef Name="CodigoEvaluacion" />
+    </Key>
+    <Property Name="CodigoEvaluacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaEvaluacionInicio" Type="datetime" />
+    <Property Name="FechaEvaluacionFin" Type="datetime" />
+    <Property Name="CantidadMiembros" Type="int" />
+    <Property Name="Resultado" Type="int" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_Evento">
+    <Key>
+      <PropertyRef Name="CodigoEvento" />
+    </Key>
+    <Property Name="CodigoEvento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="varchar" MaxLength="150" />
+    <Property Name="DescripcionCorta" Type="varchar(max)" />
+    <Property Name="DescripcionDetalle" Type="varchar(max)" />
+    <Property Name="Presupuesto" Type="decimal" Scale="2" />
+    <Property Name="Prioridad" Type="int" />
+    <Property Name="Solicitante" Type="varchar" MaxLength="250" />
+    <Property Name="FechaEventoInicio" Type="datetime" />
+    <Property Name="FechaEventoFin" Type="datetime" />
+    <Property Name="HoraEvento" Type="varchar" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" MaxLength="250" />
+    <Property Name="CodigoUbigeo" Type="varchar" MaxLength="6" />
+    <Property Name="Referencia" Type="varchar" MaxLength="250" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="FechaAprobacion" Type="datetime" />
+    <Property Name="FechaEjecucion" Type="datetime" />
+    <Property Name="FechaPlanificacion" Type="datetime" />
+    <Property Name="FechaLiquidacion" Type="datetime" />
+    <Property Name="FechaAnulacion" Type="datetime" />
+    <Property Name="Comentario" Type="varchar(max)" />
+    <Property Name="CodigoTipoEvento" Type="int" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_Incidencia">
+    <Key>
+      <PropertyRef Name="CodigoIncidencia" />
+    </Key>
+    <Property Name="CodigoIncidencia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DescripcionIncidencia" Type="varchar(max)" />
+    <Property Name="FechaIncidencia" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GE_Local">
+    <Key>
+      <PropertyRef Name="CodigoLocal" />
+    </Key>
+    <Property Name="CodigoLocal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="Direcion" Type="varchar" MaxLength="250" />
+    <Property Name="Aforo" Type="int" />
+    <Property Name="Contacto" Type="varchar" MaxLength="250" />
+    <Property Name="Telefono" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_PlanEvento">
+    <Key>
+      <PropertyRef Name="CodigoPlanificacion" />
+    </Key>
+    <Property Name="CodigoPlanificacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Presupuesto" Type="decimal" Scale="2" />
+    <Property Name="FechaPlanificacion" Type="datetime" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_ResultadoEvaluacion">
+    <Key>
+      <PropertyRef Name="CodigoEvaluacion" />
+      <PropertyRef Name="CodigoComite" />
+    </Key>
+    <Property Name="CodigoEvaluacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoComite" Type="int" Nullable="false" />
+    <Property Name="Voto" Type="int" />
+    <Property Name="FechaVoto" Type="datetime" />
+    <Property Name="Comentario" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="GE_Tipo_Adquisicion">
+    <Key>
+      <PropertyRef Name="CodigoTipoAdquisicion" />
+    </Key>
+    <Property Name="CodigoTipoAdquisicion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="GE_Tipo_Evento">
+    <Key>
+      <PropertyRef Name="CodigoTipoEvento" />
+    </Key>
+    <Property Name="CodigoTipoEvento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="MA_AREA">
+    <Key>
+      <PropertyRef Name="idArea" />
+    </Key>
+    <Property Name="idArea" Type="int" Nullable="false" />
+    <Property Name="descArea" Type="varchar" MaxLength="100" />
+    <Property Name="UsrRegistra" Type="int" />
+    <Property Name="FecRegistra" Type="datetime" />
+    <Property Name="UsrModifica" Type="int" />
+    <Property Name="FecModifica" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MA_CARGO">
+    <Key>
+      <PropertyRef Name="idCargo" />
+    </Key>
+    <Property Name="idCargo" Type="int" Nullable="false" />
+    <Property Name="descCargo" Type="varchar" MaxLength="100" />
+    <Property Name="UsrRegistra" Type="int" />
+    <Property Name="FecRegistra" Type="datetime" />
+    <Property Name="UsrModifica" Type="int" />
+    <Property Name="FecModifica" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MA_DEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="idDepartamento" />
+    </Key>
+    <Property Name="idDepartamento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MA_DISTRITO">
+    <Key>
+      <PropertyRef Name="idDistrito" />
+    </Key>
+    <Property Name="idDistrito" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idProvincia" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MA_EMPLEADO">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+    <Property Name="idPersona" Type="int" />
+    <Property Name="idCargo" Type="int" />
+    <Property Name="idArea" Type="int" />
+    <Property Name="CodigoEmpleado" Type="varchar" MaxLength="200" />
+    <Property Name="UsrRegistra" Type="int" />
+    <Property Name="FecRegistra" Type="datetime" />
+    <Property Name="UsrModifica" Type="int" />
+    <Property Name="FecModifica" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MA_PERFIL">
+    <Key>
+      <PropertyRef Name="coPerfil" />
+    </Key>
+    <Property Name="coPerfil" Type="int" Nullable="false" />
+    <Property Name="noDesPerfil" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="fiPerfil" Type="smallint" />
+    <Property Name="feCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MA_PERSONA">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idDistrito" Type="int" />
+    <Property Name="idTipoDocIdentidad" Type="int" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="Telefono" Type="varchar" MaxLength="20" />
+    <Property Name="Correo" Type="varchar" MaxLength="80" />
+    <Property Name="idRepresentanteLegal" Type="int" />
+    <Property Name="RUC" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="MA_PERSONAJURIDICA">
+    <Key>
+      <PropertyRef Name="idPersonaJuridica" />
+    </Key>
+    <Property Name="idPersonaJuridica" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idPersona" Type="int" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="250" />
+    <Property Name="RUC" Type="char" MaxLength="12" />
+    <Property Name="RepresentanteLegal" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="MA_PERSONANATURAL">
+    <Key>
+      <PropertyRef Name="idPersonaNatural" />
+    </Key>
+    <Property Name="idPersonaNatural" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idPersona" Type="int" />
+    <Property Name="NroDocIdentidad" Type="char" MaxLength="15" />
+    <Property Name="Nombres" Type="nchar" MaxLength="10" />
+    <Property Name="ApellidoPaterno" Type="nchar" MaxLength="10" />
+    <Property Name="ApellidoMaterno" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MA_Proveedor">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="idPersonaJuridica" Type="int" Nullable="false" />
+    <Property Name="Rubro" Type="varchar" MaxLength="250" />
+    <Property Name="Contacto" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="MA_PROVINCIA">
+    <Key>
+      <PropertyRef Name="idProvincia" />
+    </Key>
+    <Property Name="idProvincia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idDepartamento" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MA_TIPODOCUMENTOIDENTIDAD">
+    <Key>
+      <PropertyRef Name="idTipoDocIdentidad" />
+    </Key>
+    <Property Name="idTipoDocIdentidad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MA_USUARIO">
+    <Key>
+      <PropertyRef Name="coUsuario" />
+    </Key>
+    <Property Name="coUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="coPersona" Type="int" />
+    <Property Name="noLoginUsuario" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="noClaveUsu" Type="varchar" MaxLength="50" />
+    <Property Name="fiActivo" Type="tinyint" />
+    <Property Name="noIpPc" Type="varchar" MaxLength="45" />
+    <Property Name="feUltimoLogin" Type="datetime" />
+    <Property Name="feCreacion" Type="datetime" />
+    <Property Name="coPerfil" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MA_VIA">
+    <Key>
+      <PropertyRef Name="coVia" />
+    </Key>
+    <Property Name="coVia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="noNomVia" Type="varchar" MaxLength="50" />
+    <Property Name="noTipoVia" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="OP_ACTIVIDAD_EJECUCION">
+    <Key>
+      <PropertyRef Name="coActividad" />
+    </Key>
+    <Property Name="coActividad" Type="int" Nullable="false" />
+    <Property Name="noActividad" Type="varchar" MaxLength="45" />
+    <Property Name="coCronograma" Type="int" Nullable="false" />
+    <Property Name="feInicioProgramada" Type="date" />
+    <Property Name="feFinProgramada" Type="date" />
+    <Property Name="feInicioEjecucion" Type="date" />
+    <Property Name="feFinEjecucion" Type="date" />
+    <Property Name="nuCostoDirecto" Type="numeric" Precision="11" Scale="2" />
+    <Property Name="nuCantidadRRHH" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_ACTIVIDAD_EJECUCION_EMPLEADO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="OP_ACTIVIDAD_EJECUCION_EMPLEADO">
+    <Key>
+      <PropertyRef Name="coActividad" />
+      <PropertyRef Name="coEmpleado" />
+    </Key>
+    <Property Name="coActividad" Type="int" Nullable="false" />
+    <Property Name="coEmpleado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OP_CRONOGRAMA_EJECUCION">
+    <Key>
+      <PropertyRef Name="coCronograma" />
+    </Key>
+    <Property Name="coCronograma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="coExpediente" Type="int" Nullable="false" />
+    <Property Name="feEmision" Type="datetime" />
+    <Property Name="nuPlazoEjecucion" Type="int" />
+  </EntityType>
+  <EntityType Name="OP_CUADERNO_OBRA">
+    <Key>
+      <PropertyRef Name="coIncidencia" />
+    </Key>
+    <Property Name="coIncidencia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="txDescripcion" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="noTipoIncidencia" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="noCriticidad" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="noCaracteristicaDia" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="feIncidencia" Type="datetime" />
+    <Property Name="coResponsable" Type="int" />
+    <Property Name="coActividad" Type="int" />
+    <Property Name="coUsuarioCreacion" Type="int" />
+    <Property Name="feCreacion" Type="datetime" />
+    <Property Name="coUsuarioEdicion" Type="int" />
+    <Property Name="feEdicion" Type="datetime" />
+    <Property Name="noIpPc" Type="varchar" MaxLength="45" />
+    <Property Name="noUserAgent" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="OP_CUADERNO_OBRA_MAQUINARIA">
+    <Key>
+      <PropertyRef Name="coCuadernoObraMaquinaria" />
+    </Key>
+    <Property Name="coCuadernoObraMaquinaria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="coIncidencia" Type="int" />
+    <Property Name="coMaquinaria" Type="int" Nullable="false" />
+    <Property Name="noTrabajoRealizado" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="feInicioActividad" Type="datetime" />
+    <Property Name="feFinActividad" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+    <Key>
+      <PropertyRef Name="coDocumento" />
+    </Key>
+    <Property Name="coDocumento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="coExpediente" Type="int" Nullable="false" />
+    <Property Name="nuNroDOcumento" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="feEmision" Type="date" />
+    <Property Name="txDescripcion" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="txRutaArchivo" Type="varchar" MaxLength="250" />
+    <Property Name="noTipoDocExpTec" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OP_ENTREGA_MATERIAL">
+    <Key>
+      <PropertyRef Name="coEntrega" />
+    </Key>
+    <Property Name="coEntrega" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="feEntregaProgramada" Type="datetime" />
+    <Property Name="feEntregaEfectiva" Type="datetime" />
+    <Property Name="txObservaciones" Type="varchar" MaxLength="500" />
+    <Property Name="noTipoEntrega" Type="varchar" MaxLength="50" />
+    <Property Name="coProveedor" Type="int" Nullable="false" />
+    <Property Name="coMaterial" Type="int" Nullable="false" />
+    <Property Name="nuCantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="OP_EXPEDIENTE_TECNICO">
+    <Key>
+      <PropertyRef Name="coExpediente" />
+    </Key>
+    <Property Name="coExpediente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="coProyecto" Type="int" />
+    <Property Name="txDescripcion" Type="varchar" MaxLength="500" />
+    <Property Name="txEspecificacionesTecnicas" Type="varchar" MaxLength="1000" />
+    <Property Name="feElaboracionPresupuesto" Type="datetime" />
+    <Property Name="nuValorReferencial" Type="numeric" Precision="11" Scale="2" />
+    <Property Name="nuPartidaPresupuestaria" Type="varchar" MaxLength="20" />
+    <Property Name="coEjecutor" Type="int" />
+    <Property Name="coSupervisor" Type="int" />
+    <Property Name="coContacto" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_ACTIVIDAD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="OP_INFORME_ACTIVIDAD">
+    <Key>
+      <PropertyRef Name="coInforme" />
+      <PropertyRef Name="idActividad" />
+    </Key>
+    <Property Name="coInforme" Type="int" Nullable="false" />
+    <Property Name="idActividad" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_CUADERNO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="OP_INFORME_CUADERNO">
+    <Key>
+      <PropertyRef Name="coInforme" />
+      <PropertyRef Name="coIncidencia" />
+    </Key>
+    <Property Name="coInforme" Type="int" Nullable="false" />
+    <Property Name="coIncidencia" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_ENTREGA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="OP_INFORME_ENTREGA">
+    <Key>
+      <PropertyRef Name="coInforme" />
+      <PropertyRef Name="coEntrega" />
+    </Key>
+    <Property Name="coInforme" Type="int" Nullable="false" />
+    <Property Name="coEntrega" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OP_INFORME_OBRA">
+    <Key>
+      <PropertyRef Name="coInforme" />
+    </Key>
+    <Property Name="coInforme" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nuInforme" Type="varchar" MaxLength="45" />
+    <Property Name="txTituloInforme" Type="varchar" MaxLength="500" />
+    <Property Name="feEmision" Type="date" />
+    <Property Name="txConclusion" Type="varchar" MaxLength="500" />
+    <Property Name="txRecomendacion" Type="varchar" MaxLength="500" />
+    <Property Name="flEstado" Type="int" />
+    <Property Name="coProyecto" Type="int" Nullable="false" />
+    <Property Name="noTipoInforme" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_REFERENCIA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="OP_INFORME_REFERENCIA">
+    <Key>
+      <PropertyRef Name="coInforme" />
+      <PropertyRef Name="coInformeRef" />
+    </Key>
+    <Property Name="coInforme" Type="int" Nullable="false" />
+    <Property Name="coInformeRef" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OP_MAQUINARIA">
+    <Key>
+      <PropertyRef Name="coMaquinaria" />
+    </Key>
+    <Property Name="coMaquinaria" Type="int" Nullable="false" />
+    <Property Name="noMaquinaria" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="noMarca" Type="varchar" MaxLength="45" />
+    <Property Name="noModelo" Type="varchar" MaxLength="45" />
+    <Property Name="nuAnioFabricacion" Type="int" />
+    <Property Name="noPlaca" Type="varchar" MaxLength="45" />
+    <Property Name="noTipo" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="OP_MATERIAL">
+    <Key>
+      <PropertyRef Name="coMaterial" />
+    </Key>
+    <Property Name="coMaterial" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="noMaterial" Type="varchar" MaxLength="45" />
+    <Property Name="nuValorReferencial" Type="numeric" Precision="11" Scale="2" />
+    <Property Name="nuStock" Type="numeric" Precision="11" Scale="2" />
+    <Property Name="nuStockMinimo" Type="numeric" Precision="11" Scale="2" />
+    <Property Name="noUnidadMedida" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="OP_PROYECTO_INVERSION_PUBLICA">
+    <Key>
+      <PropertyRef Name="coProyecto" />
+    </Key>
+    <Property Name="coProyecto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="coSNIP" Type="varchar" MaxLength="45" />
+    <Property Name="txDescripcion" Type="varchar" MaxLength="300" />
+    <Property Name="noNombre" Type="varchar" MaxLength="100" />
+    <Property Name="coVia" Type="int" Nullable="false" />
+    <Property Name="txUbicacion" Type="varchar" MaxLength="120" />
+    <Property Name="nuBeneficiarios" Type="int" />
+    <Property Name="nuValorReferencialPerfil" Type="numeric" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="feRegistro" Type="date" />
+    <Property Name="noEstado" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SM_ANEXO">
+    <Key>
+      <PropertyRef Name="CodigoAnexo" />
+    </Key>
+    <Property Name="CodigoAnexo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NombreDocumento" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+    <Property Name="Contenido" Type="nvarchar" MaxLength="250" />
+    <Property Name="CodigoInformeTecnico" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.SM_ANEXOS_REQUERIDOS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="SM_ANEXOS_REQUERIDOS">
+    <Key>
+      <PropertyRef Name="CodigoAnexo" />
+      <PropertyRef Name="CodigoInformeTecnico" />
+    </Key>
+    <Property Name="CodigoAnexo" Type="int" Nullable="false" />
+    <Property Name="CodigoInformeTecnico" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_CATEGORIA_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoCategoriaServicio" />
+    </Key>
+    <Property Name="CodigoCategoriaServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombreCategoria" Type="nvarchar" MaxLength="50" />
+    <Property Name="descripcionCateogira" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="SM_CLAUSULA_CONTRATO">
+    <Key>
+      <PropertyRef Name="CodigoClausulaContrato" />
+    </Key>
+    <Property Name="CodigoClausulaContrato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="CodigoContratoServicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_CONTRATO_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoContratoServicio" />
+    </Key>
+    <Property Name="CodigoContratoServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInicio" Type="date" />
+    <Property Name="FechaFin" Type="date" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="coUsuario" Type="int" />
+    <Property Name="CodigoServicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_ESTADO_INSPECCION">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="SM_EXPEDIENTE_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoExpedienteServicio" />
+    </Key>
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreación" Type="datetime" />
+    <Property Name="CuerpoExpediente" Type="nvarchar" MaxLength="250" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaInactivo" Type="datetime" />
+    <Property Name="LugarServicioPropuesto" Type="nvarchar" MaxLength="70" />
+    <Property Name="coUsuario" Type="int" Nullable="false" />
+    <Property Name="CodigoSolicitudServicio" Type="int" Nullable="false" />
+    <Property Name="CodigoPersonaEjecutor" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_INFORME_INSPECCION">
+    <Key>
+      <PropertyRef Name="CodigoInformeInspeccion" />
+    </Key>
+    <Property Name="CodigoInformeInspeccion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInformeInspeccion" Type="datetime" />
+    <Property Name="CuerpoInspeccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="DescripcionInforme" Type="nvarchar" MaxLength="250" />
+    <Property Name="CodigoInspeccion" Type="int" />
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_INFORME_TECNICO">
+    <Key>
+      <PropertyRef Name="CodigoInformeTecnico" />
+    </Key>
+    <Property Name="CodigoInformeTecnico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="FechaRecepcion" Type="datetime" />
+    <Property Name="DescripcionInformeTecnico" Type="nvarchar" MaxLength="250" />
+    <Property Name="Requisito" Type="nvarchar" MaxLength="250" />
+    <Property Name="Objetivo" Type="nvarchar" MaxLength="250" />
+    <Property Name="Justificacion" Type="nvarchar" MaxLength="250" />
+    <Property Name="PresupuestoTentativo" Type="decimal" Scale="2" />
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" />
+    <Property Name="CodigoPersonaElaborador" Type="int" Nullable="false" />
+    <Property Name="FechaAprobacion" Type="datetime" />
+    <Property Name="CodigoEmpleadoAprobador" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_INSPECCION">
+    <Key>
+      <PropertyRef Name="CodigoInspeccion" />
+    </Key>
+    <Property Name="CodigoInspeccion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInspeccion" Type="datetime" />
+    <Property Name="coVia" Type="int" />
+    <Property Name="LugarInspeccion" Type="nvarchar" MaxLength="150" />
+    <Property Name="CodigoServicio" Type="int" />
+    <Property Name="coUsuario" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="ResponsableServicio" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodigoPersonaEjecutor" Type="int" />
+    <Property Name="HoraFin" Type="time" />
+    <Property Name="HoraIni" Type="time" />
+    <Property Name="Estado" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_OBSERVACION">
+    <Key>
+      <PropertyRef Name="CodigoObservacion" />
+    </Key>
+    <Property Name="CodigoObservacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaIncidencia" Type="datetime" />
+    <Property Name="DescripcionIncidencia" Type="nvarchar" MaxLength="150" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="CodigoClausulaContrato" Type="int" Nullable="false" />
+    <Property Name="CodigoInformeInspeccion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_RECURSOS">
+    <Key>
+      <PropertyRef Name="CodigoRecurso" />
+    </Key>
+    <Property Name="CodigoRecurso" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Peso" Type="int" />
+    <Property Name="Medidas" Type="nvarchar" MaxLength="50" />
+    <Property Name="MarcaRecomendada" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodigoInformeTecnico" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoServicio" />
+    </Key>
+    <Property Name="CodigoServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NombreServicio" Type="nvarchar" MaxLength="150" />
+    <Property Name="DescripcionServicio" Type="nvarchar" MaxLength="250" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaFin" Type="datetime" />
+    <Property Name="coVia" Type="int" />
+    <Property Name="LugarServicio" Type="nvarchar" MaxLength="150" />
+    <Property Name="CodigoTipoServicio" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="coUsuario" Type="int" />
+    <Property Name="CodigoCategoriaServicio" Type="int" />
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" />
+    <Property Name="CodigoPersonaResponsable" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_SOLICITUD_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoSolicitudServicio" />
+    </Key>
+    <Property Name="CodigoSolicitudServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="NombreSolicitud" Type="nvarchar" MaxLength="150" />
+    <Property Name="Objetivo" Type="nvarchar" MaxLength="150" />
+    <Property Name="DescripcionSolicitud" Type="nvarchar" MaxLength="150" />
+    <Property Name="FechaAprobacion" Type="datetime" />
+    <Property Name="idEmpleadoSolicitante" Type="int" Nullable="false" />
+    <Property Name="idEmpleadoAprobador" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__MA_DISTRI__idPro__1DB06A4F">
+    <End Role="MA_PROVINCIA" Type="MUNI_INTEGRADOModel.Store.MA_PROVINCIA" Multiplicity="1" />
+    <End Role="MA_DISTRITO" Type="MUNI_INTEGRADOModel.Store.MA_DISTRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PROVINCIA">
+        <PropertyRef Name="idProvincia" />
+      </Principal>
+      <Dependent Role="MA_DISTRITO">
+        <PropertyRef Name="idProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MA_PERSON__idDis__2180FB33">
+    <End Role="MA_DISTRITO" Type="MUNI_INTEGRADOModel.Store.MA_DISTRITO" Multiplicity="0..1" />
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_DISTRITO">
+        <PropertyRef Name="idDistrito" />
+      </Principal>
+      <Dependent Role="MA_PERSONA">
+        <PropertyRef Name="idDistrito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MA_PERSON__idTip__22751F6C">
+    <End Role="MA_TIPODOCUMENTOIDENTIDAD" Type="MUNI_INTEGRADOModel.Store.MA_TIPODOCUMENTOIDENTIDAD" Multiplicity="0..1" />
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_TIPODOCUMENTOIDENTIDAD">
+        <PropertyRef Name="idTipoDocIdentidad" />
+      </Principal>
+      <Dependent Role="MA_PERSONA">
+        <PropertyRef Name="idTipoDocIdentidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MA_PROVIN__idDep__1CBC4616">
+    <End Role="MA_DEPARTAMENTO" Type="MUNI_INTEGRADOModel.Store.MA_DEPARTAMENTO" Multiplicity="1" />
+    <End Role="MA_PROVINCIA" Type="MUNI_INTEGRADOModel.Store.MA_PROVINCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_DEPARTAMENTO">
+        <PropertyRef Name="idDepartamento" />
+      </Principal>
+      <Dependent Role="MA_PROVINCIA">
+        <PropertyRef Name="idDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_AREA">
+    <End Role="MA_AREA" Type="MUNI_INTEGRADOModel.Store.MA_AREA" Multiplicity="0..1" />
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_AREA">
+        <PropertyRef Name="idArea" />
+      </Principal>
+      <Dependent Role="MA_EMPLEADO">
+        <PropertyRef Name="idArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_CARGO}">
+    <End Role="MA_CARGO" Type="MUNI_INTEGRADOModel.Store.MA_CARGO" Multiplicity="0..1" />
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_CARGO">
+        <PropertyRef Name="idCargo" />
+      </Principal>
+      <Dependent Role="MA_EMPLEADO">
+        <PropertyRef Name="idCargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="MA_EMPLEADO">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MA_PERSONA_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="MA_PERSONA1" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="MA_PERSONA1">
+        <PropertyRef Name="idRepresentanteLegal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MA_USUARIO_MA_PERFIL">
+    <End Role="MA_PERFIL" Type="MUNI_INTEGRADOModel.Store.MA_PERFIL" Multiplicity="1" />
+    <End Role="MA_USUARIO" Type="MUNI_INTEGRADOModel.Store.MA_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERFIL">
+        <PropertyRef Name="coPerfil" />
+      </Principal>
+      <Dependent Role="MA_USUARIO">
+        <PropertyRef Name="coPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MA_USUARIO_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="MA_USUARIO" Type="MUNI_INTEGRADOModel.Store.MA_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="MA_USUARIO">
+        <PropertyRef Name="coPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_ACTIVIDAD_EJECUCION_EMPLEADO_MA_EMPLEADO">
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="1" />
+    <End Role="OP_ACTIVIDAD_EJECUCION_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OP_ACTIVIDAD_EJECUCION_EMPLEADO">
+        <PropertyRef Name="coEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_actividad_ejecucion_empleado_op_actividad_ejecucion">
+    <End Role="OP_ACTIVIDAD_EJECUCION" Type="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="1" />
+    <End Role="OP_ACTIVIDAD_EJECUCION_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_ACTIVIDAD_EJECUCION">
+        <PropertyRef Name="coActividad" />
+      </Principal>
+      <Dependent Role="OP_ACTIVIDAD_EJECUCION_EMPLEADO">
+        <PropertyRef Name="coActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_actividad_ejecucion_op_cronograma_ejecucion">
+    <End Role="OP_CRONOGRAMA_EJECUCION" Type="MUNI_INTEGRADOModel.Store.OP_CRONOGRAMA_EJECUCION" Multiplicity="1" />
+    <End Role="OP_ACTIVIDAD_EJECUCION" Type="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_CRONOGRAMA_EJECUCION">
+        <PropertyRef Name="coCronograma" />
+      </Principal>
+      <Dependent Role="OP_ACTIVIDAD_EJECUCION">
+        <PropertyRef Name="coCronograma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_cronograma_ejecucion_op_expediente_tecnico">
+    <End Role="OP_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="1" />
+    <End Role="OP_CRONOGRAMA_EJECUCION" Type="MUNI_INTEGRADOModel.Store.OP_CRONOGRAMA_EJECUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coExpediente" />
+      </Principal>
+      <Dependent Role="OP_CRONOGRAMA_EJECUCION">
+        <PropertyRef Name="coExpediente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_CUADERNO_OBRA_MA_EMPLEADO">
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="0..1" />
+    <End Role="OP_CUADERNO_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OP_CUADERNO_OBRA">
+        <PropertyRef Name="coResponsable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_CUADERNO_OBRA_MA_USUARIO">
+    <End Role="MA_USUARIO" Type="MUNI_INTEGRADOModel.Store.MA_USUARIO" Multiplicity="0..1" />
+    <End Role="OP_CUADERNO_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_USUARIO">
+        <PropertyRef Name="coUsuario" />
+      </Principal>
+      <Dependent Role="OP_CUADERNO_OBRA">
+        <PropertyRef Name="coUsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_CUADERNO_OBRA_MA_USUARIO1">
+    <End Role="MA_USUARIO" Type="MUNI_INTEGRADOModel.Store.MA_USUARIO" Multiplicity="0..1" />
+    <End Role="OP_CUADERNO_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_USUARIO">
+        <PropertyRef Name="coUsuario" />
+      </Principal>
+      <Dependent Role="OP_CUADERNO_OBRA">
+        <PropertyRef Name="coUsuarioEdicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra">
+    <End Role="OP_CUADERNO_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" Multiplicity="0..1" />
+    <End Role="OP_CUADERNO_OBRA_MAQUINARIA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA_MAQUINARIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_CUADERNO_OBRA">
+        <PropertyRef Name="coIncidencia" />
+      </Principal>
+      <Dependent Role="OP_CUADERNO_OBRA_MAQUINARIA">
+        <PropertyRef Name="coIncidencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_cuaderno_obra_maquinaria_op_maquinaria">
+    <End Role="OP_MAQUINARIA" Type="MUNI_INTEGRADOModel.Store.OP_MAQUINARIA" Multiplicity="1" />
+    <End Role="OP_CUADERNO_OBRA_MAQUINARIA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA_MAQUINARIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_MAQUINARIA">
+        <PropertyRef Name="coMaquinaria" />
+      </Principal>
+      <Dependent Role="OP_CUADERNO_OBRA_MAQUINARIA">
+        <PropertyRef Name="coMaquinaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_cuaderno_obra_op_actividad_ejecucion">
+    <End Role="OP_ACTIVIDAD_EJECUCION" Type="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="0..1" />
+    <End Role="OP_CUADERNO_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_ACTIVIDAD_EJECUCION">
+        <PropertyRef Name="coActividad" />
+      </Principal>
+      <Dependent Role="OP_CUADERNO_OBRA">
+        <PropertyRef Name="coActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_documento_op_expediente_tecnico">
+    <End Role="OP_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="1" />
+    <End Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_DOCUMENTO_EXPEDIENTE_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coExpediente" />
+      </Principal>
+      <Dependent Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coExpediente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_ENTREGA_MATERIAL_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="1" />
+    <End Role="OP_ENTREGA_MATERIAL" Type="MUNI_INTEGRADOModel.Store.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="OP_ENTREGA_MATERIAL">
+        <PropertyRef Name="coProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_entrega_material_op_material">
+    <End Role="OP_MATERIAL" Type="MUNI_INTEGRADOModel.Store.OP_MATERIAL" Multiplicity="1" />
+    <End Role="OP_ENTREGA_MATERIAL" Type="MUNI_INTEGRADOModel.Store.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_MATERIAL">
+        <PropertyRef Name="coMaterial" />
+      </Principal>
+      <Dependent Role="OP_ENTREGA_MATERIAL">
+        <PropertyRef Name="coMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="OP_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="OP_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coEjecutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA1">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="OP_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="OP_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coSupervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OP_EXPEDIENTE_TECNICO_MA_PERSONA2">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="OP_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="OP_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_expediente_tecnico_op_proyecto_inversion_publica">
+    <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="MUNI_INTEGRADOModel.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="0..1" />
+    <End Role="OP_EXPEDIENTE_TECNICO" Type="MUNI_INTEGRADOModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+        <PropertyRef Name="coProyecto" />
+      </Principal>
+      <Dependent Role="OP_EXPEDIENTE_TECNICO">
+        <PropertyRef Name="coProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_actividad_op_actividad_ejecucion">
+    <End Role="OP_ACTIVIDAD_EJECUCION" Type="MUNI_INTEGRADOModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="1" />
+    <End Role="OP_INFORME_ACTIVIDAD" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_ACTIVIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_ACTIVIDAD_EJECUCION">
+        <PropertyRef Name="coActividad" />
+      </Principal>
+      <Dependent Role="OP_INFORME_ACTIVIDAD">
+        <PropertyRef Name="idActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_actividad_op_informe_avance_obra">
+    <End Role="OP_INFORME_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+    <End Role="OP_INFORME_ACTIVIDAD" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_ACTIVIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_INFORME_OBRA">
+        <PropertyRef Name="coInforme" />
+      </Principal>
+      <Dependent Role="OP_INFORME_ACTIVIDAD">
+        <PropertyRef Name="coInforme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_cuaderno_op_cuaderno_obra">
+    <End Role="OP_CUADERNO_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_CUADERNO_OBRA" Multiplicity="1" />
+    <End Role="OP_INFORME_CUADERNO" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_CUADERNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_CUADERNO_OBRA">
+        <PropertyRef Name="coIncidencia" />
+      </Principal>
+      <Dependent Role="OP_INFORME_CUADERNO">
+        <PropertyRef Name="coIncidencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_cuaderno_op_informe_avance_obra">
+    <End Role="OP_INFORME_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+    <End Role="OP_INFORME_CUADERNO" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_CUADERNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_INFORME_OBRA">
+        <PropertyRef Name="coInforme" />
+      </Principal>
+      <Dependent Role="OP_INFORME_CUADERNO">
+        <PropertyRef Name="coInforme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_entrega_op_entrega_material">
+    <End Role="OP_ENTREGA_MATERIAL" Type="MUNI_INTEGRADOModel.Store.OP_ENTREGA_MATERIAL" Multiplicity="1" />
+    <End Role="OP_INFORME_ENTREGA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_ENTREGA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_ENTREGA_MATERIAL">
+        <PropertyRef Name="coEntrega" />
+      </Principal>
+      <Dependent Role="OP_INFORME_ENTREGA">
+        <PropertyRef Name="coEntrega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_entrega_op_informe_avance_obra">
+    <End Role="OP_INFORME_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+    <End Role="OP_INFORME_ENTREGA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_ENTREGA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_INFORME_OBRA">
+        <PropertyRef Name="coInforme" />
+      </Principal>
+      <Dependent Role="OP_INFORME_ENTREGA">
+        <PropertyRef Name="coInforme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_obra_op_proyecto_inversion_publica">
+    <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="MUNI_INTEGRADOModel.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="1" />
+    <End Role="OP_INFORME_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+        <PropertyRef Name="coProyecto" />
+      </Principal>
+      <Dependent Role="OP_INFORME_OBRA">
+        <PropertyRef Name="coProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_referencia_op_informe_avance_obra">
+    <End Role="OP_INFORME_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+    <End Role="OP_INFORME_REFERENCIA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_REFERENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_INFORME_OBRA">
+        <PropertyRef Name="coInforme" />
+      </Principal>
+      <Dependent Role="OP_INFORME_REFERENCIA">
+        <PropertyRef Name="coInforme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_informe_avance_referencia_op_informe_avance_obra1">
+    <End Role="OP_INFORME_OBRA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+    <End Role="OP_INFORME_REFERENCIA" Type="MUNI_INTEGRADOModel.Store.OP_INFORME_REFERENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OP_INFORME_OBRA">
+        <PropertyRef Name="coInforme" />
+      </Principal>
+      <Dependent Role="OP_INFORME_REFERENCIA">
+        <PropertyRef Name="coInformeRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_op_proyecto_inversion_publica_ma_via">
+    <End Role="MA_VIA" Type="MUNI_INTEGRADOModel.Store.MA_VIA" Multiplicity="1" />
+    <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="MUNI_INTEGRADOModel.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_VIA">
+        <PropertyRef Name="coVia" />
+      </Principal>
+      <Dependent Role="OP_PROYECTO_INVERSION_PUBLICA">
+        <PropertyRef Name="coVia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONAJURIDICA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="MA_PERSONAJURIDICA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONAJURIDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="MA_PERSONAJURIDICA">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONANATURAL_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="MA_PERSONANATURAL" Type="MUNI_INTEGRADOModel.Store.MA_PERSONANATURAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="MA_PERSONANATURAL">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_ANEXOS_REQUERIDOS_SM_ANEXO">
+    <End Role="SM_ANEXO" Type="MUNI_INTEGRADOModel.Store.SM_ANEXO" Multiplicity="1" />
+    <End Role="SM_ANEXOS_REQUERIDOS" Type="MUNI_INTEGRADOModel.Store.SM_ANEXOS_REQUERIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_ANEXO">
+        <PropertyRef Name="CodigoAnexo" />
+      </Principal>
+      <Dependent Role="SM_ANEXOS_REQUERIDOS">
+        <PropertyRef Name="CodigoAnexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_ANEXOS_REQUERIDOS_SM_INFORME_TECNICO">
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="1" />
+    <End Role="SM_ANEXOS_REQUERIDOS" Type="MUNI_INTEGRADOModel.Store.SM_ANEXOS_REQUERIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Principal>
+      <Dependent Role="SM_ANEXOS_REQUERIDOS">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_clausula_contrato_sm_contrato_servicio">
+    <End Role="SM_CONTRATO_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_CONTRATO_SERVICIO" Multiplicity="1" />
+    <End Role="SM_CLAUSULA_CONTRATO" Type="MUNI_INTEGRADOModel.Store.SM_CLAUSULA_CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CONTRATO_SERVICIO">
+        <PropertyRef Name="CodigoContratoServicio" />
+      </Principal>
+      <Dependent Role="SM_CLAUSULA_CONTRATO">
+        <PropertyRef Name="CodigoContratoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_contrato_servicio_sm_servicio">
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="1" />
+    <End Role="SM_CONTRATO_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_CONTRATO_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Principal>
+      <Dependent Role="SM_CONTRATO_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_EXPEDIENTE_SERVICIO_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoPersonaEjecutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO">
+    <End Role="SM_SOLICITUD_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SOLICITUD_SERVICIO" Multiplicity="1" />
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SOLICITUD_SERVICIO">
+        <PropertyRef Name="CodigoSolicitudServicio" />
+      </Principal>
+      <Dependent Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoSolicitudServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_INSPECCION_SM_INSPECCION">
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INSPECCION" Multiplicity="0..1" />
+    <End Role="SM_INFORME_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoInspeccion" />
+      </Principal>
+      <Dependent Role="SM_INFORME_INSPECCION">
+        <PropertyRef Name="CodigoInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_TECNICO_MA_EMPLEADO">
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoEmpleadoAprobador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_TECNICO_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="1" />
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoPersonaElaborador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO">
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="1" />
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Principal>
+      <Dependent Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INSPECCION_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoPersonaEjecutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_inspeccion_sm_servicio">
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="0..1" />
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Principal>
+      <Dependent Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO">
+    <End Role="SM_CLAUSULA_CONTRATO" Type="MUNI_INTEGRADOModel.Store.SM_CLAUSULA_CONTRATO" Multiplicity="1" />
+    <End Role="SM_OBSERVACION" Type="MUNI_INTEGRADOModel.Store.SM_OBSERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CLAUSULA_CONTRATO">
+        <PropertyRef Name="CodigoClausulaContrato" />
+      </Principal>
+      <Dependent Role="SM_OBSERVACION">
+        <PropertyRef Name="CodigoClausulaContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_OBSERVACION_SM_INFORME_INSPECCION">
+    <End Role="SM_INFORME_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_INSPECCION" Multiplicity="1" />
+    <End Role="SM_OBSERVACION" Type="MUNI_INTEGRADOModel.Store.SM_OBSERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_INSPECCION">
+        <PropertyRef Name="CodigoInformeInspeccion" />
+      </Principal>
+      <Dependent Role="SM_OBSERVACION">
+        <PropertyRef Name="CodigoInformeInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_RECURSOS_SM_INFORME_TECNICO">
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="0..1" />
+    <End Role="SM_RECURSOS" Type="MUNI_INTEGRADOModel.Store.SM_RECURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Principal>
+      <Dependent Role="SM_RECURSOS">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SERVICIO_MA_PERSONA">
+    <End Role="MA_PERSONA" Type="MUNI_INTEGRADOModel.Store.MA_PERSONA" Multiplicity="0..1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_PERSONA">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoPersonaResponsable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO">
+    <End Role="SM_CATEGORIA_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_CATEGORIA_SERVICIO" Multiplicity="0..1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CATEGORIA_SERVICIO">
+        <PropertyRef Name="CodigoCategoriaServicio" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoCategoriaServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO">
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SOLICITUD_SERVICIO_MA_EMPLEADO">
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="1" />
+    <End Role="SM_SOLICITUD_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SOLICITUD_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="SM_SOLICITUD_SERVICIO">
+        <PropertyRef Name="idEmpleadoSolicitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SOLICITUD_SERVICIO_MA_EMPLEADO1">
+    <End Role="MA_EMPLEADO" Type="MUNI_INTEGRADOModel.Store.MA_EMPLEADO" Multiplicity="1" />
+    <End Role="SM_SOLICITUD_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SOLICITUD_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="SM_SOLICITUD_SERVICIO">
+        <PropertyRef Name="idEmpleadoAprobador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="USP_GSM_BuscarPersona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Paterno" Type="varchar" Mode="In" />
+    <Parameter Name="Materno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_GSM_BuscarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdServicio" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+    <Parameter Name="Pagina" Type="int" Mode="In" />
+    <Parameter Name="Paginacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GSM_GetInspeccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GSM_ListaInspeccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+    <Parameter Name="FechaIni" Type="date" Mode="In" />
+    <Parameter Name="FechaFin" Type="date" Mode="In" />
+    <Parameter Name="Pagina" Type="int" Mode="In" />
+    <Parameter Name="Paginacion" Type="int" Mode="In" />
+  </Function>
+</Schema>

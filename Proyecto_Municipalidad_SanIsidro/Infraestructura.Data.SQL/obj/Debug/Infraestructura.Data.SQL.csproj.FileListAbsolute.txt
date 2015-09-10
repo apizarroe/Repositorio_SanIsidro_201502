@@ -15,3 +15,16 @@ D:\Desarrollo\GAC\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll.config
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.pdb
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Util.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.pdb
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Util.pdb
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\es\EntityFramework.resources.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Models.GSM;
-using bus = Negocio.GSM.ServicioBUS;
+using bus = Models.GSM.ServicioBUS;
 namespace GAC.Controllers.GSM
 {
     public class GSMmaestroController : Controller

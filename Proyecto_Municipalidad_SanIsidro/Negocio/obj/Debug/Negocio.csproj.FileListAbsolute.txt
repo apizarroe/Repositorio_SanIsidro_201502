@@ -19,15 +19,3 @@ G:\Eric\UPC\TP3\ProyectoMunicipalidad\Negocio\bin\Debug\es\EntityFramework.resou
 G:\Eric\UPC\TP3\ProyectoMunicipalidad\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
 G:\Eric\UPC\TP3\ProyectoMunicipalidad\Negocio\obj\Debug\Negocio.dll
 G:\Eric\UPC\TP3\ProyectoMunicipalidad\Negocio\obj\Debug\Negocio.pdb
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\Negocio.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\Negocio.pdb
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\AccesoDatos.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\Entidades.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\EntityFramework.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\AccesoDatos.pdb
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\Entidades.pdb
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\EntityFramework.xml
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\bin\Debug\es\EntityFramework.resources.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\obj\Debug\Negocio.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Negocio\obj\Debug\Negocio.pdb
