@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MUNI_INTEGRADOModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MUNI_INTEGRADOEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="SM_ANEXO" EntityType="MUNI_INTEGRADOModel.SM_ANEXO" />
+    <EntitySet Name="SM_CATEGORIA_SERVICIO" EntityType="MUNI_INTEGRADOModel.SM_CATEGORIA_SERVICIO" />
+    <EntitySet Name="SM_CLAUSULA_CONTRATO" EntityType="MUNI_INTEGRADOModel.SM_CLAUSULA_CONTRATO" />
+    <EntitySet Name="SM_CONTRATO_SERVICIO" EntityType="MUNI_INTEGRADOModel.SM_CONTRATO_SERVICIO" />
+    <EntitySet Name="SM_ESTADO_INSPECCION" EntityType="MUNI_INTEGRADOModel.SM_ESTADO_INSPECCION" />
+    <EntitySet Name="SM_EXPEDIENTE_SERVICIO" EntityType="MUNI_INTEGRADOModel.SM_EXPEDIENTE_SERVICIO" />
+    <EntitySet Name="SM_INFORME_INSPECCION" EntityType="MUNI_INTEGRADOModel.SM_INFORME_INSPECCION" />
+    <EntitySet Name="SM_INFORME_TECNICO" EntityType="MUNI_INTEGRADOModel.SM_INFORME_TECNICO" />
+    <EntitySet Name="SM_INSPECCION" EntityType="MUNI_INTEGRADOModel.SM_INSPECCION" />
+    <EntitySet Name="SM_OBSERVACION" EntityType="MUNI_INTEGRADOModel.SM_OBSERVACION" />
+    <EntitySet Name="SM_RECURSOS" EntityType="MUNI_INTEGRADOModel.SM_RECURSOS" />
+    <EntitySet Name="SM_SERVICIO" EntityType="MUNI_INTEGRADOModel.SM_SERVICIO" />
+    <EntitySet Name="SM_SOLICITUD_SERVICIO" EntityType="MUNI_INTEGRADOModel.SM_SOLICITUD_SERVICIO" />
+    <AssociationSet Name="FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO" Association="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO">
+      <End Role="SM_CATEGORIA_SERVICIO" EntitySet="SM_CATEGORIA_SERVICIO" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_clausula_contrato_sm_contrato_servicio" Association="MUNI_INTEGRADOModel.FK_sm_clausula_contrato_sm_contrato_servicio">
+      <End Role="SM_CONTRATO_SERVICIO" EntitySet="SM_CONTRATO_SERVICIO" />
+      <End Role="SM_CLAUSULA_CONTRATO" EntitySet="SM_CLAUSULA_CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO" Association="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO">
+      <End Role="SM_CLAUSULA_CONTRATO" EntitySet="SM_CLAUSULA_CONTRATO" />
+      <End Role="SM_OBSERVACION" EntitySet="SM_OBSERVACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_contrato_servicio_sm_servicio" Association="MUNI_INTEGRADOModel.FK_sm_contrato_servicio_sm_servicio">
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+      <End Role="SM_CONTRATO_SERVICIO" EntitySet="SM_CONTRATO_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO" Association="MUNI_INTEGRADOModel.FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO">
+      <End Role="SM_SOLICITUD_SERVICIO" EntitySet="SM_SOLICITUD_SERVICIO" />
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO" Association="MUNI_INTEGRADOModel.FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO">
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO" Association="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO">
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_INSPECCION_SM_INSPECCION" Association="MUNI_INTEGRADOModel.FK_SM_INFORME_INSPECCION_SM_INSPECCION">
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+      <End Role="SM_INFORME_INSPECCION" EntitySet="SM_INFORME_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_OBSERVACION_SM_INFORME_INSPECCION" Association="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_INFORME_INSPECCION">
+      <End Role="SM_INFORME_INSPECCION" EntitySet="SM_INFORME_INSPECCION" />
+      <End Role="SM_OBSERVACION" EntitySet="SM_OBSERVACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_RECURSOS_SM_INFORME_TECNICO" Association="MUNI_INTEGRADOModel.FK_SM_RECURSOS_SM_INFORME_TECNICO">
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+      <End Role="SM_RECURSOS" EntitySet="SM_RECURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_inspeccion_sm_servicio" Association="MUNI_INTEGRADOModel.FK_sm_inspeccion_sm_servicio">
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="SM_ANEXOS_REQUERIDOS" Association="MUNI_INTEGRADOModel.SM_ANEXOS_REQUERIDOS">
+      <End Role="SM_ANEXO" EntitySet="SM_ANEXO" />
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+    </AssociationSet>
+    <FunctionImport Name="USP_GSM_BuscarPersona" ReturnType="Collection(MUNI_INTEGRADOModel.USP_GSM_BuscarPersona_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Paterno" Mode="In" Type="String" />
+      <Parameter Name="Materno" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_GSM_BuscarServicio" ReturnType="Collection(MUNI_INTEGRADOModel.USP_GSM_BuscarServicio_Result)">
+      <Parameter Name="IdServicio" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Pagina" Mode="In" Type="Int32" />
+      <Parameter Name="Paginacion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_GSM_GetInspeccion" ReturnType="Collection(MUNI_INTEGRADOModel.USP_GSM_GetInspeccion_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_GSM_ListaInspeccion" ReturnType="Collection(MUNI_INTEGRADOModel.USP_GSM_ListaInspeccion_Result)">
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+      <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+      <Parameter Name="Pagina" Mode="In" Type="Int32" />
+      <Parameter Name="Paginacion" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="SM_ANEXO">
+    <Key>
+      <PropertyRef Name="CodigoAnexo" />
+    </Key>
+    <Property Name="CodigoAnexo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Contenido" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="CodigoInformeTecnico" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SM_INFORME_TECNICO" Relationship="MUNI_INTEGRADOModel.SM_ANEXOS_REQUERIDOS" FromRole="SM_ANEXO" ToRole="SM_INFORME_TECNICO" />
+  </EntityType>
+  <EntityType Name="SM_CATEGORIA_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoCategoriaServicio" />
+    </Key>
+    <Property Name="CodigoCategoriaServicio" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreCategoria" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="descripcionCateogira" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="SM_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO" FromRole="SM_CATEGORIA_SERVICIO" ToRole="SM_SERVICIO" />
+  </EntityType>
+  <EntityType Name="SM_CLAUSULA_CONTRATO">
+    <Key>
+      <PropertyRef Name="CodigoClausulaContrato" />
+    </Key>
+    <Property Name="CodigoClausulaContrato" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="CodigoContratoServicio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SM_CONTRATO_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_sm_clausula_contrato_sm_contrato_servicio" FromRole="SM_CLAUSULA_CONTRATO" ToRole="SM_CONTRATO_SERVICIO" />
+    <NavigationProperty Name="SM_OBSERVACION" Relationship="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO" FromRole="SM_CLAUSULA_CONTRATO" ToRole="SM_OBSERVACION" />
+  </EntityType>
+  <EntityType Name="SM_CONTRATO_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoContratoServicio" />
+    </Key>
+    <Property Name="CodigoContratoServicio" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaFin" Type="DateTime" Precision="0" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="coUsuario" Type="Int32" />
+    <Property Name="CodigoServicio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SM_CLAUSULA_CONTRATO" Relationship="MUNI_INTEGRADOModel.FK_sm_clausula_contrato_sm_contrato_servicio" FromRole="SM_CONTRATO_SERVICIO" ToRole="SM_CLAUSULA_CONTRATO" />
+    <NavigationProperty Name="SM_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_sm_contrato_servicio_sm_servicio" FromRole="SM_CONTRATO_SERVICIO" ToRole="SM_SERVICIO" />
+  </EntityType>
+  <EntityType Name="SM_ESTADO_INSPECCION">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SM_EXPEDIENTE_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoExpedienteServicio" />
+    </Key>
+    <Property Name="CodigoExpedienteServicio" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreación" Type="DateTime" Precision="3" />
+    <Property Name="CuerpoExpediente" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaInactivo" Type="DateTime" Precision="3" />
+    <Property Name="LugarServicioPropuesto" Type="String" MaxLength="70" Unicode="true" FixedLength="false" />
+    <Property Name="coUsuario" Type="Int32" Nullable="false" />
+    <Property Name="CodigoSolicitudServicio" Type="Int32" Nullable="false" />
+    <Property Name="CodigoPersonaEjecutor" Type="Int32" />
+    <NavigationProperty Name="SM_SOLICITUD_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO" FromRole="SM_EXPEDIENTE_SERVICIO" ToRole="SM_SOLICITUD_SERVICIO" />
+    <NavigationProperty Name="SM_INFORME_TECNICO" Relationship="MUNI_INTEGRADOModel.FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO" FromRole="SM_EXPEDIENTE_SERVICIO" ToRole="SM_INFORME_TECNICO" />
+    <NavigationProperty Name="SM_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO" FromRole="SM_EXPEDIENTE_SERVICIO" ToRole="SM_SERVICIO" />
+  </EntityType>
+  <EntityType Name="SM_INFORME_INSPECCION">
+    <Key>
+      <PropertyRef Name="CodigoInformeInspeccion" />
+    </Key>
+    <Property Name="CodigoInformeInspeccion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInformeInspeccion" Type="DateTime" Precision="3" />
+    <Property Name="CuerpoInspeccion" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="DescripcionInforme" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="CodigoInspeccion" Type="Int32" />
+    <Property Name="CodigoExpedienteServicio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SM_INSPECCION" Relationship="MUNI_INTEGRADOModel.FK_SM_INFORME_INSPECCION_SM_INSPECCION" FromRole="SM_INFORME_INSPECCION" ToRole="SM_INSPECCION" />
+    <NavigationProperty Name="SM_OBSERVACION" Relationship="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_INFORME_INSPECCION" FromRole="SM_INFORME_INSPECCION" ToRole="SM_OBSERVACION" />
+  </EntityType>
+  <EntityType Name="SM_INFORME_TECNICO">
+    <Key>
+      <PropertyRef Name="CodigoInformeTecnico" />
+    </Key>
+    <Property Name="CodigoInformeTecnico" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaRecepcion" Type="DateTime" Precision="3" />
+    <Property Name="DescripcionInformeTecnico" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Requisito" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Objetivo" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Justificacion" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="PresupuestoTentativo" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CodigoExpedienteServicio" Type="Int32" Nullable="false" />
+    <Property Name="CodigoPersonaElaborador" Type="Int32" Nullable="false" />
+    <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+    <Property Name="CodigoEmpleadoAprobador" Type="Int32" />
+    <NavigationProperty Name="SM_EXPEDIENTE_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO" FromRole="SM_INFORME_TECNICO" ToRole="SM_EXPEDIENTE_SERVICIO" />
+    <NavigationProperty Name="SM_RECURSOS" Relationship="MUNI_INTEGRADOModel.FK_SM_RECURSOS_SM_INFORME_TECNICO" FromRole="SM_INFORME_TECNICO" ToRole="SM_RECURSOS" />
+    <NavigationProperty Name="SM_ANEXO" Relationship="MUNI_INTEGRADOModel.SM_ANEXOS_REQUERIDOS" FromRole="SM_INFORME_TECNICO" ToRole="SM_ANEXO" />
+  </EntityType>
+  <EntityType Name="SM_INSPECCION">
+    <Key>
+      <PropertyRef Name="CodigoInspeccion" />
+    </Key>
+    <Property Name="CodigoInspeccion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
+    <Property Name="coVia" Type="Int32" />
+    <Property Name="LugarInspeccion" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="CodigoServicio" Type="Int32" />
+    <Property Name="coUsuario" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="ResponsableServicio" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CodigoPersonaEjecutor" Type="Int32" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="HORAINI" Type="Time" Precision="7" />
+    <Property Name="HORAFIN" Type="Time" Precision="7" />
+    <NavigationProperty Name="SM_INFORME_INSPECCION" Relationship="MUNI_INTEGRADOModel.FK_SM_INFORME_INSPECCION_SM_INSPECCION" FromRole="SM_INSPECCION" ToRole="SM_INFORME_INSPECCION" />
+    <NavigationProperty Name="SM_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_sm_inspeccion_sm_servicio" FromRole="SM_INSPECCION" ToRole="SM_SERVICIO" />
+  </EntityType>
+  <EntityType Name="SM_OBSERVACION">
+    <Key>
+      <PropertyRef Name="CodigoObservacion" />
+    </Key>
+    <Property Name="CodigoObservacion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaIncidencia" Type="DateTime" Precision="3" />
+    <Property Name="DescripcionIncidencia" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="CodigoClausulaContrato" Type="Int32" Nullable="false" />
+    <Property Name="CodigoInformeInspeccion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SM_CLAUSULA_CONTRATO" Relationship="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO" FromRole="SM_OBSERVACION" ToRole="SM_CLAUSULA_CONTRATO" />
+    <NavigationProperty Name="SM_INFORME_INSPECCION" Relationship="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_INFORME_INSPECCION" FromRole="SM_OBSERVACION" ToRole="SM_INFORME_INSPECCION" />
+  </EntityType>
+  <EntityType Name="SM_RECURSOS">
+    <Key>
+      <PropertyRef Name="CodigoRecurso" />
+    </Key>
+    <Property Name="CodigoRecurso" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Peso" Type="Int32" />
+    <Property Name="Medidas" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MarcaRecomendada" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CodigoInformeTecnico" Type="Int32" />
+    <NavigationProperty Name="SM_INFORME_TECNICO" Relationship="MUNI_INTEGRADOModel.FK_SM_RECURSOS_SM_INFORME_TECNICO" FromRole="SM_RECURSOS" ToRole="SM_INFORME_TECNICO" />
+  </EntityType>
+  <EntityType Name="SM_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoServicio" />
+    </Key>
+    <Property Name="CodigoServicio" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreServicio" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="DescripcionServicio" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaFin" Type="DateTime" Precision="3" />
+    <Property Name="coVia" Type="Int32" />
+    <Property Name="LugarServicio" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="CodigoTipoServicio" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="coUsuario" Type="Int32" />
+    <Property Name="CodigoCategoriaServicio" Type="Int32" />
+    <Property Name="CodigoExpedienteServicio" Type="Int32" Nullable="false" />
+    <Property Name="CodigoPersonaResponsable" Type="Int32" />
+    <NavigationProperty Name="SM_CATEGORIA_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO" FromRole="SM_SERVICIO" ToRole="SM_CATEGORIA_SERVICIO" />
+    <NavigationProperty Name="SM_CONTRATO_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_sm_contrato_servicio_sm_servicio" FromRole="SM_SERVICIO" ToRole="SM_CONTRATO_SERVICIO" />
+    <NavigationProperty Name="SM_EXPEDIENTE_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO" FromRole="SM_SERVICIO" ToRole="SM_EXPEDIENTE_SERVICIO" />
+    <NavigationProperty Name="SM_INSPECCION" Relationship="MUNI_INTEGRADOModel.FK_sm_inspeccion_sm_servicio" FromRole="SM_SERVICIO" ToRole="SM_INSPECCION" />
+  </EntityType>
+  <EntityType Name="SM_SOLICITUD_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoSolicitudServicio" />
+    </Key>
+    <Property Name="CodigoSolicitudServicio" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="NombreSolicitud" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Objetivo" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="DescripcionSolicitud" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+    <Property Name="idEmpleadoSolicitante" Type="Int32" Nullable="false" />
+    <Property Name="idEmpleadoAprobador" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SM_EXPEDIENTE_SERVICIO" Relationship="MUNI_INTEGRADOModel.FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO" FromRole="SM_SOLICITUD_SERVICIO" ToRole="SM_EXPEDIENTE_SERVICIO" />
+  </EntityType>
+  <Association Name="FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO">
+    <End Role="SM_CATEGORIA_SERVICIO" Type="MUNI_INTEGRADOModel.SM_CATEGORIA_SERVICIO" Multiplicity="0..1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CATEGORIA_SERVICIO">
+        <PropertyRef Name="CodigoCategoriaServicio" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoCategoriaServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_clausula_contrato_sm_contrato_servicio">
+    <End Role="SM_CONTRATO_SERVICIO" Type="MUNI_INTEGRADOModel.SM_CONTRATO_SERVICIO" Multiplicity="1" />
+    <End Role="SM_CLAUSULA_CONTRATO" Type="MUNI_INTEGRADOModel.SM_CLAUSULA_CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CONTRATO_SERVICIO">
+        <PropertyRef Name="CodigoContratoServicio" />
+      </Principal>
+      <Dependent Role="SM_CLAUSULA_CONTRATO">
+        <PropertyRef Name="CodigoContratoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO">
+    <End Role="SM_CLAUSULA_CONTRATO" Type="MUNI_INTEGRADOModel.SM_CLAUSULA_CONTRATO" Multiplicity="1" />
+    <End Role="SM_OBSERVACION" Type="MUNI_INTEGRADOModel.SM_OBSERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CLAUSULA_CONTRATO">
+        <PropertyRef Name="CodigoClausulaContrato" />
+      </Principal>
+      <Dependent Role="SM_OBSERVACION">
+        <PropertyRef Name="CodigoClausulaContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_contrato_servicio_sm_servicio">
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.SM_SERVICIO" Multiplicity="1" />
+    <End Role="SM_CONTRATO_SERVICIO" Type="MUNI_INTEGRADOModel.SM_CONTRATO_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Principal>
+      <Dependent Role="SM_CONTRATO_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO">
+    <End Role="SM_SOLICITUD_SERVICIO" Type="MUNI_INTEGRADOModel.SM_SOLICITUD_SERVICIO" Multiplicity="1" />
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.SM_EXPEDIENTE_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SOLICITUD_SERVICIO">
+        <PropertyRef Name="CodigoSolicitudServicio" />
+      </Principal>
+      <Dependent Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoSolicitudServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO">
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.SM_EXPEDIENTE_SERVICIO" Multiplicity="1" />
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.SM_INFORME_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Principal>
+      <Dependent Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO">
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.SM_EXPEDIENTE_SERVICIO" Multiplicity="1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_INSPECCION_SM_INSPECCION">
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.SM_INSPECCION" Multiplicity="0..1" />
+    <End Role="SM_INFORME_INSPECCION" Type="MUNI_INTEGRADOModel.SM_INFORME_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoInspeccion" />
+      </Principal>
+      <Dependent Role="SM_INFORME_INSPECCION">
+        <PropertyRef Name="CodigoInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_OBSERVACION_SM_INFORME_INSPECCION">
+    <End Role="SM_INFORME_INSPECCION" Type="MUNI_INTEGRADOModel.SM_INFORME_INSPECCION" Multiplicity="1" />
+    <End Role="SM_OBSERVACION" Type="MUNI_INTEGRADOModel.SM_OBSERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_INSPECCION">
+        <PropertyRef Name="CodigoInformeInspeccion" />
+      </Principal>
+      <Dependent Role="SM_OBSERVACION">
+        <PropertyRef Name="CodigoInformeInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_RECURSOS_SM_INFORME_TECNICO">
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.SM_INFORME_TECNICO" Multiplicity="0..1" />
+    <End Role="SM_RECURSOS" Type="MUNI_INTEGRADOModel.SM_RECURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Principal>
+      <Dependent Role="SM_RECURSOS">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_inspeccion_sm_servicio">
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.SM_SERVICIO" Multiplicity="0..1" />
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.SM_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Principal>
+      <Dependent Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SM_ANEXOS_REQUERIDOS">
+    <End Role="SM_ANEXO" Type="MUNI_INTEGRADOModel.SM_ANEXO" Multiplicity="*" />
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.SM_INFORME_TECNICO" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="USP_GSM_BuscarPersona_Result">
+    <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+    <Property Type="Int32" Name="idPersona" Nullable="true" />
+    <Property Type="String" Name="NroDocIdentidad" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="USP_GSM_BuscarServicio_Result">
+    <Property Type="Int32" Name="CodigoServicio" Nullable="false" />
+    <Property Type="String" Name="NombreServicio" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="CodigoCategoriaServicio" Nullable="true" />
+    <Property Type="String" Name="nombreCategoria" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Filas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_GSM_GetInspeccion_Result">
+    <Property Type="Int32" Name="CodigoInspeccion" Nullable="false" />
+    <Property Type="DateTime" Name="FechaInspeccion" Nullable="true" Precision="23" />
+    <Property Type="String" Name="LugarInspeccion" Nullable="true" MaxLength="150" />
+    <Property Type="Time" Name="HoraIni" Nullable="true" />
+    <Property Type="Time" Name="HoraFin" Nullable="true" />
+    <Property Type="Int32" Name="CodigoPersonaEjecutor" Nullable="true" />
+    <Property Type="Int32" Name="idPersona" Nullable="true" />
+    <Property Type="String" Name="NroDocIdentidad" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="CodigoServicio" Nullable="false" />
+    <Property Type="Int32" Name="CodigoCategoriaServicio" Nullable="false" />
+    <Property Type="String" Name="nombreCategoria" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NombreServicio" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="USP_GSM_ListaInspeccion_Result">
+    <Property Type="Int32" Name="CodigoInspeccion" Nullable="false" />
+    <Property Type="Int32" Name="CodigoServicio" Nullable="false" />
+    <Property Type="String" Name="NombreServicio" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="nombreCategoria" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaInspeccion" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Filas" Nullable="true" />
+  </ComplexType>
+</Schema>

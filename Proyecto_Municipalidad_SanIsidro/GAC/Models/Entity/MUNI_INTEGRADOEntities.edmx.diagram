@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0796f7e2c5d3435bb484692548d72032" Name="Diagram1">
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_ANEXO" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_CATEGORIA_SERVICIO" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_CLAUSULA_CONTRATO" Width="1.5" PointX="12.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_CONTRATO_SERVICIO" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_ESTADO_INSPECCION" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_EXPEDIENTE_SERVICIO" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_INFORME_INSPECCION" Width="1.5" PointX="12.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_INFORME_TECNICO" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_INSPECCION" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_OBSERVACION" Width="1.5" PointX="15" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_RECURSOS" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_SERVICIO" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.SM_SOLICITUD_SERVICIO" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_sm_clausula_contrato_sm_contrato_servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_sm_contrato_servicio_sm_servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_INFORME_INSPECCION_SM_INSPECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_OBSERVACION_SM_INFORME_INSPECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_SM_RECURSOS_SM_INFORME_TECNICO" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_sm_inspeccion_sm_servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.SM_ANEXOS_REQUERIDOS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

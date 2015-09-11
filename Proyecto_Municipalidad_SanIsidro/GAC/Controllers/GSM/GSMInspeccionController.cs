@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Models.GSM;
-
-using bus = Negocio.GSM.InspeccionBUS;
-using ent = Entidades.GSM;
-
-namespace GAC.Controllers.GSM
+using GSM.Models.GSM;
+using GSM.Models;
+namespace GSM.Controllers.GSM
 {
     public class GSMInspeccionController : Controller
     {
@@ -20,9 +17,10 @@ namespace GAC.Controllers.GSM
             return View();
         }
 
-        public ActionResult Inspeccion(String id)
+        public ActionResult Inspecciones(String id)
         {
             Inspeccion oInspeccion = new Inspeccion();
+            oInspeccion.oServicio = new Servicio();
             oInspeccion.nuevo = true;//Es nuevo por defecto
             int Id = 0;
             int.TryParse(id, out Id);
@@ -30,25 +28,12 @@ namespace GAC.Controllers.GSM
             if (id != null && Id > 0)
             {
                 oInspeccion.IdRegistro = Id;
-                var Inspeccion = bus.GetObject().getInspeccion(Id);
-                if (Inspeccion != null)
+                var cInspeccion = Inspeccion.getInspeccion(Id);
+                if (cInspeccion != null)
                 {
-                    oInspeccion.IdRegistro = Inspeccion.CodigoInspeccion;
-                    oInspeccion.direccion = Inspeccion.LugarInspeccion;
-                    oInspeccion.fechaProgramada = Inspeccion.FechaInspeccion.ToString("dd/MM/yyyy");
-                    oInspeccion.horaFin = Inspeccion.HoraIni.ToString("hh\\:mm");
-                    oInspeccion.horaInicio = Inspeccion.HoraFin.ToString("hh\\:mm");
-                    oInspeccion.IdPersona = Inspeccion.idPersona;
-                    oInspeccion.nuevo = false;
-                    oInspeccion.oServicio = new Servicio();
-                    oInspeccion.oServicio.IdServicio = Inspeccion.CodigoServicio;
-                    oInspeccion.oServicio.Nombre = Inspeccion.NombreServicio;
-                    oInspeccion.oServicio.IdTipoServicio = Inspeccion.CodigoCategoriaServicio;
-                    oInspeccion.oServicio.TipoServicio = Inspeccion.nombreCategoria;
-                    oInspeccion.personaAsignada = Inspeccion.Nombres;
+                    oInspeccion = new Inspeccion();
 
                 }
-                //Buscar Iniciativa Vecinal : 
             }
             return View(oInspeccion);
 
@@ -56,7 +41,7 @@ namespace GAC.Controllers.GSM
 
         public JsonResult ListaInspeccion(int Pagina, int Paginacion, String fnIni, String fnFin, String tipo)
         {
-            List<ent.USP_GSM_GetInspeccion> lst = new List<ent.USP_GSM_GetInspeccion>();
+            List<Inspeccion> lst = new List<Inspeccion>();
             try
             {
                 DateTime FeInicio = new DateTime(1900, 1, 1);
@@ -79,14 +64,14 @@ namespace GAC.Controllers.GSM
 
                 //(oParametro.Tipo,oParametro.fecha1,oParametro.fecha2,oParametro.Pagina,oParametro.Paginacion);
                 /*******************************************************/
-                ent.SM_PARAMETRO oparametro = new ent.SM_PARAMETRO();
+                Parametro oparametro = new Parametro();
                 oparametro.Pagina = Pagina;
                 oparametro.Paginacion = Paginacion;
                 oparametro.fecha1 = FeInicio;
                 oparametro.fecha2 = FeFin;
                 oparametro.Tipo = intTipo;
 
-                lst = (from x in bus.GetObject().GetListInspeccion(oparametro) select x).ToList();
+                lst = Inspeccion.GetListInspeccion(oparametro);
 
 
                 var strList = new
@@ -94,11 +79,11 @@ namespace GAC.Controllers.GSM
                     data = (from x in lst
                             select new
                             {
-                                IdRegistro = x.CodigoInspeccion,
-                                servicio = x.NombreServicio,
-                                tipoServicio = x.nombreCategoria,
-                                fechaProgramada = x.FechaInspeccion.ToString("dd/MM/yyyy"),
-                                personaAsignada = x.Nombres
+                                IdRegistro = x.IdRegistro,
+                                servicio = x.oServicio.Nombre,
+                                tipoServicio = x.oServicio.TipoServicio,
+                                fechaProgramada = x.fechaProgramada,
+                                personaAsignada = x.personaAsignada
                             }).ToList(),
                     total = lst[0].Filas
                 };
@@ -122,9 +107,7 @@ namespace GAC.Controllers.GSM
 
             return vjson2;
         }
-
-
-
+         
         [HttpPost]
         public JsonResult CancelInspeccion(Inspeccion oInspeccion)
         {
@@ -135,7 +118,7 @@ namespace GAC.Controllers.GSM
                 if (Id > 0)
                 {
 
-                    var Ins = bus.GetObject().Cancelar(Id);
+                    var Ins = Inspeccion.Cancelar(Id);
                     if (Ins != null)
                     {
                         var vjson = Json(new { ID = Ins }, JsonRequestBehavior.AllowGet);
@@ -168,23 +151,21 @@ namespace GAC.Controllers.GSM
                 TimeSpan hf = new TimeSpan(int.Parse(vhf[0]), int.Parse(vhf[1]), 0);
                 DateTime.TryParse(oInspeccion.fechaProgramada, out fe);
 
-                ent.SM_INSPECCION obj = new ent.SM_INSPECCION();
+                Inspeccion obj = new Inspeccion();
+                obj.oServicio = new Servicio();
+                obj.IdPersona = oInspeccion.IdPersona;
+                obj.oServicio.IdServicio = int.Parse(oInspeccion.personaAsignada);
+                obj.IdUsuario = Usuario.GetObject().CodUsuario; // oInspeccion.coUsuario; --> falta pagina de login
+                obj.IdCodVia = Usuario.GetObject().CodVia; // oInspeccion.coVi a;
+                obj.fechaProgramada = fe.ToString("dd/MM/yyyy");
+                obj.horaFin = hf.ToString("hh\\:mm");
+                obj.horaInicio = hi.ToString("hh\\:mm");
+                obj.direccion = oInspeccion.direccion;
 
-                obj.CodigoPersonaEjecutor = oInspeccion.IdPersona;
-                obj.CodigoServicio = int.Parse(oInspeccion.personaAsignada);
-                obj.coUsuario = 7; // oInspeccion.coUsuario; --> falta pagina de login
-                obj.coVia = 2; // oInspeccion.coVi a;
-                obj.Estado = 1;// oInspeccion.Estado;
-                obj.FechaCreacion = DateTime.Now;
-                obj.FechaInspeccion = fe;
-                obj.HoraFin = hf;
-                obj.HoraIni = hi;
-                obj.LugarInspeccion = oInspeccion.direccion;
-
-                var Ins = bus.GetObject().SaveInspeccion(obj);
+                var Ins = Inspeccion.SaveInspeccion(obj);
 
                 var oReq = new Inspeccion();
-                oReq.IdRegistro = Ins.CodigoInspeccion;
+                oReq.IdRegistro = Ins.IdRegistro;
 
 
                 var vjson = Json(new { ID = oReq.IdRegistro }, JsonRequestBehavior.AllowGet);
@@ -202,5 +183,51 @@ namespace GAC.Controllers.GSM
 
             return vjson2;
         }
+         
+        [HttpPost]
+        public JsonResult UpdateInspeccion(Inspeccion oInspeccion)
+        {
+
+            try
+            {
+                DateTime fe = DateTime.Now;
+                string[] vhi = oInspeccion.horaInicio.Split(':');
+                string[] vhf = oInspeccion.horaFin.Split(':');
+
+                TimeSpan hi = new TimeSpan(int.Parse(vhi[0]), int.Parse(vhi[1]), 0);
+                TimeSpan hf = new TimeSpan(int.Parse(vhf[0]), int.Parse(vhf[1]), 0);
+                DateTime.TryParse(oInspeccion.fechaProgramada, out fe);
+
+                Inspeccion obj = new Inspeccion();
+                obj.oServicio = new Servicio();
+
+                obj.IdRegistro = oInspeccion.IdRegistro;
+                obj.IdPersona = oInspeccion.IdPersona;
+                obj.oServicio.IdServicio = int.Parse(oInspeccion.personaAsignada);
+                obj.IdUsuario = Usuario.GetObject().CodUsuario; // oInspeccion.coUsuario; --> falta pagina de login
+                obj.IdCodVia = Usuario.GetObject().CodVia; // oInspeccion.coVi a;
+                obj.fechaProgramada = fe.ToString("dd/MM/yyyy");
+                obj.horaFin = hf.ToString("hh\\:mm");
+                obj.horaInicio = hi.ToString("hh\\:mm");
+                obj.direccion = oInspeccion.direccion;
+
+                var Ins = Inspeccion.Update(obj);
+                 
+                var vjson = Json(new { ID = Ins.IdRegistro }, JsonRequestBehavior.AllowGet);
+                vjson.MaxJsonLength = int.MaxValue;
+
+                return vjson;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            var vjson2 = Json(new { ID = "Problemas para actualizar inspeccion" }, JsonRequestBehavior.AllowGet);
+            vjson2.MaxJsonLength = int.MaxValue;
+
+            return vjson2;
+        }
+
     }
 }
