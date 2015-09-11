@@ -17,7 +17,6 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
 
-
     <%: Styles.Render("~/Content/custom/css/bootstrap.min.css") %>
     <%: Styles.Render("~/Content/custom/css/AdminLTE.min.css") %>
     <%: Styles.Render("~/Content/custom/css/skins/_all-skins.min.css") %>
@@ -223,6 +222,21 @@
                         <ul class="treeview-menu">
                             <li>
                                 <a href="/proyectoinversion/index"><i class="fa fa-circle-o"></i>Actualizar Proyectos de inversión</a>
+                            </li>
+                        </ul>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="/expedientetecnicoop/index"><i class="fa fa-circle-o"></i>Actualizar Expedientes Técnicos</a>
+                            </li>
+                        </ul>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="/cronogramaejecucionobra/index"><i class="fa fa-circle-o"></i>Actualizar Cronograma Ejec. Obra</a>
+                            </li>
+                        </ul>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="/entregamaterialop/index"><i class="fa fa-circle-o"></i>Actualizar Entrega de Materiales</a>
                             </li>
                         </ul>
                     </li>

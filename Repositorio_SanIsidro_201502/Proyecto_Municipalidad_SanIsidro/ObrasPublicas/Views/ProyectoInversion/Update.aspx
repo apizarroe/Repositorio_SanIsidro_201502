@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<GAC.Models.ProyectoInversion.UpdateProyectoInversionModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<ObrasPublicas.Models.ProyectoInversion.UpdateProyectoInversionModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Municipalidad de San Isidro - Proyectos de Inversión
@@ -21,18 +21,18 @@
         Infraestructura.Data.SQL.Via_DAL objVia_DAL = new Infraestructura.Data.SQL.Via_DAL();
         var lstTipoVia = objVia_DAL.ObtieneVias(null).Select(v => v.Tipo).Distinct();
 
-        Infraestructura.Data.SQL.ProyectoInversion_DAL objProyectoInversion_DAL = new Infraestructura.Data.SQL.ProyectoInversion_DAL();
-        var lstEstadoSearch = objProyectoInversion_DAL.ObtieneEstados().Select(x =>
+        ObrasPublicas.DAL.ProyectoInversion_DAL objProyectoInversion_DAL = new ObrasPublicas.DAL.ProyectoInversion_DAL();
+        var lstEstadoSearch = objProyectoInversion_DAL.ObtieneEstados(null).Select(x =>
                                                                                   new SelectListItem
                                                                                   {
-                                                                                      Value = x.IdEstado,
+                                                                                      Value = x.Id,
                                                                                       Text = x.Nombre
                                                                                   }).OrderBy(x => x.Text);
 
-        var lstEstadoUpdate = objProyectoInversion_DAL.ObtieneEstados().Where(x => (x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE || x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_INVIABLE || x.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)).Select(x =>
+        var lstEstadoUpdate = objProyectoInversion_DAL.ObtieneEstados(null).Where(x => (x.Id == ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE || x.Id == ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_INVIABLE || x.Id == ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)).Select(x =>
                                                                                   new SelectListItem
                                                                                   {
-                                                                                      Value = x.IdEstado,
+                                                                                      Value = x.Id,
                                                                                       Text = x.Nombre
                                                                                   }).OrderBy(x => x.Text);
                                                                                   
@@ -98,7 +98,7 @@
                     </div>
 
                     <%
-                        List<Dominio.Core.Entities.ProyectoInversion> lstProyectos = ViewBag.lstProyectos;
+               List<ObrasPublicas.Entities.ProyectoInversion> lstProyectos = ViewBag.lstProyectos;
                         if (lstProyectos != null) {
                             if (lstProyectos.Count == 0)
                             {
@@ -122,12 +122,12 @@
                                 </thead>
                                 <tbody>
                                 <%
-                                foreach (Dominio.Core.Entities.ProyectoInversion objProyecto in lstProyectos)
+                                foreach (ObrasPublicas.Entities.ProyectoInversion objProyecto in lstProyectos)
                                 { 
                                 %>
                                     <tr>
                                         <td>
-                                            <%if (objProyecto.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                                            <%if (objProyecto.IdEstado == ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
                                               { 
                                               %>
                                             <a href="/proyectoinversion/edit?id=<%:objProyecto.IdProyecto %>">Modificar</a>
@@ -249,7 +249,7 @@
                                 bolConError = true;
                    }
 
-                            if (!bolConError  && Model.IdEstado != Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                            if (!bolConError && Model.IdEstado != ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
                           { 
                           %>
                             <%: Html.DropDownListFor(m => m.IdEstado, lstEstadoUpdate, new { @class = "form-control", disabled="disabled" })%>
