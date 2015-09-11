@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ObrasPublicas
+namespace GAC
 {
     public class BundleConfig
     {
