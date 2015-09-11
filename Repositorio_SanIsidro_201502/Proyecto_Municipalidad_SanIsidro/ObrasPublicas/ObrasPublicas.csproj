@@ -163,61 +163,145 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Content\custom\css\AtencionCiudadano.css" />
-    <Compile Include="Controllers\AtenderController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CronogramaEjecucionObraController.cs" />
-    <Compile Include="Controllers\EntregaMaterialOPController.cs" />
-    <Compile Include="Controllers\ExpedienteTecnicoOPController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProyectoInversionController.cs" />
-    <Compile Include="Controllers\ReclamoController.cs" />
-    <Compile Include="DAL\ConexionSQL.cs" />
-    <Compile Include="DAL\CronogramaEjecucionObra_DAL.cs" />
-    <Compile Include="DAL\EntregaMaterial_DAL.cs" />
-    <Compile Include="DAL\ExpedienteTecnicoOP_DAL.cs" />
-    <Compile Include="DAL\Material_DAL.cs" />
-    <Compile Include="DAL\ObrasPublicas.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ObrasPublicas.edmx</DependentUpon>
+    <Compile Include="Controllers\AtenderController.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DAL\ProyectoInversion_DAL.cs" />
-    <Compile Include="Entities\ActividadCronogramaOP.cs" />
-    <Compile Include="Entities\CronogramaEjecucionOP.cs" />
-    <Compile Include="Entities\DocumentoExpedienteTecnicoOP.cs" />
-    <Compile Include="Entities\EntregaMaterialOP.cs" />
-    <Compile Include="Entities\ItemCombo.cs" />
-    <Compile Include="Entities\ExpedienteTecnicoOP.cs" />
-    <Compile Include="Entities\MaterialOP.cs" />
-    <Compile Include="Entities\ProyectoInversion.cs" />
+    <Compile Include="Controllers\BaseController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\CronogramaEjecucionObraController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\EntregaMaterialOPController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ExpedienteTecnicoOPController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ProyectoInversionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ReclamoController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\ConexionSQL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\CronogramaEjecucionObra_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\EntregaMaterial_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\ExpedienteTecnicoOP_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\Material_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\ObrasPublicas.Designer.cs">
+      <DependentUpon>ObrasPublicas.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DAL\ProyectoInversion_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ActividadCronogramaOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\CronogramaEjecucionOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\DocumentoExpedienteTecnicoOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\EntregaMaterialOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ExpedienteTecnicoOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ItemCombo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\MaterialOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ProyectoInversion.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\HtmlClientSideValidationExtensions.cs" />
-    <Compile Include="Helpers\HtmlPrefixScopeExtensions.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CronogramaEjecucionObra\CreateActividadCronogramaEjecucionModel.cs" />
-    <Compile Include="Models\CronogramaEjecucionObra\CreateCronogramaEjecucionObraModel.cs" />
-    <Compile Include="Models\CronogramaEjecucionObra\ListadoCronogramaEjecucionObraModel.cs" />
-    <Compile Include="Models\CronogramaEjecucionObra\UpdateActividadCronogramaEjecucionModel.cs" />
-    <Compile Include="Models\CronogramaEjecucionObra\UpdateCronogramaEjecucionObraModel.cs" />
-    <Compile Include="Models\EntregaMaterialOP\CreateEntregaMaterialOP.cs" />
-    <Compile Include="Models\EntregaMaterialOP\ListadoEntregaMaterialModel.cs" />
-    <Compile Include="Models\EntregaMaterialOP\UpdateEntregaMaterialOP.cs" />
-    <Compile Include="Models\ExpedienteTecnicoOP\CreateExpedienteTecnicoOPModel.cs" />
-    <Compile Include="Models\ExpedienteTecnicoOP\DocumentoExpTecOPModel.cs" />
-    <Compile Include="Models\ExpedienteTecnicoOP\SearchExpedienteTecnicoOPModel.cs" />
-    <Compile Include="Models\ExpedienteTecnicoOP\UpdateExpedienteTecnicoOPModel.cs" />
-    <Compile Include="Models\ProyectoInversion\CreateProyectoInversionModel.cs" />
-    <Compile Include="Models\ProyectoInversion\SearchProyectoInversionModel.cs" />
-    <Compile Include="Models\ProyectoInversion\UpdateProyectoInversionModel.cs" />
+    <Compile Include="Helpers\HtmlClientSideValidationExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\HtmlPrefixScopeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\Validations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\CronogramaEjecucionObra\CreateActividadCronogramaEjecucionModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\CronogramaEjecucionObra\CreateCronogramaEjecucionObraModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\CronogramaEjecucionObra\ListadoCronogramaEjecucionObraModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\CronogramaEjecucionObra\UpdateActividadCronogramaEjecucionModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\CronogramaEjecucionObra\UpdateCronogramaEjecucionObraModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\EntregaMaterialOP\CreateEntregaMaterialOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\EntregaMaterialOP\ListadoEntregaMaterialModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\EntregaMaterialOP\UpdateEntregaMaterialOP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ExpedienteTecnicoOP\CreateExpedienteTecnicoOPModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ExpedienteTecnicoOP\DocumentoExpTecOPModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ExpedienteTecnicoOP\SearchExpedienteTecnicoOPModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ExpedienteTecnicoOP\UpdateExpedienteTecnicoOPModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ProyectoInversion\CreateProyectoInversionModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ProyectoInversion\SearchProyectoInversionModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ProyectoInversion\UpdateProyectoInversionModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\custom\css\AdminLTE.css" />
     <Content Include="Content\custom\css\AdminLTE.min.css" />
+    <Content Include="Content\custom\css\AtencionCiudadano.css" />
     <Content Include="Content\custom\css\bootstrap.min - copia.css" />
     <Content Include="Content\custom\css\bootstrap.min.css" />
     <Content Include="Content\custom\css\skins\skin-black-light.css" />
@@ -249,14 +333,20 @@
     <Content Include="Content\custom\css\sticky-footer-navbar.css" />
     <Content Include="Content\custom\css\style.css" />
     <Content Include="Content\custom\css\Tabla.css" />
+    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\custom\js\bootstrap.min.js" />
     <Content Include="Content\custom\js\ie10-viewport-bug-workaround.js" />
     <Content Include="Content\custom\js\jquery-1.11.1.min.js" />
     <Content Include="Content\custom\js\jquery.browser.min.js" />
     <Content Include="Content\custom\js\jquery.number.js" />
     <Content Include="Content\custom\js\products.js" />
+    <Content Include="Content\custom\less\variables.less" />
     <Content Include="Content\datepicker\css\datepicker.css" />
     <Content Include="Content\datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\datepicker\less\datepicker.less" />
     <Content Include="Content\img\cargando1.gif" />
     <Content Include="Content\img\cargando2.gif" />
     <Content Include="Content\img\cargando3.gif" />
@@ -320,6 +410,7 @@
     <Content Include="Content\kendo\js\kendo.culture.es-PE.min.js" />
     <Content Include="Content\kendo\js\kendo.es-PE.js" />
     <Content Include="Content\kendo\js\kendo.messages.es-ES.min.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\spinner\bootstrap-spinner.css" />
     <Content Include="Content\spinner\jquery.spinner.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -378,22 +469,17 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\validator\css\bootstrapValidator.min.css" />
     <Content Include="Content\validator\js\bootstrapValidator.min.js" />
-    <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
-    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\custom\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\custom\less\variables.less" />
-    <Content Include="Content\datepicker\less\datepicker.less" />
-    <EntityDeploy Include="DAL\ObrasPublicas.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ObrasPublicas.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="DAL\ObrasPublicas.edmx.diagram">
       <DependentUpon>ObrasPublicas.edmx</DependentUpon>
     </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="files\obras_publicas\docs_tecnicos\interbank.png" />
+    <Content Include="Content\img\Thumbs.db" />
+    <Content Include="Content\jscolor\Thumbs.db" />
+    <Content Include="files\obras_publicas\docs_tecnicos\archivo.pdf" />
+    <Content Include="files\obras_publicas\docs_tecnicos\ProDinner.pdf" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Global.asax" />
     <Content Include="Images\calendar.gif" />
     <Content Include="Images\imgtemplate\avatar.png" />
     <Content Include="Images\imgtemplate\avatar04.png" />
@@ -468,6 +554,15 @@
     <Content Include="Scripts\ParticipacionVecinal\IniciativaVecinal.js" />
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Atender\AtenderReclamo.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\Create.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\CreateActividad.aspx" />
@@ -476,6 +571,7 @@
     <Content Include="Views\CronogramaEjecucionObra\Search.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\Update.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\UpdateActividad.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\_ActividadEjecucionObraRow.ascx" />
     <Content Include="Views\EntregaMaterialOP\Create.aspx" />
     <Content Include="Views\EntregaMaterialOP\Index.aspx" />
     <Content Include="Views\EntregaMaterialOP\Listado.aspx" />
@@ -484,19 +580,34 @@
     <Content Include="Views\ExpedienteTecnicoOP\Create.aspx" />
     <Content Include="Views\ExpedienteTecnicoOP\Index.aspx" />
     <Content Include="Views\ExpedienteTecnicoOP\Search.aspx" />
-    <Content Include="Views\ProyectoInversion\Search.aspx" />
     <Content Include="Views\ExpedienteTecnicoOP\Update.aspx" />
-    <Content Include="Views\ProyectoInversion\_Search.ascx" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Nueva carpeta\EntregaMaterial\Create.aspx" />
+    <Content Include="Views\Nueva carpeta\EntregaMaterial\Index.aspx" />
+    <Content Include="Views\Nueva carpeta\EntregaMaterial\Listado.aspx" />
+    <Content Include="Views\Nueva carpeta\EntregaMaterial\Update.aspx" />
+    <Content Include="Views\ProyectoInversion\About.cshtml" />
     <Content Include="Views\ProyectoInversion\Detail.aspx" />
     <Content Include="Views\ProyectoInversion\Index.aspx" />
+    <Content Include="Views\ProyectoInversion\Search.aspx" />
     <Content Include="Views\ProyectoInversion\Update.aspx" />
-    <Content Include="Views\Reclamo\_HistorialReclamos.ascx" />
-    <Content Include="Views\Reclamo\HistorialReclamo.aspx" />
-    <Content Include="Views\Reclamo\Login.aspx" />
+    <Content Include="Views\ProyectoInversion\_Search.ascx" />
     <Content Include="Views\Reclamo\ConsultarReclamo.aspx" />
+    <Content Include="Views\Reclamo\HistorialReclamo.aspx" />
     <Content Include="Views\Reclamo\Index.aspx" />
+    <Content Include="Views\Reclamo\Login.aspx" />
     <Content Include="Views\Reclamo\RegistrarReclamo.aspx" />
+    <Content Include="Views\Reclamo\_HistorialReclamos.ascx" />
     <Content Include="Views\Reclamo\_listarReclamos.ascx" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Shared\Site_Inicio.Master" />
+    <Content Include="Views\Shared\Site_Intranet.Master" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -504,7 +615,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -519,30 +629,9 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\ProyectoInversion\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\Site.Master" />
-    <Content Include="Views\Shared\Site_Intranet.Master" />
-    <Content Include="Views\Shared\Site_Inicio.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -559,6 +648,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DAL\ObrasPublicas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ObrasPublicas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
