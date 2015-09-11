@@ -554,15 +554,6 @@
     <Content Include="Scripts\ParticipacionVecinal\IniciativaVecinal.js" />
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Atender\AtenderReclamo.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\Create.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\CreateActividad.aspx" />
@@ -571,7 +562,6 @@
     <Content Include="Views\CronogramaEjecucionObra\Search.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\Update.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\UpdateActividad.aspx" />
-    <Content Include="Views\CronogramaEjecucionObra\_ActividadEjecucionObraRow.ascx" />
     <Content Include="Views\EntregaMaterialOP\Create.aspx" />
     <Content Include="Views\EntregaMaterialOP\Index.aspx" />
     <Content Include="Views\EntregaMaterialOP\Listado.aspx" />
@@ -583,10 +573,6 @@
     <Content Include="Views\ExpedienteTecnicoOP\Update.aspx" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Nueva carpeta\EntregaMaterial\Create.aspx" />
-    <Content Include="Views\Nueva carpeta\EntregaMaterial\Index.aspx" />
-    <Content Include="Views\Nueva carpeta\EntregaMaterial\Listado.aspx" />
-    <Content Include="Views\Nueva carpeta\EntregaMaterial\Update.aspx" />
     <Content Include="Views\ProyectoInversion\About.cshtml" />
     <Content Include="Views\ProyectoInversion\Detail.aspx" />
     <Content Include="Views\ProyectoInversion\Index.aspx" />
