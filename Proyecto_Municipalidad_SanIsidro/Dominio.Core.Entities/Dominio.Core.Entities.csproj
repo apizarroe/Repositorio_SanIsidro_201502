@@ -30,9 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,12 +48,89 @@
   <ItemGroup>
     <Compile Include="Atencion.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="ModeloGestionCatastral\CT_DETALLEVIA_URBANIZACION.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_GEOLOCALIZACION.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_LOTE.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_MANZANA.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_PREDIO.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_PROPUESTAINSPECCION.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_SOLICITUD.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_TIPOSOLICITUD.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_TIPOVIA.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_URBANIZACION.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_VIA.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_ZONA.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\ModelCatastro.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCatastro.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\ModelCatastro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\ModelCatastro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCatastro.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Parametro.cs" />
     <Compile Include="Reclamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ReclamoModelcs.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="ModeloGestionCatastral\ModelCatastro.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCatastro.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ModeloGestionCatastral\ModelCatastro.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCatastro.edmx</DependentUpon>
+      <LastGenOutput>ModelCatastro.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ModeloGestionCatastral\ModelCatastro.edmx.diagram">
+      <DependentUpon>ModelCatastro.edmx</DependentUpon>
+    </None>
+    <None Include="ModeloGestionCatastral\ModelCatastro.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCatastro.edmx</DependentUpon>
+      <LastGenOutput>ModelCatastro.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
