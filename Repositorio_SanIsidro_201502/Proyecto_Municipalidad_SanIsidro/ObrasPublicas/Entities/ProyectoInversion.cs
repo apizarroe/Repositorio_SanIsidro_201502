@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.Core.Entities
+namespace ObrasPublicas.Entities
 {
     public class ProyectoInversion
     {
         public const String STR_ID_ESTADO_EN_CONSULTA = "E";
         public const String STR_ID_ESTADO_VIABLE = "V";
         public const String STR_ID_ESTADO_INVIABLE = "I";
+        public const String STR_ID_ESTADO_ADJUDICADO = "A";
 
         public int IdProyecto { get; set; }
         public String CodSNIP { get; set; }
@@ -24,5 +25,10 @@ namespace Dominio.Core.Entities
         public String NomVia { get; set; }
         public String IdEstado { get; set; }
         public String NomEstado { get; set; }
+
+        public int IdExpediente { get; set; }
+        public int IdCronograma { get; set; }
+        public DateTime FechaEmisionCrono { get; set; }
+        public int PlazoEjecucionCrono { get; set; }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
-using GAC.Models;
+using ObrasPublicas.Models;
 
-namespace GAC
+namespace ObrasPublicas
 {
     public static class AuthConfig
     {
