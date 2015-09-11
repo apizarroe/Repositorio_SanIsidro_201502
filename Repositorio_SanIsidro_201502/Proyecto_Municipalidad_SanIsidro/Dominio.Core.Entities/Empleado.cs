@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio.Core.Entities
 {
-    public class EstadoProyectoInversion
+    public class Empleado
     {
-        public String IdEstado { get; set; }
+        public int IdEmpleado { get; set; }
         public String Nombre { get; set; }
+        public String Apellido { get; set; }
     }
 }

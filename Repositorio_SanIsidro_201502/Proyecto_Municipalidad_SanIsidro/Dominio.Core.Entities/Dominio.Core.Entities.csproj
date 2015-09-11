@@ -41,10 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atencion.cs" />
-    <Compile Include="EstadoProyectoInversion.cs" />
+    <Compile Include="Empleado.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="Parametro.cs" />
-    <Compile Include="ProyectoInversion.cs" />
+    <Compile Include="Proveedor.cs" />
     <Compile Include="Reclamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Via.cs" />
