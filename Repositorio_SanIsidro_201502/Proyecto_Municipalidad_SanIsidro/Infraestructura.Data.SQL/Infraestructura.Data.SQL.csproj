@@ -93,6 +93,9 @@
     <Compile Include="EMPLEADO.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
+    <Compile Include="Empleado_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ESTADOS_QUEJARECLAMO.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
@@ -108,10 +111,10 @@
     <Compile Include="INFORMETERCERO.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
-    <Compile Include="ObrasPublicas.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="MuniIntegrado.Designer.cs">
+      <DependentUpon>MuniIntegrado.edmx</DependentUpon>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ObrasPublicas.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PERSONA.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
@@ -122,10 +125,12 @@
     <Compile Include="PERSONANATURAL.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
+    <Compile Include="Proveedor_DAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PROVINCIA.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProyectoInversion_DAL.cs" />
     <Compile Include="QUEJARECLAMO.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
@@ -165,7 +170,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <EntityDeploy Include="MuniIntegrado.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MuniIntegrado.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="AtencionCiudadano.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AtencionCiudadano.Designer.cs</LastGenOutput>
@@ -183,10 +194,9 @@
       <DependentUpon>AtencionCiudadano.edmx</DependentUpon>
       <LastGenOutput>AtencionCiudadano.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="ObrasPublicas.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ObrasPublicas.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <None Include="MuniIntegrado.edmx.diagram">
+      <DependentUpon>MuniIntegrado.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

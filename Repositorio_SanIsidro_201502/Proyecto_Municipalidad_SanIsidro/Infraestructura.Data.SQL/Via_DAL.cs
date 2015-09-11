@@ -14,7 +14,7 @@ namespace Infraestructura.Data.SQL
             List<Via> lstVias = new List<Via>();
             try
             {
-                MuniIntegrado objContext = new MuniIntegrado();
+                MUNI_INTEGRADOEntities1 objContext = new MUNI_INTEGRADOEntities1();
                 var lstViasTmp = objContext.MA_VIA.Where(v => v.noTipoVia == pStrIdTipo || pStrIdTipo == null).ToList();
 
                 foreach (MA_VIA objViaTmp in lstViasTmp)
