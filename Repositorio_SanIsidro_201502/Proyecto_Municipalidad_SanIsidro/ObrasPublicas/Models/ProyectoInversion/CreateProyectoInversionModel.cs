@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GAC.Models.ProyectoInversion
+namespace ObrasPublicas.Models.ProyectoInversion
 {
     public class CreateProyectoInversionModel
     {

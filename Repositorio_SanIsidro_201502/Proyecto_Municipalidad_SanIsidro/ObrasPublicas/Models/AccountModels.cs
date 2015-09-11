@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
-namespace GAC.Models
+namespace ObrasPublicas.Models
 {
     public class UsersContext : DbContext
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace GAC.Controllers
+namespace ObrasPublicas.Controllers
 {
     public class HomeController : Controller
     {

@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GAC</RootNamespace>
-    <AssemblyName>GAC</AssemblyName>
+    <RootNamespace>ObrasPublicas</RootNamespace>
+    <AssemblyName>ObrasPublicas</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -164,17 +164,54 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\custom\css\AtencionCiudadano.css" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AtenderController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CronogramaEjecucionObraController.cs" />
+    <Compile Include="Controllers\EntregaMaterialOPController.cs" />
+    <Compile Include="Controllers\ExpedienteTecnicoOPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProyectoInversionController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
+    <Compile Include="DAL\ConexionSQL.cs" />
+    <Compile Include="DAL\CronogramaEjecucionObra_DAL.cs" />
+    <Compile Include="DAL\EntregaMaterial_DAL.cs" />
+    <Compile Include="DAL\ExpedienteTecnicoOP_DAL.cs" />
+    <Compile Include="DAL\Material_DAL.cs" />
+    <Compile Include="DAL\ObrasPublicas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObrasPublicas.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ProyectoInversion_DAL.cs" />
+    <Compile Include="Entities\ActividadCronogramaOP.cs" />
+    <Compile Include="Entities\CronogramaEjecucionOP.cs" />
+    <Compile Include="Entities\DocumentoExpedienteTecnicoOP.cs" />
+    <Compile Include="Entities\EntregaMaterialOP.cs" />
+    <Compile Include="Entities\ItemCombo.cs" />
+    <Compile Include="Entities\ExpedienteTecnicoOP.cs" />
+    <Compile Include="Entities\MaterialOP.cs" />
+    <Compile Include="Entities\ProyectoInversion.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlClientSideValidationExtensions.cs" />
+    <Compile Include="Helpers\HtmlPrefixScopeExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CronogramaEjecucionObra\CreateActividadCronogramaEjecucionModel.cs" />
+    <Compile Include="Models\CronogramaEjecucionObra\CreateCronogramaEjecucionObraModel.cs" />
+    <Compile Include="Models\CronogramaEjecucionObra\ListadoCronogramaEjecucionObraModel.cs" />
+    <Compile Include="Models\CronogramaEjecucionObra\UpdateActividadCronogramaEjecucionModel.cs" />
+    <Compile Include="Models\CronogramaEjecucionObra\UpdateCronogramaEjecucionObraModel.cs" />
+    <Compile Include="Models\EntregaMaterialOP\CreateEntregaMaterialOP.cs" />
+    <Compile Include="Models\EntregaMaterialOP\ListadoEntregaMaterialModel.cs" />
+    <Compile Include="Models\EntregaMaterialOP\UpdateEntregaMaterialOP.cs" />
+    <Compile Include="Models\ExpedienteTecnicoOP\CreateExpedienteTecnicoOPModel.cs" />
+    <Compile Include="Models\ExpedienteTecnicoOP\DocumentoExpTecOPModel.cs" />
+    <Compile Include="Models\ExpedienteTecnicoOP\SearchExpedienteTecnicoOPModel.cs" />
+    <Compile Include="Models\ExpedienteTecnicoOP\UpdateExpedienteTecnicoOPModel.cs" />
     <Compile Include="Models\ProyectoInversion\CreateProyectoInversionModel.cs" />
+    <Compile Include="Models\ProyectoInversion\SearchProyectoInversionModel.cs" />
     <Compile Include="Models\ProyectoInversion\UpdateProyectoInversionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -349,6 +386,13 @@
     <Content Include="Content\custom\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\custom\less\variables.less" />
     <Content Include="Content\datepicker\less\datepicker.less" />
+    <EntityDeploy Include="DAL\ObrasPublicas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ObrasPublicas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\ObrasPublicas.edmx.diagram">
+      <DependentUpon>ObrasPublicas.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\calendar.gif" />
     <Content Include="Images\imgtemplate\avatar.png" />
@@ -416,6 +460,8 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ParticipacionVecinal\Index.js" />
@@ -423,6 +469,24 @@
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
     <Content Include="Views\Atender\AtenderReclamo.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\Create.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\CreateActividad.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\Index.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\Listado.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\Search.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\Update.aspx" />
+    <Content Include="Views\CronogramaEjecucionObra\UpdateActividad.aspx" />
+    <Content Include="Views\EntregaMaterialOP\Create.aspx" />
+    <Content Include="Views\EntregaMaterialOP\Index.aspx" />
+    <Content Include="Views\EntregaMaterialOP\Listado.aspx" />
+    <Content Include="Views\EntregaMaterialOP\Search.aspx" />
+    <Content Include="Views\EntregaMaterialOP\Update.aspx" />
+    <Content Include="Views\ExpedienteTecnicoOP\Create.aspx" />
+    <Content Include="Views\ExpedienteTecnicoOP\Index.aspx" />
+    <Content Include="Views\ExpedienteTecnicoOP\Search.aspx" />
+    <Content Include="Views\ProyectoInversion\Search.aspx" />
+    <Content Include="Views\ExpedienteTecnicoOP\Update.aspx" />
+    <Content Include="Views\ProyectoInversion\_Search.ascx" />
     <Content Include="Views\ProyectoInversion\Detail.aspx" />
     <Content Include="Views\ProyectoInversion\Index.aspx" />
     <Content Include="Views\ProyectoInversion\Update.aspx" />
@@ -465,7 +529,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\ProyectoInversion\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -478,6 +542,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

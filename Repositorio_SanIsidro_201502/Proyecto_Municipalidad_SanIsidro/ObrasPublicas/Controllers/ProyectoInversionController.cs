@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GAC.Models.ProyectoInversion;
-using Dominio.Core.Entities;
+using ObrasPublicas.Models.ProyectoInversion;
+using ObrasPublicas.Entities;
+using ObrasPublicas.DAL;
 using Infraestructura.Data.SQL;
 
-namespace GAC.Controllers
+namespace ObrasPublicas.Controllers
 {
     public class ProyectoInversionController : Controller
     {
@@ -84,6 +85,70 @@ namespace GAC.Controllers
             ViewBag.Action = "UPD";
 
             return View("Update", pObjModel);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search2(Models.ProyectoInversion.SearchProyectoInversionModel pObjModel)
+        {
+            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+
+            if (pObjModel.Tipo == "P")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("Update", pObjModel);
+            }
+            else if (pObjModel.Tipo == "EC")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroSinExpedientes(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/ExpedienteTecnicoOP/Index.aspx", pObjModel);
+            }
+            else if (pObjModel.Tipo == "EU")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/ExpedienteTecnicoOP/Search.aspx", pObjModel);
+            }
+            else if (pObjModel.Tipo == "CC")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroSinCronograma(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/CronogramaEjecucionObra/Index.aspx", pObjModel);
+            }
+            else if (pObjModel.Tipo == "CU")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConCronograma(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/CronogramaEjecucionObra/Search.aspx", pObjModel);
+            }
+            else if (pObjModel.Tipo == "EMC")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/EntregaMaterialOP/Index.aspx", pObjModel);
+            }
+            else if (pObjModel.Tipo == "EMU")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConEntregaMaterial(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/EntregaMaterialOP/Search.aspx", pObjModel);
+            }
+            else {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
+                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("Update", pObjModel);
+            }
         }
 
         public ActionResult Edit(int id)
@@ -170,7 +235,7 @@ namespace GAC.Controllers
 
             if (bolGrabaOK)
             {
-                if (pObjModel.IdEstado == Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                if (pObjModel.IdEstado == ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
                 {
                     return View("Update", pObjModel);
                 }

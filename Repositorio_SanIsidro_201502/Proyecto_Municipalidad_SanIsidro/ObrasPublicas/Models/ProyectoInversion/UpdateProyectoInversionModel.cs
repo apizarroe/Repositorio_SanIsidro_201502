@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GAC.Models.ProyectoInversion
+namespace ObrasPublicas.Models.ProyectoInversion
 {
     public class UpdateProyectoInversionModel : IValidatableObject
     {
@@ -32,7 +32,7 @@ namespace GAC.Models.ProyectoInversion
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (this.IdEstado==Dominio.Core.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE && String.IsNullOrWhiteSpace(this.CodSNIP))
+            if (this.IdEstado==ObrasPublicas.Entities.ProyectoInversion.STR_ID_ESTADO_VIABLE && String.IsNullOrWhiteSpace(this.CodSNIP))
                 yield return new ValidationResult("El campo CodSNIP es obligatorio.");
         }
 
