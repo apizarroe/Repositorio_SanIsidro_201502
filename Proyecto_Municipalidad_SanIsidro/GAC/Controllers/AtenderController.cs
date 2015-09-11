@@ -8,7 +8,7 @@ using Infraestructura.Data.SQL;
 using Dominio.Core.Entities;
 using Dominio.Core.Entities.ViewModel;
 
-namespace ObrasPublicas.Controllers
+namespace GAC.Controllers
 {
     public class AtenderController : Controller
     {
