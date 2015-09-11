@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25ead013383f47b4ae9118fdbe5b1995" Name="Diagram1">
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_AREA" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_CARGO" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_DEPARTAMENTO" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_DISTRITO" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_EMPLEADO" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_PERFIL" Width="1.5" PointX="10.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_PERSONA" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_PERSONAJURIDICA" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_PERSONANATURAL" Width="1.5" PointX="9.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_PROVEEDOR" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_PROVINCIA" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_TIPODOCUMENTOIDENTIDAD" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_USUARIO" Width="1.5" PointX="12.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MUNI_INTEGRADOModel.MA_VIA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_EMPLEADO_AREA" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_EMPLEADO_CARGO_" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK__MA_PROVIN__idDep__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK__MA_DISTRI__idPro__6DCC4D03" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK__MA_PERSON__idDis__719CDDE7" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_EMPLEADO_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_MA_USUARIO_MA_PERFIL" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK__MA_PERSON__idTip__72910220" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_MA_PERSONA_MA_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_MA_PROVEEDOR_MA_PERSONA1" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_MA_USUARIO_MA_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_PERSONAJURIDICA_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="MUNI_INTEGRADOModel.FK_PERSONANATURAL_PERSONA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

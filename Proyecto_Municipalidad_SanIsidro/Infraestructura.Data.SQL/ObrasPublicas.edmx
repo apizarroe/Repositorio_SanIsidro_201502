@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MunicipalidadSanIsidroEntities_New.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MunicipalidadSanIsidroEntities_NewStoreContainer">
+          <EntitySet Name="MA_VIA" EntityType="MunicipalidadSanIsidroEntities_New.Store.MA_VIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_PROYECTO_INVERSION_PUBLICA" EntityType="MunicipalidadSanIsidroEntities_New.Store.OP_PROYECTO_INVERSION_PUBLICA" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_op_proyecto_inversion_publica_ma_via" Association="MunicipalidadSanIsidroEntities_New.Store.FK_op_proyecto_inversion_publica_ma_via">
+            <End Role="MA_VIA" EntitySet="MA_VIA" />
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MA_VIA">
+          <Key>
+            <PropertyRef Name="coVia" />
+          </Key>
+          <Property Name="coVia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="noNomVia" Type="varchar" MaxLength="50" />
+          <Property Name="noTipoVia" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="OP_PROYECTO_INVERSION_PUBLICA">
+          <Key>
+            <PropertyRef Name="coProyecto" />
+          </Key>
+          <Property Name="coProyecto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coSNIP" Type="varchar" MaxLength="45" />
+          <Property Name="txDescripcion" Type="varchar" MaxLength="300" />
+          <Property Name="noNombre" Type="varchar" MaxLength="100" />
+          <Property Name="coVia" Type="int" Nullable="false" />
+          <Property Name="txUbicacion" Type="varchar" MaxLength="120" />
+          <Property Name="nuBeneficiarios" Type="int" />
+          <Property Name="nuValorReferencialPerfil" Type="numeric" Nullable="false" Precision="11" Scale="2" />
+          <Property Name="feRegistro" Type="date" />
+          <Property Name="noEstado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_op_proyecto_inversion_publica_ma_via">
+          <End Role="MA_VIA" Type="MunicipalidadSanIsidroEntities_New.Store.MA_VIA" Multiplicity="1" />
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="MunicipalidadSanIsidroEntities_New.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_VIA">
+              <PropertyRef Name="coVia" />
+            </Principal>
+            <Dependent Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MunicipalidadSanIsidroEntities_New" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MuniIntegrado" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="OP_PROYECTO_INVERSION_PUBLICA" EntityType="MunicipalidadSanIsidroEntities_New.OP_PROYECTO_INVERSION_PUBLICA" />
+          <EntitySet Name="MA_VIA" EntityType="MunicipalidadSanIsidroEntities_New.MA_VIA" />
+          <AssociationSet Name="FK_op_proyecto_inversion_publica_ma_via" Association="MunicipalidadSanIsidroEntities_New.FK_op_proyecto_inversion_publica_ma_via">
+            <End Role="MA_VIA" EntitySet="MA_VIA" />
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OP_PROYECTO_INVERSION_PUBLICA">
+          <Key>
+            <PropertyRef Name="coProyecto" />
+          </Key>
+          <Property Name="coProyecto" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coSNIP" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="txDescripcion" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="noNombre" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="coVia" Type="Int32" Nullable="false" />
+          <Property Name="txUbicacion" Type="String" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="nuBeneficiarios" Type="Int32" />
+          <Property Name="nuValorReferencialPerfil" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+          <Property Name="feRegistro" Type="DateTime" Precision="0" />
+          <Property Name="noEstado" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="MA_VIA" Relationship="MunicipalidadSanIsidroEntities_New.FK_op_proyecto_inversion_publica_ma_via" FromRole="OP_PROYECTO_INVERSION_PUBLICA" ToRole="MA_VIA" />
+        </EntityType>
+        <EntityType Name="MA_VIA">
+          <Key>
+            <PropertyRef Name="coVia" />
+          </Key>
+          <Property Type="Int32" Name="coVia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="noNomVia" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="noTipoVia" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OP_PROYECTO_INVERSION_PUBLICA" Relationship="MunicipalidadSanIsidroEntities_New.FK_op_proyecto_inversion_publica_ma_via" FromRole="MA_VIA" ToRole="OP_PROYECTO_INVERSION_PUBLICA" />
+        </EntityType>
+        <Association Name="FK_op_proyecto_inversion_publica_ma_via">
+          <End Type="MunicipalidadSanIsidroEntities_New.MA_VIA" Role="MA_VIA" Multiplicity="1" />
+          <End Type="MunicipalidadSanIsidroEntities_New.OP_PROYECTO_INVERSION_PUBLICA" Role="OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_VIA">
+              <PropertyRef Name="coVia" />
+            </Principal>
+            <Dependent Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MunicipalidadSanIsidroEntities_NewStoreContainer" CdmEntityContainer="MuniIntegrado">
+          <EntitySetMapping Name="OP_PROYECTO_INVERSION_PUBLICA">
+            <EntityTypeMapping TypeName="MunicipalidadSanIsidroEntities_New.OP_PROYECTO_INVERSION_PUBLICA">
+              <MappingFragment StoreEntitySet="OP_PROYECTO_INVERSION_PUBLICA">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_VIA">
+            <EntityTypeMapping TypeName="MunicipalidadSanIsidroEntities_New.MA_VIA">
+              <MappingFragment StoreEntitySet="MA_VIA">
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

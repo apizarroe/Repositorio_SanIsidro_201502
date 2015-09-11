@@ -1,0 +1,1889 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ObrasPublicasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ObrasPublicasModelStoreContainer">
+          <EntitySet Name="OP_ACTIVIDAD_EJECUCION" EntityType="ObrasPublicasModel.Store.OP_ACTIVIDAD_EJECUCION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_CRONOGRAMA_EJECUCION" EntityType="ObrasPublicasModel.Store.OP_CRONOGRAMA_EJECUCION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_CUADERNO_OBRA" EntityType="ObrasPublicasModel.Store.OP_CUADERNO_OBRA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_CUADERNO_OBRA_MAQUINARIA" EntityType="ObrasPublicasModel.Store.OP_CUADERNO_OBRA_MAQUINARIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntityType="ObrasPublicasModel.Store.OP_DOCUMENTO_EXPEDIENTE_TECNICO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_ENTREGA_MATERIAL" EntityType="ObrasPublicasModel.Store.OP_ENTREGA_MATERIAL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_EXPEDIENTE_TECNICO" EntityType="ObrasPublicasModel.Store.OP_EXPEDIENTE_TECNICO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_INFORME_ACTIVIDAD" EntityType="ObrasPublicasModel.Store.OP_INFORME_ACTIVIDAD" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_ACTIVIDAD">
+            <DefiningQuery>SELECT 
+      [OP_INFORME_ACTIVIDAD].[coInforme] AS [coInforme], 
+      [OP_INFORME_ACTIVIDAD].[idActividad] AS [idActividad]
+      FROM [dbo].[OP_INFORME_ACTIVIDAD] AS [OP_INFORME_ACTIVIDAD]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OP_INFORME_CUADERNO" EntityType="ObrasPublicasModel.Store.OP_INFORME_CUADERNO" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_CUADERNO">
+            <DefiningQuery>SELECT 
+      [OP_INFORME_CUADERNO].[coInforme] AS [coInforme], 
+      [OP_INFORME_CUADERNO].[coIncidencia] AS [coIncidencia]
+      FROM [dbo].[OP_INFORME_CUADERNO] AS [OP_INFORME_CUADERNO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OP_INFORME_ENTREGA" EntityType="ObrasPublicasModel.Store.OP_INFORME_ENTREGA" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_ENTREGA">
+            <DefiningQuery>SELECT 
+      [OP_INFORME_ENTREGA].[coInforme] AS [coInforme], 
+      [OP_INFORME_ENTREGA].[coEntrega] AS [coEntrega]
+      FROM [dbo].[OP_INFORME_ENTREGA] AS [OP_INFORME_ENTREGA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OP_INFORME_OBRA" EntityType="ObrasPublicasModel.Store.OP_INFORME_OBRA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_INFORME_REFERENCIA" EntityType="ObrasPublicasModel.Store.OP_INFORME_REFERENCIA" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_REFERENCIA">
+            <DefiningQuery>SELECT 
+      [OP_INFORME_REFERENCIA].[coInforme] AS [coInforme], 
+      [OP_INFORME_REFERENCIA].[coInformeRef] AS [coInformeRef]
+      FROM [dbo].[OP_INFORME_REFERENCIA] AS [OP_INFORME_REFERENCIA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OP_MAQUINARIA" EntityType="ObrasPublicasModel.Store.OP_MAQUINARIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_MATERIAL" EntityType="ObrasPublicasModel.Store.OP_MATERIAL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_PROYECTO_INVERSION_PUBLICA" EntityType="ObrasPublicasModel.Store.OP_PROYECTO_INVERSION_PUBLICA" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_op_actividad_ejecucion_op_cronograma_ejecucion" Association="ObrasPublicasModel.Store.FK_op_actividad_ejecucion_op_cronograma_ejecucion">
+            <End Role="OP_CRONOGRAMA_EJECUCION" EntitySet="OP_CRONOGRAMA_EJECUCION" />
+            <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cronograma_ejecucion_op_expediente_tecnico" Association="ObrasPublicasModel.Store.FK_op_cronograma_ejecucion_op_expediente_tecnico">
+            <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+            <End Role="OP_CRONOGRAMA_EJECUCION" EntitySet="OP_CRONOGRAMA_EJECUCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra" Association="ObrasPublicasModel.Store.FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra">
+            <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+            <End Role="OP_CUADERNO_OBRA_MAQUINARIA" EntitySet="OP_CUADERNO_OBRA_MAQUINARIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cuaderno_obra_maquinaria_op_maquinaria" Association="ObrasPublicasModel.Store.FK_op_cuaderno_obra_maquinaria_op_maquinaria">
+            <End Role="OP_MAQUINARIA" EntitySet="OP_MAQUINARIA" />
+            <End Role="OP_CUADERNO_OBRA_MAQUINARIA" EntitySet="OP_CUADERNO_OBRA_MAQUINARIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cuaderno_obra_op_actividad_ejecucion" Association="ObrasPublicasModel.Store.FK_op_cuaderno_obra_op_actividad_ejecucion">
+            <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+            <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_documento_op_expediente_tecnico" Association="ObrasPublicasModel.Store.FK_op_documento_op_expediente_tecnico">
+            <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+            <End Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntitySet="OP_DOCUMENTO_EXPEDIENTE_TECNICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_entrega_material_op_material" Association="ObrasPublicasModel.Store.FK_op_entrega_material_op_material">
+            <End Role="OP_MATERIAL" EntitySet="OP_MATERIAL" />
+            <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA" Association="ObrasPublicasModel.Store.FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA">
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+            <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_expediente_tecnico_op_proyecto_inversion_publica" Association="ObrasPublicasModel.Store.FK_op_expediente_tecnico_op_proyecto_inversion_publica">
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+            <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_actividad_op_actividad_ejecucion" Association="ObrasPublicasModel.Store.FK_op_informe_avance_actividad_op_actividad_ejecucion">
+            <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+            <End Role="OP_INFORME_ACTIVIDAD" EntitySet="OP_INFORME_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_actividad_op_informe_avance_obra" Association="ObrasPublicasModel.Store.FK_op_informe_avance_actividad_op_informe_avance_obra">
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+            <End Role="OP_INFORME_ACTIVIDAD" EntitySet="OP_INFORME_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_cuaderno_op_cuaderno_obra" Association="ObrasPublicasModel.Store.FK_op_informe_avance_cuaderno_op_cuaderno_obra">
+            <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+            <End Role="OP_INFORME_CUADERNO" EntitySet="OP_INFORME_CUADERNO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_cuaderno_op_informe_avance_obra" Association="ObrasPublicasModel.Store.FK_op_informe_avance_cuaderno_op_informe_avance_obra">
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+            <End Role="OP_INFORME_CUADERNO" EntitySet="OP_INFORME_CUADERNO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_entrega_op_entrega_material" Association="ObrasPublicasModel.Store.FK_op_informe_avance_entrega_op_entrega_material">
+            <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+            <End Role="OP_INFORME_ENTREGA" EntitySet="OP_INFORME_ENTREGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_entrega_op_informe_avance_obra" Association="ObrasPublicasModel.Store.FK_op_informe_avance_entrega_op_informe_avance_obra">
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+            <End Role="OP_INFORME_ENTREGA" EntitySet="OP_INFORME_ENTREGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_obra_op_proyecto_inversion_publica" Association="ObrasPublicasModel.Store.FK_op_informe_avance_obra_op_proyecto_inversion_publica">
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_referencia_op_informe_avance_obra" Association="ObrasPublicasModel.Store.FK_op_informe_avance_referencia_op_informe_avance_obra">
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+            <End Role="OP_INFORME_REFERENCIA" EntitySet="OP_INFORME_REFERENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_referencia_op_informe_avance_obra1" Association="ObrasPublicasModel.Store.FK_op_informe_avance_referencia_op_informe_avance_obra1">
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+            <End Role="OP_INFORME_REFERENCIA" EntitySet="OP_INFORME_REFERENCIA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OP_ACTIVIDAD_EJECUCION">
+          <Key>
+            <PropertyRef Name="coActividad" />
+          </Key>
+          <Property Name="coActividad" Type="int" Nullable="false" />
+          <Property Name="noActividad" Type="varchar" MaxLength="45" />
+          <Property Name="coCronograma" Type="int" Nullable="false" />
+          <Property Name="feInicioProgramada" Type="date" />
+          <Property Name="feFinProgramada" Type="date" />
+          <Property Name="feInicioEjecucion" Type="date" />
+          <Property Name="feFinEjecucion" Type="date" />
+          <Property Name="nuCostoDirecto" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="nuCantidadRRHH" Type="int" />
+          <Property Name="idEmpleado" Type="int" />
+        </EntityType>
+        <EntityType Name="OP_CRONOGRAMA_EJECUCION">
+          <Key>
+            <PropertyRef Name="coCronograma" />
+          </Key>
+          <Property Name="coCronograma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coExpediente" Type="int" Nullable="false" />
+          <Property Name="feEmision" Type="datetime" />
+          <Property Name="nuPlazoEjecucion" Type="int" />
+        </EntityType>
+        <EntityType Name="OP_CUADERNO_OBRA">
+          <Key>
+            <PropertyRef Name="coIncidencia" />
+          </Key>
+          <Property Name="coIncidencia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="txDescripcion" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="noTipoIncidencia" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="noCriticidad" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="noCaracteristicaDia" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="feIncidencia" Type="datetime" />
+          <Property Name="coResponsable" Type="int" />
+          <Property Name="coActividad" Type="int" />
+          <Property Name="coUsuarioCreacion" Type="int" />
+          <Property Name="feCreacion" Type="datetime" />
+          <Property Name="coUsuarioEdicion" Type="int" />
+          <Property Name="feEdicion" Type="datetime" />
+          <Property Name="noIpPc" Type="varchar" MaxLength="45" />
+          <Property Name="noUserAgent" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="OP_CUADERNO_OBRA_MAQUINARIA">
+          <Key>
+            <PropertyRef Name="coCuadernoObraMaquinaria" />
+          </Key>
+          <Property Name="coCuadernoObraMaquinaria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coIncidencia" Type="int" />
+          <Property Name="coMaquinaria" Type="int" Nullable="false" />
+          <Property Name="noTrabajoRealizado" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="feInicioActividad" Type="datetime" />
+          <Property Name="feFinActividad" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+          <Key>
+            <PropertyRef Name="coDocumento" />
+          </Key>
+          <Property Name="coDocumento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coExpediente" Type="int" Nullable="false" />
+          <Property Name="nuNroDOcumento" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="feEmision" Type="date" />
+          <Property Name="txDescripcion" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="txRutaArchivo" Type="varchar" MaxLength="250" />
+          <Property Name="noTipoDocExpTec" Type="varchar" MaxLength="50" />
+          <Property Name="nomArchivo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OP_ENTREGA_MATERIAL">
+          <Key>
+            <PropertyRef Name="coEntrega" />
+          </Key>
+          <Property Name="coEntrega" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="feEntregaProgramada" Type="datetime" />
+          <Property Name="feEntregaEfectiva" Type="datetime" />
+          <Property Name="txObservaciones" Type="varchar" MaxLength="500" />
+          <Property Name="noTipoEntrega" Type="varchar" MaxLength="50" />
+          <Property Name="coProveedor" Type="int" Nullable="false" />
+          <Property Name="coMaterial" Type="int" Nullable="false" />
+          <Property Name="nuCantidad" Type="int" />
+          <Property Name="coProyecto" Type="int" />
+        </EntityType>
+        <EntityType Name="OP_EXPEDIENTE_TECNICO">
+          <Key>
+            <PropertyRef Name="coExpediente" />
+          </Key>
+          <Property Name="coExpediente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coProyecto" Type="int" />
+          <Property Name="txDescripcion" Type="varchar" MaxLength="500" />
+          <Property Name="txEspecificacionesTecnicas" Type="varchar" MaxLength="1000" />
+          <Property Name="feElaboracionPresupuesto" Type="datetime" />
+          <Property Name="nuValorReferencial" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="coEjecutor" Type="int" />
+          <Property Name="coSupervisor" Type="int" />
+          <Property Name="coContacto" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_ACTIVIDAD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OP_INFORME_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="coInforme" />
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="coInforme" Type="int" Nullable="false" />
+          <Property Name="idActividad" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_CUADERNO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OP_INFORME_CUADERNO">
+          <Key>
+            <PropertyRef Name="coInforme" />
+            <PropertyRef Name="coIncidencia" />
+          </Key>
+          <Property Name="coInforme" Type="int" Nullable="false" />
+          <Property Name="coIncidencia" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_ENTREGA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OP_INFORME_ENTREGA">
+          <Key>
+            <PropertyRef Name="coInforme" />
+            <PropertyRef Name="coEntrega" />
+          </Key>
+          <Property Name="coInforme" Type="int" Nullable="false" />
+          <Property Name="coEntrega" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OP_INFORME_OBRA">
+          <Key>
+            <PropertyRef Name="coInforme" />
+          </Key>
+          <Property Name="coInforme" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nuInforme" Type="varchar" MaxLength="45" />
+          <Property Name="txTituloInforme" Type="varchar" MaxLength="500" />
+          <Property Name="feEmision" Type="date" />
+          <Property Name="txConclusion" Type="varchar" MaxLength="500" />
+          <Property Name="txRecomendacion" Type="varchar" MaxLength="500" />
+          <Property Name="flEstado" Type="int" />
+          <Property Name="coProyecto" Type="int" Nullable="false" />
+          <Property Name="noTipoInforme" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_REFERENCIA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OP_INFORME_REFERENCIA">
+          <Key>
+            <PropertyRef Name="coInforme" />
+            <PropertyRef Name="coInformeRef" />
+          </Key>
+          <Property Name="coInforme" Type="int" Nullable="false" />
+          <Property Name="coInformeRef" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OP_MAQUINARIA">
+          <Key>
+            <PropertyRef Name="coMaquinaria" />
+          </Key>
+          <Property Name="coMaquinaria" Type="int" Nullable="false" />
+          <Property Name="noMaquinaria" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="noMarca" Type="varchar" MaxLength="45" />
+          <Property Name="noModelo" Type="varchar" MaxLength="45" />
+          <Property Name="nuAnioFabricacion" Type="int" />
+          <Property Name="noPlaca" Type="varchar" MaxLength="45" />
+          <Property Name="noTipo" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="OP_MATERIAL">
+          <Key>
+            <PropertyRef Name="coMaterial" />
+          </Key>
+          <Property Name="coMaterial" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="noMaterial" Type="varchar" MaxLength="45" />
+          <Property Name="nuValorReferencial" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="nuStock" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="nuStockMinimo" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="noUnidadMedida" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OP_PROYECTO_INVERSION_PUBLICA">
+          <Key>
+            <PropertyRef Name="coProyecto" />
+          </Key>
+          <Property Name="coProyecto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coSNIP" Type="varchar" MaxLength="45" />
+          <Property Name="txDescripcion" Type="varchar" MaxLength="300" />
+          <Property Name="noNombre" Type="varchar" MaxLength="100" />
+          <Property Name="coVia" Type="int" Nullable="false" />
+          <Property Name="txUbicacion" Type="varchar" MaxLength="120" />
+          <Property Name="nuBeneficiarios" Type="int" />
+          <Property Name="nuValorReferencialPerfil" Type="numeric" Nullable="false" Precision="11" Scale="2" />
+          <Property Name="feRegistro" Type="date" />
+          <Property Name="noEstado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_op_actividad_ejecucion_op_cronograma_ejecucion">
+          <End Role="OP_CRONOGRAMA_EJECUCION" Type="ObrasPublicasModel.Store.OP_CRONOGRAMA_EJECUCION" Multiplicity="1" />
+          <End Role="OP_ACTIVIDAD_EJECUCION" Type="ObrasPublicasModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_CRONOGRAMA_EJECUCION">
+              <PropertyRef Name="coCronograma" />
+            </Principal>
+            <Dependent Role="OP_ACTIVIDAD_EJECUCION">
+              <PropertyRef Name="coCronograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cronograma_ejecucion_op_expediente_tecnico">
+          <End Role="OP_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="1" />
+          <End Role="OP_CRONOGRAMA_EJECUCION" Type="ObrasPublicasModel.Store.OP_CRONOGRAMA_EJECUCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coExpediente" />
+            </Principal>
+            <Dependent Role="OP_CRONOGRAMA_EJECUCION">
+              <PropertyRef Name="coExpediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra">
+          <End Role="OP_CUADERNO_OBRA" Type="ObrasPublicasModel.Store.OP_CUADERNO_OBRA" Multiplicity="0..1" />
+          <End Role="OP_CUADERNO_OBRA_MAQUINARIA" Type="ObrasPublicasModel.Store.OP_CUADERNO_OBRA_MAQUINARIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_CUADERNO_OBRA">
+              <PropertyRef Name="coIncidencia" />
+            </Principal>
+            <Dependent Role="OP_CUADERNO_OBRA_MAQUINARIA">
+              <PropertyRef Name="coIncidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cuaderno_obra_maquinaria_op_maquinaria">
+          <End Role="OP_MAQUINARIA" Type="ObrasPublicasModel.Store.OP_MAQUINARIA" Multiplicity="1" />
+          <End Role="OP_CUADERNO_OBRA_MAQUINARIA" Type="ObrasPublicasModel.Store.OP_CUADERNO_OBRA_MAQUINARIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_MAQUINARIA">
+              <PropertyRef Name="coMaquinaria" />
+            </Principal>
+            <Dependent Role="OP_CUADERNO_OBRA_MAQUINARIA">
+              <PropertyRef Name="coMaquinaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cuaderno_obra_op_actividad_ejecucion">
+          <End Role="OP_ACTIVIDAD_EJECUCION" Type="ObrasPublicasModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="0..1" />
+          <End Role="OP_CUADERNO_OBRA" Type="ObrasPublicasModel.Store.OP_CUADERNO_OBRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_ACTIVIDAD_EJECUCION">
+              <PropertyRef Name="coActividad" />
+            </Principal>
+            <Dependent Role="OP_CUADERNO_OBRA">
+              <PropertyRef Name="coActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_documento_op_expediente_tecnico">
+          <End Role="OP_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="1" />
+          <End Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.Store.OP_DOCUMENTO_EXPEDIENTE_TECNICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coExpediente" />
+            </Principal>
+            <Dependent Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coExpediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_entrega_material_op_material">
+          <End Role="OP_MATERIAL" Type="ObrasPublicasModel.Store.OP_MATERIAL" Multiplicity="1" />
+          <End Role="OP_ENTREGA_MATERIAL" Type="ObrasPublicasModel.Store.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_MATERIAL">
+              <PropertyRef Name="coMaterial" />
+            </Principal>
+            <Dependent Role="OP_ENTREGA_MATERIAL">
+              <PropertyRef Name="coMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA">
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="ObrasPublicasModel.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="0..1" />
+          <End Role="OP_ENTREGA_MATERIAL" Type="ObrasPublicasModel.Store.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coProyecto" />
+            </Principal>
+            <Dependent Role="OP_ENTREGA_MATERIAL">
+              <PropertyRef Name="coProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_expediente_tecnico_op_proyecto_inversion_publica">
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="ObrasPublicasModel.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="0..1" />
+          <End Role="OP_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.Store.OP_EXPEDIENTE_TECNICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coProyecto" />
+            </Principal>
+            <Dependent Role="OP_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_actividad_op_actividad_ejecucion">
+          <End Role="OP_ACTIVIDAD_EJECUCION" Type="ObrasPublicasModel.Store.OP_ACTIVIDAD_EJECUCION" Multiplicity="1" />
+          <End Role="OP_INFORME_ACTIVIDAD" Type="ObrasPublicasModel.Store.OP_INFORME_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_ACTIVIDAD_EJECUCION">
+              <PropertyRef Name="coActividad" />
+            </Principal>
+            <Dependent Role="OP_INFORME_ACTIVIDAD">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_actividad_op_informe_avance_obra">
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+          <End Role="OP_INFORME_ACTIVIDAD" Type="ObrasPublicasModel.Store.OP_INFORME_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coInforme" />
+            </Principal>
+            <Dependent Role="OP_INFORME_ACTIVIDAD">
+              <PropertyRef Name="coInforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_cuaderno_op_cuaderno_obra">
+          <End Role="OP_CUADERNO_OBRA" Type="ObrasPublicasModel.Store.OP_CUADERNO_OBRA" Multiplicity="1" />
+          <End Role="OP_INFORME_CUADERNO" Type="ObrasPublicasModel.Store.OP_INFORME_CUADERNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_CUADERNO_OBRA">
+              <PropertyRef Name="coIncidencia" />
+            </Principal>
+            <Dependent Role="OP_INFORME_CUADERNO">
+              <PropertyRef Name="coIncidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_cuaderno_op_informe_avance_obra">
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+          <End Role="OP_INFORME_CUADERNO" Type="ObrasPublicasModel.Store.OP_INFORME_CUADERNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coInforme" />
+            </Principal>
+            <Dependent Role="OP_INFORME_CUADERNO">
+              <PropertyRef Name="coInforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_entrega_op_entrega_material">
+          <End Role="OP_ENTREGA_MATERIAL" Type="ObrasPublicasModel.Store.OP_ENTREGA_MATERIAL" Multiplicity="1" />
+          <End Role="OP_INFORME_ENTREGA" Type="ObrasPublicasModel.Store.OP_INFORME_ENTREGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_ENTREGA_MATERIAL">
+              <PropertyRef Name="coEntrega" />
+            </Principal>
+            <Dependent Role="OP_INFORME_ENTREGA">
+              <PropertyRef Name="coEntrega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_entrega_op_informe_avance_obra">
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+          <End Role="OP_INFORME_ENTREGA" Type="ObrasPublicasModel.Store.OP_INFORME_ENTREGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coInforme" />
+            </Principal>
+            <Dependent Role="OP_INFORME_ENTREGA">
+              <PropertyRef Name="coInforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_obra_op_proyecto_inversion_publica">
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="ObrasPublicasModel.Store.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="1" />
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.Store.OP_INFORME_OBRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coProyecto" />
+            </Principal>
+            <Dependent Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_referencia_op_informe_avance_obra">
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+          <End Role="OP_INFORME_REFERENCIA" Type="ObrasPublicasModel.Store.OP_INFORME_REFERENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coInforme" />
+            </Principal>
+            <Dependent Role="OP_INFORME_REFERENCIA">
+              <PropertyRef Name="coInforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_referencia_op_informe_avance_obra1">
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.Store.OP_INFORME_OBRA" Multiplicity="1" />
+          <End Role="OP_INFORME_REFERENCIA" Type="ObrasPublicasModel.Store.OP_INFORME_REFERENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coInforme" />
+            </Principal>
+            <Dependent Role="OP_INFORME_REFERENCIA">
+              <PropertyRef Name="coInformeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_gop_get_act_cron_ejec_obra_x_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
+          <Parameter Name="pIntIdActividad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_act_x_cron_ejec_obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdExp" Type="int" Mode="In" />
+          <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_areas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_gop_get_emp_perj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_gop_get_emp_pern_x_area" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdArea" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_ent_mat_x_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
+          <Parameter Name="pIntIdEntrega" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_ent_mat_x_proy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_exp_x_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdExp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_con_cro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_con_entmat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_con_exp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_sin_cro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_sin_exp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_x_filtro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_x_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdProy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_ins_act_cron_ejec_obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
+          <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pDatFecIniProg" Type="datetime" Mode="In" />
+          <Parameter Name="pDatFecFinProg" Type="datetime" Mode="In" />
+          <Parameter Name="pDatFecIniEjec" Type="datetime" Mode="In" />
+          <Parameter Name="pDatFecFinEjec" Type="datetime" Mode="In" />
+          <Parameter Name="pDecCosto" Type="decimal" Mode="In" />
+          <Parameter Name="pIntCantidad" Type="int" Mode="In" />
+          <Parameter Name="pVarTipoResp" Type="varchar" Mode="In" />
+          <Parameter Name="pIntIdEmpleado" Type="int" Mode="In" />
+          <Parameter Name="pIntResult_out" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_gop_ins_exp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
+          <Parameter Name="pVarDescripcion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEspecificaciones" Type="varchar" Mode="In" />
+          <Parameter Name="pDecValorReferencial" Type="decimal" Mode="In" />
+          <Parameter Name="pVarTipoEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarNomEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarApeEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarRazonSocialEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarNomContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarApeContaco" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEmailContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarTelfContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarDireccionContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarNomSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarApeSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarTelfSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEmailSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pIntIdExp_out" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_gop_upd_act_cron_ejec_obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
+          <Parameter Name="pIntIdActividad" Type="int" Mode="In" />
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pDatFecIniProg" Type="datetime" Mode="In" />
+          <Parameter Name="pDatFecFinProg" Type="datetime" Mode="In" />
+          <Parameter Name="pDatFecIniEjec" Type="datetime" Mode="In" />
+          <Parameter Name="pDatFecFinEjec" Type="datetime" Mode="In" />
+          <Parameter Name="pDecCosto" Type="decimal" Mode="In" />
+          <Parameter Name="pIntCantidad" Type="int" Mode="In" />
+          <Parameter Name="pVarTipoResp" Type="varchar" Mode="In" />
+          <Parameter Name="pIntIdResp" Type="int" Mode="In" />
+          <Parameter Name="pIntResult_out" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_gop_upd_exp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdExpediente" Type="int" Mode="In" />
+          <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
+          <Parameter Name="pVarDescripcion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEspecificaciones" Type="varchar" Mode="In" />
+          <Parameter Name="pDecValorReferencial" Type="decimal" Mode="In" />
+          <Parameter Name="pVarTipoEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarNomEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarApeEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarRazonSocialEjecutor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarNomContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarApeContaco" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEmailContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarTelfContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarDireccionContacto" Type="varchar" Mode="In" />
+          <Parameter Name="pVarNomSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarApeSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarTelfSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEmailSupervisor" Type="varchar" Mode="In" />
+          <Parameter Name="pIntIdEjecutor" Type="int" Mode="In" />
+          <Parameter Name="pIntIdContacto" Type="int" Mode="In" />
+          <Parameter Name="pIntIdSupervisor" Type="int" Mode="In" />
+          <Parameter Name="pIntIdExp_out" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ObrasPublicasModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ObrasPublicasEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="OP_ACTIVIDAD_EJECUCION" EntityType="ObrasPublicasModel.OP_ACTIVIDAD_EJECUCION" />
+          <EntitySet Name="OP_CRONOGRAMA_EJECUCION" EntityType="ObrasPublicasModel.OP_CRONOGRAMA_EJECUCION" />
+          <EntitySet Name="OP_CUADERNO_OBRA" EntityType="ObrasPublicasModel.OP_CUADERNO_OBRA" />
+          <EntitySet Name="OP_CUADERNO_OBRA_MAQUINARIA" EntityType="ObrasPublicasModel.OP_CUADERNO_OBRA_MAQUINARIA" />
+          <EntitySet Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntityType="ObrasPublicasModel.OP_DOCUMENTO_EXPEDIENTE_TECNICO" />
+          <EntitySet Name="OP_ENTREGA_MATERIAL" EntityType="ObrasPublicasModel.OP_ENTREGA_MATERIAL" />
+          <EntitySet Name="OP_EXPEDIENTE_TECNICO" EntityType="ObrasPublicasModel.OP_EXPEDIENTE_TECNICO" />
+          <EntitySet Name="OP_INFORME_OBRA" EntityType="ObrasPublicasModel.OP_INFORME_OBRA" />
+          <EntitySet Name="OP_MAQUINARIA" EntityType="ObrasPublicasModel.OP_MAQUINARIA" />
+          <EntitySet Name="OP_MATERIAL" EntityType="ObrasPublicasModel.OP_MATERIAL" />
+          <EntitySet Name="OP_PROYECTO_INVERSION_PUBLICA" EntityType="ObrasPublicasModel.OP_PROYECTO_INVERSION_PUBLICA" />
+          <AssociationSet Name="FK_op_actividad_ejecucion_op_cronograma_ejecucion" Association="ObrasPublicasModel.FK_op_actividad_ejecucion_op_cronograma_ejecucion">
+            <End Role="OP_CRONOGRAMA_EJECUCION" EntitySet="OP_CRONOGRAMA_EJECUCION" />
+            <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cuaderno_obra_op_actividad_ejecucion" Association="ObrasPublicasModel.FK_op_cuaderno_obra_op_actividad_ejecucion">
+            <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+            <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cronograma_ejecucion_op_expediente_tecnico" Association="ObrasPublicasModel.FK_op_cronograma_ejecucion_op_expediente_tecnico">
+            <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+            <End Role="OP_CRONOGRAMA_EJECUCION" EntitySet="OP_CRONOGRAMA_EJECUCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra" Association="ObrasPublicasModel.FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra">
+            <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+            <End Role="OP_CUADERNO_OBRA_MAQUINARIA" EntitySet="OP_CUADERNO_OBRA_MAQUINARIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_cuaderno_obra_maquinaria_op_maquinaria" Association="ObrasPublicasModel.FK_op_cuaderno_obra_maquinaria_op_maquinaria">
+            <End Role="OP_MAQUINARIA" EntitySet="OP_MAQUINARIA" />
+            <End Role="OP_CUADERNO_OBRA_MAQUINARIA" EntitySet="OP_CUADERNO_OBRA_MAQUINARIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_documento_op_expediente_tecnico" Association="ObrasPublicasModel.FK_op_documento_op_expediente_tecnico">
+            <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+            <End Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntitySet="OP_DOCUMENTO_EXPEDIENTE_TECNICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_entrega_material_op_material" Association="ObrasPublicasModel.FK_op_entrega_material_op_material">
+            <End Role="OP_MATERIAL" EntitySet="OP_MATERIAL" />
+            <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA" Association="ObrasPublicasModel.FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA">
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+            <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_expediente_tecnico_op_proyecto_inversion_publica" Association="ObrasPublicasModel.FK_op_expediente_tecnico_op_proyecto_inversion_publica">
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+            <End Role="OP_EXPEDIENTE_TECNICO" EntitySet="OP_EXPEDIENTE_TECNICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_op_informe_avance_obra_op_proyecto_inversion_publica" Association="ObrasPublicasModel.FK_op_informe_avance_obra_op_proyecto_inversion_publica">
+            <End Role="OP_PROYECTO_INVERSION_PUBLICA" EntitySet="OP_PROYECTO_INVERSION_PUBLICA" />
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="OP_INFORME_ACTIVIDAD" Association="ObrasPublicasModel.OP_INFORME_ACTIVIDAD">
+            <End Role="OP_ACTIVIDAD_EJECUCION" EntitySet="OP_ACTIVIDAD_EJECUCION" />
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="OP_INFORME_CUADERNO" Association="ObrasPublicasModel.OP_INFORME_CUADERNO">
+            <End Role="OP_CUADERNO_OBRA" EntitySet="OP_CUADERNO_OBRA" />
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="OP_INFORME_ENTREGA" Association="ObrasPublicasModel.OP_INFORME_ENTREGA">
+            <End Role="OP_ENTREGA_MATERIAL" EntitySet="OP_ENTREGA_MATERIAL" />
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+          </AssociationSet>
+          <AssociationSet Name="OP_INFORME_REFERENCIA" Association="ObrasPublicasModel.OP_INFORME_REFERENCIA">
+            <End Role="OP_INFORME_OBRA" EntitySet="OP_INFORME_OBRA" />
+            <End Role="OP_INFORME_OBRA1" EntitySet="OP_INFORME_OBRA" />
+          </AssociationSet>
+          <FunctionImport Name="sp_gop_get_act_cron_ejec_obra_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_act_cron_ejec_obra_x_id_Result)">
+            <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdActividad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_act_x_cron_ejec_obra" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_act_x_cron_ejec_obra_Result)">
+            <Parameter Name="pIntIdExp" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_areas" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_areas_Result)" />
+          <FunctionImport Name="sp_gop_get_emp_perj" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_emp_perj_Result)" />
+          <FunctionImport Name="sp_gop_get_emp_pern_x_area" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_emp_pern_x_area_Result)">
+          <Parameter Name="pIntIdArea" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_ent_mat_x_proy" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_ent_mat_x_proy_Result)">
+          <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_exp_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_exp_x_id_Result)">
+          <Parameter Name="pIntIdExp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_con_cro" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_con_cro_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_con_entmat" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_con_entmat_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_con_exp" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_con_exp_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_sin_cro" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_sin_cro_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_sin_exp" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_sin_exp_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_x_filtro" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_x_filtro_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_x_id_Result)">
+          <Parameter Name="pIntIdProy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_ins_act_cron_ejec_obra">
+            <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pDatFecIniProg" Mode="In" Type="DateTime" />
+            <Parameter Name="pDatFecFinProg" Mode="In" Type="DateTime" />
+            <Parameter Name="pDatFecIniEjec" Mode="In" Type="DateTime" />
+            <Parameter Name="pDatFecFinEjec" Mode="In" Type="DateTime" />
+            <Parameter Name="pDecCosto" Mode="In" Type="Decimal" />
+            <Parameter Name="pIntCantidad" Mode="In" Type="Int32" />
+            <Parameter Name="pVarTipoResp" Mode="In" Type="String" />
+            <Parameter Name="pIntIdEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="pIntResult_out" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_ins_exp">
+            <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="pVarDescripcion" Mode="In" Type="String" />
+            <Parameter Name="pVarEspecificaciones" Mode="In" Type="String" />
+            <Parameter Name="pDecValorReferencial" Mode="In" Type="Decimal" />
+            <Parameter Name="pVarTipoEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarNomEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarApeEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarRazonSocialEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarNomContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarApeContaco" Mode="In" Type="String" />
+            <Parameter Name="pVarEmailContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarTelfContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarDireccionContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarNomSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pVarApeSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pVarTelfSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pVarEmailSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pIntIdExp_out" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_upd_act_cron_ejec_obra">
+            <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdActividad" Mode="In" Type="Int32" />
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pDatFecIniProg" Mode="In" Type="DateTime" />
+            <Parameter Name="pDatFecFinProg" Mode="In" Type="DateTime" />
+            <Parameter Name="pDatFecIniEjec" Mode="In" Type="DateTime" />
+            <Parameter Name="pDatFecFinEjec" Mode="In" Type="DateTime" />
+            <Parameter Name="pDecCosto" Mode="In" Type="Decimal" />
+            <Parameter Name="pIntCantidad" Mode="In" Type="Int32" />
+            <Parameter Name="pVarTipoResp" Mode="In" Type="String" />
+            <Parameter Name="pIntIdResp" Mode="In" Type="Int32" />
+            <Parameter Name="pIntResult_out" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_ent_mat_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_ent_mat_x_id_Result)">
+            <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdEntrega" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_gop_upd_exp">
+            <Parameter Name="pIntIdExpediente" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="pVarDescripcion" Mode="In" Type="String" />
+            <Parameter Name="pVarEspecificaciones" Mode="In" Type="String" />
+            <Parameter Name="pDecValorReferencial" Mode="In" Type="Decimal" />
+            <Parameter Name="pVarTipoEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarNomEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarApeEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarRazonSocialEjecutor" Mode="In" Type="String" />
+            <Parameter Name="pVarNomContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarApeContaco" Mode="In" Type="String" />
+            <Parameter Name="pVarEmailContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarTelfContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarDireccionContacto" Mode="In" Type="String" />
+            <Parameter Name="pVarNomSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pVarApeSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pVarTelfSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pVarEmailSupervisor" Mode="In" Type="String" />
+            <Parameter Name="pIntIdEjecutor" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdContacto" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdSupervisor" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdExp_out" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="OP_ACTIVIDAD_EJECUCION">
+          <Key>
+            <PropertyRef Name="coActividad" />
+          </Key>
+          <Property Name="coActividad" Type="Int32" Nullable="false" />
+          <Property Name="noActividad" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="coCronograma" Type="Int32" Nullable="false" />
+          <Property Name="feInicioProgramada" Type="DateTime" Precision="0" />
+          <Property Name="feFinProgramada" Type="DateTime" Precision="0" />
+          <Property Name="feInicioEjecucion" Type="DateTime" Precision="0" />
+          <Property Name="feFinEjecucion" Type="DateTime" Precision="0" />
+          <Property Name="nuCostoDirecto" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="nuCantidadRRHH" Type="Int32" />
+          <Property Name="idEmpleado" Type="Int32" />
+          <NavigationProperty Name="OP_CRONOGRAMA_EJECUCION" Relationship="ObrasPublicasModel.FK_op_actividad_ejecucion_op_cronograma_ejecucion" FromRole="OP_ACTIVIDAD_EJECUCION" ToRole="OP_CRONOGRAMA_EJECUCION" />
+          <NavigationProperty Name="OP_CUADERNO_OBRA" Relationship="ObrasPublicasModel.FK_op_cuaderno_obra_op_actividad_ejecucion" FromRole="OP_ACTIVIDAD_EJECUCION" ToRole="OP_CUADERNO_OBRA" />
+          <NavigationProperty Name="OP_INFORME_OBRA" Relationship="ObrasPublicasModel.OP_INFORME_ACTIVIDAD" FromRole="OP_ACTIVIDAD_EJECUCION" ToRole="OP_INFORME_OBRA" />
+        </EntityType>
+        <EntityType Name="OP_CRONOGRAMA_EJECUCION">
+          <Key>
+            <PropertyRef Name="coCronograma" />
+          </Key>
+          <Property Name="coCronograma" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coExpediente" Type="Int32" Nullable="false" />
+          <Property Name="feEmision" Type="DateTime" Precision="3" />
+          <Property Name="nuPlazoEjecucion" Type="Int32" />
+          <NavigationProperty Name="OP_ACTIVIDAD_EJECUCION" Relationship="ObrasPublicasModel.FK_op_actividad_ejecucion_op_cronograma_ejecucion" FromRole="OP_CRONOGRAMA_EJECUCION" ToRole="OP_ACTIVIDAD_EJECUCION" />
+          <NavigationProperty Name="OP_EXPEDIENTE_TECNICO" Relationship="ObrasPublicasModel.FK_op_cronograma_ejecucion_op_expediente_tecnico" FromRole="OP_CRONOGRAMA_EJECUCION" ToRole="OP_EXPEDIENTE_TECNICO" />
+        </EntityType>
+        <EntityType Name="OP_CUADERNO_OBRA">
+          <Key>
+            <PropertyRef Name="coIncidencia" />
+          </Key>
+          <Property Name="coIncidencia" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="txDescripcion" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="noTipoIncidencia" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="noCriticidad" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="noCaracteristicaDia" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="feIncidencia" Type="DateTime" Precision="3" />
+          <Property Name="coResponsable" Type="Int32" />
+          <Property Name="coActividad" Type="Int32" />
+          <Property Name="coUsuarioCreacion" Type="Int32" />
+          <Property Name="feCreacion" Type="DateTime" Precision="3" />
+          <Property Name="coUsuarioEdicion" Type="Int32" />
+          <Property Name="feEdicion" Type="DateTime" Precision="3" />
+          <Property Name="noIpPc" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="noUserAgent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OP_ACTIVIDAD_EJECUCION" Relationship="ObrasPublicasModel.FK_op_cuaderno_obra_op_actividad_ejecucion" FromRole="OP_CUADERNO_OBRA" ToRole="OP_ACTIVIDAD_EJECUCION" />
+          <NavigationProperty Name="OP_CUADERNO_OBRA_MAQUINARIA" Relationship="ObrasPublicasModel.FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra" FromRole="OP_CUADERNO_OBRA" ToRole="OP_CUADERNO_OBRA_MAQUINARIA" />
+          <NavigationProperty Name="OP_INFORME_OBRA" Relationship="ObrasPublicasModel.OP_INFORME_CUADERNO" FromRole="OP_CUADERNO_OBRA" ToRole="OP_INFORME_OBRA" />
+        </EntityType>
+        <EntityType Name="OP_CUADERNO_OBRA_MAQUINARIA">
+          <Key>
+            <PropertyRef Name="coCuadernoObraMaquinaria" />
+          </Key>
+          <Property Name="coCuadernoObraMaquinaria" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coIncidencia" Type="Int32" />
+          <Property Name="coMaquinaria" Type="Int32" Nullable="false" />
+          <Property Name="noTrabajoRealizado" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="feInicioActividad" Type="DateTime" Precision="3" />
+          <Property Name="feFinActividad" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OP_CUADERNO_OBRA" Relationship="ObrasPublicasModel.FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra" FromRole="OP_CUADERNO_OBRA_MAQUINARIA" ToRole="OP_CUADERNO_OBRA" />
+          <NavigationProperty Name="OP_MAQUINARIA" Relationship="ObrasPublicasModel.FK_op_cuaderno_obra_maquinaria_op_maquinaria" FromRole="OP_CUADERNO_OBRA_MAQUINARIA" ToRole="OP_MAQUINARIA" />
+        </EntityType>
+        <EntityType Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+          <Key>
+            <PropertyRef Name="coDocumento" />
+          </Key>
+          <Property Name="coDocumento" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coExpediente" Type="Int32" Nullable="false" />
+          <Property Name="nuNroDOcumento" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="feEmision" Type="DateTime" Precision="0" />
+          <Property Name="txDescripcion" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="txRutaArchivo" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="noTipoDocExpTec" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="nomArchivo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OP_EXPEDIENTE_TECNICO" Relationship="ObrasPublicasModel.FK_op_documento_op_expediente_tecnico" FromRole="OP_DOCUMENTO_EXPEDIENTE_TECNICO" ToRole="OP_EXPEDIENTE_TECNICO" />
+        </EntityType>
+        <EntityType Name="OP_ENTREGA_MATERIAL">
+          <Key>
+            <PropertyRef Name="coEntrega" />
+          </Key>
+          <Property Name="coEntrega" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="feEntregaProgramada" Type="DateTime" Precision="3" />
+          <Property Name="feEntregaEfectiva" Type="DateTime" Precision="3" />
+          <Property Name="txObservaciones" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="noTipoEntrega" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="coProveedor" Type="Int32" Nullable="false" />
+          <Property Name="coMaterial" Type="Int32" Nullable="false" />
+          <Property Name="nuCantidad" Type="Int32" />
+          <Property Name="coProyecto" Type="Int32" />
+          <NavigationProperty Name="OP_MATERIAL" Relationship="ObrasPublicasModel.FK_op_entrega_material_op_material" FromRole="OP_ENTREGA_MATERIAL" ToRole="OP_MATERIAL" />
+          <NavigationProperty Name="OP_PROYECTO_INVERSION_PUBLICA" Relationship="ObrasPublicasModel.FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA" FromRole="OP_ENTREGA_MATERIAL" ToRole="OP_PROYECTO_INVERSION_PUBLICA" />
+          <NavigationProperty Name="OP_INFORME_OBRA" Relationship="ObrasPublicasModel.OP_INFORME_ENTREGA" FromRole="OP_ENTREGA_MATERIAL" ToRole="OP_INFORME_OBRA" />
+        </EntityType>
+        <EntityType Name="OP_EXPEDIENTE_TECNICO">
+          <Key>
+            <PropertyRef Name="coExpediente" />
+          </Key>
+          <Property Name="coExpediente" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coProyecto" Type="Int32" />
+          <Property Name="txDescripcion" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="txEspecificacionesTecnicas" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="feElaboracionPresupuesto" Type="DateTime" Precision="3" />
+          <Property Name="nuValorReferencial" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="coEjecutor" Type="Int32" />
+          <Property Name="coSupervisor" Type="Int32" />
+          <Property Name="coContacto" Type="Int32" />
+          <NavigationProperty Name="OP_CRONOGRAMA_EJECUCION" Relationship="ObrasPublicasModel.FK_op_cronograma_ejecucion_op_expediente_tecnico" FromRole="OP_EXPEDIENTE_TECNICO" ToRole="OP_CRONOGRAMA_EJECUCION" />
+          <NavigationProperty Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO" Relationship="ObrasPublicasModel.FK_op_documento_op_expediente_tecnico" FromRole="OP_EXPEDIENTE_TECNICO" ToRole="OP_DOCUMENTO_EXPEDIENTE_TECNICO" />
+          <NavigationProperty Name="OP_PROYECTO_INVERSION_PUBLICA" Relationship="ObrasPublicasModel.FK_op_expediente_tecnico_op_proyecto_inversion_publica" FromRole="OP_EXPEDIENTE_TECNICO" ToRole="OP_PROYECTO_INVERSION_PUBLICA" />
+        </EntityType>
+        <EntityType Name="OP_INFORME_OBRA">
+          <Key>
+            <PropertyRef Name="coInforme" />
+          </Key>
+          <Property Name="coInforme" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nuInforme" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="txTituloInforme" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="feEmision" Type="DateTime" Precision="0" />
+          <Property Name="txConclusion" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="txRecomendacion" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="flEstado" Type="Int32" />
+          <Property Name="coProyecto" Type="Int32" Nullable="false" />
+          <Property Name="noTipoInforme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OP_PROYECTO_INVERSION_PUBLICA" Relationship="ObrasPublicasModel.FK_op_informe_avance_obra_op_proyecto_inversion_publica" FromRole="OP_INFORME_OBRA" ToRole="OP_PROYECTO_INVERSION_PUBLICA" />
+          <NavigationProperty Name="OP_ACTIVIDAD_EJECUCION" Relationship="ObrasPublicasModel.OP_INFORME_ACTIVIDAD" FromRole="OP_INFORME_OBRA" ToRole="OP_ACTIVIDAD_EJECUCION" />
+          <NavigationProperty Name="OP_CUADERNO_OBRA" Relationship="ObrasPublicasModel.OP_INFORME_CUADERNO" FromRole="OP_INFORME_OBRA" ToRole="OP_CUADERNO_OBRA" />
+          <NavigationProperty Name="OP_ENTREGA_MATERIAL" Relationship="ObrasPublicasModel.OP_INFORME_ENTREGA" FromRole="OP_INFORME_OBRA" ToRole="OP_ENTREGA_MATERIAL" />
+          <NavigationProperty Name="OP_INFORME_OBRA1" Relationship="ObrasPublicasModel.OP_INFORME_REFERENCIA" FromRole="OP_INFORME_OBRA" ToRole="OP_INFORME_OBRA1" />
+          <NavigationProperty Name="OP_INFORME_OBRA2" Relationship="ObrasPublicasModel.OP_INFORME_REFERENCIA" FromRole="OP_INFORME_OBRA1" ToRole="OP_INFORME_OBRA" />
+        </EntityType>
+        <EntityType Name="OP_MAQUINARIA">
+          <Key>
+            <PropertyRef Name="coMaquinaria" />
+          </Key>
+          <Property Name="coMaquinaria" Type="Int32" Nullable="false" />
+          <Property Name="noMaquinaria" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="noMarca" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="noModelo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="nuAnioFabricacion" Type="Int32" />
+          <Property Name="noPlaca" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="noTipo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OP_CUADERNO_OBRA_MAQUINARIA" Relationship="ObrasPublicasModel.FK_op_cuaderno_obra_maquinaria_op_maquinaria" FromRole="OP_MAQUINARIA" ToRole="OP_CUADERNO_OBRA_MAQUINARIA" />
+        </EntityType>
+        <EntityType Name="OP_MATERIAL">
+          <Key>
+            <PropertyRef Name="coMaterial" />
+          </Key>
+          <Property Name="coMaterial" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="noMaterial" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="nuValorReferencial" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="nuStock" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="nuStockMinimo" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="noUnidadMedida" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OP_ENTREGA_MATERIAL" Relationship="ObrasPublicasModel.FK_op_entrega_material_op_material" FromRole="OP_MATERIAL" ToRole="OP_ENTREGA_MATERIAL" />
+        </EntityType>
+        <EntityType Name="OP_PROYECTO_INVERSION_PUBLICA">
+          <Key>
+            <PropertyRef Name="coProyecto" />
+          </Key>
+          <Property Name="coProyecto" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coSNIP" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="txDescripcion" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="noNombre" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="coVia" Type="Int32" Nullable="false" />
+          <Property Name="txUbicacion" Type="String" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="nuBeneficiarios" Type="Int32" />
+          <Property Name="nuValorReferencialPerfil" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+          <Property Name="feRegistro" Type="DateTime" Precision="0" />
+          <Property Name="noEstado" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OP_ENTREGA_MATERIAL" Relationship="ObrasPublicasModel.FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA" FromRole="OP_PROYECTO_INVERSION_PUBLICA" ToRole="OP_ENTREGA_MATERIAL" />
+          <NavigationProperty Name="OP_EXPEDIENTE_TECNICO" Relationship="ObrasPublicasModel.FK_op_expediente_tecnico_op_proyecto_inversion_publica" FromRole="OP_PROYECTO_INVERSION_PUBLICA" ToRole="OP_EXPEDIENTE_TECNICO" />
+          <NavigationProperty Name="OP_INFORME_OBRA" Relationship="ObrasPublicasModel.FK_op_informe_avance_obra_op_proyecto_inversion_publica" FromRole="OP_PROYECTO_INVERSION_PUBLICA" ToRole="OP_INFORME_OBRA" />
+        </EntityType>
+        <Association Name="FK_op_actividad_ejecucion_op_cronograma_ejecucion">
+          <End Role="OP_CRONOGRAMA_EJECUCION" Type="ObrasPublicasModel.OP_CRONOGRAMA_EJECUCION" Multiplicity="1" />
+          <End Role="OP_ACTIVIDAD_EJECUCION" Type="ObrasPublicasModel.OP_ACTIVIDAD_EJECUCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_CRONOGRAMA_EJECUCION">
+              <PropertyRef Name="coCronograma" />
+            </Principal>
+            <Dependent Role="OP_ACTIVIDAD_EJECUCION">
+              <PropertyRef Name="coCronograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cuaderno_obra_op_actividad_ejecucion">
+          <End Role="OP_ACTIVIDAD_EJECUCION" Type="ObrasPublicasModel.OP_ACTIVIDAD_EJECUCION" Multiplicity="0..1" />
+          <End Role="OP_CUADERNO_OBRA" Type="ObrasPublicasModel.OP_CUADERNO_OBRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_ACTIVIDAD_EJECUCION">
+              <PropertyRef Name="coActividad" />
+            </Principal>
+            <Dependent Role="OP_CUADERNO_OBRA">
+              <PropertyRef Name="coActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cronograma_ejecucion_op_expediente_tecnico">
+          <End Role="OP_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.OP_EXPEDIENTE_TECNICO" Multiplicity="1" />
+          <End Role="OP_CRONOGRAMA_EJECUCION" Type="ObrasPublicasModel.OP_CRONOGRAMA_EJECUCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coExpediente" />
+            </Principal>
+            <Dependent Role="OP_CRONOGRAMA_EJECUCION">
+              <PropertyRef Name="coExpediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cuaderno_obra_maquinaria_op_cuaderno_obra">
+          <End Role="OP_CUADERNO_OBRA" Type="ObrasPublicasModel.OP_CUADERNO_OBRA" Multiplicity="0..1" />
+          <End Role="OP_CUADERNO_OBRA_MAQUINARIA" Type="ObrasPublicasModel.OP_CUADERNO_OBRA_MAQUINARIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_CUADERNO_OBRA">
+              <PropertyRef Name="coIncidencia" />
+            </Principal>
+            <Dependent Role="OP_CUADERNO_OBRA_MAQUINARIA">
+              <PropertyRef Name="coIncidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_cuaderno_obra_maquinaria_op_maquinaria">
+          <End Role="OP_MAQUINARIA" Type="ObrasPublicasModel.OP_MAQUINARIA" Multiplicity="1" />
+          <End Role="OP_CUADERNO_OBRA_MAQUINARIA" Type="ObrasPublicasModel.OP_CUADERNO_OBRA_MAQUINARIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_MAQUINARIA">
+              <PropertyRef Name="coMaquinaria" />
+            </Principal>
+            <Dependent Role="OP_CUADERNO_OBRA_MAQUINARIA">
+              <PropertyRef Name="coMaquinaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_documento_op_expediente_tecnico">
+          <End Role="OP_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.OP_EXPEDIENTE_TECNICO" Multiplicity="1" />
+          <End Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.OP_DOCUMENTO_EXPEDIENTE_TECNICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coExpediente" />
+            </Principal>
+            <Dependent Role="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coExpediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_entrega_material_op_material">
+          <End Role="OP_MATERIAL" Type="ObrasPublicasModel.OP_MATERIAL" Multiplicity="1" />
+          <End Role="OP_ENTREGA_MATERIAL" Type="ObrasPublicasModel.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_MATERIAL">
+              <PropertyRef Name="coMaterial" />
+            </Principal>
+            <Dependent Role="OP_ENTREGA_MATERIAL">
+              <PropertyRef Name="coMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OP_ENTREGA_MATERIAL_OP_PROYECTO_INVERSION_PUBLICA">
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="ObrasPublicasModel.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="0..1" />
+          <End Role="OP_ENTREGA_MATERIAL" Type="ObrasPublicasModel.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coProyecto" />
+            </Principal>
+            <Dependent Role="OP_ENTREGA_MATERIAL">
+              <PropertyRef Name="coProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_expediente_tecnico_op_proyecto_inversion_publica">
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="ObrasPublicasModel.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="0..1" />
+          <End Role="OP_EXPEDIENTE_TECNICO" Type="ObrasPublicasModel.OP_EXPEDIENTE_TECNICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coProyecto" />
+            </Principal>
+            <Dependent Role="OP_EXPEDIENTE_TECNICO">
+              <PropertyRef Name="coProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_op_informe_avance_obra_op_proyecto_inversion_publica">
+          <End Role="OP_PROYECTO_INVERSION_PUBLICA" Type="ObrasPublicasModel.OP_PROYECTO_INVERSION_PUBLICA" Multiplicity="1" />
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.OP_INFORME_OBRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OP_PROYECTO_INVERSION_PUBLICA">
+              <PropertyRef Name="coProyecto" />
+            </Principal>
+            <Dependent Role="OP_INFORME_OBRA">
+              <PropertyRef Name="coProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OP_INFORME_ACTIVIDAD">
+          <End Role="OP_ACTIVIDAD_EJECUCION" Type="ObrasPublicasModel.OP_ACTIVIDAD_EJECUCION" Multiplicity="*" />
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.OP_INFORME_OBRA" Multiplicity="*" />
+        </Association>
+        <Association Name="OP_INFORME_CUADERNO">
+          <End Role="OP_CUADERNO_OBRA" Type="ObrasPublicasModel.OP_CUADERNO_OBRA" Multiplicity="*" />
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.OP_INFORME_OBRA" Multiplicity="*" />
+        </Association>
+        <Association Name="OP_INFORME_ENTREGA">
+          <End Role="OP_ENTREGA_MATERIAL" Type="ObrasPublicasModel.OP_ENTREGA_MATERIAL" Multiplicity="*" />
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.OP_INFORME_OBRA" Multiplicity="*" />
+        </Association>
+        <Association Name="OP_INFORME_REFERENCIA">
+          <End Role="OP_INFORME_OBRA" Type="ObrasPublicasModel.OP_INFORME_OBRA" Multiplicity="*" />
+          <End Role="OP_INFORME_OBRA1" Type="ObrasPublicasModel.OP_INFORME_OBRA" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="sp_gop_get_act_cron_ejec_obra_x_id_Result">
+          <Property Type="Int32" Name="COPROYECTO" Nullable="false" />
+          <Property Type="String" Name="NONOMBRE" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="COACTIVIDAD" Nullable="false" />
+          <Property Type="String" Name="noActividad" Nullable="true" MaxLength="45" />
+          <Property Type="DateTime" Name="FEINICIOPROGRAMADA" Nullable="true" />
+          <Property Type="DateTime" Name="FEFINPROGRAMADA" Nullable="true" />
+          <Property Type="DateTime" Name="FEINICIOEJECUCION" Nullable="true" />
+          <Property Type="DateTime" Name="FEFINEJECUCION" Nullable="true" />
+          <Property Type="Decimal" Name="NUCOSTODIRECTO" Nullable="true" Precision="11" Scale="2" />
+          <Property Type="Int32" Name="NUCANTIDADRRHH" Nullable="true" />
+          <Property Type="Int32" Name="IDPERSONA" Nullable="false" />
+          <Property Type="Int32" Name="idPersonaJuridica" Nullable="true" />
+          <Property Type="Int32" Name="idPersonaNatural" Nullable="true" />
+          <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="APELLIDOPATERNO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RAZONSOCIAL" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+          <Property Type="Int32" Name="idArea" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_act_x_cron_ejec_obra_Result">
+          <Property Type="Int32" Name="COPROYECTO" Nullable="false" />
+          <Property Type="String" Name="NONOMBRE" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="COACTIVIDAD" Nullable="false" />
+          <Property Type="DateTime" Name="FEINICIOPROGRAMADA" Nullable="true" />
+          <Property Type="DateTime" Name="FEFINPROGRAMADA" Nullable="true" />
+          <Property Type="DateTime" Name="FEINICIOEJECUCION" Nullable="true" />
+          <Property Type="DateTime" Name="FEFINEJECUCION" Nullable="true" />
+          <Property Type="Decimal" Name="NUCOSTODIRECTO" Nullable="true" Precision="11" Scale="2" />
+          <Property Type="Int32" Name="NUCANTIDADRRHH" Nullable="true" />
+          <Property Type="Int32" Name="IDPERSONA" Nullable="false" />
+          <Property Type="Int32" Name="idPersonaJuridica" Nullable="true" />
+          <Property Type="Int32" Name="idPersonaNatural" Nullable="true" />
+          <Property Type="String" Name="noActividad" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="APELLIDOPATERNO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RAZONSOCIAL" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_areas_Result">
+          <Property Type="Int32" Name="idArea" Nullable="false" />
+          <Property Type="String" Name="descArea" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_emp_perj_Result">
+          <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_emp_pern_x_area_Result">
+          <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_ent_mat_x_proy_Result">
+          <Property Type="Int32" Name="coEntrega" Nullable="false" />
+          <Property Type="Int32" Name="coMaterial" Nullable="false" />
+          <Property Type="Int32" Name="coProveedor" Nullable="false" />
+          <Property Type="Int32" Name="coProyecto" Nullable="true" />
+          <Property Type="DateTime" Name="feEntregaEfectiva" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="feEntregaProgramada" Nullable="true" Precision="23" />
+          <Property Type="String" Name="noTipoEntrega" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="nuCantidad" Nullable="true" />
+          <Property Type="String" Name="txObservaciones" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="noMaterial" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_exp_x_id_Result">
+          <Property Type="Int32" Name="coContacto" Nullable="true" />
+          <Property Type="Int32" Name="coEjecutor" Nullable="true" />
+          <Property Type="Int32" Name="coExpediente" Nullable="false" />
+          <Property Type="Int32" Name="coProyecto" Nullable="true" />
+          <Property Type="String" Name="txEspecificacionesTecnicas" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="coSupervisor" Nullable="true" />
+          <Property Type="DateTime" Name="feElaboracionPresupuesto" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="nuValorReferencial" Nullable="true" Precision="11" Scale="2" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CONT_APE_PAT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CONT_NOM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CONT_CORREO" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="CONT_DIRECCION" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CONT_TELF" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SUP_APE_PAT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SUP_NOM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SUP_CORREO" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="SUP_TELF" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NOM_PROYECTO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EJEC_RAZSOC" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EJEC_APE_PAT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EJEC_NOM" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_PER_CONT" Nullable="false" />
+          <Property Type="Int32" Name="ID_PER_SUP" Nullable="false" />
+          <Property Type="Int32" Name="ID_PER_EJEC" Nullable="false" />
+          <Property Type="Int32" Name="EJEC_ID_PERN" Nullable="true" />
+          <Property Type="Int32" Name="EJEC_ID_PERJ" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_con_cro_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="coCronograma" Nullable="false" />
+          <Property Type="Int32" Name="coExpediente" Nullable="false" />
+          <Property Type="DateTime" Name="feEmision" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="nuPlazoEjecucion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_con_entmat_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_con_exp_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="coExpediente" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_sin_cro_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="coExpediente" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_sin_exp_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_x_filtro_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_x_id_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_ent_mat_x_id_Result">
+          <Property Type="Int32" Name="coEntrega" Nullable="false" />
+          <Property Type="Int32" Name="coMaterial" Nullable="false" />
+          <Property Type="Int32" Name="coProveedor" Nullable="false" />
+          <Property Type="Int32" Name="coProyecto" Nullable="true" />
+          <Property Type="DateTime" Name="feEntregaEfectiva" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="feEntregaProgramada" Nullable="true" Precision="23" />
+          <Property Type="String" Name="noTipoEntrega" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="nuCantidad" Nullable="true" />
+          <Property Type="String" Name="txObservaciones" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="noMaterial" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ObrasPublicasModelStoreContainer" CdmEntityContainer="ObrasPublicasEntities">
+          <EntitySetMapping Name="OP_ACTIVIDAD_EJECUCION">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_ACTIVIDAD_EJECUCION">
+              <MappingFragment StoreEntitySet="OP_ACTIVIDAD_EJECUCION">
+                <ScalarProperty Name="coActividad" ColumnName="coActividad" />
+                <ScalarProperty Name="noActividad" ColumnName="noActividad" />
+                <ScalarProperty Name="coCronograma" ColumnName="coCronograma" />
+                <ScalarProperty Name="feInicioProgramada" ColumnName="feInicioProgramada" />
+                <ScalarProperty Name="feFinProgramada" ColumnName="feFinProgramada" />
+                <ScalarProperty Name="feInicioEjecucion" ColumnName="feInicioEjecucion" />
+                <ScalarProperty Name="feFinEjecucion" ColumnName="feFinEjecucion" />
+                <ScalarProperty Name="nuCostoDirecto" ColumnName="nuCostoDirecto" />
+                <ScalarProperty Name="nuCantidadRRHH" ColumnName="nuCantidadRRHH" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_CRONOGRAMA_EJECUCION">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_CRONOGRAMA_EJECUCION">
+              <MappingFragment StoreEntitySet="OP_CRONOGRAMA_EJECUCION">
+                <ScalarProperty Name="coCronograma" ColumnName="coCronograma" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+                <ScalarProperty Name="feEmision" ColumnName="feEmision" />
+                <ScalarProperty Name="nuPlazoEjecucion" ColumnName="nuPlazoEjecucion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_CUADERNO_OBRA">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_CUADERNO_OBRA">
+              <MappingFragment StoreEntitySet="OP_CUADERNO_OBRA">
+                <ScalarProperty Name="coIncidencia" ColumnName="coIncidencia" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noTipoIncidencia" ColumnName="noTipoIncidencia" />
+                <ScalarProperty Name="noCriticidad" ColumnName="noCriticidad" />
+                <ScalarProperty Name="noCaracteristicaDia" ColumnName="noCaracteristicaDia" />
+                <ScalarProperty Name="feIncidencia" ColumnName="feIncidencia" />
+                <ScalarProperty Name="coResponsable" ColumnName="coResponsable" />
+                <ScalarProperty Name="coActividad" ColumnName="coActividad" />
+                <ScalarProperty Name="coUsuarioCreacion" ColumnName="coUsuarioCreacion" />
+                <ScalarProperty Name="feCreacion" ColumnName="feCreacion" />
+                <ScalarProperty Name="coUsuarioEdicion" ColumnName="coUsuarioEdicion" />
+                <ScalarProperty Name="feEdicion" ColumnName="feEdicion" />
+                <ScalarProperty Name="noIpPc" ColumnName="noIpPc" />
+                <ScalarProperty Name="noUserAgent" ColumnName="noUserAgent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_CUADERNO_OBRA_MAQUINARIA">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_CUADERNO_OBRA_MAQUINARIA">
+              <MappingFragment StoreEntitySet="OP_CUADERNO_OBRA_MAQUINARIA">
+                <ScalarProperty Name="coCuadernoObraMaquinaria" ColumnName="coCuadernoObraMaquinaria" />
+                <ScalarProperty Name="coIncidencia" ColumnName="coIncidencia" />
+                <ScalarProperty Name="coMaquinaria" ColumnName="coMaquinaria" />
+                <ScalarProperty Name="noTrabajoRealizado" ColumnName="noTrabajoRealizado" />
+                <ScalarProperty Name="feInicioActividad" ColumnName="feInicioActividad" />
+                <ScalarProperty Name="feFinActividad" ColumnName="feFinActividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+              <MappingFragment StoreEntitySet="OP_DOCUMENTO_EXPEDIENTE_TECNICO">
+                <ScalarProperty Name="coDocumento" ColumnName="coDocumento" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+                <ScalarProperty Name="nuNroDOcumento" ColumnName="nuNroDOcumento" />
+                <ScalarProperty Name="feEmision" ColumnName="feEmision" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="txRutaArchivo" ColumnName="txRutaArchivo" />
+                <ScalarProperty Name="noTipoDocExpTec" ColumnName="noTipoDocExpTec" />
+                <ScalarProperty Name="nomArchivo" ColumnName="nomArchivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_ENTREGA_MATERIAL">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_ENTREGA_MATERIAL">
+              <MappingFragment StoreEntitySet="OP_ENTREGA_MATERIAL">
+                <ScalarProperty Name="coEntrega" ColumnName="coEntrega" />
+                <ScalarProperty Name="feEntregaProgramada" ColumnName="feEntregaProgramada" />
+                <ScalarProperty Name="feEntregaEfectiva" ColumnName="feEntregaEfectiva" />
+                <ScalarProperty Name="txObservaciones" ColumnName="txObservaciones" />
+                <ScalarProperty Name="noTipoEntrega" ColumnName="noTipoEntrega" />
+                <ScalarProperty Name="coProveedor" ColumnName="coProveedor" />
+                <ScalarProperty Name="coMaterial" ColumnName="coMaterial" />
+                <ScalarProperty Name="nuCantidad" ColumnName="nuCantidad" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_EXPEDIENTE_TECNICO">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_EXPEDIENTE_TECNICO">
+              <MappingFragment StoreEntitySet="OP_EXPEDIENTE_TECNICO">
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="txEspecificacionesTecnicas" ColumnName="txEspecificacionesTecnicas" />
+                <ScalarProperty Name="feElaboracionPresupuesto" ColumnName="feElaboracionPresupuesto" />
+                <ScalarProperty Name="nuValorReferencial" ColumnName="nuValorReferencial" />
+                <ScalarProperty Name="coEjecutor" ColumnName="coEjecutor" />
+                <ScalarProperty Name="coSupervisor" ColumnName="coSupervisor" />
+                <ScalarProperty Name="coContacto" ColumnName="coContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_INFORME_OBRA">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_INFORME_OBRA">
+              <MappingFragment StoreEntitySet="OP_INFORME_OBRA">
+                <ScalarProperty Name="coInforme" ColumnName="coInforme" />
+                <ScalarProperty Name="nuInforme" ColumnName="nuInforme" />
+                <ScalarProperty Name="txTituloInforme" ColumnName="txTituloInforme" />
+                <ScalarProperty Name="feEmision" ColumnName="feEmision" />
+                <ScalarProperty Name="txConclusion" ColumnName="txConclusion" />
+                <ScalarProperty Name="txRecomendacion" ColumnName="txRecomendacion" />
+                <ScalarProperty Name="flEstado" ColumnName="flEstado" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="noTipoInforme" ColumnName="noTipoInforme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_MAQUINARIA">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_MAQUINARIA">
+              <MappingFragment StoreEntitySet="OP_MAQUINARIA">
+                <ScalarProperty Name="coMaquinaria" ColumnName="coMaquinaria" />
+                <ScalarProperty Name="noMaquinaria" ColumnName="noMaquinaria" />
+                <ScalarProperty Name="noMarca" ColumnName="noMarca" />
+                <ScalarProperty Name="noModelo" ColumnName="noModelo" />
+                <ScalarProperty Name="nuAnioFabricacion" ColumnName="nuAnioFabricacion" />
+                <ScalarProperty Name="noPlaca" ColumnName="noPlaca" />
+                <ScalarProperty Name="noTipo" ColumnName="noTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_MATERIAL">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_MATERIAL">
+              <MappingFragment StoreEntitySet="OP_MATERIAL">
+                <ScalarProperty Name="coMaterial" ColumnName="coMaterial" />
+                <ScalarProperty Name="noMaterial" ColumnName="noMaterial" />
+                <ScalarProperty Name="nuValorReferencial" ColumnName="nuValorReferencial" />
+                <ScalarProperty Name="nuStock" ColumnName="nuStock" />
+                <ScalarProperty Name="nuStockMinimo" ColumnName="nuStockMinimo" />
+                <ScalarProperty Name="noUnidadMedida" ColumnName="noUnidadMedida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OP_PROYECTO_INVERSION_PUBLICA">
+            <EntityTypeMapping TypeName="ObrasPublicasModel.OP_PROYECTO_INVERSION_PUBLICA">
+              <MappingFragment StoreEntitySet="OP_PROYECTO_INVERSION_PUBLICA">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="OP_INFORME_ACTIVIDAD" TypeName="ObrasPublicasModel.OP_INFORME_ACTIVIDAD" StoreEntitySet="OP_INFORME_ACTIVIDAD">
+            <EndProperty Name="OP_ACTIVIDAD_EJECUCION">
+              <ScalarProperty Name="coActividad" ColumnName="idActividad" />
+            </EndProperty>
+            <EndProperty Name="OP_INFORME_OBRA">
+              <ScalarProperty Name="coInforme" ColumnName="coInforme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="OP_INFORME_CUADERNO" TypeName="ObrasPublicasModel.OP_INFORME_CUADERNO" StoreEntitySet="OP_INFORME_CUADERNO">
+            <EndProperty Name="OP_CUADERNO_OBRA">
+              <ScalarProperty Name="coIncidencia" ColumnName="coIncidencia" />
+            </EndProperty>
+            <EndProperty Name="OP_INFORME_OBRA">
+              <ScalarProperty Name="coInforme" ColumnName="coInforme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="OP_INFORME_ENTREGA" TypeName="ObrasPublicasModel.OP_INFORME_ENTREGA" StoreEntitySet="OP_INFORME_ENTREGA">
+            <EndProperty Name="OP_ENTREGA_MATERIAL">
+              <ScalarProperty Name="coEntrega" ColumnName="coEntrega" />
+            </EndProperty>
+            <EndProperty Name="OP_INFORME_OBRA">
+              <ScalarProperty Name="coInforme" ColumnName="coInforme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="OP_INFORME_REFERENCIA" TypeName="ObrasPublicasModel.OP_INFORME_REFERENCIA" StoreEntitySet="OP_INFORME_REFERENCIA">
+            <EndProperty Name="OP_INFORME_OBRA">
+              <ScalarProperty Name="coInforme" ColumnName="coInforme" />
+            </EndProperty>
+            <EndProperty Name="OP_INFORME_OBRA1">
+              <ScalarProperty Name="coInforme" ColumnName="coInformeRef" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_act_cron_ejec_obra_x_id" FunctionName="ObrasPublicasModel.Store.sp_gop_get_act_cron_ejec_obra_x_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_act_cron_ejec_obra_x_id_Result">
+                <ScalarProperty Name="COPROYECTO" ColumnName="COPROYECTO" />
+                <ScalarProperty Name="NONOMBRE" ColumnName="NONOMBRE" />
+                <ScalarProperty Name="COACTIVIDAD" ColumnName="COACTIVIDAD" />
+                <ScalarProperty Name="noActividad" ColumnName="noActividad" />
+                <ScalarProperty Name="FEINICIOPROGRAMADA" ColumnName="FEINICIOPROGRAMADA" />
+                <ScalarProperty Name="FEFINPROGRAMADA" ColumnName="FEFINPROGRAMADA" />
+                <ScalarProperty Name="FEINICIOEJECUCION" ColumnName="FEINICIOEJECUCION" />
+                <ScalarProperty Name="FEFINEJECUCION" ColumnName="FEFINEJECUCION" />
+                <ScalarProperty Name="NUCOSTODIRECTO" ColumnName="NUCOSTODIRECTO" />
+                <ScalarProperty Name="NUCANTIDADRRHH" ColumnName="NUCANTIDADRRHH" />
+                <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+                <ScalarProperty Name="idPersonaJuridica" ColumnName="idPersonaJuridica" />
+                <ScalarProperty Name="idPersonaNatural" ColumnName="idPersonaNatural" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOPATERNO" ColumnName="APELLIDOPATERNO" />
+                <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_act_x_cron_ejec_obra" FunctionName="ObrasPublicasModel.Store.sp_gop_get_act_x_cron_ejec_obra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_act_x_cron_ejec_obra_Result">
+                <ScalarProperty Name="COPROYECTO" ColumnName="COPROYECTO" />
+                <ScalarProperty Name="NONOMBRE" ColumnName="NONOMBRE" />
+                <ScalarProperty Name="COACTIVIDAD" ColumnName="COACTIVIDAD" />
+                <ScalarProperty Name="FEINICIOPROGRAMADA" ColumnName="FEINICIOPROGRAMADA" />
+                <ScalarProperty Name="FEFINPROGRAMADA" ColumnName="FEFINPROGRAMADA" />
+                <ScalarProperty Name="FEINICIOEJECUCION" ColumnName="FEINICIOEJECUCION" />
+                <ScalarProperty Name="FEFINEJECUCION" ColumnName="FEFINEJECUCION" />
+                <ScalarProperty Name="NUCOSTODIRECTO" ColumnName="NUCOSTODIRECTO" />
+                <ScalarProperty Name="NUCANTIDADRRHH" ColumnName="NUCANTIDADRRHH" />
+                <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+                <ScalarProperty Name="idPersonaJuridica" ColumnName="idPersonaJuridica" />
+                <ScalarProperty Name="idPersonaNatural" ColumnName="idPersonaNatural" />
+                <ScalarProperty Name="noActividad" ColumnName="noActividad" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOPATERNO" ColumnName="APELLIDOPATERNO" />
+                <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_areas" FunctionName="ObrasPublicasModel.Store.sp_gop_get_areas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_areas_Result">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="descArea" ColumnName="descArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_emp_perj" FunctionName="ObrasPublicasModel.Store.sp_gop_get_emp_perj">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_emp_perj_Result">
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_emp_pern_x_area" FunctionName="ObrasPublicasModel.Store.sp_gop_get_emp_pern_x_area">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_emp_pern_x_area_Result">
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_ent_mat_x_proy" FunctionName="ObrasPublicasModel.Store.sp_gop_get_ent_mat_x_proy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_ent_mat_x_proy_Result">
+                <ScalarProperty Name="coEntrega" ColumnName="coEntrega" />
+                <ScalarProperty Name="coMaterial" ColumnName="coMaterial" />
+                <ScalarProperty Name="coProveedor" ColumnName="coProveedor" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="feEntregaEfectiva" ColumnName="feEntregaEfectiva" />
+                <ScalarProperty Name="feEntregaProgramada" ColumnName="feEntregaProgramada" />
+                <ScalarProperty Name="noTipoEntrega" ColumnName="noTipoEntrega" />
+                <ScalarProperty Name="nuCantidad" ColumnName="nuCantidad" />
+                <ScalarProperty Name="txObservaciones" ColumnName="txObservaciones" />
+                <ScalarProperty Name="noMaterial" ColumnName="noMaterial" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_exp_x_id" FunctionName="ObrasPublicasModel.Store.sp_gop_get_exp_x_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_exp_x_id_Result">
+                <ScalarProperty Name="coContacto" ColumnName="coContacto" />
+                <ScalarProperty Name="coEjecutor" ColumnName="coEjecutor" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="txEspecificacionesTecnicas" ColumnName="txEspecificacionesTecnicas" />
+                <ScalarProperty Name="coSupervisor" ColumnName="coSupervisor" />
+                <ScalarProperty Name="feElaboracionPresupuesto" ColumnName="feElaboracionPresupuesto" />
+                <ScalarProperty Name="nuValorReferencial" ColumnName="nuValorReferencial" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="CONT_APE_PAT" ColumnName="CONT_APE_PAT" />
+                <ScalarProperty Name="CONT_NOM" ColumnName="CONT_NOM" />
+                <ScalarProperty Name="CONT_CORREO" ColumnName="CONT_CORREO" />
+                <ScalarProperty Name="CONT_DIRECCION" ColumnName="CONT_DIRECCION" />
+                <ScalarProperty Name="CONT_TELF" ColumnName="CONT_TELF" />
+                <ScalarProperty Name="SUP_APE_PAT" ColumnName="SUP_APE_PAT" />
+                <ScalarProperty Name="SUP_NOM" ColumnName="SUP_NOM" />
+                <ScalarProperty Name="SUP_CORREO" ColumnName="SUP_CORREO" />
+                <ScalarProperty Name="SUP_TELF" ColumnName="SUP_TELF" />
+                <ScalarProperty Name="NOM_PROYECTO" ColumnName="NOM_PROYECTO" />
+                <ScalarProperty Name="EJEC_RAZSOC" ColumnName="EJEC_RAZSOC" />
+                <ScalarProperty Name="EJEC_APE_PAT" ColumnName="EJEC_APE_PAT" />
+                <ScalarProperty Name="EJEC_NOM" ColumnName="EJEC_NOM" />
+                <ScalarProperty Name="ID_PER_CONT" ColumnName="ID_PER_CONT" />
+                <ScalarProperty Name="ID_PER_SUP" ColumnName="ID_PER_SUP" />
+                <ScalarProperty Name="ID_PER_EJEC" ColumnName="ID_PER_EJEC" />
+                <ScalarProperty Name="EJEC_ID_PERN" ColumnName="EJEC_ID_PERN" />
+                <ScalarProperty Name="EJEC_ID_PERJ" ColumnName="EJEC_ID_PERJ" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_con_cro" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_con_cro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_con_cro_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+                <ScalarProperty Name="coCronograma" ColumnName="coCronograma" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+                <ScalarProperty Name="feEmision" ColumnName="feEmision" />
+                <ScalarProperty Name="nuPlazoEjecucion" ColumnName="nuPlazoEjecucion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_con_entmat" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_con_entmat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_con_entmat_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_con_exp" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_con_exp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_con_exp_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_sin_cro" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_sin_cro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_sin_cro_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_sin_exp" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_sin_exp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_sin_exp_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_x_filtro" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_x_filtro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_x_filtro_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_x_id" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_x_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_x_id_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_ins_act_cron_ejec_obra" FunctionName="ObrasPublicasModel.Store.sp_gop_ins_act_cron_ejec_obra" />
+          <FunctionImportMapping FunctionImportName="sp_gop_ins_exp" FunctionName="ObrasPublicasModel.Store.sp_gop_ins_exp" />
+          <FunctionImportMapping FunctionImportName="sp_gop_upd_act_cron_ejec_obra" FunctionName="ObrasPublicasModel.Store.sp_gop_upd_act_cron_ejec_obra" />
+          <FunctionImportMapping FunctionImportName="sp_gop_get_ent_mat_x_id" FunctionName="ObrasPublicasModel.Store.sp_gop_get_ent_mat_x_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_ent_mat_x_id_Result">
+                <ScalarProperty Name="coEntrega" ColumnName="coEntrega" />
+                <ScalarProperty Name="coMaterial" ColumnName="coMaterial" />
+                <ScalarProperty Name="coProveedor" ColumnName="coProveedor" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="feEntregaEfectiva" ColumnName="feEntregaEfectiva" />
+                <ScalarProperty Name="feEntregaProgramada" ColumnName="feEntregaProgramada" />
+                <ScalarProperty Name="noTipoEntrega" ColumnName="noTipoEntrega" />
+                <ScalarProperty Name="nuCantidad" ColumnName="nuCantidad" />
+                <ScalarProperty Name="txObservaciones" ColumnName="txObservaciones" />
+                <ScalarProperty Name="noMaterial" ColumnName="noMaterial" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ObrasPublicasModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_gop_upd_exp" FunctionName="ObrasPublicasModel.Store.sp_gop_upd_exp" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

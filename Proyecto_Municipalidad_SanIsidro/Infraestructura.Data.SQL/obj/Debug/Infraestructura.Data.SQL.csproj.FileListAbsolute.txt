@@ -15,3 +15,15 @@ D:\Desarrollo\GAC\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\aspnet-GAC-20150601210424.mdf
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\aspnet-GAC-20150601210424_log.ldf
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll.config
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.pdb
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.dll
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.dll
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.pdb
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
+D:\Visual Studio 2012\Projects\TP3\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb
