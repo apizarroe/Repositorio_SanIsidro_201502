@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<GAC.Models.LocalPasswordModel>" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<GSM.Models.LocalPasswordModel>" %>
 
 <p>
     No dispone de contraseña local para este sitio. Agregue una contraseña

@@ -8,10 +8,10 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using GAC.Filters;
-using GAC.Models;
+using GSM.Filters;
+using GSM.Models;
 
-namespace GAC.Controllers
+namespace GSM.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]

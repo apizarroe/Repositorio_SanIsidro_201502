@@ -1,7 +1,6 @@
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\GAC.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\GAC.pdb
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Antlr3.Runtime.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Dominio.Core.Entities.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\DotNetOpenAuth.AspNet.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\DotNetOpenAuth.Core.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -9,7 +8,6 @@ D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_S
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\DotNetOpenAuth.OpenId.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\EntityFramework.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Infraestructura.Data.SQL.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Microsoft.Data.Edm.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Microsoft.Data.OData.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Microsoft.Web.Infrastructure.dll
@@ -34,8 +32,6 @@ D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_S
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\WebMatrix.WebData.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Org.Mentalis.Security.Cryptography.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Mono.Math.dll
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Dominio.Core.Entities.pdb
-D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Infraestructura.Data.SQL.pdb
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Util.pdb
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\EntityFramework.xml
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Principal\bin\Newtonsoft.Json.xml

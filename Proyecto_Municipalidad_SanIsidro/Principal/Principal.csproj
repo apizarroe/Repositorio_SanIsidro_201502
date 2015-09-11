@@ -182,24 +182,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\GSM\GSMmaestroController.cs" />
-    <Compile Include="Controllers\GSM\GSMInspeccionController.cs" />
-    <Compile Include="Controllers\GSM\GSMPersonaController.cs" />
-    <Compile Include="Controllers\GSM\GSMServicioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\GSM\Combo.cs" />
-    <Compile Include="Models\GSM\Inspeccion.cs" />
-    <Compile Include="Models\GSM\InspeccionBUS.cs" />
-    <Compile Include="Models\GSM\Persona.cs" />
-    <Compile Include="Models\GSM\PersonaBUS.cs" />
-    <Compile Include="Models\GSM\Servicio.cs" />
-    <Compile Include="Models\GSM\ServicioBUS.cs" />
-    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -459,8 +447,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
-    <Content Include="Views\GSMInspeccion\Index.cshtml" />
-    <Content Include="Views\GSMInspeccion\Inspeccion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -470,14 +456,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dominio.Core.Entities\Dominio.Core.Entities.csproj">
-      <Project>{76cc7faa-06bb-413e-9446-bded8a469b72}</Project>
-      <Name>Dominio.Core.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infraestructura.Data.SQL\Infraestructura.Data.SQL.csproj">
-      <Project>{a9135ec8-f539-456f-a932-0ed8f21d66cf}</Project>
-      <Name>Infraestructura.Data.SQL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Util\Util.csproj">
       <Project>{2bc54174-7940-4074-b2ef-f67773ccd680}</Project>
       <Name>Util</Name>

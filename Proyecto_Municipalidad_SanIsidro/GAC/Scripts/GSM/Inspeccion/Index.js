@@ -12,7 +12,7 @@ function fn_Click(vitem) {
     id = parseInt(id);
 
     if (id > 0) {
-        var strUrl = path + "GSMInspeccion/Inspeccion?Id=" + id;
+        var strUrl = path + "GSMInspeccion/Inspecciones?Id=" + id;
         window.location = strUrl;
     }
 }
@@ -83,7 +83,7 @@ function fn_Buscar() {
 function fn_CrearNuevo() {
 
     //var idIni = $('#hidIni').val();
-    var strUrl = path + "GSMInspeccion/Inspeccion?Id=" + 0;
+    var strUrl = path + "GSMInspeccion/Inspecciones?Id=" + 0;
     window.location = strUrl;
 
 }

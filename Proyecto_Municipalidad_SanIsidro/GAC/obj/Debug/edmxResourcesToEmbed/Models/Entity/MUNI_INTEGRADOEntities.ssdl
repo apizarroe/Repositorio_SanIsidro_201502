@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MUNI_INTEGRADOModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MUNI_INTEGRADOModelStoreContainer">
+    <EntitySet Name="SM_ANEXO" EntityType="MUNI_INTEGRADOModel.Store.SM_ANEXO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_ANEXOS_REQUERIDOS" EntityType="MUNI_INTEGRADOModel.Store.SM_ANEXOS_REQUERIDOS" store:Type="Tables" store:Schema="dbo" store:Name="SM_ANEXOS_REQUERIDOS">
+      <DefiningQuery>SELECT 
+      [SM_ANEXOS_REQUERIDOS].[CodigoAnexo] AS [CodigoAnexo], 
+      [SM_ANEXOS_REQUERIDOS].[CodigoInformeTecnico] AS [CodigoInformeTecnico]
+      FROM [dbo].[SM_ANEXOS_REQUERIDOS] AS [SM_ANEXOS_REQUERIDOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SM_CATEGORIA_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_CATEGORIA_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_CLAUSULA_CONTRATO" EntityType="MUNI_INTEGRADOModel.Store.SM_CLAUSULA_CONTRATO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_CONTRATO_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_CONTRATO_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_ESTADO_INSPECCION" EntityType="MUNI_INTEGRADOModel.Store.SM_ESTADO_INSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_EXPEDIENTE_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_INFORME_INSPECCION" EntityType="MUNI_INTEGRADOModel.Store.SM_INFORME_INSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_INFORME_TECNICO" EntityType="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_INSPECCION" EntityType="MUNI_INTEGRADOModel.Store.SM_INSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_OBSERVACION" EntityType="MUNI_INTEGRADOModel.Store.SM_OBSERVACION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_RECURSOS" EntityType="MUNI_INTEGRADOModel.Store.SM_RECURSOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SM_SOLICITUD_SERVICIO" EntityType="MUNI_INTEGRADOModel.Store.SM_SOLICITUD_SERVICIO" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_SM_ANEXOS_REQUERIDOS_SM_ANEXO" Association="MUNI_INTEGRADOModel.Store.FK_SM_ANEXOS_REQUERIDOS_SM_ANEXO">
+      <End Role="SM_ANEXO" EntitySet="SM_ANEXO" />
+      <End Role="SM_ANEXOS_REQUERIDOS" EntitySet="SM_ANEXOS_REQUERIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_ANEXOS_REQUERIDOS_SM_INFORME_TECNICO" Association="MUNI_INTEGRADOModel.Store.FK_SM_ANEXOS_REQUERIDOS_SM_INFORME_TECNICO">
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+      <End Role="SM_ANEXOS_REQUERIDOS" EntitySet="SM_ANEXOS_REQUERIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_clausula_contrato_sm_contrato_servicio" Association="MUNI_INTEGRADOModel.Store.FK_sm_clausula_contrato_sm_contrato_servicio">
+      <End Role="SM_CONTRATO_SERVICIO" EntitySet="SM_CONTRATO_SERVICIO" />
+      <End Role="SM_CLAUSULA_CONTRATO" EntitySet="SM_CLAUSULA_CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_contrato_servicio_sm_servicio" Association="MUNI_INTEGRADOModel.Store.FK_sm_contrato_servicio_sm_servicio">
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+      <End Role="SM_CONTRATO_SERVICIO" EntitySet="SM_CONTRATO_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO">
+      <End Role="SM_SOLICITUD_SERVICIO" EntitySet="SM_SOLICITUD_SERVICIO" />
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_INSPECCION_SM_INSPECCION" Association="MUNI_INTEGRADOModel.Store.FK_SM_INFORME_INSPECCION_SM_INSPECCION">
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+      <End Role="SM_INFORME_INSPECCION" EntitySet="SM_INFORME_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO">
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sm_inspeccion_sm_servicio" Association="MUNI_INTEGRADOModel.Store.FK_sm_inspeccion_sm_servicio">
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+      <End Role="SM_INSPECCION" EntitySet="SM_INSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO" Association="MUNI_INTEGRADOModel.Store.FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO">
+      <End Role="SM_CLAUSULA_CONTRATO" EntitySet="SM_CLAUSULA_CONTRATO" />
+      <End Role="SM_OBSERVACION" EntitySet="SM_OBSERVACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_OBSERVACION_SM_INFORME_INSPECCION" Association="MUNI_INTEGRADOModel.Store.FK_SM_OBSERVACION_SM_INFORME_INSPECCION">
+      <End Role="SM_INFORME_INSPECCION" EntitySet="SM_INFORME_INSPECCION" />
+      <End Role="SM_OBSERVACION" EntitySet="SM_OBSERVACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_RECURSOS_SM_INFORME_TECNICO" Association="MUNI_INTEGRADOModel.Store.FK_SM_RECURSOS_SM_INFORME_TECNICO">
+      <End Role="SM_INFORME_TECNICO" EntitySet="SM_INFORME_TECNICO" />
+      <End Role="SM_RECURSOS" EntitySet="SM_RECURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO">
+      <End Role="SM_CATEGORIA_SERVICIO" EntitySet="SM_CATEGORIA_SERVICIO" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO" Association="MUNI_INTEGRADOModel.Store.FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO">
+      <End Role="SM_EXPEDIENTE_SERVICIO" EntitySet="SM_EXPEDIENTE_SERVICIO" />
+      <End Role="SM_SERVICIO" EntitySet="SM_SERVICIO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SM_ANEXO">
+    <Key>
+      <PropertyRef Name="CodigoAnexo" />
+    </Key>
+    <Property Name="CodigoAnexo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NombreDocumento" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+    <Property Name="Contenido" Type="nvarchar" MaxLength="250" />
+    <Property Name="CodigoInformeTecnico" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.SM_ANEXOS_REQUERIDOS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="SM_ANEXOS_REQUERIDOS">
+    <Key>
+      <PropertyRef Name="CodigoAnexo" />
+      <PropertyRef Name="CodigoInformeTecnico" />
+    </Key>
+    <Property Name="CodigoAnexo" Type="int" Nullable="false" />
+    <Property Name="CodigoInformeTecnico" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_CATEGORIA_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoCategoriaServicio" />
+    </Key>
+    <Property Name="CodigoCategoriaServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombreCategoria" Type="nvarchar" MaxLength="50" />
+    <Property Name="descripcionCateogira" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="SM_CLAUSULA_CONTRATO">
+    <Key>
+      <PropertyRef Name="CodigoClausulaContrato" />
+    </Key>
+    <Property Name="CodigoClausulaContrato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="CodigoContratoServicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_CONTRATO_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoContratoServicio" />
+    </Key>
+    <Property Name="CodigoContratoServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInicio" Type="date" />
+    <Property Name="FechaFin" Type="date" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="coUsuario" Type="int" />
+    <Property Name="CodigoServicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_ESTADO_INSPECCION">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="SM_EXPEDIENTE_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoExpedienteServicio" />
+    </Key>
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreación" Type="datetime" />
+    <Property Name="CuerpoExpediente" Type="nvarchar" MaxLength="250" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaInactivo" Type="datetime" />
+    <Property Name="LugarServicioPropuesto" Type="nvarchar" MaxLength="70" />
+    <Property Name="coUsuario" Type="int" Nullable="false" />
+    <Property Name="CodigoSolicitudServicio" Type="int" Nullable="false" />
+    <Property Name="CodigoPersonaEjecutor" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_INFORME_INSPECCION">
+    <Key>
+      <PropertyRef Name="CodigoInformeInspeccion" />
+    </Key>
+    <Property Name="CodigoInformeInspeccion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInformeInspeccion" Type="datetime" />
+    <Property Name="CuerpoInspeccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="DescripcionInforme" Type="nvarchar" MaxLength="250" />
+    <Property Name="CodigoInspeccion" Type="int" />
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_INFORME_TECNICO">
+    <Key>
+      <PropertyRef Name="CodigoInformeTecnico" />
+    </Key>
+    <Property Name="CodigoInformeTecnico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="FechaRecepcion" Type="datetime" />
+    <Property Name="DescripcionInformeTecnico" Type="nvarchar" MaxLength="250" />
+    <Property Name="Requisito" Type="nvarchar" MaxLength="250" />
+    <Property Name="Objetivo" Type="nvarchar" MaxLength="250" />
+    <Property Name="Justificacion" Type="nvarchar" MaxLength="250" />
+    <Property Name="PresupuestoTentativo" Type="decimal" Scale="2" />
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" />
+    <Property Name="CodigoPersonaElaborador" Type="int" Nullable="false" />
+    <Property Name="FechaAprobacion" Type="datetime" />
+    <Property Name="CodigoEmpleadoAprobador" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_INSPECCION">
+    <Key>
+      <PropertyRef Name="CodigoInspeccion" />
+    </Key>
+    <Property Name="CodigoInspeccion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInspeccion" Type="datetime" />
+    <Property Name="coVia" Type="int" />
+    <Property Name="LugarInspeccion" Type="nvarchar" MaxLength="150" />
+    <Property Name="CodigoServicio" Type="int" />
+    <Property Name="coUsuario" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="ResponsableServicio" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodigoPersonaEjecutor" Type="int" />
+    <Property Name="ESTADO" Type="int" />
+    <Property Name="HORAINI" Type="time" />
+    <Property Name="HORAFIN" Type="time" />
+  </EntityType>
+  <EntityType Name="SM_OBSERVACION">
+    <Key>
+      <PropertyRef Name="CodigoObservacion" />
+    </Key>
+    <Property Name="CodigoObservacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaIncidencia" Type="datetime" />
+    <Property Name="DescripcionIncidencia" Type="nvarchar" MaxLength="150" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="CodigoClausulaContrato" Type="int" Nullable="false" />
+    <Property Name="CodigoInformeInspeccion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SM_RECURSOS">
+    <Key>
+      <PropertyRef Name="CodigoRecurso" />
+    </Key>
+    <Property Name="CodigoRecurso" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Peso" Type="int" />
+    <Property Name="Medidas" Type="nvarchar" MaxLength="50" />
+    <Property Name="MarcaRecomendada" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodigoInformeTecnico" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoServicio" />
+    </Key>
+    <Property Name="CodigoServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NombreServicio" Type="nvarchar" MaxLength="150" />
+    <Property Name="DescripcionServicio" Type="nvarchar" MaxLength="250" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaFin" Type="datetime" />
+    <Property Name="coVia" Type="int" />
+    <Property Name="LugarServicio" Type="nvarchar" MaxLength="150" />
+    <Property Name="CodigoTipoServicio" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="coUsuario" Type="int" />
+    <Property Name="CodigoCategoriaServicio" Type="int" />
+    <Property Name="CodigoExpedienteServicio" Type="int" Nullable="false" />
+    <Property Name="CodigoPersonaResponsable" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_SOLICITUD_SERVICIO">
+    <Key>
+      <PropertyRef Name="CodigoSolicitudServicio" />
+    </Key>
+    <Property Name="CodigoSolicitudServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="NombreSolicitud" Type="nvarchar" MaxLength="150" />
+    <Property Name="Objetivo" Type="nvarchar" MaxLength="150" />
+    <Property Name="DescripcionSolicitud" Type="nvarchar" MaxLength="150" />
+    <Property Name="FechaAprobacion" Type="datetime" />
+    <Property Name="idEmpleadoSolicitante" Type="int" Nullable="false" />
+    <Property Name="idEmpleadoAprobador" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_SM_ANEXOS_REQUERIDOS_SM_ANEXO">
+    <End Role="SM_ANEXO" Type="MUNI_INTEGRADOModel.Store.SM_ANEXO" Multiplicity="1" />
+    <End Role="SM_ANEXOS_REQUERIDOS" Type="MUNI_INTEGRADOModel.Store.SM_ANEXOS_REQUERIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_ANEXO">
+        <PropertyRef Name="CodigoAnexo" />
+      </Principal>
+      <Dependent Role="SM_ANEXOS_REQUERIDOS">
+        <PropertyRef Name="CodigoAnexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_ANEXOS_REQUERIDOS_SM_INFORME_TECNICO">
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="1" />
+    <End Role="SM_ANEXOS_REQUERIDOS" Type="MUNI_INTEGRADOModel.Store.SM_ANEXOS_REQUERIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Principal>
+      <Dependent Role="SM_ANEXOS_REQUERIDOS">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_clausula_contrato_sm_contrato_servicio">
+    <End Role="SM_CONTRATO_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_CONTRATO_SERVICIO" Multiplicity="1" />
+    <End Role="SM_CLAUSULA_CONTRATO" Type="MUNI_INTEGRADOModel.Store.SM_CLAUSULA_CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CONTRATO_SERVICIO">
+        <PropertyRef Name="CodigoContratoServicio" />
+      </Principal>
+      <Dependent Role="SM_CLAUSULA_CONTRATO">
+        <PropertyRef Name="CodigoContratoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_contrato_servicio_sm_servicio">
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="1" />
+    <End Role="SM_CONTRATO_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_CONTRATO_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Principal>
+      <Dependent Role="SM_CONTRATO_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_EXPEDIENTE_SERVICIO_SM_SOLICITUD_SERVICIO">
+    <End Role="SM_SOLICITUD_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SOLICITUD_SERVICIO" Multiplicity="1" />
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SOLICITUD_SERVICIO">
+        <PropertyRef Name="CodigoSolicitudServicio" />
+      </Principal>
+      <Dependent Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoSolicitudServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_INSPECCION_SM_INSPECCION">
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INSPECCION" Multiplicity="0..1" />
+    <End Role="SM_INFORME_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoInspeccion" />
+      </Principal>
+      <Dependent Role="SM_INFORME_INSPECCION">
+        <PropertyRef Name="CodigoInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_INFORME_TECNICO_SM_EXPEDIENTE_SERVICIO">
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="1" />
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Principal>
+      <Dependent Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sm_inspeccion_sm_servicio">
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="0..1" />
+    <End Role="SM_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoServicio" />
+      </Principal>
+      <Dependent Role="SM_INSPECCION">
+        <PropertyRef Name="CodigoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_OBSERVACION_SM_CLAUSULA_CONTRATO">
+    <End Role="SM_CLAUSULA_CONTRATO" Type="MUNI_INTEGRADOModel.Store.SM_CLAUSULA_CONTRATO" Multiplicity="1" />
+    <End Role="SM_OBSERVACION" Type="MUNI_INTEGRADOModel.Store.SM_OBSERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CLAUSULA_CONTRATO">
+        <PropertyRef Name="CodigoClausulaContrato" />
+      </Principal>
+      <Dependent Role="SM_OBSERVACION">
+        <PropertyRef Name="CodigoClausulaContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_OBSERVACION_SM_INFORME_INSPECCION">
+    <End Role="SM_INFORME_INSPECCION" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_INSPECCION" Multiplicity="1" />
+    <End Role="SM_OBSERVACION" Type="MUNI_INTEGRADOModel.Store.SM_OBSERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_INSPECCION">
+        <PropertyRef Name="CodigoInformeInspeccion" />
+      </Principal>
+      <Dependent Role="SM_OBSERVACION">
+        <PropertyRef Name="CodigoInformeInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_RECURSOS_SM_INFORME_TECNICO">
+    <End Role="SM_INFORME_TECNICO" Type="MUNI_INTEGRADOModel.Store.SM_INFORME_TECNICO" Multiplicity="0..1" />
+    <End Role="SM_RECURSOS" Type="MUNI_INTEGRADOModel.Store.SM_RECURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_INFORME_TECNICO">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Principal>
+      <Dependent Role="SM_RECURSOS">
+        <PropertyRef Name="CodigoInformeTecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SERVICIO_SM_CATEGORIA_SERVICIO">
+    <End Role="SM_CATEGORIA_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_CATEGORIA_SERVICIO" Multiplicity="0..1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_CATEGORIA_SERVICIO">
+        <PropertyRef Name="CodigoCategoriaServicio" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoCategoriaServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SM_SERVICIO_SM_EXPEDIENTE_SERVICIO">
+    <End Role="SM_EXPEDIENTE_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_EXPEDIENTE_SERVICIO" Multiplicity="1" />
+    <End Role="SM_SERVICIO" Type="MUNI_INTEGRADOModel.Store.SM_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SM_EXPEDIENTE_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Principal>
+      <Dependent Role="SM_SERVICIO">
+        <PropertyRef Name="CodigoExpedienteServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="USP_GSM_BuscarPersona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Paterno" Type="varchar" Mode="In" />
+    <Parameter Name="Materno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_GSM_BuscarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdServicio" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+    <Parameter Name="Pagina" Type="int" Mode="In" />
+    <Parameter Name="Paginacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GSM_GetInspeccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GSM_ListaInspeccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+    <Parameter Name="FechaIni" Type="date" Mode="In" />
+    <Parameter Name="FechaFin" Type="date" Mode="In" />
+    <Parameter Name="Pagina" Type="int" Mode="In" />
+    <Parameter Name="Paginacion" Type="int" Mode="In" />
+  </Function>
+</Schema>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Models.GSM
+namespace GSM.Models.GSM
 {
     public class Combo
     {

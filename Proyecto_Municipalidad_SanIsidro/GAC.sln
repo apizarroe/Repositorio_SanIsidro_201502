@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAC", "GAC\GAC.csproj", "{B44A5592-A396-4DD0-9030-A4FBB36C8673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSM", "GAC\GSM.csproj", "{B44A5592-A396-4DD0-9030-A4FBB36C8673}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{2BC54174-7940-4074-B2EF-F67773CCD680}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestructura.Data.SQL", "Infraestructura.Data.SQL\Infraestructura.Data.SQL.csproj", "{A9135EC8-F539-456F-A932-0ED8F21D66CF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio.Core.Entities", "Dominio.Core.Entities\Dominio.Core.Entities.csproj", "{76CC7FAA-06BB-413E-9446-BDED8A469B72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Principal", "Principal\Principal.csproj", "{AE7BDEEE-0053-4672-9D60-27A45ED1FD40}"
 EndProject
@@ -25,14 +21,6 @@ Global
 		{2BC54174-7940-4074-B2EF-F67773CCD680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BC54174-7940-4074-B2EF-F67773CCD680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BC54174-7940-4074-B2EF-F67773CCD680}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9135EC8-F539-456F-A932-0ED8F21D66CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9135EC8-F539-456F-A932-0ED8F21D66CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9135EC8-F539-456F-A932-0ED8F21D66CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9135EC8-F539-456F-A932-0ED8F21D66CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76CC7FAA-06BB-413E-9446-BDED8A469B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76CC7FAA-06BB-413E-9446-BDED8A469B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76CC7FAA-06BB-413E-9446-BDED8A469B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76CC7FAA-06BB-413E-9446-BDED8A469B72}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE7BDEEE-0053-4672-9D60-27A45ED1FD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AE7BDEEE-0053-4672-9D60-27A45ED1FD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE7BDEEE-0053-4672-9D60-27A45ED1FD40}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,12 +1,11 @@
-﻿using Models.GSM;
+﻿
+using GSM.Models.GSM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using bus = Models.GSM.ServicioBUS;
-using ent = Dominio.Core.Entities.GSM;
-namespace GAC.Controllers.GSM
+using System.Web.Mvc; 
+namespace GSM.Controllers.GSM
 {
     public class GSMServicioController : Controller
     {
@@ -22,22 +21,14 @@ namespace GAC.Controllers.GSM
                 int tipoint = 0;
                 int.TryParse(Cod, out codint); int.TryParse(Tipo, out tipoint);
                 /*******************************************************/
-                ent.SM_PARAMETRO oparametro = new ent.SM_PARAMETRO();
+                Parametro oparametro = new Parametro();
                 oparametro.Pagina = Pagina;
                 oparametro.Paginacion = Paginacion;
                 oparametro.Id = codint;
                 oparametro.name = Nom;
                 oparametro.Tipo = tipoint;
 
-                List<Servicio> lst = (from x in bus.GetObject().GetServicio(oparametro)
-                                      select new Servicio
-                                      {
-                                          IdServicio = x.CodigoServicio,
-                                          IdTipoServicio = x.CodigoCategoriaServicio,
-                                          Nombre = x.NombreServicio,
-                                          TipoServicio = x.nombreCategoria,
-                                          Filas = x.Filas
-                                      }).ToList();
+                List<Servicio> lst = Servicio.GetServicio(oparametro);
 
                 var strList = new
                 {

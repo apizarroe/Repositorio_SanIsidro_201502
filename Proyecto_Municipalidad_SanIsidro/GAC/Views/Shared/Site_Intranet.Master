@@ -214,7 +214,7 @@
                 </form>
                 --> 
                 <ul class="sidebar-menu">
-                    <li class="header">NAVEGACION PRINCIPAL</li>
+                    <li class="header">NAVEGSMION PRINCIPAL</li>
                     <li class="treeview active">
                         <a href="#">
                             <i class="fa fa-dashboard"></i><span>Quejas / Reclamos</span><i class="fa fa-angle-left pull-right"></i>

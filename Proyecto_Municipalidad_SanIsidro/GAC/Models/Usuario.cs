@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GAC.Models
+namespace GSM.Models
 {
     public class Usuario
     {
-        private int CodVia;
-        private int CodUsuario;
-        private Usuario miUsuario;
-        private bool flIniciado = false;
+        public int CodVia{get;set;}
+        public int CodUsuario{get;set;}
+        private static Usuario miUsuario;
+        private static bool flIniciado = false;
 
         private Usuario() { }
 
-        public Usuario GetObject()
+        public static Usuario GetObject()
         {
             if (!flIniciado)
             {
                 flIniciado = true;
                 miUsuario = new Usuario();
+                miUsuario.CodUsuario=7;
+                miUsuario.CodVia=2;
             }
             return miUsuario;
         }

@@ -1,14 +1,12 @@
-﻿using GAC.Models.GSM;
+﻿using GSM.Models.GSM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+ 
 
-using bus = Models.GSM.PersonaBUS;
-using ent = Dominio.Core.Entities.GSM;
-
-namespace GAC.Controllers.GSM
+namespace GSM.Controllers.GSM
 {
     public class GSMPersonaController : Controller
     {
@@ -23,18 +21,18 @@ namespace GAC.Controllers.GSM
 
             var lst = new List<Persona>();
 
-            ent.SM_PARAMETRO prm = new ent.SM_PARAMETRO();
+            Parametro prm = new Parametro();
             prm.name = keyname;
             prm.value = keyname;
             prm.value2 = keyname;
 
-            List<ent.MA_PERSONANATURAL> obj = bus.GetObject().GetEmpleado(prm);
+            List<Persona> obj = Persona.GetEmpleado(prm);
 
             if (obj != null && obj.Count > 0)
             {
                 var strList = new
                 {
-                    data = (from x in obj select new Persona { Codigo = x.idPersona.ToString(), DNI = x.NroDocIdentidad, Nombre = x.Nombres }).ToList(),
+                    data = obj, 
                     total = obj.Count
                 };
 

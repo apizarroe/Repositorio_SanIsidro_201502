@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace GAC
+namespace GSM
 {
     public class RouteConfig
     {
@@ -17,13 +17,13 @@ namespace GAC
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional},
-                namespaces: new string[] { "GAC.Controllers" }
+                namespaces: new string[] { "GSM.Controllers" }
             );
             routes.MapRoute(
                name: "Default2",
                url: "{controller}/{action}/{id}",
                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-               namespaces: new string[] { "GAC.Controllers.GSM" }
+               namespaces: new string[] { "GSM.Controllers.GSM" }
            );  
         }
     }
