@@ -41,20 +41,20 @@ namespace ObrasPublicas.DAL
             return intResultado;
         }
 
-        public int InsertaActividad(int pIntIdExpediente, int pIntIdCronograma, ActividadCronogramaOP pObjActividadCronogramaOP)
+        public int InsertaActividad(int pIntIdExpediente, int pIntIdProyecto, int pIntIdCronograma, ActividadCronogramaOP pObjActividadCronogramaOP)
         {
             int intResultado = -999;
             try
             {
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
                 ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
-                
-                objContext.sp_gop_ins_act_cron_ejec_obra(pIntIdCronograma, pObjActividadCronogramaOP.Nombre, pObjActividadCronogramaOP.FechaIniEjec,
+
+                objContext.sp_gop_ins_act_cron_ejec_obra(pIntIdCronograma, pIntIdProyecto, pObjActividadCronogramaOP.Nombre, pObjActividadCronogramaOP.FechaIniEjec,
                     pObjActividadCronogramaOP.FechaFinProg, pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
                     pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
-                    pObjActividadCronogramaOP.IdEmpleado,objResult);
+                    pObjActividadCronogramaOP.IdEmpleado, objResult);
 
-                intResultado=Convert.ToInt32(objResult.Value.ToString());
+                intResultado = Convert.ToInt32(objResult.Value.ToString());
             }
             catch (Exception ex)
             {
@@ -96,8 +96,9 @@ namespace ObrasPublicas.DAL
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
                 ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
 
-                objContext.sp_gop_upd_act_cron_ejec_obra(pIntIdCronograma, pIntIdActividad, pObjActividadCronogramaOP.Nombre, pObjActividadCronogramaOP.FechaIniEjec,
-                    pObjActividadCronogramaOP.FechaFinProg, pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
+                objContext.sp_gop_upd_act_cron_ejec_obra(pIntIdCronograma, pIntIdActividad, pObjActividadCronogramaOP.Nombre, 
+                    pObjActividadCronogramaOP.FechaIniProg, pObjActividadCronogramaOP.FechaFinProg, 
+                    pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
                     pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
                     pObjActividadCronogramaOP.IdEmpleado, objResult);
 
@@ -355,8 +356,6 @@ namespace ObrasPublicas.DAL
                     objItemCombo.Id = objEmpleado.idEmpleado.ToString();
                     objItemCombo.Nombre = objEmpleado.RazonSocial;
                     lstEmpleados.Add(objItemCombo);
-
-                    break;
                 }
             }
             catch (Exception ex)

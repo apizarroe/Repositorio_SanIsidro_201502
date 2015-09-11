@@ -26,6 +26,7 @@
                                                                             Value = x.Id,
                                                                             Text = x.Nombre
                                                                         }).OrderBy(x => x.Text);
+                                                                        
 %>
     <section class="content-header" style="padding-bottom:5px">
         <h1>Modificar Cronograma de Ejecución de Obra</h1>
@@ -157,10 +158,6 @@
                            }
                          %>
                     <div id="divResponsablePersona" style="display:<%:strDisplayReponsablePersona%>">
-                        <%
-                           if (ViewBag.lstEmpleadosPersona != null)
-                           {
-                         %>
                         <div class="form-group">
                         <label class="col-sm-3 control-label">* Area:</label>
                         <div class="col-sm-9">
@@ -168,7 +165,6 @@
                             <div id="Err_IdAreaResponsable" class="field-validation-error"></div>
                         </div>
                         </div>
-                        <%} %>
                         <div class="form-group">
                         <label class="col-sm-3 control-label">* Empleado:</label>
                         <div class="col-sm-9">
@@ -330,6 +326,37 @@
             var $errorDiv = $("#Err_" + this.id);
             if ($errorDiv.html() != "") {
                 $errorDiv.html("");
+            }
+        });
+
+        $('#IdAreaResponsable').change(function () {
+            $('#IdResponsablePersonaNatural').empty();
+
+            var selectedValue = $(this).val();
+            if (selectedValue != "") {
+                var dataToSend = {
+                    pIntIdArea: selectedValue
+                };
+                $.ajax({
+                    url: "/CronogramaEjecucionObra/Lista_EmpleadosPersonaNatural",
+                    data: dataToSend,
+                    success: function (result) {
+                        $('#IdResponsablePersonaNatural').append(
+                            $('<option/>', {
+                                value: "",
+                                text: "(Seleccione)"
+                            })
+                        );
+                        $.each(result, function (index, item) {
+                            $('#IdResponsablePersonaNatural').append(
+                                $('<option/>', {
+                                    value: item.Value,
+                                    text: item.Text
+                                })
+                            );
+                        });
+                    }
+                });
             }
         });
     </script>

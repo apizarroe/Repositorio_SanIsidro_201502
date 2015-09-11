@@ -47,6 +47,11 @@ namespace ObrasPublicas.Models.EntregaMaterialOP
             {
                 lstValidations.Add(new ValidationResult("La fecha de entrega efectiva debe ser mayor a la fecha actual", new[] { "FecEntregaEfec" }));
             }
+
+            if (this.Cantidad <= 0)
+            {
+                lstValidations.Add(new ValidationResult("La cantidad debe ser mayor a 0", new[] { "Cantidad" }));
+            }
             return lstValidations;
         }
     }

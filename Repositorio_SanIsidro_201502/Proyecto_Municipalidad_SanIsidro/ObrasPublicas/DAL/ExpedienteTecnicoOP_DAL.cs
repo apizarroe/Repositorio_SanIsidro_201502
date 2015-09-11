@@ -114,6 +114,9 @@ namespace ObrasPublicas.DAL
                 {
                     intResultado = 1;
                 }
+                else{
+                    intResultado = intIdExpediente;
+                }
             }
             catch (Exception ex)
             {

@@ -824,6 +824,7 @@ namespace ObrasPublicas.DAL
         /// No Metadata Documentation available.
         /// </summary>
         /// <param name="pIntIdCrono">No Metadata Documentation available.</param>
+        /// <param name="pIntIdProyecto">No Metadata Documentation available.</param>
         /// <param name="pVarNom">No Metadata Documentation available.</param>
         /// <param name="pDatFecIniProg">No Metadata Documentation available.</param>
         /// <param name="pDatFecFinProg">No Metadata Documentation available.</param>
@@ -834,7 +835,7 @@ namespace ObrasPublicas.DAL
         /// <param name="pVarTipoResp">No Metadata Documentation available.</param>
         /// <param name="pIntIdEmpleado">No Metadata Documentation available.</param>
         /// <param name="pIntResult_out">No Metadata Documentation available.</param>
-        public ObjectResult<Nullable<global::System.Int32>> sp_gop_ins_act_cron_ejec_obra(Nullable<global::System.Int32> pIntIdCrono, global::System.String pVarNom, Nullable<global::System.DateTime> pDatFecIniProg, Nullable<global::System.DateTime> pDatFecFinProg, Nullable<global::System.DateTime> pDatFecIniEjec, Nullable<global::System.DateTime> pDatFecFinEjec, Nullable<global::System.Decimal> pDecCosto, Nullable<global::System.Int32> pIntCantidad, global::System.String pVarTipoResp, Nullable<global::System.Int32> pIntIdEmpleado, ObjectParameter pIntResult_out)
+        public int sp_gop_ins_act_cron_ejec_obra(Nullable<global::System.Int32> pIntIdCrono, Nullable<global::System.Int32> pIntIdProyecto, global::System.String pVarNom, Nullable<global::System.DateTime> pDatFecIniProg, Nullable<global::System.DateTime> pDatFecFinProg, Nullable<global::System.DateTime> pDatFecIniEjec, Nullable<global::System.DateTime> pDatFecFinEjec, Nullable<global::System.Decimal> pDecCosto, Nullable<global::System.Int32> pIntCantidad, global::System.String pVarTipoResp, Nullable<global::System.Int32> pIntIdEmpleado, ObjectParameter pIntResult_out)
         {
             ObjectParameter pIntIdCronoParameter;
             if (pIntIdCrono.HasValue)
@@ -844,6 +845,16 @@ namespace ObrasPublicas.DAL
             else
             {
                 pIntIdCronoParameter = new ObjectParameter("pIntIdCrono", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pIntIdProyectoParameter;
+            if (pIntIdProyecto.HasValue)
+            {
+                pIntIdProyectoParameter = new ObjectParameter("pIntIdProyecto", pIntIdProyecto);
+            }
+            else
+            {
+                pIntIdProyectoParameter = new ObjectParameter("pIntIdProyecto", typeof(global::System.Int32));
             }
     
             ObjectParameter pVarNomParameter;
@@ -936,7 +947,7 @@ namespace ObrasPublicas.DAL
                 pIntIdEmpleadoParameter = new ObjectParameter("pIntIdEmpleado", typeof(global::System.Int32));
             }
     
-            return base.ExecuteFunction<Nullable<global::System.Int32>>("sp_gop_ins_act_cron_ejec_obra", pIntIdCronoParameter, pVarNomParameter, pDatFecIniProgParameter, pDatFecFinProgParameter, pDatFecIniEjecParameter, pDatFecFinEjecParameter, pDecCostoParameter, pIntCantidadParameter, pVarTipoRespParameter, pIntIdEmpleadoParameter, pIntResult_out);
+            return base.ExecuteFunction("sp_gop_ins_act_cron_ejec_obra", pIntIdCronoParameter, pIntIdProyectoParameter, pVarNomParameter, pDatFecIniProgParameter, pDatFecFinProgParameter, pDatFecIniEjecParameter, pDatFecFinEjecParameter, pDecCostoParameter, pIntCantidadParameter, pVarTipoRespParameter, pIntIdEmpleadoParameter, pIntResult_out);
         }
     
         /// <summary>
@@ -8588,12 +8599,14 @@ namespace ObrasPublicas.DAL
         /// <param name="coProyecto">Initial value of the coProyecto property.</param>
         /// <param name="coVia">Initial value of the coVia property.</param>
         /// <param name="nuValorReferencialPerfil">Initial value of the nuValorReferencialPerfil property.</param>
-        public static sp_gop_get_proy_sin_cro_Result Createsp_gop_get_proy_sin_cro_Result(global::System.Int32 coProyecto, global::System.Int32 coVia, global::System.Decimal nuValorReferencialPerfil)
+        /// <param name="coExpediente">Initial value of the coExpediente property.</param>
+        public static sp_gop_get_proy_sin_cro_Result Createsp_gop_get_proy_sin_cro_Result(global::System.Int32 coProyecto, global::System.Int32 coVia, global::System.Decimal nuValorReferencialPerfil, global::System.Int32 coExpediente)
         {
             sp_gop_get_proy_sin_cro_Result sp_gop_get_proy_sin_cro_Result = new sp_gop_get_proy_sin_cro_Result();
             sp_gop_get_proy_sin_cro_Result.coProyecto = coProyecto;
             sp_gop_get_proy_sin_cro_Result.coVia = coVia;
             sp_gop_get_proy_sin_cro_Result.nuValorReferencialPerfil = nuValorReferencialPerfil;
+            sp_gop_get_proy_sin_cro_Result.coExpediente = coExpediente;
             return sp_gop_get_proy_sin_cro_Result;
         }
 
@@ -8888,6 +8901,30 @@ namespace ObrasPublicas.DAL
         private global::System.String _noTipoVia;
         partial void OnnoTipoViaChanging(global::System.String value);
         partial void OnnoTipoViaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 coExpediente
+        {
+            get
+            {
+                return _coExpediente;
+            }
+            set
+            {
+                OncoExpedienteChanging(value);
+                ReportPropertyChanging("coExpediente");
+                _coExpediente = StructuralObject.SetValidValue(value, "coExpediente");
+                ReportPropertyChanged("coExpediente");
+                OncoExpedienteChanged();
+            }
+        }
+        private global::System.Int32 _coExpediente;
+        partial void OncoExpedienteChanging(global::System.Int32 value);
+        partial void OncoExpedienteChanged();
 
         #endregion
 

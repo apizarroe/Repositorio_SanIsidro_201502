@@ -157,11 +157,11 @@ namespace ObrasPublicas.Controllers
                             ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
                             //return RedirectToAction("Create",);
                         }
-                        else if (intResultado == -9998)
+                        else if (intResultado == -998)
                         {
                             ModelState.AddModelError("", "No puede registrar el expediente porque el proyecto ya tiene asociado uno.");
                         }
-                        else if (intResultado == -9997)
+                        else if (intResultado == -997)
                         {
                             ModelState.AddModelError("", "No puede registrar el expediente debido a que el proyecto está en estado ADJUDICADO.");
                         }
@@ -348,13 +348,13 @@ namespace ObrasPublicas.Controllers
                             ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
                             //return RedirectToAction("Create",);
                         }
-                        else if (intResultado == -9997)
+                        else if (intResultado == -997)
                         {
                             ModelState.AddModelError("", "No puede registrar el expediente debido a que el proyecto está en estado ADJUDICADO.");
                         }
                         else
                         {
-                            ModelState.AddModelError("", "No se pudo insertar el expediente");
+                            ModelState.AddModelError("", "No se pudo modificar el expediente");
                         }
                     }
                     catch (Exception ex)

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ObrasPublicas.Models.ExpedienteTecnicoOP
 {
-    public class UpdateExpedienteTecnicoOPModel
+    public class UpdateExpedienteTecnicoOPModel : IValidatableObject
     {
         public int IdProyecto { get; set; }
         public int IdExpediente { get; set; }
@@ -54,6 +54,7 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
             List<ValidationResult> lstValidations = new List<ValidationResult>();
             if (this.TipoBotonClick == "ADJUNTAR")
             {
+                DateTime datFecTmp;
                 if (String.IsNullOrWhiteSpace(this.NroDocumentoAdj))
                 {
                     lstValidations.Add(new ValidationResult("El campo Nro. Documento es obligatorio", new[] { "NroDocumentoAdj" }));
@@ -61,6 +62,14 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
                 if (String.IsNullOrWhiteSpace(this.FechaEmisionDocAdj))
                 {
                     lstValidations.Add(new ValidationResult("El campo Fecha de emisión es obligatorio", new[] { "FechaEmisionDocAdj" }));
+                }
+                else if (!DateTime.TryParse(this.FechaEmisionDocAdj, out datFecTmp))
+                {
+                    lstValidations.Add(new ValidationResult("El campo Fecha de emisión es incorrecta", new[] { "FechaEmisionDocAdj" }));
+                }
+                else if (Convert.ToDateTime(this.FechaEmisionDocAdj) > DateTime.Now)
+                {
+                    lstValidations.Add(new ValidationResult("El campo Fecha de emisión debe ser menor o igual a la fecha actual", new[] { "FechaEmisionDocAdj" }));
                 }
                 if (String.IsNullOrWhiteSpace(this.DescripcionDocAdj))
                 {
@@ -123,6 +132,10 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
                 {
                     lstValidations.Add(new ValidationResult("El campo Email de Contacto es obligatorio", new[] { "ContactoEmail" }));
                 }
+                else if (!Helpers.Validations.EmailValido(this.ContactoEmail))
+                {
+                    lstValidations.Add(new ValidationResult("El campo Email de Contacto es incorrecto", new[] { "ContactoEmail" }));
+                }
                 if (String.IsNullOrWhiteSpace(this.ContactoDireccion))
                 {
                     lstValidations.Add(new ValidationResult("El campo Dirección de Contacto es obligatorio", new[] { "ContactoDireccion" }));
@@ -142,6 +155,10 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
                 if (String.IsNullOrWhiteSpace(this.SupervisorEmail))
                 {
                     lstValidations.Add(new ValidationResult("El campo Email de Supervisor es obligatorio", new[] { "SupervisorEmail" }));
+                }
+                else if (!Helpers.Validations.EmailValido(this.SupervisorEmail))
+                {
+                    lstValidations.Add(new ValidationResult("El campo Email de Supervisor es incorrecto", new[] { "SupervisorEmail" }));
                 }
             }
 

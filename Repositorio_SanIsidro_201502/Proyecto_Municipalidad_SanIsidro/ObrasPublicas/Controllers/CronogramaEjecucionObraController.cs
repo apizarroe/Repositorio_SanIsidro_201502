@@ -85,9 +85,9 @@ namespace ObrasPublicas.Controllers
                         //TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
                         //return RedirectToAction("Index");
                     }
-                    else if (intResultado == -9997)
+                    else if (intResultado == -997)
                     {
-                        ModelState.AddModelError("General", "No puede registrar el expediente debido a que el proyecto está en estado ADJUDICADO.");
+                        ModelState.AddModelError("General", "No puede crear el cronograma debido a que el proyecto está en estado ADJUDICADO.");
                     }
                     else
                     {
@@ -176,8 +176,11 @@ namespace ObrasPublicas.Controllers
                 objUpdateActividadCronogramaEjecucionModel.IdResponsablePersonaNatural = objActividadCronogramaOP.IdEmpleado.ToString();
                 //if (objActividadCronogramaOP.IdArea.HasValue)
                 //{
+                if (objActividadCronogramaOP.IdArea.HasValue)
+                {
                     var lstEmpleadosPersona = objCronogramaEjecucionObra_DAL.ObtieneEmpleadosPersonaNatural(objActividadCronogramaOP.IdArea.Value);
                     ViewBag.lstEmpleadosPersona = lstEmpleadosPersona;
+                }
                 //}
             //}
             objUpdateActividadCronogramaEjecucionModel.NomAct = objActividadCronogramaOP.Nombre;
@@ -201,9 +204,9 @@ namespace ObrasPublicas.Controllers
                     //TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
                     //return RedirectToAction("Index");
                 }
-                else if (intResultado == -9997)
+                else if (intResultado == -997)
                 {
-                    ModelState.AddModelError("General", "No puede registrar el expediente debido a que el proyecto está en estado ADJUDICADO.");
+                    ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado ADJUDICADO.");
                 }
                 else
                 {
@@ -262,16 +265,16 @@ namespace ObrasPublicas.Controllers
                     {
                         objActividadCronogramaOP.IdEmpleado = Convert.ToInt32(pObjModel.IdResponsablePersonaNatural);
                     }
-                    else if (intResultado == -9997)
+                    else if (intResultado == -997)
                     {
-                        ModelState.AddModelError("General", "No puede registrar el expediente debido a que el proyecto está en estado ADJUDICADO.");
+                        ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado ADJUDICADO.");
                     }
                     else
                     {
                         objActividadCronogramaOP.IdEmpleado = Convert.ToInt32(pObjModel.IdResponsablePersonaJuridica);
                     }
 
-                   intResultado = objCronogramaEjecucionObra_DAL.InsertaActividad(pObjModel.IdExpediente,
+                   intResultado = objCronogramaEjecucionObra_DAL.InsertaActividad(pObjModel.IdExpediente, pObjModel.IdProyecto,
                         pObjModel.IdCronograma, objActividadCronogramaOP);
 
                     if (intResultado == 1)
@@ -282,7 +285,7 @@ namespace ObrasPublicas.Controllers
                     else
                     {
                         valid = false;
-                        ModelState.AddModelError("General", "No se pudo insertar el cronograma");
+                        ModelState.AddModelError("General", "No se pudo insertar la actividad en el cronograma");
                     }
                 }
                 catch (Exception ex)
@@ -326,6 +329,7 @@ namespace ObrasPublicas.Controllers
 
                     ActividadCronogramaOP objActividadCronogramaOP = new ActividadCronogramaOP();
                     objActividadCronogramaOP.IdActividad = pObjModel.IdActividad;
+                    objActividadCronogramaOP.Nombre = pObjModel.NomAct;
                     objActividadCronogramaOP.CantidadRRHH = pObjModel.CantidadRRHHAct;
                     objActividadCronogramaOP.Costo = pObjModel.CostoAct;
                     objActividadCronogramaOP.FechaFinEjec = Convert.ToDateTime(pObjModel.FechaFinEjecAct);
@@ -338,9 +342,9 @@ namespace ObrasPublicas.Controllers
                     {
                         objActividadCronogramaOP.IdEmpleado = Convert.ToInt32(pObjModel.IdResponsablePersonaNatural);
                     }
-                    else if (intResultado == -9997)
+                    else if (intResultado == -997)
                     {
-                        ModelState.AddModelError("General", "No puede registrar el expediente debido a que el proyecto está en estado ADJUDICADO.");
+                        ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado ADJUDICADO.");
                     }
                     else
                     {
@@ -358,7 +362,7 @@ namespace ObrasPublicas.Controllers
                     else
                     {
                         valid = false;
-                        ModelState.AddModelError("General", "No se pudo insertar el cronograma");
+                        ModelState.AddModelError("General", "No se pudo modificar la actividad");
                     }
                 }
                 catch (Exception ex)

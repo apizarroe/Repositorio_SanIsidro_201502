@@ -407,6 +407,7 @@ namespace ObrasPublicas.DAL
                     objProyecto.IdProyecto = objProyTmp.coProyecto;
                     objProyecto.Ubicacion = objProyTmp.txUbicacion;
                     objProyecto.NomVia = objProyTmp.noNomVia;
+                    objProyecto.IdExpediente = objProyTmp.coExpediente;
                     objProyecto.TipoVia = objProyTmp.noTipoVia;
                     objProyecto.IdEstado = objProyTmp.noEstado;
                     objProyecto.NomEstado = ObtieneEstados(null).Where(e => e.Id == objProyTmp.noEstado).First().Nombre;

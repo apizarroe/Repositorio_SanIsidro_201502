@@ -77,7 +77,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Especificaciones técnicas:</label>
                     <div class="col-sm-9">
-                        <%=Html.TextAreaFor(m => m.Especificaciones, new { cols = "20", rows = "15" })%>
+                        <%=Html.TextAreaFor(m => m.Especificaciones, new { @class = "form-control"})%>
                         <%: Html.ValidationMessageFor(m => m.Especificaciones) %>
                         <div id="Err_Especificaciones" class="field-validation-error"></div>
                         <p></p>

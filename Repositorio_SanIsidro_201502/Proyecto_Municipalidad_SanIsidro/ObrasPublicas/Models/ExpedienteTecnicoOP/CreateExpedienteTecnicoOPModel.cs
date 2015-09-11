@@ -150,6 +150,10 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
                 {
                     lstValidations.Add(new ValidationResult("El campo Email de Supervisor es obligatorio", new[] { "SupervisorEmail" }));
                 }
+                else if (!Helpers.Validations.EmailValido(this.SupervisorEmail))
+                {
+                    lstValidations.Add(new ValidationResult("El campo Email de Supervisor es incorrecto", new[] { "SupervisorEmail" }));
+                }
             }
 
             return lstValidations;

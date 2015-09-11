@@ -585,6 +585,7 @@
         </Function>
         <Function Name="sp_gop_ins_act_cron_ejec_obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
+          <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
           <Parameter Name="pVarNom" Type="varchar" Mode="In" />
           <Parameter Name="pDatFecIniProg" Type="datetime" Mode="In" />
           <Parameter Name="pDatFecFinProg" Type="datetime" Mode="In" />
@@ -785,8 +786,9 @@
           <FunctionImport Name="sp_gop_get_proy_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_x_id_Result)">
           <Parameter Name="pIntIdProy" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_gop_ins_act_cron_ejec_obra" ReturnType="Collection(Int32)">
+          <FunctionImport Name="sp_gop_ins_act_cron_ejec_obra">
             <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
             <Parameter Name="pVarNom" Mode="In" Type="String" />
             <Parameter Name="pDatFecIniProg" Mode="In" Type="DateTime" />
             <Parameter Name="pDatFecFinProg" Mode="In" Type="DateTime" />
@@ -1326,6 +1328,7 @@
           <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="coExpediente" Nullable="false" />
         </ComplexType>
         <ComplexType Name="sp_gop_get_proy_sin_exp_Result">
           <Property Type="Int32" Name="coProyecto" Nullable="false" />
@@ -1777,6 +1780,7 @@
                 <ScalarProperty Name="noEstado" ColumnName="noEstado" />
                 <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
                 <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
