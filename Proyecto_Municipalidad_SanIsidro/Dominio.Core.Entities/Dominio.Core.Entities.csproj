@@ -66,6 +66,9 @@
     <Compile Include="ModeloGestionCatastral\CT_PROPUESTAINSPECCION.cs">
       <DependentUpon>ModelCatastro.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModeloGestionCatastral\CT_PROPUESTAINSPECCION_EMPLEADO.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModeloGestionCatastral\CT_SOLICITUD.cs">
       <DependentUpon>ModelCatastro.tt</DependentUpon>
     </Compile>
@@ -82,6 +85,9 @@
       <DependentUpon>ModelCatastro.tt</DependentUpon>
     </Compile>
     <Compile Include="ModeloGestionCatastral\CT_ZONA.cs">
+      <DependentUpon>ModelCatastro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGestionCatastral\MA_EMPLEADO.cs">
       <DependentUpon>ModelCatastro.tt</DependentUpon>
     </Compile>
     <Compile Include="ModeloGestionCatastral\ModelCatastro.Context.cs">
@@ -106,13 +112,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="ModeloGestionCatastral\ModelCatastro.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelCatastro.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="ModeloGestionCatastral\ModelCatastro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelCatastro.edmx</DependentUpon>

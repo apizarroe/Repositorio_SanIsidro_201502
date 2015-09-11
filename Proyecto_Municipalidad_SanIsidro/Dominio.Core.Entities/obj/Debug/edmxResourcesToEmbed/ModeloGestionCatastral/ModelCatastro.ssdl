@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db2f833638c20949ff9238a2f301222db5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="db2f833638c20949ff9238a2f301222db5ModelStoreContainer">
+    <EntitySet Name="CT_DETALLEVIA_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_DETALLEVIA_URBANIZACION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_GEOLOCALIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_GEOLOCALIZACION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_LOTE" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_LOTE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_MANZANA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_MANZANA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_PREDIO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PREDIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_PROPUESTAINSPECCION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_PROPUESTAINSPECCION_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_SOLICITUD" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_SOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_TIPOSOLICITUD" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_TIPOSOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_TIPOVIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_TIPOVIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_URBANIZACION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_VIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_VIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CT_ZONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MA_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
+      <End Role="CT_URBANIZACION" EntitySet="CT_URBANIZACION" />
+      <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_VIA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_DETALLEVIA_URBANIZACION_CT_VIA">
+      <End Role="CT_VIA" EntitySet="CT_VIA" />
+      <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
+      <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+      <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO">
+      <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+      <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_VIA_CT_TIPOVIA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_VIA_CT_TIPOVIA">
+      <End Role="CT_TIPOVIA" EntitySet="CT_TIPOVIA" />
+      <End Role="CT_VIA" EntitySet="CT_VIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Geolocalizacion" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Geolocalizacion_utb_GCT_Geolocalizacion">
+      <End Role="CT_LOTE" EntitySet="CT_LOTE" />
+      <End Role="CT_GEOLOCALIZACION" EntitySet="CT_GEOLOCALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Manzana" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Geolocalizacion_utb_GCT_Manzana">
+      <End Role="CT_MANZANA" EntitySet="CT_MANZANA" />
+      <End Role="CT_GEOLOCALIZACION" EntitySet="CT_GEOLOCALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Zona" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Geolocalizacion_utb_GCT_Zona">
+      <End Role="CT_ZONA" EntitySet="CT_ZONA" />
+      <End Role="CT_GEOLOCALIZACION" EntitySet="CT_GEOLOCALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Lote_utb_GCT_Manzana" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Lote_utb_GCT_Manzana">
+      <End Role="CT_MANZANA" EntitySet="CT_MANZANA" />
+      <End Role="CT_LOTE" EntitySet="CT_LOTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Manzana_utb_GCT_Zona" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Manzana_utb_GCT_Zona">
+      <End Role="CT_ZONA" EntitySet="CT_ZONA" />
+      <End Role="CT_MANZANA" EntitySet="CT_MANZANA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Predio_utb_GCT_Lote" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Predio_utb_GCT_Lote">
+      <End Role="CT_LOTE" EntitySet="CT_LOTE" />
+      <End Role="CT_PREDIO" EntitySet="CT_PREDIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud">
+      <End Role="CT_SOLICITUD" EntitySet="CT_SOLICITUD" />
+      <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud">
+      <End Role="CT_TIPOSOLICITUD" EntitySet="CT_TIPOSOLICITUD" />
+      <End Role="CT_SOLICITUD" EntitySet="CT_SOLICITUD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utb_GCT_Zona_utb_GCT_Solicitud" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Zona_utb_GCT_Solicitud">
+      <End Role="CT_SOLICITUD" EntitySet="CT_SOLICITUD" />
+      <End Role="CT_ZONA" EntitySet="CT_ZONA" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CT_DETALLEVIA_URBANIZACION">
+    <Key>
+      <PropertyRef Name="int_IdDetalleVia" />
+    </Key>
+    <Property Name="int_IdDetalleVia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdUrbanizacion" Type="int" Nullable="false" />
+    <Property Name="int_IdVia" Type="int" Nullable="false" />
+    <Property Name="int_NroCuadraInicio" Type="int" Nullable="false" />
+    <Property Name="int_NroCuadraFin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CT_GEOLOCALIZACION">
+    <Key>
+      <PropertyRef Name="int_IdGeolocalizacion" />
+    </Key>
+    <Property Name="int_IdGeolocalizacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdZona" Type="int" />
+    <Property Name="int_IdManzana" Type="int" />
+    <Property Name="int_IdLote" Type="int" />
+    <Property Name="var_Marca" Type="varchar" MaxLength="50" />
+    <Property Name="var_Referencia" Type="varchar" MaxLength="50" />
+    <Property Name="flt_Latitud" Type="float" />
+    <Property Name="flt_Longitud" Type="float" />
+  </EntityType>
+  <EntityType Name="CT_LOTE">
+    <Key>
+      <PropertyRef Name="int_IdLote" />
+    </Key>
+    <Property Name="int_IdLote" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdManzana" Type="int" />
+    <Property Name="var_CodigoLote" Type="char" Nullable="false" MaxLength="2" />
+    <Property Name="var_Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="dcm_Area" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="var_Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="dtm_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="dtm_FechaActualizacion" Type="datetime" />
+    <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CT_MANZANA">
+    <Key>
+      <PropertyRef Name="int_IdManzana" />
+    </Key>
+    <Property Name="int_IdManzana" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdZona" Type="int" />
+    <Property Name="var_CodigoManzana" Type="char" Nullable="false" MaxLength="4" />
+    <Property Name="var_Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="dbl_Area" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="dtm_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="dtm_FechaActualizacion" Type="datetime" />
+    <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CT_PREDIO">
+    <Key>
+      <PropertyRef Name="int_IdPredio" />
+    </Key>
+    <Property Name="int_IdPredio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdLote" Type="int" />
+    <Property Name="chr_CodigoPredio" Type="char" Nullable="false" MaxLength="13" />
+    <Property Name="var_Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="var_Ubicacion" Type="varchar" MaxLength="200" />
+    <Property Name="dcm_AreaConstruida" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="var_Observaciones" Type="varchar" MaxLength="2000" />
+    <Property Name="int_Altura" Type="int" />
+    <Property Name="dtm_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="dtm_FechaActualizacion" Type="datetime" />
+    <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CT_PROPUESTAINSPECCION">
+    <Key>
+      <PropertyRef Name="int_IdPropuestaInspeccion" />
+    </Key>
+    <Property Name="int_IdPropuestaInspeccion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="int_IdSolicitud" Type="int" />
+    <Property Name="var_NroPropuesta" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="var_Descripcion" Type="varchar" Nullable="false" MaxLength="2000" />
+    <Property Name="int_CantResponsable" Type="int" />
+    <Property Name="dtm_FechaDocumento" Type="datetime" Nullable="false" />
+    <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="var_Observacion" Type="varchar" MaxLength="2000" />
+    <Property Name="int_Estado" Type="int" />
+  </EntityType>
+  <EntityType Name="CT_PROPUESTAINSPECCION_EMPLEADO">
+    <Key>
+      <PropertyRef Name="int_IdPropuestaInspeccion" />
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="int_IdPropuestaInspeccion" Type="int" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+    <Property Name="dtm_FechaInicio" Type="datetime" />
+    <Property Name="dtm_FechaFin" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CT_SOLICITUD">
+    <Key>
+      <PropertyRef Name="int_IdSolicitud" />
+    </Key>
+    <Property Name="int_IdSolicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="var_NroSolicitud" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="var_Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="dtm_FechaEmision" Type="datetime" Nullable="false" />
+    <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="int_IdTipoSolicitud" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CT_TIPOSOLICITUD">
+    <Key>
+      <PropertyRef Name="int_IdTipoSolicitud" />
+    </Key>
+    <Property Name="int_IdTipoSolicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="var_TipoSolicitud" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CT_TIPOVIA">
+    <Key>
+      <PropertyRef Name="int_IdTipoVia" />
+    </Key>
+    <Property Name="int_IdTipoVia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="var_Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="chr_Siglas" Type="char" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="CT_URBANIZACION">
+    <Key>
+      <PropertyRef Name="int_IdUrbanizacion" />
+    </Key>
+    <Property Name="int_IdUrbanizacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="var_Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CT_VIA">
+    <Key>
+      <PropertyRef Name="int_IdVia" />
+    </Key>
+    <Property Name="int_IdVia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdTipoVia" Type="int" Nullable="false" />
+    <Property Name="var_Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="int_NroCuadras" Type="int" Nullable="false" />
+    <Property Name="chr_Sentido" Type="char" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="CT_ZONA">
+    <Key>
+      <PropertyRef Name="int_IdZona" />
+    </Key>
+    <Property Name="int_IdZona" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="int_IdSolicitud" Type="int" />
+    <Property Name="var_CodigoZona" Type="char" Nullable="false" MaxLength="2" />
+    <Property Name="var_Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="dbl_Area" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="dtm_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="dtm_FechaActualizacion" Type="datetime" />
+    <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MA_EMPLEADO">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+    <Property Name="idPersona" Type="int" />
+    <Property Name="idCargo" Type="int" />
+    <Property Name="idArea" Type="int" />
+    <Property Name="CodigoEmpleado" Type="varchar" MaxLength="200" />
+    <Property Name="UsrRegistra" Type="int" />
+    <Property Name="FecRegistra" Type="datetime" />
+    <Property Name="UsrModifica" Type="int" />
+    <Property Name="FecModifica" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
+    <End Role="CT_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_URBANIZACION" Multiplicity="1" />
+    <End Role="CT_DETALLEVIA_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_DETALLEVIA_URBANIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_URBANIZACION">
+        <PropertyRef Name="int_IdUrbanizacion" />
+      </Principal>
+      <Dependent Role="CT_DETALLEVIA_URBANIZACION">
+        <PropertyRef Name="int_IdUrbanizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_DETALLEVIA_URBANIZACION_CT_VIA">
+    <End Role="CT_VIA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_VIA" Multiplicity="1" />
+    <End Role="CT_DETALLEVIA_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_DETALLEVIA_URBANIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_VIA">
+        <PropertyRef Name="int_IdVia" />
+      </Principal>
+      <Dependent Role="CT_DETALLEVIA_URBANIZACION">
+        <PropertyRef Name="int_IdVia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
+    <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" Multiplicity="1" />
+    <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_PROPUESTAINSPECCION">
+        <PropertyRef Name="int_IdPropuestaInspeccion" />
+      </Principal>
+      <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+        <PropertyRef Name="int_IdPropuestaInspeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
+    <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="1" />
+    <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO">
+    <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="0..1" />
+    <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MA_EMPLEADO">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="CT_PROPUESTAINSPECCION">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_VIA_CT_TIPOVIA">
+    <End Role="CT_TIPOVIA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_TIPOVIA" Multiplicity="1" />
+    <End Role="CT_VIA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_VIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_TIPOVIA">
+        <PropertyRef Name="int_IdTipoVia" />
+      </Principal>
+      <Dependent Role="CT_VIA">
+        <PropertyRef Name="int_IdTipoVia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Geolocalizacion">
+    <End Role="CT_LOTE" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_LOTE" Multiplicity="0..1" />
+    <End Role="CT_GEOLOCALIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_GEOLOCALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_LOTE">
+        <PropertyRef Name="int_IdLote" />
+      </Principal>
+      <Dependent Role="CT_GEOLOCALIZACION">
+        <PropertyRef Name="int_IdLote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Manzana">
+    <End Role="CT_MANZANA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_MANZANA" Multiplicity="0..1" />
+    <End Role="CT_GEOLOCALIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_GEOLOCALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_MANZANA">
+        <PropertyRef Name="int_IdManzana" />
+      </Principal>
+      <Dependent Role="CT_GEOLOCALIZACION">
+        <PropertyRef Name="int_IdManzana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Zona">
+    <End Role="CT_ZONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" Multiplicity="0..1" />
+    <End Role="CT_GEOLOCALIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_GEOLOCALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_ZONA">
+        <PropertyRef Name="int_IdZona" />
+      </Principal>
+      <Dependent Role="CT_GEOLOCALIZACION">
+        <PropertyRef Name="int_IdZona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Lote_utb_GCT_Manzana">
+    <End Role="CT_MANZANA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_MANZANA" Multiplicity="0..1" />
+    <End Role="CT_LOTE" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_LOTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_MANZANA">
+        <PropertyRef Name="int_IdManzana" />
+      </Principal>
+      <Dependent Role="CT_LOTE">
+        <PropertyRef Name="int_IdManzana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Manzana_utb_GCT_Zona">
+    <End Role="CT_ZONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" Multiplicity="0..1" />
+    <End Role="CT_MANZANA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_MANZANA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_ZONA">
+        <PropertyRef Name="int_IdZona" />
+      </Principal>
+      <Dependent Role="CT_MANZANA">
+        <PropertyRef Name="int_IdZona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Predio_utb_GCT_Lote">
+    <End Role="CT_LOTE" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_LOTE" Multiplicity="0..1" />
+    <End Role="CT_PREDIO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PREDIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_LOTE">
+        <PropertyRef Name="int_IdLote" />
+      </Principal>
+      <Dependent Role="CT_PREDIO">
+        <PropertyRef Name="int_IdLote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud">
+    <End Role="CT_SOLICITUD" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_SOLICITUD" Multiplicity="0..1" />
+    <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_SOLICITUD">
+        <PropertyRef Name="int_IdSolicitud" />
+      </Principal>
+      <Dependent Role="CT_PROPUESTAINSPECCION">
+        <PropertyRef Name="int_IdSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud">
+    <End Role="CT_TIPOSOLICITUD" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_TIPOSOLICITUD" Multiplicity="1" />
+    <End Role="CT_SOLICITUD" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_SOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_TIPOSOLICITUD">
+        <PropertyRef Name="int_IdTipoSolicitud" />
+      </Principal>
+      <Dependent Role="CT_SOLICITUD">
+        <PropertyRef Name="int_IdTipoSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utb_GCT_Zona_utb_GCT_Solicitud">
+    <End Role="CT_SOLICITUD" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_SOLICITUD" Multiplicity="0..1" />
+    <End Role="CT_ZONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_SOLICITUD">
+        <PropertyRef Name="int_IdSolicitud" />
+      </Principal>
+      <Dependent Role="CT_ZONA">
+        <PropertyRef Name="int_IdSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

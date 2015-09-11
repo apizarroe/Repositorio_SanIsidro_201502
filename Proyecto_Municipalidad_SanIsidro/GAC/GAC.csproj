@@ -166,8 +166,18 @@
     <Content Include="Content\custom\css\AtencionCiudadano.css" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AtenderController.cs" />
+    <Compile Include="Controllers\Default1Controller.cs" />
+    <Compile Include="Controllers\GeolocalizacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformacionCatastralController.cs" />
+    <Compile Include="Controllers\LoteController.cs" />
+    <Compile Include="Controllers\ManzanaController.cs" />
+    <Compile Include="Controllers\PlanoCatastralController.cs" />
+    <Compile Include="Controllers\PredioController.cs" />
+    <Compile Include="Controllers\PropuestaInspeccionController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
+    <Compile Include="Controllers\SolicitudCatastroController.cs" />
+    <Compile Include="Controllers\ZonaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -376,6 +386,8 @@
     <Content Include="Images\imgtemplate\user7-128x128.jpg" />
     <Content Include="Images\imgtemplate\user8-128x128.jpg" />
     <Content Include="Images\logo-san-isidro.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -399,6 +411,7 @@
     <Content Include="Scripts\jstemplate\demo.js" />
     <Content Include="Scripts\jstemplate\fastclick\fastclick.js" />
     <Content Include="Scripts\jstemplate\fastclick\fastclick.min.js" />
+    <Content Include="Scripts\jstemplate\InformacionCatastral.js" />
     <Content Include="Scripts\jstemplate\InormacionCatastral.js" />
     <Content Include="Scripts\jstemplate\pages\dashboard.js" />
     <Content Include="Scripts\jstemplate\pages\dashboard2.js" />
@@ -415,6 +428,16 @@
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
     <Content Include="Views\Atender\AtenderReclamo.aspx" />
+    <Content Include="Views\InformacionCatastral\Create.aspx" />
+    <Content Include="Views\PlanoCatastral\ImprimirPlano.aspx" />
+    <Content Include="Views\PlanoCatastral\Index.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Calificar.aspx" />
+    <Content Include="Views\PropuestaInspeccion\CalificarCreate.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Create.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Delete.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Details.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Edit.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Index.aspx" />
     <Content Include="Views\Reclamo\_HistorialReclamos.ascx" />
     <Content Include="Views\Reclamo\HistorialReclamo.aspx" />
     <Content Include="Views\Reclamo\Login.aspx" />
@@ -422,6 +445,16 @@
     <Content Include="Views\Reclamo\Index.aspx" />
     <Content Include="Views\Reclamo\RegistrarReclamo.aspx" />
     <Content Include="Views\Reclamo\_listarReclamos.ascx" />
+    <Content Include="Views\SolicitudCatastro\Create.aspx" />
+    <Content Include="Views\SolicitudCatastro\Delete.aspx" />
+    <Content Include="Views\SolicitudCatastro\Details.aspx" />
+    <Content Include="Views\SolicitudCatastro\Edit.aspx" />
+    <Content Include="Views\SolicitudCatastro\Index.aspx" />
+    <Content Include="Views\Zona\Create.aspx" />
+    <Content Include="Views\Zona\Delete.aspx" />
+    <Content Include="Views\Zona\Details.aspx" />
+    <Content Include="Views\Zona\Edit.aspx" />
+    <Content Include="Views\Zona\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -464,6 +497,7 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Shared\Site_Intranet.Master" />
     <Content Include="Views\Shared\Site_Inicio.Master" />
+    <Content Include="Views\Shared\Site_Catastro.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

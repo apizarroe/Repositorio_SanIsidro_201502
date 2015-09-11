@@ -13,10 +13,10 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entitiescatastro : DbContext
+    public partial class db2f833638c20949ff9238a2f301222db5Entities : DbContext
     {
-        public Entitiescatastro()
-            : base("name=Entitiescatastro")
+        public db2f833638c20949ff9238a2f301222db5Entities()
+            : base("name=db2f833638c20949ff9238a2f301222db5Entities")
         {
         }
     
@@ -31,11 +31,13 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
         public DbSet<CT_MANZANA> CT_MANZANA { get; set; }
         public DbSet<CT_PREDIO> CT_PREDIO { get; set; }
         public DbSet<CT_PROPUESTAINSPECCION> CT_PROPUESTAINSPECCION { get; set; }
+        public DbSet<CT_PROPUESTAINSPECCION_EMPLEADO> CT_PROPUESTAINSPECCION_EMPLEADO { get; set; }
         public DbSet<CT_SOLICITUD> CT_SOLICITUD { get; set; }
         public DbSet<CT_TIPOSOLICITUD> CT_TIPOSOLICITUD { get; set; }
         public DbSet<CT_TIPOVIA> CT_TIPOVIA { get; set; }
         public DbSet<CT_URBANIZACION> CT_URBANIZACION { get; set; }
         public DbSet<CT_VIA> CT_VIA { get; set; }
         public DbSet<CT_ZONA> CT_ZONA { get; set; }
+        public DbSet<MA_EMPLEADO> MA_EMPLEADO { get; set; }
     }
 }

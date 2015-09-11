@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db2f833638c20949ff9238a2f301222db5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db2f833638c20949ff9238a2f301222db5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="db2f833638c20949ff9238a2f301222db5ModelStoreContainer">
           <EntitySet Name="CT_DETALLEVIA_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_DETALLEVIA_URBANIZACION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_GEOLOCALIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_GEOLOCALIZACION" store:Type="Tables" Schema="dbo" />
@@ -12,12 +12,14 @@
           <EntitySet Name="CT_MANZANA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_MANZANA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_PREDIO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PREDIO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_PROPUESTAINSPECCION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CT_PROPUESTAINSPECCION_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_SOLICITUD" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_SOLICITUD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_TIPOSOLICITUD" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_TIPOSOLICITUD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_TIPOVIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_TIPOVIA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_URBANIZACION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_VIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_VIA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_ZONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
             <End Role="CT_URBANIZACION" EntitySet="CT_URBANIZACION" />
             <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
@@ -25,6 +27,18 @@
           <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_VIA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_DETALLEVIA_URBANIZACION_CT_VIA">
             <End Role="CT_VIA" EntitySet="CT_VIA" />
             <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
+            <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+            <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+            <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO">
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+            <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
           </AssociationSet>
           <AssociationSet Name="FK_CT_VIA_CT_TIPOVIA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_VIA_CT_TIPOVIA">
             <End Role="CT_TIPOVIA" EntitySet="CT_TIPOVIA" />
@@ -145,6 +159,18 @@
           <Property Name="int_CantResponsable" Type="int" />
           <Property Name="dtm_FechaDocumento" Type="datetime" Nullable="false" />
           <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="var_Observacion" Type="varchar" MaxLength="2000" />
+          <Property Name="int_Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="CT_PROPUESTAINSPECCION_EMPLEADO">
+          <Key>
+            <PropertyRef Name="int_IdPropuestaInspeccion" />
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="int_IdPropuestaInspeccion" Type="int" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="dtm_FechaInicio" Type="datetime" />
+          <Property Name="dtm_FechaFin" Type="datetime" />
         </EntityType>
         <EntityType Name="CT_SOLICITUD">
           <Key>
@@ -202,6 +228,20 @@
           <Property Name="dtm_FechaActualizacion" Type="datetime" />
           <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="MA_EMPLEADO">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="idPersona" Type="int" />
+          <Property Name="idCargo" Type="int" />
+          <Property Name="idArea" Type="int" />
+          <Property Name="CodigoEmpleado" Type="varchar" MaxLength="200" />
+          <Property Name="UsrRegistra" Type="int" />
+          <Property Name="FecRegistra" Type="datetime" />
+          <Property Name="UsrModifica" Type="int" />
+          <Property Name="FecModifica" Type="datetime" />
+        </EntityType>
         <Association Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
           <End Role="CT_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_URBANIZACION" Multiplicity="1" />
           <End Role="CT_DETALLEVIA_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_DETALLEVIA_URBANIZACION" Multiplicity="*" />
@@ -223,6 +263,42 @@
             </Principal>
             <Dependent Role="CT_DETALLEVIA_URBANIZACION">
               <PropertyRef Name="int_IdVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
+          <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" Multiplicity="1" />
+          <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CT_PROPUESTAINSPECCION">
+              <PropertyRef Name="int_IdPropuestaInspeccion" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+              <PropertyRef Name="int_IdPropuestaInspeccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="1" />
+          <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_EMPLEADO">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO">
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="0..1" />
+          <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_EMPLEADO">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION">
+              <PropertyRef Name="IdEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -346,24 +422,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db2f833638c20949ff9238a2f301222db5Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entitiescatastro" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="db2f833638c20949ff9238a2f301222db5Entities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="CT_DETALLEVIA_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION" />
           <EntitySet Name="CT_GEOLOCALIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_GEOLOCALIZACION" />
           <EntitySet Name="CT_LOTE" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_LOTE" />
           <EntitySet Name="CT_MANZANA" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_MANZANA" />
           <EntitySet Name="CT_PREDIO" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PREDIO" />
           <EntitySet Name="CT_PROPUESTAINSPECCION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION" />
+          <EntitySet Name="CT_PROPUESTAINSPECCION_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" />
           <EntitySet Name="CT_SOLICITUD" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_SOLICITUD" />
           <EntitySet Name="CT_TIPOSOLICITUD" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOSOLICITUD" />
           <EntitySet Name="CT_TIPOVIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOVIA" />
           <EntitySet Name="CT_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION" />
           <EntitySet Name="CT_VIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_VIA" />
           <EntitySet Name="CT_ZONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_ZONA" />
+          <EntitySet Name="MA_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" />
           <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
             <End Role="CT_URBANIZACION" EntitySet="CT_URBANIZACION" />
             <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
@@ -396,9 +473,21 @@
             <End Role="CT_ZONA" EntitySet="CT_ZONA" />
             <End Role="CT_MANZANA" EntitySet="CT_MANZANA" />
           </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
+            <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+            <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO">
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+            <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+          </AssociationSet>
           <AssociationSet Name="FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud" Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud">
             <End Role="CT_SOLICITUD" EntitySet="CT_SOLICITUD" />
             <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+            <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
           </AssociationSet>
           <AssociationSet Name="FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud" Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud">
             <End Role="CT_TIPOSOLICITUD" EntitySet="CT_TIPOSOLICITUD" />
@@ -503,7 +592,23 @@
           <Property Name="int_CantResponsable" Type="Int32" />
           <Property Name="dtm_FechaDocumento" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dtm_FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CT_PROPUESTAINSPECCION_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" FromRole="CT_PROPUESTAINSPECCION" ToRole="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" FromRole="CT_PROPUESTAINSPECCION" ToRole="MA_EMPLEADO" />
           <NavigationProperty Name="CT_SOLICITUD" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud" FromRole="CT_PROPUESTAINSPECCION" ToRole="CT_SOLICITUD" />
+          <Property Type="String" Name="var_Observacion" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="int_Estado" />
+        </EntityType>
+        <EntityType Name="CT_PROPUESTAINSPECCION_EMPLEADO">
+          <Key>
+            <PropertyRef Name="int_IdPropuestaInspeccion" />
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="int_IdPropuestaInspeccion" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="dtm_FechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dtm_FechaFin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CT_PROPUESTAINSPECCION" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" FromRole="CT_PROPUESTAINSPECCION_EMPLEADO" ToRole="CT_PROPUESTAINSPECCION" />
+          <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" FromRole="CT_PROPUESTAINSPECCION_EMPLEADO" ToRole="MA_EMPLEADO" />
         </EntityType>
         <EntityType Name="CT_SOLICITUD">
           <Key>
@@ -571,6 +676,22 @@
           <NavigationProperty Name="CT_GEOLOCALIZACION" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Geolocalizacion_utb_GCT_Zona" FromRole="CT_ZONA" ToRole="CT_GEOLOCALIZACION" />
           <NavigationProperty Name="CT_MANZANA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Manzana_utb_GCT_Zona" FromRole="CT_ZONA" ToRole="CT_MANZANA" />
           <NavigationProperty Name="CT_SOLICITUD" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Zona_utb_GCT_Solicitud" FromRole="CT_ZONA" ToRole="CT_SOLICITUD" />
+        </EntityType>
+        <EntityType Name="MA_EMPLEADO">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="idPersona" Type="Int32" />
+          <Property Name="idCargo" Type="Int32" />
+          <Property Name="idArea" Type="Int32" />
+          <Property Name="CodigoEmpleado" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="UsrRegistra" Type="Int32" />
+          <Property Name="FecRegistra" Type="DateTime" Precision="3" />
+          <Property Name="UsrModifica" Type="Int32" />
+          <Property Name="FecModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CT_PROPUESTAINSPECCION" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" FromRole="MA_EMPLEADO" ToRole="CT_PROPUESTAINSPECCION" />
+          <NavigationProperty Name="CT_PROPUESTAINSPECCION_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" FromRole="MA_EMPLEADO" ToRole="CT_PROPUESTAINSPECCION_EMPLEADO" />
         </EntityType>
         <Association Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
           <End Role="CT_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION" Multiplicity="1" />
@@ -668,6 +789,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
+          <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION" Multiplicity="1" />
+          <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CT_PROPUESTAINSPECCION">
+              <PropertyRef Name="int_IdPropuestaInspeccion" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+              <PropertyRef Name="int_IdPropuestaInspeccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO">
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Multiplicity="0..1" />
+          <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_EMPLEADO">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud">
           <End Role="CT_SOLICITUD" Type="db2f833638c20949ff9238a2f301222db5Model.CT_SOLICITUD" Multiplicity="0..1" />
           <End Role="CT_PROPUESTAINSPECCION" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION" Multiplicity="*" />
@@ -677,6 +822,18 @@
             </Principal>
             <Dependent Role="CT_PROPUESTAINSPECCION">
               <PropertyRef Name="int_IdSolicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Multiplicity="1" />
+          <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_EMPLEADO">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+              <PropertyRef Name="idEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -721,7 +878,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="Entitiescatastro">
+        <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="db2f833638c20949ff9238a2f301222db5Entities">
           <EntitySetMapping Name="CT_DETALLEVIA_URBANIZACION">
             <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION">
               <MappingFragment StoreEntitySet="CT_DETALLEVIA_URBANIZACION">
@@ -796,6 +953,8 @@
           <EntitySetMapping Name="CT_PROPUESTAINSPECCION">
             <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION">
               <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION">
+                <ScalarProperty Name="int_Estado" ColumnName="int_Estado" />
+                <ScalarProperty Name="var_Observacion" ColumnName="var_Observacion" />
                 <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="int_IdSolicitud" ColumnName="int_IdSolicitud" />
@@ -804,6 +963,16 @@
                 <ScalarProperty Name="int_CantResponsable" ColumnName="int_CantResponsable" />
                 <ScalarProperty Name="dtm_FechaDocumento" ColumnName="dtm_FechaDocumento" />
                 <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_PROPUESTAINSPECCION_EMPLEADO">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO">
+              <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION_EMPLEADO">
+                <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="dtm_FechaInicio" ColumnName="dtm_FechaInicio" />
+                <ScalarProperty Name="dtm_FechaFin" ColumnName="dtm_FechaFin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -866,6 +1035,21 @@
                 <ScalarProperty Name="dtm_FechaCreacion" ColumnName="dtm_FechaCreacion" />
                 <ScalarProperty Name="dtm_FechaActualizacion" ColumnName="dtm_FechaActualizacion" />
                 <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_EMPLEADO">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO">
+              <MappingFragment StoreEntitySet="MA_EMPLEADO">
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="UsrRegistra" ColumnName="UsrRegistra" />
+                <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
+                <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
+                <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

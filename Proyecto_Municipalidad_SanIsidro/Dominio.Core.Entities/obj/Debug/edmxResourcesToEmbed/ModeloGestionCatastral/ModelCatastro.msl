@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="db2f833638c20949ff9238a2f301222db5Entities">
+    <EntitySetMapping Name="CT_DETALLEVIA_URBANIZACION">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION">
+        <MappingFragment StoreEntitySet="CT_DETALLEVIA_URBANIZACION">
+          <ScalarProperty Name="int_IdDetalleVia" ColumnName="int_IdDetalleVia" />
+          <ScalarProperty Name="int_IdUrbanizacion" ColumnName="int_IdUrbanizacion" />
+          <ScalarProperty Name="int_IdVia" ColumnName="int_IdVia" />
+          <ScalarProperty Name="int_NroCuadraInicio" ColumnName="int_NroCuadraInicio" />
+          <ScalarProperty Name="int_NroCuadraFin" ColumnName="int_NroCuadraFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_GEOLOCALIZACION">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_GEOLOCALIZACION">
+        <MappingFragment StoreEntitySet="CT_GEOLOCALIZACION">
+          <ScalarProperty Name="int_IdGeolocalizacion" ColumnName="int_IdGeolocalizacion" />
+          <ScalarProperty Name="int_IdZona" ColumnName="int_IdZona" />
+          <ScalarProperty Name="int_IdManzana" ColumnName="int_IdManzana" />
+          <ScalarProperty Name="int_IdLote" ColumnName="int_IdLote" />
+          <ScalarProperty Name="var_Marca" ColumnName="var_Marca" />
+          <ScalarProperty Name="var_Referencia" ColumnName="var_Referencia" />
+          <ScalarProperty Name="flt_Latitud" ColumnName="flt_Latitud" />
+          <ScalarProperty Name="flt_Longitud" ColumnName="flt_Longitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_LOTE">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_LOTE">
+        <MappingFragment StoreEntitySet="CT_LOTE">
+          <ScalarProperty Name="int_IdLote" ColumnName="int_IdLote" />
+          <ScalarProperty Name="int_IdManzana" ColumnName="int_IdManzana" />
+          <ScalarProperty Name="var_CodigoLote" ColumnName="var_CodigoLote" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+          <ScalarProperty Name="dcm_Area" ColumnName="dcm_Area" />
+          <ScalarProperty Name="var_Direccion" ColumnName="var_Direccion" />
+          <ScalarProperty Name="dtm_FechaCreacion" ColumnName="dtm_FechaCreacion" />
+          <ScalarProperty Name="dtm_FechaActualizacion" ColumnName="dtm_FechaActualizacion" />
+          <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_MANZANA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_MANZANA">
+        <MappingFragment StoreEntitySet="CT_MANZANA">
+          <ScalarProperty Name="int_IdManzana" ColumnName="int_IdManzana" />
+          <ScalarProperty Name="int_IdZona" ColumnName="int_IdZona" />
+          <ScalarProperty Name="var_CodigoManzana" ColumnName="var_CodigoManzana" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+          <ScalarProperty Name="dbl_Area" ColumnName="dbl_Area" />
+          <ScalarProperty Name="dtm_FechaCreacion" ColumnName="dtm_FechaCreacion" />
+          <ScalarProperty Name="dtm_FechaActualizacion" ColumnName="dtm_FechaActualizacion" />
+          <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_PREDIO">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PREDIO">
+        <MappingFragment StoreEntitySet="CT_PREDIO">
+          <ScalarProperty Name="int_IdPredio" ColumnName="int_IdPredio" />
+          <ScalarProperty Name="int_IdLote" ColumnName="int_IdLote" />
+          <ScalarProperty Name="chr_CodigoPredio" ColumnName="chr_CodigoPredio" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+          <ScalarProperty Name="var_Ubicacion" ColumnName="var_Ubicacion" />
+          <ScalarProperty Name="dcm_AreaConstruida" ColumnName="dcm_AreaConstruida" />
+          <ScalarProperty Name="var_Observaciones" ColumnName="var_Observaciones" />
+          <ScalarProperty Name="int_Altura" ColumnName="int_Altura" />
+          <ScalarProperty Name="dtm_FechaCreacion" ColumnName="dtm_FechaCreacion" />
+          <ScalarProperty Name="dtm_FechaActualizacion" ColumnName="dtm_FechaActualizacion" />
+          <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_PROPUESTAINSPECCION">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION">
+        <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION">
+          <ScalarProperty Name="int_Estado" ColumnName="int_Estado" />
+          <ScalarProperty Name="var_Observacion" ColumnName="var_Observacion" />
+          <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="int_IdSolicitud" ColumnName="int_IdSolicitud" />
+          <ScalarProperty Name="var_NroPropuesta" ColumnName="var_NroPropuesta" />
+          <ScalarProperty Name="var_Descripcion" ColumnName="var_Descripcion" />
+          <ScalarProperty Name="int_CantResponsable" ColumnName="int_CantResponsable" />
+          <ScalarProperty Name="dtm_FechaDocumento" ColumnName="dtm_FechaDocumento" />
+          <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_PROPUESTAINSPECCION_EMPLEADO">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO">
+        <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION_EMPLEADO">
+          <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="dtm_FechaInicio" ColumnName="dtm_FechaInicio" />
+          <ScalarProperty Name="dtm_FechaFin" ColumnName="dtm_FechaFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_SOLICITUD">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_SOLICITUD">
+        <MappingFragment StoreEntitySet="CT_SOLICITUD">
+          <ScalarProperty Name="int_IdSolicitud" ColumnName="int_IdSolicitud" />
+          <ScalarProperty Name="var_NroSolicitud" ColumnName="var_NroSolicitud" />
+          <ScalarProperty Name="var_Descripcion" ColumnName="var_Descripcion" />
+          <ScalarProperty Name="dtm_FechaEmision" ColumnName="dtm_FechaEmision" />
+          <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+          <ScalarProperty Name="int_IdTipoSolicitud" ColumnName="int_IdTipoSolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_TIPOSOLICITUD">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOSOLICITUD">
+        <MappingFragment StoreEntitySet="CT_TIPOSOLICITUD">
+          <ScalarProperty Name="int_IdTipoSolicitud" ColumnName="int_IdTipoSolicitud" />
+          <ScalarProperty Name="var_TipoSolicitud" ColumnName="var_TipoSolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_TIPOVIA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOVIA">
+        <MappingFragment StoreEntitySet="CT_TIPOVIA">
+          <ScalarProperty Name="int_IdTipoVia" ColumnName="int_IdTipoVia" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+          <ScalarProperty Name="chr_Siglas" ColumnName="chr_Siglas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_URBANIZACION">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION">
+        <MappingFragment StoreEntitySet="CT_URBANIZACION">
+          <ScalarProperty Name="int_IdUrbanizacion" ColumnName="int_IdUrbanizacion" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_VIA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_VIA">
+        <MappingFragment StoreEntitySet="CT_VIA">
+          <ScalarProperty Name="int_IdVia" ColumnName="int_IdVia" />
+          <ScalarProperty Name="int_IdTipoVia" ColumnName="int_IdTipoVia" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+          <ScalarProperty Name="int_NroCuadras" ColumnName="int_NroCuadras" />
+          <ScalarProperty Name="chr_Sentido" ColumnName="chr_Sentido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_ZONA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_ZONA">
+        <MappingFragment StoreEntitySet="CT_ZONA">
+          <ScalarProperty Name="int_IdZona" ColumnName="int_IdZona" />
+          <ScalarProperty Name="int_IdSolicitud" ColumnName="int_IdSolicitud" />
+          <ScalarProperty Name="var_CodigoZona" ColumnName="var_CodigoZona" />
+          <ScalarProperty Name="var_Nombre" ColumnName="var_Nombre" />
+          <ScalarProperty Name="dbl_Area" ColumnName="dbl_Area" />
+          <ScalarProperty Name="dtm_FechaCreacion" ColumnName="dtm_FechaCreacion" />
+          <ScalarProperty Name="dtm_FechaActualizacion" ColumnName="dtm_FechaActualizacion" />
+          <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_EMPLEADO">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO">
+        <MappingFragment StoreEntitySet="MA_EMPLEADO">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="UsrRegistra" ColumnName="UsrRegistra" />
+          <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
+          <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
+          <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
