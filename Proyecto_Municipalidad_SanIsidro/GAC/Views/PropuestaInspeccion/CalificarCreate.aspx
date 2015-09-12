@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Emitir Propuesta de Inspeccion
+        <h1>Calificar Propuesta de Inspeccion
             
         </h1>
         <ol class="breadcrumb">

@@ -55,6 +55,52 @@ namespace GAC.Controllers
             ViewBag.int_IdSolicitud = new SelectList(db.CT_SOLICITUD, "int_IdSolicitud", "var_NroSolicitud");
             return View(oCT_PROPUESTAINSPECCION);
         }
+        public ActionResult Asignar()
+        {
+
+
+
+            ViewBag.idEmpleado = new SelectList(db.MA_EMPLEADO, "idEmpleado", "CodigoEmpleado");
+            return View();
+        }
+        public ActionResult InsertarAsignar(CT_PROPUESTAINSPECCION_EMPLEADO oCT_PROPUESTAINSPECCION_EMPLEADO)
+        {
+            if (ModelState.IsValid)
+            {
+                CT_SOLICITUD o = db.CT_SOLICITUD.Find(oCT_PROPUESTAINSPECCION_EMPLEADO.int_IdPropuestaInspeccion);
+
+
+                oCT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio = DateTime.Now;
+                oCT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin = DateTime.Now;
+                oCT_PROPUESTAINSPECCION_EMPLEADO.int_IdPropuestaInspeccion = o.CT_PROPUESTAINSPECCION.First().int_IdPropuestaInspeccion;
+
+
+                db.CT_PROPUESTAINSPECCION_EMPLEADO.Add(oCT_PROPUESTAINSPECCION_EMPLEADO);
+                db.SaveChanges();
+                return Json(new
+                {
+                    success = true,
+                });
+            }
+            else
+            {
+                return Json(new { success = false });
+            }
+        }
+        public ActionResult GetAsignar(int int_IdPropuestaInspeccion = 0)
+        {
+            CT_SOLICITUD o = db.CT_SOLICITUD.Find(int_IdPropuestaInspeccion);
+            
+
+            return this.Json((from obj
+                                  in db.CT_PROPUESTAINSPECCION_EMPLEADO.ToList().Where(x => x.int_IdPropuestaInspeccion == o.CT_PROPUESTAINSPECCION.First().int_IdPropuestaInspeccion)
+                              select new
+                              {
+                                  chr_CodigoPredio = obj.MA_EMPLEADO.CodigoEmpleado,
+                                  var_Nombre = "Zona 2"
+                              }), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CalificarCreate(int id = 0)
         {
 

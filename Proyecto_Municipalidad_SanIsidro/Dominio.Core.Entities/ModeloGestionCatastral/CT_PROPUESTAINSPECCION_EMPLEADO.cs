@@ -16,10 +16,12 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
     {
         public int int_IdPropuestaInspeccion { get; set; }
         public int idEmpleado { get; set; }
+        public int int_IdZona { get; set; }
         public Nullable<System.DateTime> dtm_FechaInicio { get; set; }
         public Nullable<System.DateTime> dtm_FechaFin { get; set; }
     
         public virtual CT_PROPUESTAINSPECCION CT_PROPUESTAINSPECCION { get; set; }
         public virtual MA_EMPLEADO MA_EMPLEADO { get; set; }
+        public virtual CT_ZONA CT_ZONA { get; set; }
     }
 }

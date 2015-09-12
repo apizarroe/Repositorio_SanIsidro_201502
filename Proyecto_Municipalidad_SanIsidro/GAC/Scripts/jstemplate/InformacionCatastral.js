@@ -272,8 +272,45 @@
     });
 
 
+    
+    $("#btnAsignartecnico").click(function () {
+        var asignar;
+        asignar = {
+            "int_IdPropuestaInspeccion": $("#int_IdSolicitud").val(),
+            "idEmpleado": $("#idEmpleado").val(),
+            "int_IdZona": $("#ddlZona1").val(),
+        };
+        $.ajax({
+            type: "post",
+            url: "/PropuestaInspeccion/InsertarAsignar",
+            error: function (jqXHR, textStatus, errorThrown) {
+                return console.log(jqXHR, errorThrown);
+            },
+            data: asignar,
+            dataType: "JSON"
+        }).success(function (json) {
 
+            // ObtenerZona();
+            
+            ObtenerAsignarTecnico();
+        });
+    });
 
+    function ObtenerAsignarTecnico() {
+        $.get(
+             '../../PropuestaInspeccion/GetAsignar', //Action method del controller Expediente
+             { int_IdPropuestaInspeccion: $('#int_IdSolicitud').val() },       //Parametro para el action method
+             function (jsonResult) {
+                 $('#tblDetalleAsignar > tbody').children('tr:not(:first)').remove();
+                 //$("#tblSolicitudPendiente > tbody").append("<tr><th>Nro Solicitud</th><th>Fecha Emisión</th><th>Tipo Solicitud</th><th>Descripción</th> <th></th></tr> ");
+                 $.each(jsonResult, function () {
+                     
+                     $("#tblDetalleAsignar > tbody").append("<tr><td>" + this.chr_CodigoPredio + "</td><td>" + this.var_Nombre + "</td></tr>");
+                 });
+             }
+         );
+
+    }
 
     $("#btnGrabarLote").click(function () {
 
@@ -663,6 +700,7 @@ function SeleccionarSolicitud() {
     });
 }
 function ObtenerZona() {
+    
     $.get(
          '../../Zona/GetZonas', //Action method del controller Expediente
          { int_IdSolicitud: $('#int_IdSolicitud').val() },       //Parametro para el action method
@@ -702,9 +740,9 @@ function ObtenerUnaZona() {
 
 
 function SeleccionarManzana(Element) {
+    $('.ddlZona').val($(Element).attr('id'));
     $('#int_IdZona').val($(Element).attr('id'));
     $('#myTab li:eq(1) a').tab('show');
-    $('.ddlZona').val($(Element).attr('id'));
     ObtenerManzana();
 
 }

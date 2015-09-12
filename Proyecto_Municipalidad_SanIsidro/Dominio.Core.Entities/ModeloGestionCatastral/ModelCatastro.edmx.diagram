@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09230eb38ce443f98898e68f300ccabc" Name="Diagrama1">
+      <Diagram DiagramId="09230eb38ce443f98898e68f300ccabc" Name="Diagrama1" ZoomLevel="74">
         <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_GEOLOCALIZACION" Width="1.5" PointX="12" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_LOTE" Width="1.5" PointX="9.75" PointY="13" IsExpanded="true" />
@@ -34,6 +34,7 @@
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Zona_utb_GCT_Solicitud" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_VIA_CT_TIPOVIA" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

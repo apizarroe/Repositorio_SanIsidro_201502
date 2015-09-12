@@ -234,6 +234,9 @@
                                 <a href="../../propuestainspeccion/calificar"><i class="fa fa-circle-o"></i>Calificar Propuesta de Inspeccion</a>
                             </li>
                             <li>
+                                <a href="../../propuestainspeccion/Asignar"><i class="fa fa-circle-o"></i>Asignar Tecnico</a>
+                            </li>
+                            <li>
                                 <a href="../../InformacionCatastral/Create"><i class="fa fa-circle-o"></i>Mantener Informacion Cat.</a>
                             </li>
 

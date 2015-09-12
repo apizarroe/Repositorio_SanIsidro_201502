@@ -428,11 +428,13 @@
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
     <Content Include="Views\Atender\AtenderReclamo.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\InformacionCatastral\Create.aspx" />
     <Content Include="Views\PlanoCatastral\ImprimirPlano.aspx" />
     <Content Include="Views\PlanoCatastral\Index.aspx" />
     <Content Include="Views\PropuestaInspeccion\Calificar.aspx" />
     <Content Include="Views\PropuestaInspeccion\CalificarCreate.aspx" />
+    <Content Include="Views\PropuestaInspeccion\Asignar.aspx" />
     <Content Include="Views\PropuestaInspeccion\Create.aspx" />
     <Content Include="Views\PropuestaInspeccion\Delete.aspx" />
     <Content Include="Views\PropuestaInspeccion\Details.aspx" />
@@ -489,7 +491,6 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

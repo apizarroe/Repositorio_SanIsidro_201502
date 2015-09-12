@@ -15,4 +15,3 @@ C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipali
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\EntityFramework.xml
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.csprojResolveAssemblyReference.cache
