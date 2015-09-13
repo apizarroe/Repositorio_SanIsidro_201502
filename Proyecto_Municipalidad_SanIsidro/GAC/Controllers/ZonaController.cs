@@ -12,7 +12,7 @@ namespace GAC.Controllers
     public class ZonaController : Controller
     {
         
-
+        //Change from catastro group 
         //
         // GET: /Zona/
 
