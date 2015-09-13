@@ -74,37 +74,44 @@
                     </div>
                     <div class="box-body">
 
-         
 
 
 
-                        
+
+
                         <label>
-                                                Tecnico
-                                            </label>
-                        <div class="editor-field" >
-                            <%: Html.DropDownList("idEmpleado", String.Empty) %>
-                            
+                            Tecnico
+                        </label>
+                        <div class="editor-field">
+                            <%: Html.DropDownList("idEmpleado",null,"",new { @class="form-control select2"} ) %>
                         </div>
                         <label>
-                                                Zona
-                                            </label>
-                                            <select id="ddlZona1" class="ddlZona">
-                                                <option>Zona A </option>
-                                                <option>Zona B </option>
-                                                <option>Zona C </option>
-                                                <option>Zona D </option>
-                                                <option>Zona N </option>
+                            Zona
+                        </label>
+                        <select id="ddlZona1" class="ddlZona form-control">
+                            <option>Zona A </option>
+                            <option>Zona B </option>
+                            <option>Zona C </option>
+                            <option>Zona D </option>
+                            <option>Zona N </option>
 
-                                            </select>
-                        
+                        </select>
 
+                        <div class="form-group">
+                            <label>Tiempo de Inspeccion:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="reservation">
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
                         <p>
-                            
-                            <input type="button"  value="Asignar Tecnico" class="btn btn-success" id="btnAsignartecnico"  />
+
+                            <input type="button" value="Asignar Tecnico" class="btn btn-success" id="btnAsignartecnico" />
                             <%: Html.ActionLink("Cancelar", "Index","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
-
-
                         </p>
                         <table class="table table-hover" id="tblDetalleAsignar">
                             <tr>
@@ -112,13 +119,13 @@
                                 </th>
                                 <th>Asignar
                                 </th>
-                                
+
 
                                 <th></th>
                             </tr>
                         </table>
 
-                    
+
                     </div>
                     <!-- /.box-body  -->
                 </div>
@@ -128,7 +135,7 @@
 
 
 
-    
+
 
 
 
@@ -175,9 +182,19 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <%: Scripts.Render("~/Scripts/jstemplate/InformacionCatastral.js") %>
+    <%: Styles.Render("~/Scripts/jstemplate/select2/select2.min.css") %>
+    <%: Scripts.Render("~/Scripts/jstemplate/select2/select2.full.min.js") %>
+    <%: Styles.Render("~/Scripts/jstemplate/daterangepicker/daterangepicker-bs3.css") %>
+    <%: Scripts.Render("~/Scripts/jstemplate/daterangepicker/daterangepicker.js") %>
+    
+
+
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".select2").select2();
+            $('#reservation').daterangepicker();
             $('#btnEmitirPropuesta').click(function () {
                 var menssaje = "";
                 if ($('#int_CantResponsable').val().length == 0) {
@@ -198,6 +215,6 @@
                 }
             });
         });
-        
+
     </script>
 </asp:Content>

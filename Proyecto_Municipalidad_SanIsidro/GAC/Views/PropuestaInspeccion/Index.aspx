@@ -46,6 +46,9 @@
                                 <th>
                                     Fecha de Registro
                                 </th>
+                                <th>
+                                    Estado
+                                </th>
                                 <th></th>
                             </tr>
 
@@ -68,10 +71,29 @@
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.dtm_FechaRegistro) %>
                                 </td>
+                                                                <td>
+                                    <%if(item.int_Estado==1) %>
+                                    <% { %>
+                                        Pendiente
+                                    <% } %>
+                                    <%if(item.int_Estado==2) %>
+                                    <% { %>
+                                        Aprobada
+                                    <% } %>
+                                    <%if(item.int_Estado==3) %>
+                                    <% { %>
+                                        Observada
+                                    <% } %>
+                                </td>
                                 <td>
+                                    <%if (item.int_Estado == 1 || item.int_Estado == 3) %>
+                                    <% { %>
                                     <%: Html.ActionLink("Edit", "Edit", new {  id=item.int_IdPropuestaInspeccion  }) %> |
-            <%: Html.ActionLink("Details", "Details", new { id=item.int_IdPropuestaInspeccion }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { id=item.int_IdPropuestaInspeccion }) %>
+                                    
+                                        
+                                        
+                                    <% } %>
+                                    <%: Html.ActionLink("Details", "Details", new { id=item.int_IdPropuestaInspeccion }) %> 
                                 </td>
                             </tr>
                             <% } %>

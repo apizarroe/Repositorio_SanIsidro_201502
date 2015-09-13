@@ -74,15 +74,15 @@
                                 <td>
                                     <%if(item.int_Estado==1) %>
                                     <% { %>
-                                        Registrado
+                                        Pendiente
                                     <% } %>
                                     <%if(item.int_Estado==2) %>
                                     <% { %>
-                                        Aprobado
+                                        Aprobada
                                     <% } %>
                                     <%if(item.int_Estado==3) %>
                                     <% { %>
-                                        Observado
+                                        Observada
                                     <% } %>
                                 </td>
                                 <td>

@@ -11,7 +11,7 @@ namespace GAC.Controllers
 {
     public class PropuestaInspeccionController : Controller
     {
-        private db2f833638c20949ff9238a2f301222db5Entities db = new db2f833638c20949ff9238a2f301222db5Entities();
+        private db2f833638c20949ff9238a2f301222db5Entities11 db = new db2f833638c20949ff9238a2f301222db5Entities11();
 
         //
         // GET: /PropuestaInspeccion/
@@ -59,8 +59,18 @@ namespace GAC.Controllers
         {
 
 
+            var stands =
+                          db.MA_EMPLEADO
+                            .Where(s => s.MA_AREA.idArea==11)
+                            .ToList()
+                            .Select(s => new
+                            {
+                                idEmpleado = s.idEmpleado,
+                                Description = string.Format("{0},{1}", s.MA_PERSONA.MA_PERSONANATURAL.First().ApellidoPaterno, s.MA_PERSONA.MA_PERSONANATURAL.First().Nombres)
+                            });
 
-            ViewBag.idEmpleado = new SelectList(db.MA_EMPLEADO, "idEmpleado", "CodigoEmpleado");
+
+            ViewBag.idEmpleado = new SelectList(stands, "idEmpleado", "Description");
             return View();
         }
         public ActionResult InsertarAsignar(CT_PROPUESTAINSPECCION_EMPLEADO oCT_PROPUESTAINSPECCION_EMPLEADO)
@@ -97,7 +107,7 @@ namespace GAC.Controllers
                               select new
                               {
                                   chr_CodigoPredio = obj.MA_EMPLEADO.CodigoEmpleado,
-                                  var_Nombre = "Zona 2"
+                                  var_Nombre = string.Format("{0},{1}", obj.MA_EMPLEADO.MA_PERSONA.MA_PERSONANATURAL.First().ApellidoPaterno , obj.MA_EMPLEADO.MA_PERSONA.MA_PERSONANATURAL.First().Nombres) 
                               }), JsonRequestBehavior.AllowGet);
         }
 

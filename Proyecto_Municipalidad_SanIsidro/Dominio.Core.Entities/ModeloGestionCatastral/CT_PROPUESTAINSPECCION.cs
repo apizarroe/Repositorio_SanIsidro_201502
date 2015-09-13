@@ -24,15 +24,14 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
         public Nullable<int> int_IdSolicitud { get; set; }
         public string var_NroPropuesta { get; set; }
         public string var_Descripcion { get; set; }
-        public string var_Observacion { get; set; }
         public Nullable<int> int_CantResponsable { get; set; }
-        public Nullable<int> int_Estado { get; set; }
         public System.DateTime dtm_FechaDocumento { get; set; }
         public System.DateTime dtm_FechaRegistro { get; set; }
+        public string var_Observacion { get; set; }
+        public Nullable<int> int_Estado { get; set; }
     
         public virtual ICollection<CT_PROPUESTAINSPECCION_EMPLEADO> CT_PROPUESTAINSPECCION_EMPLEADO { get; set; }
         public virtual MA_EMPLEADO MA_EMPLEADO { get; set; }
         public virtual CT_SOLICITUD CT_SOLICITUD { get; set; }
-        
     }
 }

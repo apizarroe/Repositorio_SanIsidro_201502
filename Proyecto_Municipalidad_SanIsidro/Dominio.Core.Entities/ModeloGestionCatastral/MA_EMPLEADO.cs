@@ -32,5 +32,8 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
     
         public virtual ICollection<CT_PROPUESTAINSPECCION> CT_PROPUESTAINSPECCION { get; set; }
         public virtual ICollection<CT_PROPUESTAINSPECCION_EMPLEADO> CT_PROPUESTAINSPECCION_EMPLEADO { get; set; }
+        public virtual MA_AREA MA_AREA { get; set; }
+        public virtual MA_CARGO MA_CARGO { get; set; }
+        public virtual MA_PERSONA MA_PERSONA { get; set; }
     }
 }

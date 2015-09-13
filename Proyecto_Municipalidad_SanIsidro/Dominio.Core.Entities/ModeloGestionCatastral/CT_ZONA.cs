@@ -18,6 +18,7 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
         {
             this.CT_GEOLOCALIZACION = new HashSet<CT_GEOLOCALIZACION>();
             this.CT_MANZANA = new HashSet<CT_MANZANA>();
+            this.CT_PROPUESTAINSPECCION_EMPLEADO = new HashSet<CT_PROPUESTAINSPECCION_EMPLEADO>();
         }
     
         public int int_IdZona { get; set; }
@@ -31,6 +32,7 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
     
         public virtual ICollection<CT_GEOLOCALIZACION> CT_GEOLOCALIZACION { get; set; }
         public virtual ICollection<CT_MANZANA> CT_MANZANA { get; set; }
+        public virtual ICollection<CT_PROPUESTAINSPECCION_EMPLEADO> CT_PROPUESTAINSPECCION_EMPLEADO { get; set; }
         public virtual CT_SOLICITUD CT_SOLICITUD { get; set; }
     }
 }

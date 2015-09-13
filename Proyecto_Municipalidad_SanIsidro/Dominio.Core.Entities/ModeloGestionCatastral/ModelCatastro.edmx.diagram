@@ -4,21 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09230eb38ce443f98898e68f300ccabc" Name="Diagrama1" ZoomLevel="74">
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_GEOLOCALIZACION" Width="1.5" PointX="12" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_LOTE" Width="1.5" PointX="9.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_MANZANA" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PREDIO" Width="1.5" PointX="12" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_SOLICITUD" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOSOLICITUD" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOVIA" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION" Width="1.5" PointX="8" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_VIA" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_ZONA" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="21156efab172469eb5558138a5c5ae16" Name="Diagrama1">
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION" Width="1.5" PointX="15.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_GEOLOCALIZACION" Width="1.5" PointX="15" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_LOTE" Width="1.5" PointX="12.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_MANZANA" Width="1.5" PointX="10.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PREDIO" Width="1.5" PointX="15" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_SOLICITUD" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOSOLICITUD" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_TIPOVIA" Width="1.5" PointX="10.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION" Width="1.5" PointX="13" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_VIA" Width="1.5" PointX="13" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_ZONA" Width="1.5" PointX="8.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_AREA" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_CARGO" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERFIL" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONAJURIDICA" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONANATURAL" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_USUARIO" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_DETALLEVIA_URBANIZACION_CT_VIA" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Geolocalizacion_utb_GCT_Geolocalizacion" ManuallyRouted="false" />
@@ -30,11 +37,19 @@
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Solicitud_utb_GCT_TipoSolicitud" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Zona_utb_GCT_Solicitud" ManuallyRouted="false" />
         <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_VIA_CT_TIPOVIA" ManuallyRouted="false" />
-        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_AREA" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_CARGO_" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERFIL" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_MA_PERSONA_MA_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONAJURIDICA_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONANATURAL_PERSONA" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

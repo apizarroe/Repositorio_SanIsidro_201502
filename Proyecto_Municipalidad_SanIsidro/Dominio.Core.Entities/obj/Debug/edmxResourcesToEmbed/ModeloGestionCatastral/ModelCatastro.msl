@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="db2f833638c20949ff9238a2f301222db5Entities">
+  <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="db2f833638c20949ff9238a2f301222db5Entities11">
     <EntitySetMapping Name="CT_DETALLEVIA_URBANIZACION">
       <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION">
         <MappingFragment StoreEntitySet="CT_DETALLEVIA_URBANIZACION">
@@ -75,8 +75,6 @@
     <EntitySetMapping Name="CT_PROPUESTAINSPECCION">
       <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION">
         <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION">
-          <ScalarProperty Name="int_Estado" ColumnName="int_Estado" />
-          <ScalarProperty Name="var_Observacion" ColumnName="var_Observacion" />
           <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
           <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
           <ScalarProperty Name="int_IdSolicitud" ColumnName="int_IdSolicitud" />
@@ -85,6 +83,8 @@
           <ScalarProperty Name="int_CantResponsable" ColumnName="int_CantResponsable" />
           <ScalarProperty Name="dtm_FechaDocumento" ColumnName="dtm_FechaDocumento" />
           <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+          <ScalarProperty Name="var_Observacion" ColumnName="var_Observacion" />
+          <ScalarProperty Name="int_Estado" ColumnName="int_Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -93,6 +93,7 @@
         <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION_EMPLEADO">
           <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
           <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="int_IdZona" ColumnName="int_IdZona" />
           <ScalarProperty Name="dtm_FechaInicio" ColumnName="dtm_FechaInicio" />
           <ScalarProperty Name="dtm_FechaFin" ColumnName="dtm_FechaFin" />
         </MappingFragment>
@@ -160,6 +161,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MA_AREA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_AREA">
+        <MappingFragment StoreEntitySet="MA_AREA">
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+          <ScalarProperty Name="descArea" ColumnName="descArea" />
+          <ScalarProperty Name="UsrRegistra" ColumnName="UsrRegistra" />
+          <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
+          <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
+          <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_CARGO">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_CARGO">
+        <MappingFragment StoreEntitySet="MA_CARGO">
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+          <ScalarProperty Name="descCargo" ColumnName="descCargo" />
+          <ScalarProperty Name="UsrRegistra" ColumnName="UsrRegistra" />
+          <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
+          <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
+          <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MA_EMPLEADO">
       <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO">
         <MappingFragment StoreEntitySet="MA_EMPLEADO">
@@ -172,6 +197,68 @@
           <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
           <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
           <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_PERFIL">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERFIL">
+        <MappingFragment StoreEntitySet="MA_PERFIL">
+          <ScalarProperty Name="coPerfil" ColumnName="coPerfil" />
+          <ScalarProperty Name="noDesPerfil" ColumnName="noDesPerfil" />
+          <ScalarProperty Name="fiPerfil" ColumnName="fiPerfil" />
+          <ScalarProperty Name="feCreacion" ColumnName="feCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_PERSONA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA">
+        <MappingFragment StoreEntitySet="MA_PERSONA">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idDistrito" ColumnName="idDistrito" />
+          <ScalarProperty Name="idTipoDocIdentidad" ColumnName="idTipoDocIdentidad" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="idRepresentanteLegal" ColumnName="idRepresentanteLegal" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_PERSONAJURIDICA">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONAJURIDICA">
+        <MappingFragment StoreEntitySet="MA_PERSONAJURIDICA">
+          <ScalarProperty Name="idPersonaJuridica" ColumnName="idPersonaJuridica" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="RepresentanteLegal" ColumnName="RepresentanteLegal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_PERSONANATURAL">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONANATURAL">
+        <MappingFragment StoreEntitySet="MA_PERSONANATURAL">
+          <ScalarProperty Name="idPersonaNatural" ColumnName="idPersonaNatural" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="NroDocIdentidad" ColumnName="NroDocIdentidad" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MA_USUARIO">
+      <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_USUARIO">
+        <MappingFragment StoreEntitySet="MA_USUARIO">
+          <ScalarProperty Name="coUsuario" ColumnName="coUsuario" />
+          <ScalarProperty Name="coPersona" ColumnName="coPersona" />
+          <ScalarProperty Name="noLoginUsuario" ColumnName="noLoginUsuario" />
+          <ScalarProperty Name="noClaveUsu" ColumnName="noClaveUsu" />
+          <ScalarProperty Name="fiActivo" ColumnName="fiActivo" />
+          <ScalarProperty Name="noIpPc" ColumnName="noIpPc" />
+          <ScalarProperty Name="feUltimoLogin" ColumnName="feUltimoLogin" />
+          <ScalarProperty Name="feCreacion" ColumnName="feCreacion" />
+          <ScalarProperty Name="coPerfil" ColumnName="coPerfil" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

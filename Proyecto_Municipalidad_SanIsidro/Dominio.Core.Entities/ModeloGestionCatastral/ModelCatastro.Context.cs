@@ -13,10 +13,10 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db2f833638c20949ff9238a2f301222db5Entities : DbContext
+    public partial class db2f833638c20949ff9238a2f301222db5Entities11 : DbContext
     {
-        public db2f833638c20949ff9238a2f301222db5Entities()
-            : base("name=db2f833638c20949ff9238a2f301222db5Entities")
+        public db2f833638c20949ff9238a2f301222db5Entities11()
+            : base("name=db2f833638c20949ff9238a2f301222db5Entities11")
         {
         }
     
@@ -38,6 +38,13 @@ namespace Dominio.Core.Entities.ModeloGestionCatastral
         public DbSet<CT_URBANIZACION> CT_URBANIZACION { get; set; }
         public DbSet<CT_VIA> CT_VIA { get; set; }
         public DbSet<CT_ZONA> CT_ZONA { get; set; }
+        public DbSet<MA_AREA> MA_AREA { get; set; }
+        public DbSet<MA_CARGO> MA_CARGO { get; set; }
         public DbSet<MA_EMPLEADO> MA_EMPLEADO { get; set; }
+        public DbSet<MA_PERFIL> MA_PERFIL { get; set; }
+        public DbSet<MA_PERSONA> MA_PERSONA { get; set; }
+        public DbSet<MA_PERSONAJURIDICA> MA_PERSONAJURIDICA { get; set; }
+        public DbSet<MA_PERSONANATURAL> MA_PERSONANATURAL { get; set; }
+        public DbSet<MA_USUARIO> MA_USUARIO { get; set; }
     }
 }

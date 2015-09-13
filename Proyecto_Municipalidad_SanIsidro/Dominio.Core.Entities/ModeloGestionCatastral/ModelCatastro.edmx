@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="db2f833638c20949ff9238a2f301222db5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="db2f833638c20949ff9238a2f301222db5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="db2f833638c20949ff9238a2f301222db5ModelStoreContainer">
           <EntitySet Name="CT_DETALLEVIA_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_DETALLEVIA_URBANIZACION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_GEOLOCALIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_GEOLOCALIZACION" store:Type="Tables" Schema="dbo" />
@@ -19,7 +19,14 @@
           <EntitySet Name="CT_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_URBANIZACION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_VIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_VIA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CT_ZONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_AREA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_AREA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_CARGO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_CARGO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MA_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_PERFIL" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERFIL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_PERSONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_PERSONAJURIDICA" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONAJURIDICA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_PERSONANATURAL" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONANATURAL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MA_USUARIO" EntityType="db2f833638c20949ff9238a2f301222db5Model.Store.MA_USUARIO" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
             <End Role="CT_URBANIZACION" EntitySet="CT_URBANIZACION" />
             <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
@@ -30,6 +37,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION">
             <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
+            <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA">
+            <End Role="CT_ZONA" EntitySet="CT_ZONA" />
             <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
           </AssociationSet>
           <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
@@ -43,6 +54,38 @@
           <AssociationSet Name="FK_CT_VIA_CT_TIPOVIA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_CT_VIA_CT_TIPOVIA">
             <End Role="CT_TIPOVIA" EntitySet="CT_TIPOVIA" />
             <End Role="CT_VIA" EntitySet="CT_VIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_AREA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_EMPLEADO_AREA">
+            <End Role="MA_AREA" EntitySet="MA_AREA" />
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_CARGO}" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_EMPLEADO_CARGO}">
+            <End Role="MA_CARGO" EntitySet="MA_CARGO" />
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_EMPLEADO_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MA_PERSONA_MA_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_MA_PERSONA_MA_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_PERSONA1" EntitySet="MA_PERSONA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MA_USUARIO_MA_PERFIL" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_MA_USUARIO_MA_PERFIL">
+            <End Role="MA_PERFIL" EntitySet="MA_PERFIL" />
+            <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MA_USUARIO_MA_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_MA_USUARIO_MA_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAJURIDICA_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_PERSONAJURIDICA_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_PERSONAJURIDICA" EntitySet="MA_PERSONAJURIDICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONANATURAL_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_PERSONANATURAL_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_PERSONANATURAL" EntitySet="MA_PERSONANATURAL" />
           </AssociationSet>
           <AssociationSet Name="FK_utb_GCT_Geolocalizacion_utb_GCT_Geolocalizacion" Association="db2f833638c20949ff9238a2f301222db5Model.Store.FK_utb_GCT_Geolocalizacion_utb_GCT_Geolocalizacion">
             <End Role="CT_LOTE" EntitySet="CT_LOTE" />
@@ -169,6 +212,7 @@
           </Key>
           <Property Name="int_IdPropuestaInspeccion" Type="int" Nullable="false" />
           <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="int_IdZona" Type="int" />
           <Property Name="dtm_FechaInicio" Type="datetime" />
           <Property Name="dtm_FechaFin" Type="datetime" />
         </EntityType>
@@ -228,6 +272,28 @@
           <Property Name="dtm_FechaActualizacion" Type="datetime" />
           <Property Name="dtm_FechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="MA_AREA">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="int" Nullable="false" />
+          <Property Name="descArea" Type="varchar" MaxLength="100" />
+          <Property Name="UsrRegistra" Type="int" />
+          <Property Name="FecRegistra" Type="datetime" />
+          <Property Name="UsrModifica" Type="int" />
+          <Property Name="FecModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MA_CARGO">
+          <Key>
+            <PropertyRef Name="idCargo" />
+          </Key>
+          <Property Name="idCargo" Type="int" Nullable="false" />
+          <Property Name="descCargo" Type="varchar" MaxLength="100" />
+          <Property Name="UsrRegistra" Type="int" />
+          <Property Name="FecRegistra" Type="datetime" />
+          <Property Name="UsrModifica" Type="int" />
+          <Property Name="FecModifica" Type="datetime" />
+        </EntityType>
         <EntityType Name="MA_EMPLEADO">
           <Key>
             <PropertyRef Name="idEmpleado" />
@@ -241,6 +307,63 @@
           <Property Name="FecRegistra" Type="datetime" />
           <Property Name="UsrModifica" Type="int" />
           <Property Name="FecModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MA_PERFIL">
+          <Key>
+            <PropertyRef Name="coPerfil" />
+          </Key>
+          <Property Name="coPerfil" Type="int" Nullable="false" />
+          <Property Name="noDesPerfil" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="fiPerfil" Type="smallint" />
+          <Property Name="feCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MA_PERSONA">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idDistrito" Type="int" />
+          <Property Name="idTipoDocIdentidad" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="200" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Correo" Type="varchar" MaxLength="80" />
+          <Property Name="idRepresentanteLegal" Type="int" />
+          <Property Name="RUC" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="MA_PERSONAJURIDICA">
+          <Key>
+            <PropertyRef Name="idPersonaJuridica" />
+          </Key>
+          <Property Name="idPersonaJuridica" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="int" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="250" />
+          <Property Name="RUC" Type="char" MaxLength="12" />
+          <Property Name="RepresentanteLegal" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MA_PERSONANATURAL">
+          <Key>
+            <PropertyRef Name="idPersonaNatural" />
+          </Key>
+          <Property Name="idPersonaNatural" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="int" />
+          <Property Name="NroDocIdentidad" Type="char" MaxLength="15" />
+          <Property Name="Nombres" Type="nchar" MaxLength="10" />
+          <Property Name="ApellidoPaterno" Type="nchar" MaxLength="10" />
+          <Property Name="ApellidoMaterno" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MA_USUARIO">
+          <Key>
+            <PropertyRef Name="coUsuario" />
+          </Key>
+          <Property Name="coUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="coPersona" Type="int" />
+          <Property Name="noLoginUsuario" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="noClaveUsu" Type="varchar" MaxLength="50" />
+          <Property Name="fiActivo" Type="tinyint" />
+          <Property Name="noIpPc" Type="varchar" MaxLength="45" />
+          <Property Name="feUltimoLogin" Type="datetime" />
+          <Property Name="feCreacion" Type="datetime" />
+          <Property Name="coPerfil" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
           <End Role="CT_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_URBANIZACION" Multiplicity="1" />
@@ -278,6 +401,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA">
+          <End Role="CT_ZONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_ZONA" Multiplicity="0..1" />
+          <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CT_ZONA">
+              <PropertyRef Name="int_IdZona" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+              <PropertyRef Name="int_IdZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
           <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="1" />
           <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
@@ -311,6 +446,102 @@
             </Principal>
             <Dependent Role="CT_VIA">
               <PropertyRef Name="int_IdTipoVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_AREA">
+          <End Role="MA_AREA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_AREA" Multiplicity="0..1" />
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_AREA">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="MA_EMPLEADO">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_CARGO}">
+          <End Role="MA_CARGO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_CARGO" Multiplicity="0..1" />
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_CARGO">
+              <PropertyRef Name="idCargo" />
+            </Principal>
+            <Dependent Role="MA_EMPLEADO">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_EMPLEADO">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MA_PERSONA_MA_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_PERSONA1" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_PERSONA1">
+              <PropertyRef Name="idRepresentanteLegal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MA_USUARIO_MA_PERFIL">
+          <End Role="MA_PERFIL" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERFIL" Multiplicity="1" />
+          <End Role="MA_USUARIO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERFIL">
+              <PropertyRef Name="coPerfil" />
+            </Principal>
+            <Dependent Role="MA_USUARIO">
+              <PropertyRef Name="coPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MA_USUARIO_MA_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_USUARIO" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_USUARIO">
+              <PropertyRef Name="coPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAJURIDICA_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_PERSONAJURIDICA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONAJURIDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_PERSONAJURIDICA">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONANATURAL_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_PERSONANATURAL" Type="db2f833638c20949ff9238a2f301222db5Model.Store.MA_PERSONANATURAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_PERSONANATURAL">
+              <PropertyRef Name="idPersona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -422,11 +653,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db2f833638c20949ff9238a2f301222db5Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="db2f833638c20949ff9238a2f301222db5Entities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="db2f833638c20949ff9238a2f301222db5Entities11" p1:LazyLoadingEnabled="true">
           <EntitySet Name="CT_DETALLEVIA_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION" />
           <EntitySet Name="CT_GEOLOCALIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_GEOLOCALIZACION" />
           <EntitySet Name="CT_LOTE" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_LOTE" />
@@ -440,7 +672,14 @@
           <EntitySet Name="CT_URBANIZACION" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION" />
           <EntitySet Name="CT_VIA" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_VIA" />
           <EntitySet Name="CT_ZONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.CT_ZONA" />
+          <EntitySet Name="MA_AREA" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_AREA" />
+          <EntitySet Name="MA_CARGO" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_CARGO" />
           <EntitySet Name="MA_EMPLEADO" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" />
+          <EntitySet Name="MA_PERFIL" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERFIL" />
+          <EntitySet Name="MA_PERSONA" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" />
+          <EntitySet Name="MA_PERSONAJURIDICA" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONAJURIDICA" />
+          <EntitySet Name="MA_PERSONANATURAL" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONANATURAL" />
+          <EntitySet Name="MA_USUARIO" EntityType="db2f833638c20949ff9238a2f301222db5Model.MA_USUARIO" />
           <AssociationSet Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
             <End Role="CT_URBANIZACION" EntitySet="CT_URBANIZACION" />
             <End Role="CT_DETALLEVIA_URBANIZACION" EntitySet="CT_DETALLEVIA_URBANIZACION" />
@@ -485,6 +724,10 @@
             <End Role="CT_SOLICITUD" EntitySet="CT_SOLICITUD" />
             <End Role="CT_PROPUESTAINSPECCION" EntitySet="CT_PROPUESTAINSPECCION" />
           </AssociationSet>
+          <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA">
+            <End Role="CT_ZONA" EntitySet="CT_ZONA" />
+            <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          </AssociationSet>
           <AssociationSet Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
             <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
             <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" EntitySet="CT_PROPUESTAINSPECCION_EMPLEADO" />
@@ -500,6 +743,38 @@
           <AssociationSet Name="FK_CT_VIA_CT_TIPOVIA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_CT_VIA_CT_TIPOVIA">
             <End Role="CT_TIPOVIA" EntitySet="CT_TIPOVIA" />
             <End Role="CT_VIA" EntitySet="CT_VIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_AREA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_AREA">
+            <End Role="MA_AREA" EntitySet="MA_AREA" />
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_CARGO_" Association="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_CARGO_">
+            <End Role="MA_CARGO" EntitySet="MA_CARGO" />
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_EMPLEADO" EntitySet="MA_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MA_USUARIO_MA_PERFIL" Association="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERFIL">
+            <End Role="MA_PERFIL" EntitySet="MA_PERFIL" />
+            <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MA_PERSONA_MA_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_MA_PERSONA_MA_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_PERSONA1" EntitySet="MA_PERSONA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MA_USUARIO_MA_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_USUARIO" EntitySet="MA_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAJURIDICA_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONAJURIDICA_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_PERSONAJURIDICA" EntitySet="MA_PERSONAJURIDICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONANATURAL_PERSONA" Association="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONANATURAL_PERSONA">
+            <End Role="MA_PERSONA" EntitySet="MA_PERSONA" />
+            <End Role="MA_PERSONANATURAL" EntitySet="MA_PERSONANATURAL" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CT_DETALLEVIA_URBANIZACION">
@@ -592,11 +867,11 @@
           <Property Name="int_CantResponsable" Type="Int32" />
           <Property Name="dtm_FechaDocumento" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dtm_FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="var_Observacion" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="int_Estado" Type="Int32" />
           <NavigationProperty Name="CT_PROPUESTAINSPECCION_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" FromRole="CT_PROPUESTAINSPECCION" ToRole="CT_PROPUESTAINSPECCION_EMPLEADO" />
           <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" FromRole="CT_PROPUESTAINSPECCION" ToRole="MA_EMPLEADO" />
           <NavigationProperty Name="CT_SOLICITUD" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_PropuestaInspeccion_utb_GCT_Solicitud" FromRole="CT_PROPUESTAINSPECCION" ToRole="CT_SOLICITUD" />
-          <Property Type="String" Name="var_Observacion" MaxLength="2000" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="int_Estado" />
         </EntityType>
         <EntityType Name="CT_PROPUESTAINSPECCION_EMPLEADO">
           <Key>
@@ -605,9 +880,11 @@
           </Key>
           <Property Name="int_IdPropuestaInspeccion" Type="Int32" Nullable="false" />
           <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="int_IdZona" Type="Int32" />
           <Property Name="dtm_FechaInicio" Type="DateTime" Precision="3" />
           <Property Name="dtm_FechaFin" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CT_PROPUESTAINSPECCION" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_PROPUESTAINSPECCION" FromRole="CT_PROPUESTAINSPECCION_EMPLEADO" ToRole="CT_PROPUESTAINSPECCION" />
+          <NavigationProperty Name="CT_ZONA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" FromRole="CT_PROPUESTAINSPECCION_EMPLEADO" ToRole="CT_ZONA" />
           <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" FromRole="CT_PROPUESTAINSPECCION_EMPLEADO" ToRole="MA_EMPLEADO" />
         </EntityType>
         <EntityType Name="CT_SOLICITUD">
@@ -675,7 +952,32 @@
           <Property Name="dtm_FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CT_GEOLOCALIZACION" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Geolocalizacion_utb_GCT_Zona" FromRole="CT_ZONA" ToRole="CT_GEOLOCALIZACION" />
           <NavigationProperty Name="CT_MANZANA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Manzana_utb_GCT_Zona" FromRole="CT_ZONA" ToRole="CT_MANZANA" />
+          <NavigationProperty Name="CT_PROPUESTAINSPECCION_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA" FromRole="CT_ZONA" ToRole="CT_PROPUESTAINSPECCION_EMPLEADO" />
           <NavigationProperty Name="CT_SOLICITUD" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_utb_GCT_Zona_utb_GCT_Solicitud" FromRole="CT_ZONA" ToRole="CT_SOLICITUD" />
+        </EntityType>
+        <EntityType Name="MA_AREA">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="Int32" Nullable="false" />
+          <Property Name="descArea" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UsrRegistra" Type="Int32" />
+          <Property Name="FecRegistra" Type="DateTime" Precision="3" />
+          <Property Name="UsrModifica" Type="Int32" />
+          <Property Name="FecModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_AREA" FromRole="MA_AREA" ToRole="MA_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="MA_CARGO">
+          <Key>
+            <PropertyRef Name="idCargo" />
+          </Key>
+          <Property Name="idCargo" Type="Int32" Nullable="false" />
+          <Property Name="descCargo" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UsrRegistra" Type="Int32" />
+          <Property Name="FecRegistra" Type="DateTime" Precision="3" />
+          <Property Name="UsrModifica" Type="Int32" />
+          <Property Name="FecModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_CARGO_" FromRole="MA_CARGO" ToRole="MA_EMPLEADO" />
         </EntityType>
         <EntityType Name="MA_EMPLEADO">
           <Key>
@@ -692,6 +994,77 @@
           <Property Name="FecModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CT_PROPUESTAINSPECCION" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_MA_EMPLEADO" FromRole="MA_EMPLEADO" ToRole="CT_PROPUESTAINSPECCION" />
           <NavigationProperty Name="CT_PROPUESTAINSPECCION_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO" FromRole="MA_EMPLEADO" ToRole="CT_PROPUESTAINSPECCION_EMPLEADO" />
+          <NavigationProperty Name="MA_AREA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_AREA" FromRole="MA_EMPLEADO" ToRole="MA_AREA" />
+          <NavigationProperty Name="MA_CARGO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_CARGO_" FromRole="MA_EMPLEADO" ToRole="MA_CARGO" />
+          <NavigationProperty Name="MA_PERSONA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_PERSONA" FromRole="MA_EMPLEADO" ToRole="MA_PERSONA" />
+        </EntityType>
+        <EntityType Name="MA_PERFIL">
+          <Key>
+            <PropertyRef Name="coPerfil" />
+          </Key>
+          <Property Name="coPerfil" Type="Int32" Nullable="false" />
+          <Property Name="noDesPerfil" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="fiPerfil" Type="Int16" />
+          <Property Name="feCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MA_USUARIO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERFIL" FromRole="MA_PERFIL" ToRole="MA_USUARIO" />
+        </EntityType>
+        <EntityType Name="MA_PERSONA">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idDistrito" Type="Int32" />
+          <Property Name="idTipoDocIdentidad" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="idRepresentanteLegal" Type="Int32" />
+          <Property Name="RUC" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="MA_EMPLEADO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_EMPLEADO_PERSONA" FromRole="MA_PERSONA" ToRole="MA_EMPLEADO" />
+          <NavigationProperty Name="MA_PERSONA1" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_MA_PERSONA_MA_PERSONA" FromRole="MA_PERSONA" ToRole="MA_PERSONA1" />
+          <NavigationProperty Name="MA_PERSONA2" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_MA_PERSONA_MA_PERSONA" FromRole="MA_PERSONA1" ToRole="MA_PERSONA" />
+          <NavigationProperty Name="MA_USUARIO" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERSONA" FromRole="MA_PERSONA" ToRole="MA_USUARIO" />
+          <NavigationProperty Name="MA_PERSONAJURIDICA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONAJURIDICA_PERSONA" FromRole="MA_PERSONA" ToRole="MA_PERSONAJURIDICA" />
+          <NavigationProperty Name="MA_PERSONANATURAL" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONANATURAL_PERSONA" FromRole="MA_PERSONA" ToRole="MA_PERSONANATURAL" />
+        </EntityType>
+        <EntityType Name="MA_PERSONAJURIDICA">
+          <Key>
+            <PropertyRef Name="idPersonaJuridica" />
+          </Key>
+          <Property Name="idPersonaJuridica" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="Int32" />
+          <Property Name="RazonSocial" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="RUC" Type="String" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Name="RepresentanteLegal" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="MA_PERSONA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONAJURIDICA_PERSONA" FromRole="MA_PERSONAJURIDICA" ToRole="MA_PERSONA" />
+        </EntityType>
+        <EntityType Name="MA_PERSONANATURAL">
+          <Key>
+            <PropertyRef Name="idPersonaNatural" />
+          </Key>
+          <Property Name="idPersonaNatural" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="Int32" />
+          <Property Name="NroDocIdentidad" Type="String" MaxLength="15" Unicode="false" FixedLength="true" />
+          <Property Name="Nombres" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="MA_PERSONA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_PERSONANATURAL_PERSONA" FromRole="MA_PERSONANATURAL" ToRole="MA_PERSONA" />
+        </EntityType>
+        <EntityType Name="MA_USUARIO">
+          <Key>
+            <PropertyRef Name="coUsuario" />
+          </Key>
+          <Property Name="coUsuario" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="coPersona" Type="Int32" />
+          <Property Name="noLoginUsuario" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="noClaveUsu" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="fiActivo" Type="Byte" />
+          <Property Name="noIpPc" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="feUltimoLogin" Type="DateTime" Precision="3" />
+          <Property Name="feCreacion" Type="DateTime" Precision="3" />
+          <Property Name="coPerfil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MA_PERFIL" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERFIL" FromRole="MA_USUARIO" ToRole="MA_PERFIL" />
+          <NavigationProperty Name="MA_PERSONA" Relationship="db2f833638c20949ff9238a2f301222db5Model.FK_MA_USUARIO_MA_PERSONA" FromRole="MA_USUARIO" ToRole="MA_PERSONA" />
         </EntityType>
         <Association Name="FK_CT_DETALLEVIA_URBANIZACION_CT_URBANIZACION">
           <End Role="CT_URBANIZACION" Type="db2f833638c20949ff9238a2f301222db5Model.CT_URBANIZACION" Multiplicity="1" />
@@ -825,6 +1198,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_CT_ZONA">
+          <End Role="CT_ZONA" Type="db2f833638c20949ff9238a2f301222db5Model.CT_ZONA" Multiplicity="0..1" />
+          <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CT_ZONA">
+              <PropertyRef Name="int_IdZona" />
+            </Principal>
+            <Dependent Role="CT_PROPUESTAINSPECCION_EMPLEADO">
+              <PropertyRef Name="int_IdZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CT_PROPUESTAINSPECCION_EMPLEADO_MA_EMPLEADO">
           <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Multiplicity="1" />
           <End Role="CT_PROPUESTAINSPECCION_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION_EMPLEADO" Multiplicity="*" />
@@ -873,12 +1258,108 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EMPLEADO_AREA">
+          <End Role="MA_AREA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_AREA" Multiplicity="0..1" />
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_AREA">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="MA_EMPLEADO">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_CARGO_">
+          <End Role="MA_CARGO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_CARGO" Multiplicity="0..1" />
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_CARGO">
+              <PropertyRef Name="idCargo" />
+            </Principal>
+            <Dependent Role="MA_EMPLEADO">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_EMPLEADO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_EMPLEADO">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MA_USUARIO_MA_PERFIL">
+          <End Role="MA_PERFIL" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERFIL" Multiplicity="1" />
+          <End Role="MA_USUARIO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERFIL">
+              <PropertyRef Name="coPerfil" />
+            </Principal>
+            <Dependent Role="MA_USUARIO">
+              <PropertyRef Name="coPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MA_PERSONA_MA_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_PERSONA1" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_PERSONA1">
+              <PropertyRef Name="idRepresentanteLegal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MA_USUARIO_MA_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_USUARIO" Type="db2f833638c20949ff9238a2f301222db5Model.MA_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_USUARIO">
+              <PropertyRef Name="coPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAJURIDICA_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_PERSONAJURIDICA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONAJURIDICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_PERSONAJURIDICA">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONANATURAL_PERSONA">
+          <End Role="MA_PERSONA" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA" Multiplicity="0..1" />
+          <End Role="MA_PERSONANATURAL" Type="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONANATURAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MA_PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="MA_PERSONANATURAL">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="db2f833638c20949ff9238a2f301222db5Entities">
+        <EntityContainerMapping StorageEntityContainer="db2f833638c20949ff9238a2f301222db5ModelStoreContainer" CdmEntityContainer="db2f833638c20949ff9238a2f301222db5Entities11">
           <EntitySetMapping Name="CT_DETALLEVIA_URBANIZACION">
             <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_DETALLEVIA_URBANIZACION">
               <MappingFragment StoreEntitySet="CT_DETALLEVIA_URBANIZACION">
@@ -953,8 +1434,6 @@
           <EntitySetMapping Name="CT_PROPUESTAINSPECCION">
             <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.CT_PROPUESTAINSPECCION">
               <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION">
-                <ScalarProperty Name="int_Estado" ColumnName="int_Estado" />
-                <ScalarProperty Name="var_Observacion" ColumnName="var_Observacion" />
                 <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="int_IdSolicitud" ColumnName="int_IdSolicitud" />
@@ -963,6 +1442,8 @@
                 <ScalarProperty Name="int_CantResponsable" ColumnName="int_CantResponsable" />
                 <ScalarProperty Name="dtm_FechaDocumento" ColumnName="dtm_FechaDocumento" />
                 <ScalarProperty Name="dtm_FechaRegistro" ColumnName="dtm_FechaRegistro" />
+                <ScalarProperty Name="var_Observacion" ColumnName="var_Observacion" />
+                <ScalarProperty Name="int_Estado" ColumnName="int_Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -971,6 +1452,7 @@
               <MappingFragment StoreEntitySet="CT_PROPUESTAINSPECCION_EMPLEADO">
                 <ScalarProperty Name="int_IdPropuestaInspeccion" ColumnName="int_IdPropuestaInspeccion" />
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="int_IdZona" ColumnName="int_IdZona" />
                 <ScalarProperty Name="dtm_FechaInicio" ColumnName="dtm_FechaInicio" />
                 <ScalarProperty Name="dtm_FechaFin" ColumnName="dtm_FechaFin" />
               </MappingFragment>
@@ -1038,6 +1520,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MA_AREA">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_AREA">
+              <MappingFragment StoreEntitySet="MA_AREA">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="descArea" ColumnName="descArea" />
+                <ScalarProperty Name="UsrRegistra" ColumnName="UsrRegistra" />
+                <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
+                <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
+                <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_CARGO">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_CARGO">
+              <MappingFragment StoreEntitySet="MA_CARGO">
+                <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+                <ScalarProperty Name="descCargo" ColumnName="descCargo" />
+                <ScalarProperty Name="UsrRegistra" ColumnName="UsrRegistra" />
+                <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
+                <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
+                <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MA_EMPLEADO">
             <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_EMPLEADO">
               <MappingFragment StoreEntitySet="MA_EMPLEADO">
@@ -1050,6 +1556,68 @@
                 <ScalarProperty Name="FecRegistra" ColumnName="FecRegistra" />
                 <ScalarProperty Name="UsrModifica" ColumnName="UsrModifica" />
                 <ScalarProperty Name="FecModifica" ColumnName="FecModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_PERFIL">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERFIL">
+              <MappingFragment StoreEntitySet="MA_PERFIL">
+                <ScalarProperty Name="coPerfil" ColumnName="coPerfil" />
+                <ScalarProperty Name="noDesPerfil" ColumnName="noDesPerfil" />
+                <ScalarProperty Name="fiPerfil" ColumnName="fiPerfil" />
+                <ScalarProperty Name="feCreacion" ColumnName="feCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_PERSONA">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONA">
+              <MappingFragment StoreEntitySet="MA_PERSONA">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idDistrito" ColumnName="idDistrito" />
+                <ScalarProperty Name="idTipoDocIdentidad" ColumnName="idTipoDocIdentidad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="idRepresentanteLegal" ColumnName="idRepresentanteLegal" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_PERSONAJURIDICA">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONAJURIDICA">
+              <MappingFragment StoreEntitySet="MA_PERSONAJURIDICA">
+                <ScalarProperty Name="idPersonaJuridica" ColumnName="idPersonaJuridica" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="RepresentanteLegal" ColumnName="RepresentanteLegal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_PERSONANATURAL">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_PERSONANATURAL">
+              <MappingFragment StoreEntitySet="MA_PERSONANATURAL">
+                <ScalarProperty Name="idPersonaNatural" ColumnName="idPersonaNatural" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="NroDocIdentidad" ColumnName="NroDocIdentidad" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_USUARIO">
+            <EntityTypeMapping TypeName="db2f833638c20949ff9238a2f301222db5Model.MA_USUARIO">
+              <MappingFragment StoreEntitySet="MA_USUARIO">
+                <ScalarProperty Name="coUsuario" ColumnName="coUsuario" />
+                <ScalarProperty Name="coPersona" ColumnName="coPersona" />
+                <ScalarProperty Name="noLoginUsuario" ColumnName="noLoginUsuario" />
+                <ScalarProperty Name="noClaveUsu" ColumnName="noClaveUsu" />
+                <ScalarProperty Name="fiActivo" ColumnName="fiActivo" />
+                <ScalarProperty Name="noIpPc" ColumnName="noIpPc" />
+                <ScalarProperty Name="feUltimoLogin" ColumnName="feUltimoLogin" />
+                <ScalarProperty Name="feCreacion" ColumnName="feCreacion" />
+                <ScalarProperty Name="coPerfil" ColumnName="coPerfil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
