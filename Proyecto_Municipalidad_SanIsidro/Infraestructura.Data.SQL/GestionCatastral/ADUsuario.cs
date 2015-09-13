@@ -34,8 +34,19 @@ namespace Infraestructura.Data.SQL
 
         public static MA_USUARIO getOneUsuario(String user = "",string pwd="")
         {
-            db2f833638c20949ff9238a2f301222db5Entities11 db = new db2f833638c20949ff9238a2f301222db5Entities11();
-            return db.MA_USUARIO.ToList().Where(x => x.noLoginUsuario == user && x.noClaveUsu == pwd).First();
+            MA_USUARIO MaUser = new MA_USUARIO();
+            MaUser = null;
+            try
+            {
+                db2f833638c20949ff9238a2f301222db5Entities11 db = new db2f833638c20949ff9238a2f301222db5Entities11();
+                return db.MA_USUARIO.ToList().Where(x => x.noLoginUsuario == user && x.noClaveUsu == pwd).First();
+            }
+            catch (Exception)
+            {
+
+                return MaUser;
+            }
+            
         }
         
     }
