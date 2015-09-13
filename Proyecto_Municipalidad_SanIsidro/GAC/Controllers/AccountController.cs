@@ -10,6 +10,9 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using GAC.Filters;
 using GAC.Models;
+using Dominio.Core.Entities.ModeloGestionCatastral;
+using Infraestructura.Data.SQL;
+
 
 namespace GAC.Controllers
 {
@@ -35,10 +38,17 @@ namespace GAC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            //ADUsuario usr = new ADUsuario();
+
+            MA_USUARIO user = ADUsuario.getOneUsuario(model.UserName, model.Password);
+            if (user != null)
             {
-                return RedirectToLocal(returnUrl);
+            return RedirectToLocal(returnUrl);
             }
+            //if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            //{
+            //    return RedirectToLocal(returnUrl);
+            //}
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");

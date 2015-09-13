@@ -95,6 +95,7 @@
     <Compile Include="GestionCatastral\ADSolicitud.cs" />
     <Compile Include="GestionCatastral\ADTipoSolicitud.cs" />
     <Compile Include="GestionCatastral\ADZona.cs" />
+    <Compile Include="GestionCatastral\ADUsuario.cs" />
     <Compile Include="HOJARESPUESTA.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
