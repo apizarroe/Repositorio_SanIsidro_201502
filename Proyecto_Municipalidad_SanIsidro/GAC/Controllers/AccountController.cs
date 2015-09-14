@@ -30,7 +30,15 @@ namespace GAC.Controllers
             return View();
         }
 
+
         //
+
+        [AllowAnonymous]
+        public ActionResult LoginSI(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
         // POST: /Account/Login
 
         [HttpPost]
@@ -56,6 +64,29 @@ namespace GAC.Controllers
         }
 
         //
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult LoginSI(LoginModel model, string returnUrl)
+        {
+            //ADUsuario usr = new ADUsuario();
+
+            MA_USUARIO user = ADUsuario.getOneUsuario(model.UserName, model.Password);
+            if (user != null)
+            {
+                return RedirectToLocal(returnUrl);
+            }
+            //if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            //{
+            //    return RedirectToLocal(returnUrl);
+            //}
+
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View(model);
+        }
+
         // POST: /Account/LogOff
 
         [HttpPost]
@@ -347,7 +378,7 @@ namespace GAC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index2", "Home");
             }
         }
 

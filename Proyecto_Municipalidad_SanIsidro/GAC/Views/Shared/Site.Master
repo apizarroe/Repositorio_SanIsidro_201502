@@ -202,7 +202,7 @@
                         
                 </form>
                 --> 
-                <ul class="sidebar-menu">
+                <!--<ul class="sidebar-menu">
                     <li class="header">NAVEGACION PRINCIPAL</li>
                     <li class="treeview active">
                         <a href="#">
@@ -217,7 +217,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!--
+                    
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
@@ -230,8 +230,8 @@
 
                         </ul>
                     </li>
-                    -->
-                </ul>
+                    
+                </ul>-->
             </section>
             <!-- /.sidebar -->
         </aside>

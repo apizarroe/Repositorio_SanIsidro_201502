@@ -15,6 +15,13 @@ namespace GAC.Controllers
             return View();
         }
 
+        public ActionResult Index2()
+        {
+            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
