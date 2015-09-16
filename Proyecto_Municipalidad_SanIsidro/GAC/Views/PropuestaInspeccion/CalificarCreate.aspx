@@ -139,7 +139,7 @@
                         <p>
                             
                             <input type="button"  value="Aprobar Propuesta" class="btn btn-primary" id="btnaprobarPropuesta"  />
-                            <input type="button" value="Observar Propuesta Propuesta" class="btn btn-success" id="btnobservarpropuesta"  />
+                            <input type="button" value="Observar Propuesta" class="btn btn-success" id="btnobservarpropuesta"  />
                             <%: Html.ActionLink("Cancelar", "Calificar","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
 
 

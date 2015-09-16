@@ -30,7 +30,7 @@ namespace Infraestructura.Data.SQL
             db.CT_SOLICITUD.Add(otbSolicitudCatastro);
             return db.SaveChanges();
         }
-        public static  int Edit(CT_SOLICITUD otbSolicitudCatastro)
+        public static int Edit(CT_SOLICITUD otbSolicitudCatastro)
         {
             db2f833638c20949ff9238a2f301222db5Entities11 db = new db2f833638c20949ff9238a2f301222db5Entities11();
             db.Entry(otbSolicitudCatastro).State = EntityState.Modified;

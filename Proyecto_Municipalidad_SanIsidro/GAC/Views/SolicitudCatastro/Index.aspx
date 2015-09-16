@@ -22,23 +22,23 @@
             <div class='col-md-12'>
                 <div class='box box-info'>
                     <div class='box-header'>
-                        <%: Html.ActionLink("Crer Nueva Solicitud", "Create",null,new {@class="btn btn-primary"}) %>
+                        <%: Html.ActionLink("Crear Nueva Solicitud", "Create",null,new {@class="btn btn-primary"}) %>
                     </div>
                     <div class='box-body pad'>
 
                         <table class="table table-hover">
                             <tr>
                                 <th>
-                                    <%: Html.DisplayNameFor(model => model.var_NroSolicitud) %>
+                                    Nro. Solicitud
                                 </th>
                                 <th>
-                                    <%: Html.DisplayNameFor(model => model.dtm_FechaEmision) %>
+                                    Fecha Emisión
                                 </th>
                                 <th>
-                                    <%: Html.DisplayNameFor(model => model.CT_TIPOSOLICITUD.var_TipoSolicitud) %>
+                                    Tipo Solicitud
                                 </th>
                                 <th>
-                                    <%: Html.DisplayNameFor(model => model.var_Descripcion) %>
+                                    Descripción
                                 </th>
                                 <th></th>
                             </tr>

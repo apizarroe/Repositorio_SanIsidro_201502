@@ -478,8 +478,10 @@
     <Content Include="Scripts\ParticipacionVecinal\IniciativaVecinal.js" />
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
+    <Content Include="Views\Account\LoginSI.aspx" />
     <Content Include="Views\Atender\AtenderReclamo.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Index2.aspx" />
     <Content Include="Views\InformacionCatastral\Create.aspx" />
     <Content Include="Views\PlanoCatastral\ImprimirPlano.aspx" />
     <Content Include="Views\PlanoCatastral\Index.aspx" />
@@ -498,6 +500,7 @@
     <Content Include="Views\Reclamo\Index.aspx" />
     <Content Include="Views\Reclamo\RegistrarReclamo.aspx" />
     <Content Include="Views\Reclamo\_listarReclamos.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\SolicitudCatastro\Create.aspx" />
     <Content Include="Views\SolicitudCatastro\Delete.aspx" />
     <Content Include="Views\SolicitudCatastro\Details.aspx" />
@@ -546,7 +549,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Shared\Site_Intranet.Master" />
     <Content Include="Views\Shared\Site_Inicio.Master" />
     <Content Include="Views\Shared\Site_Catastro.Master" />

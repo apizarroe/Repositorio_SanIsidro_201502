@@ -225,10 +225,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="../../solicitudcatastro"><i class="fa fa-circle-o"></i>Registrar Solicitud</a>
+                                <a href="../../solicitudcatastro/Index"><i class="fa fa-circle-o"></i>Registrar Solicitud</a>
                             </li>
                             <li>
-                                <a href="../../propuestainspeccion"><i class="fa fa-circle-o"></i>Emitir Propuesta de Inspeccion</a>
+                                <a href="../../propuestainspeccion/Index"><i class="fa fa-circle-o"></i>Emitir Propuesta de Inspeccion</a>
                             </li>
                             <li>
                                 <a href="../../propuestainspeccion/calificar"><i class="fa fa-circle-o"></i>Calificar Propuesta de Inspeccion</a>
@@ -241,7 +241,7 @@
                             </li>
 
                             <li>
-                                <a href="../../PlanoCatastral"><i class="fa fa-circle-o"></i>Emitir Plano Catastral</a>
+                                <a href="../../PlanoCatastral/Index"><i class="fa fa-circle-o"></i>Emitir Plano Catastral</a>
                             </li>
                         </ul>
                     </li>

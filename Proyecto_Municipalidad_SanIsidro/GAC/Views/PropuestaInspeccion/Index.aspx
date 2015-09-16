@@ -24,7 +24,7 @@
             <div class='col-md-12'>
                 <div class='box box-info'>
                     <div class='box-header'>
-                        <%: Html.ActionLink("Crer Nueva Inspeccion", "Create",null,new {@class="btn btn-primary"}) %>
+                        <%: Html.ActionLink("Crear Nueva Inspección", "Create",null,new {@class="btn btn-primary"}) %>
                     </div>
                     <div class='box-body pad'>
 

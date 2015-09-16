@@ -33,25 +33,25 @@
                     <div class="box-body">
 
 
-                        <div class="form-group">
+                        <div class="form-group" style="display:none;">
                             <%: Html.LabelFor(model => model.int_IdSolicitud) %>
                             <%: Html.TextBoxFor(model => model.int_IdSolicitud,null, new { @class = "form-control" ,@placeholder="Codigo Solicitud"  })%>
                             <%: Html.ValidationMessageFor(model => model.int_IdSolicitud) %>
                         </div>
                         <div class="form-group">
-                            <%: Html.LabelFor(model => model.var_NroSolicitud) %>
+                            <label>Nro. Solicitud</label>
                             <%: Html.TextBoxFor(model => model.var_NroSolicitud,null, new { @class = "form-control" ,@placeholder="Nro Solicitud"  })%>
                             <%: Html.ValidationMessageFor(model => model.var_NroSolicitud) %>
                         </div>
                         <div class="form-group">
-                            <%: Html.LabelFor(model => model.dtm_FechaEmision) %>
+                            <label>Fecha Emisión</label>
 
                             <%: Html.TextBoxFor(model => model.dtm_FechaEmision,"{0:dd/MM/yyyy}",new { @class = "form-control" ,@placeholder="Fecha Emision",@disabled="true" }) %>
                             <%: Html.ValidationMessageFor(model => model.dtm_FechaEmision) %>
                         </div>
 
                         <div class="form-group">
-                            <%: Html.LabelFor(model => model.CT_TIPOSOLICITUD.int_IdTipoSolicitud) %>
+                           <label> Tipo Solicitud</label>
 
 
                             <%:Html.DropDownList("int_IdTipoSolicitud",null, new { @class = "form-control"}) %>
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="form-group">
-                            <%: Html.LabelFor(model => model.var_Descripcion) %>
+                            <label>Descripción</label>
 
                             <%: Html.TextAreaFor(model => model.var_Descripcion,3,6,new { @class = "form-control" ,@placeholder="Descripcion.." }) %>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
