@@ -23,7 +23,7 @@ namespace Infraestructura.Data.SQL
                 foreach (var objProvTmp in lstProvTmp)
                 {
                     Proveedor objProveedor = new Proveedor();
-                    objProveedor.IdProveedor = objProvTmp.prov.IdProveedor;
+                    objProveedor.IdProveedor = objProvTmp.prov.IdPersona;
                     objProveedor.RazonSocial = objProvTmp.emp.RazonSocial;
                     lstProveedores.Add(objProveedor);
                 }
