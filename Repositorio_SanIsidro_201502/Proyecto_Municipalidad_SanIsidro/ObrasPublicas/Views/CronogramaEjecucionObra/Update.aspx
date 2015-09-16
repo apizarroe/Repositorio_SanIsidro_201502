@@ -27,10 +27,10 @@
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
                 <button id="btnIconCrearActividad" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/listado?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>'">
-                    <span class="fa fa-file" aria-hidden="true"></span> Modificar Actividades
+                    <span class="fa fa-pencil" aria-hidden="true"></span> Modificar Actividades
                 </button>
                 <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search'">
-                    <span class="fa fa-pencil" aria-hidden="true"></span> Volver a buscar proyecto
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span> Volver a buscar proyecto
                 </button>
             </div>
         </div>
@@ -55,9 +55,23 @@
                     </div>
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">* Plazo ejecución:</label>
+                    <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.PlazoEjecucion, new { @class = "form-control", maxlength = "4"}) %>
+                        <strong>Ubicaci&oacute;n: <%: Html.DisplayFor(m => m.UbicacionProyecto) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                    </div>
+                    </div>
+
+
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label">* Plazo ejecución (días calendario):</label>
+                    <div class="col-sm-9">
+                            <%: Html.TextBoxFor(m => m.PlazoEjecucion, new { @class = "form-control numbersOnly", maxlength = "4", @placeholder="dias calendario"}) %>
                         <%: Html.ValidationMessageFor(m => m.PlazoEjecucion) %>
                         <div id="Err_PlazoEjecucion" class="field-validation-error"></div>
                     </div>
@@ -87,36 +101,8 @@
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
     <%: Scripts.Render("~/Scripts/jquery-ui-1.8.20.js") %>
+    <%: Scripts.Render("~/Scripts/utils.js") %>
     <script>
-        $(document).ready(function () {
-            $('.numbersOnly').keyup(function () {
-                this.value = this.value.replace(/[^0-9\.]/g, '');
-            });
-
-            $(".decimalsOnly").keyup(function () {
-                var $this = $(this);
-                $this.val($this.val().replace(/[^\d.]/g, ''));
-            });
-        });
-
-        $("#btnAgregarActividad").click(function () {
-            $.ajax({
-                url: "/CronogramaEjecucionObra/BlankEditorRow",
-                cache: false,
-                success: function (html) { $("#editorRow").append(html); }
-            });
-            return false;
-        });
-
-        $("#addItem").click(function () {
-            $.ajax({
-                url: this.href,
-                cache: false,
-                success: function (html) { $("#editorRow").append(html); }
-            });
-            return false;
-        });
-
         $(document).on('click', 'a.deleteRow', function () {
             $(this).parents("div.editRow:first").remove();
             return false;
@@ -125,6 +111,9 @@
         $("#btnGrabar").click(function () {
             //$("#frmUpdate").submit();
             var infoForm = $("#frmUpdate");
+            $("#divMensajeOK").hide();
+            $("#Err_General").hide();
+            $(".field-validation-error").html('');
 
             //waitingDialog.show("Procesando..");
             $.ajax({
@@ -143,8 +132,6 @@
                         $("#Err_General").hide();
                     }
                     $.each(data.Errors, function (key, value) {
-                        $(".field-validation-error").html('');
-                        $("#Err_General").hide();
                         if (value != null) {
                             $("#Err_" + key).html(value[value.length - 1].ErrorMessage);
                             if (key == "General") {

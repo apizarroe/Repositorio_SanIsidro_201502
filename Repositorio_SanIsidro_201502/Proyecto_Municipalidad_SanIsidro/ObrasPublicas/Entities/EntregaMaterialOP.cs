@@ -18,5 +18,8 @@ namespace ObrasPublicas.Entities
         public Proveedor Proveedor { get; set; }
         public MaterialOP Material { get; set; }
         public int Cantidad { get; set; }
+
+        public const String STR_ID_TIPO_CONFORME = "C";
+        public const String STR_ID_TIPO_FUERA_DE_FECHA = "F";
     }
 }

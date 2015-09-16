@@ -9,19 +9,23 @@ namespace ObrasPublicas.Models.ProyectoInversion
 {
     public class CreateProyectoInversionModel
     {
-        [Required]
+        [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public String Nombre { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Descripción es obligatorio")]
         public String Descripcion { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Ubicación es obligatorio")]
         public String Ubicacion { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Debe seleccionar una via de la lista")]
+        public String NomVia { get; set; }
+        [Required(ErrorMessage = "Debe seleccionar una via de la lista")]
         public int IdVia { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Debe seleccionar el tipo de via")]
         public String TipoVia { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Número de Beneficiarios es obligatorio")]
         public int Beneficiarios { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Valor Referencial es obligatorio")]
         public Decimal ValorReferencial { get; set; }
+
+        public String NomViaReal { get; set; }
     }
 }

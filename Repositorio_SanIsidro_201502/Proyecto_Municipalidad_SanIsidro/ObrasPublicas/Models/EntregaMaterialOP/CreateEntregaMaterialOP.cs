@@ -11,19 +11,22 @@ namespace ObrasPublicas.Models.EntregaMaterialOP
     {
         public int IdProyecto { get; set; }
         public String NomProyecto { get; set; }
-        [Required]
+        public String UbicacionProyecto { get; set; }
+        public String ValorRefProyecto { get; set; }
+
+        [Required(ErrorMessage = "El campo Fecha de Entrega Programada es obligatorio")]
         public String FecEntregaProg { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Fecha de Entrega Efectiva es obligatorio")]
         public String FecEntregaEfec { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Observaciones es obligatorio")]
         public String Observaciones { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Tipo de Entrega es obligatorio")]
         public String TipoEntrega { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Proveedor es obligatorio")]
         public int IdProveedor { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Material es obligatorio")]
         public int IdMaterial { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo Cantidad es obligatorio")]
         public int Cantidad { get; set; }
         
         public IEnumerable<ValidationResult> Validate(ValidationContext context)

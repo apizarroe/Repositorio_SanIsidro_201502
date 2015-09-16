@@ -16,6 +16,16 @@
             strTipoFiltro = "CRO";
             bolMostrarOpcTodosEstado = false;
         }
+        else if (Model.Tipo == "EMC" || Model.Tipo == "EMU")
+        {
+            strTipoFiltro = "ENTMAT";
+            bolMostrarOpcTodosEstado = false;
+        }
+        else if (Model.Tipo == "CIO" || Model.Tipo == "UIO")
+        {
+            strTipoFiltro = "INFO";
+            bolMostrarOpcTodosEstado = false;
+        }
 
         var lstEstadoSearch = objProyectoInversion_DAL.ObtieneEstados(strTipoFiltro).Select(x =>
                                                                                   new SelectListItem
@@ -57,6 +67,9 @@
                         <p></p>
                     </div>
                     </div>
+                    <div class="col-sm-12 text-center">
+                        <button id="btnBuscarProyectos" class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
 
                     <%
                         List<ObrasPublicas.Entities.ProyectoInversion> lstProyectos = ViewBag.lstProyectos;
@@ -77,6 +90,7 @@
                                     %>
                                     <th></th>
                                     <th></th>
+                                    <th>C&oacute;digo</th>
                                     <th>Nombre</th>
                                     <th>Fecha emisión</th>
                                     <th>Plazo Ejecución</th>
@@ -103,7 +117,8 @@
                                 %>
                                     <tr>
                                         <td>
-                                            <%if (Model.Tipo == "EC") { 
+                                            <%if (Model.Tipo == "EC")
+                                              { 
                                              %> 
                                             <a href="/expedientetecnicoop/create?id=<%:objProyecto.IdProyecto %>">Crear</a>                                            
                                             <%  }
@@ -128,6 +143,18 @@
                                              %> 
                                             <a href="/entregamaterialop/listado?p=<%:objProyecto.IdProyecto %>">Seleccionar</a>
                                               <%  
+                                                } 
+                                              else if (Model.Tipo == "CIO")
+                                              {
+                                             %> 
+                                            <a href="/informeobra/create?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>">Crear</a>
+                                               <%  
+                                                }
+                                              else if (Model.Tipo == "CIU" || Model.Tipo == "UIO")
+                                              {
+                                             %> 
+                                            <a href="/informeobra/listado?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>">Seleccionar</a>
+                                              <%  
                                                 }
                                                 else{
                                                  %>
@@ -148,7 +175,7 @@
                                              %> 
                                                                                             
                                             <%  } %>
-                                            <%else if (Model.Tipo == "CU" || Model.Tipo == "CC" || Model.Tipo == "EMC" || Model.Tipo == "EMU")
+                                            <%else if (Model.Tipo == "CU" || Model.Tipo == "CC" || Model.Tipo == "EMC" || Model.Tipo == "EMU" || Model.Tipo == "CIO" || Model.Tipo == "UIO")
                                               { 
                                              %> 
                                             <%  }
@@ -162,6 +189,7 @@
                                         </td>
                                         <% if (Model.Tipo == "CU") { 
                                         %>
+                                            <td><%:objProyecto.IdProyecto %></td>
                                             <td><%:objProyecto.Nombre %></td>
                                             <td><%:objProyecto.FechaEmisionCrono %></td>
                                             <td><%:objProyecto.PlazoEjecucionCrono %></td>
@@ -188,9 +216,6 @@
                     <%
                         }
                     %>
-                    <div class="col-sm-12 text-center">
-                    <button id="btnBuscarProyectos" class="btn btn-primary" type="submit">Buscar</button>
-                    </div>
                 </div>
             </div>
             <%: Html.HiddenFor(m => m.Tipo)%>

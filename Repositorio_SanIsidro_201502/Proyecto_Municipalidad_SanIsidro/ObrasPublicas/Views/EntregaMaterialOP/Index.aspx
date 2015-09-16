@@ -18,7 +18,7 @@
     }
 </style>
     <section class="content-header" style="padding-bottom:5px">
-        <h1>Actualizar Calendario de Entrega de Material</h1>
+        <h1>Actualizar Calendario de Entrega de Materiales</h1>
         <div>&nbsp;</div>
         <div id="divControlButtons" class="panel panel-default">
             <div class="panel-body">
@@ -26,7 +26,7 @@
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
                 <button id="btnIconModificar" type="button" class="btn btn-default" onclick="document.location.href='/entregamaterialop/search'">
-                    <span class="fa fa-file" aria-hidden="true"></span> Modificar
+                    <span class="fa fa-pencil" aria-hidden="true"></span> Modificar
                 </button>
             </div>
         </div>

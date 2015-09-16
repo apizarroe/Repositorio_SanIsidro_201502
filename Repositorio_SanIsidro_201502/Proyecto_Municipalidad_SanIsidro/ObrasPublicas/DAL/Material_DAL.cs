@@ -23,6 +23,7 @@ namespace ObrasPublicas.DAL
                     MaterialOP objMaterialOP = new MaterialOP();
                     objMaterialOP.IdMaterial = objMaterialTmp.coMaterial;
                     objMaterialOP.Nombre = objMaterialTmp.noMaterial;
+                    objMaterialOP.UnidadMedida = objMaterialTmp.noUnidadMedida;
                     lstMateriales.Add(objMaterialOP);
                 }
             }

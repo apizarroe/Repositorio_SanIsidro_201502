@@ -11,6 +11,9 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
     {
         public int IdProyecto { get; set; }
         public String NomProyecto { get; set; }
+        public String UbicacionProyecto { get; set; }
+        public String ValorRefProyecto { get; set; }
+
         public String Descripcion { get; set; }
         public String Especificaciones { get; set; }
         public Decimal ValorReferencial { get; set; }
@@ -78,7 +81,7 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
             else {
                 if (String.IsNullOrWhiteSpace(this.Descripcion))
                 {
-                    lstValidations.Add(new ValidationResult("El campo Descripcion es obligatorio", new[] { "Descripcion" }));
+                    lstValidations.Add(new ValidationResult("El campo Descripción es obligatorio", new[] { "Descripcion" }));
                 }
                 if (String.IsNullOrWhiteSpace(this.Especificaciones))
                 {
@@ -158,14 +161,5 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
 
             return lstValidations;
         }
-
-        //[Required]
-        //public String DocumentoNroDocumento { get; set; }
-        //[Required]
-        //public DateTime DocumentoFechaEmision { get; set; }
-        //[Required]
-        //public String DocumentoDescripcion { get; set; }
-        //[Required]
-        //public String DocumentoTipoDocmento { get; set; }
     }
 }

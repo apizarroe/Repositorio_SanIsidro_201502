@@ -163,9 +163,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AtenderController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controllers\BaseController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -181,10 +178,8 @@
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\InformeObraController.cs" />
     <Compile Include="Controllers\ProyectoInversionController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controllers\ReclamoController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAL\ConexionSQL.cs">
@@ -199,6 +194,7 @@
     <Compile Include="DAL\ExpedienteTecnicoOP_DAL.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DAL\InformeObra_DAL.cs" />
     <Compile Include="DAL\Material_DAL.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -225,6 +221,7 @@
     <Compile Include="Entities\ExpedienteTecnicoOP.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\InformeObra.cs" />
     <Compile Include="Entities\ItemCombo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -287,6 +284,9 @@
     <Compile Include="Models\ExpedienteTecnicoOP\UpdateExpedienteTecnicoOPModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\InformeObra\CreateInformeObraModel.cs" />
+    <Compile Include="Models\InformeObra\ListadoInformeObraModel.cs" />
+    <Compile Include="Models\InformeObra\UpdateInformeObraModel.cs" />
     <Compile Include="Models\ProyectoInversion\CreateProyectoInversionModel.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -554,7 +554,7 @@
     <Content Include="Scripts\ParticipacionVecinal\IniciativaVecinal.js" />
     <Content Include="Scripts\ParticipacionVecinal\RegistrarIniciativa.js" />
     <Content Include="Scripts\ParticipacionVecinal\Requerimiento.js" />
-    <Content Include="Views\Atender\AtenderReclamo.aspx" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Views\CronogramaEjecucionObra\Create.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\CreateActividad.aspx" />
     <Content Include="Views\CronogramaEjecucionObra\Index.aspx" />
@@ -573,19 +573,17 @@
     <Content Include="Views\ExpedienteTecnicoOP\Update.aspx" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\InformeObra\Create.aspx" />
+    <Content Include="Views\InformeObra\Index.aspx" />
+    <Content Include="Views\InformeObra\Listado.aspx" />
+    <Content Include="Views\InformeObra\Search.aspx" />
+    <Content Include="Views\InformeObra\Update.aspx" />
     <Content Include="Views\ProyectoInversion\About.cshtml" />
     <Content Include="Views\ProyectoInversion\Detail.aspx" />
     <Content Include="Views\ProyectoInversion\Index.aspx" />
     <Content Include="Views\ProyectoInversion\Search.aspx" />
     <Content Include="Views\ProyectoInversion\Update.aspx" />
     <Content Include="Views\ProyectoInversion\_Search.ascx" />
-    <Content Include="Views\Reclamo\ConsultarReclamo.aspx" />
-    <Content Include="Views\Reclamo\HistorialReclamo.aspx" />
-    <Content Include="Views\Reclamo\Index.aspx" />
-    <Content Include="Views\Reclamo\Login.aspx" />
-    <Content Include="Views\Reclamo\RegistrarReclamo.aspx" />
-    <Content Include="Views\Reclamo\_HistorialReclamos.ascx" />
-    <Content Include="Views\Reclamo\_listarReclamos.ascx" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Shared\Site_Inicio.Master" />

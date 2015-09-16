@@ -14,23 +14,33 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
         public int IdProyecto { get; set; }
         public String NomProyecto { get; set; }
         public int PlazoEjecucion { get; set; }
+        public String UbicacionProyecto { get; set; }
+        public String ValorRefProyecto { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public String NomAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Fecha de Inicio Programada es obligatorio")]
         public String FechaIniProgAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Fecha Fin Programada es obligatorio")]
         public String FechaFinProgAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Fecha de Inicio de Ejecución es obligatorio")]
         public String FechaIniEjecAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Fecha Fin de Ejecución es obligatorio")]
         public String FechaFinEjecAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Costo es obligatorio")]
         public decimal CostoAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Cantidad es obligatorio")]
         public int CantidadRRHHAct { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "El campo Responsable es obligatorio")]
         public String ResponsableActTipo { get; set; }
+
         public String IdResponsablePersonaNatural { get; set; }
         public String IdResponsablePersonaJuridica { get; set; }
 

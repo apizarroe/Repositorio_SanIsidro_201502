@@ -143,6 +143,21 @@ namespace ObrasPublicas.Controllers
                 ViewBag.lstProyectos = lstProyectos;
                 return View("~/Views/EntregaMaterialOP/Search.aspx", pObjModel);
             }
+            else if (pObjModel.Tipo == "CIO")
+            {
+                //SOLO ADJUDICADOS
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
+                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/informeobra/Index.aspx", pObjModel);
+            }
+            else if (pObjModel.Tipo == "UIO")
+            {
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConInformesObra(pObjModel.SearchCodSNIP,
+                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                return View("~/Views/informeobra/search.aspx", pObjModel);
+            }
             else {
                 List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
                 pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
@@ -158,7 +173,10 @@ namespace ObrasPublicas.Controllers
 
             if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
             {
-                ViewBag.MsgError = "No puede modificar el proyecto debido a que se encuentra en estado " + objProyectoInversion.NomEstado.ToUpper();
+                if (TempData["CambioViable"] != "1")
+                {
+                    ViewBag.MsgError = "No puede modificar el proyecto debido a que se encuentra en estado " + objProyectoInversion.NomEstado.ToUpper();                
+                }
                 return Detail(objProyectoInversion.IdProyecto);
             }
             else {
@@ -168,6 +186,7 @@ namespace ObrasPublicas.Controllers
                 objModel.Descripcion = objProyectoInversion.Descripcion;
                 objModel.Nombre = objProyectoInversion.Nombre;
                 objModel.IdVia = objProyectoInversion.IdVia;
+                objModel.NomVia = objProyectoInversion.NomVia;
                 objModel.Ubicacion = objProyectoInversion.Ubicacion;
                 objModel.ValorReferencial = objProyectoInversion.ValorReferencial;
                 objModel.Beneficiarios = objProyectoInversion.Beneficiarios;
@@ -176,6 +195,8 @@ namespace ObrasPublicas.Controllers
                 
                 ViewBag.MostrarSearch = "0";
 
+                ViewBag.MsgSuccess = TempData["MsgSuccess"];
+                
                 return View("Update", objModel);
             }
         }
@@ -206,8 +227,12 @@ namespace ObrasPublicas.Controllers
                     if (intResultado == 1)
                     {
                         bolGrabaOK = true;
-                        //TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
-                        ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
+                        TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
+                        //ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
+                        TempData["CambioViable"] = "1";
+                        return RedirectToAction("Edit", new { id = pObjModel.IdProyecto });
+
+                        //return Edit(
                         //return RedirectToAction("Update");
                     }
                     else if (intResultado == -998)
@@ -272,6 +297,26 @@ namespace ObrasPublicas.Controllers
                                                                                Text = x.Nombre
                                                                            }).OrderBy(x => x.Text);
 
+            return Json(lstNomVias, JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult FiltrarVias(String pStrTipoVia, String pStrDesc)
+        {
+            Via_DAL objVia_DAL = new Via_DAL();
+
+            var lstNomVias = objVia_DAL.ObtieneVias(pStrTipoVia).Where(x => (x.Tipo + " " + x.Nombre).ToLower().Contains(pStrDesc.ToLower())).OrderBy(x => x.Nombre);
+
+            //((via.noTipoVia + " " + via.noNomVia + " " + pi.txUbicacion).ToLower().Contains(pStrUbicacion.ToLower()) || pStrUbicacion == "")
+
+            //var result = new List<KeyValuePair<string, string>>();
+
+            //foreach (var item in lstNomVias)
+            //{
+            //    result.Add(new KeyValuePair<string, string>(item.Nombre, item.IdVia.ToString()));
+            //}
+            //var result3 = result.Where(s => s.Value.ToLower().Contains
+            //              (pStrDesc.ToLower())).Select(w => w).ToList();
             return Json(lstNomVias, JsonRequestBehavior.AllowGet);
         }
     }

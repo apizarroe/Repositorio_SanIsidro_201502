@@ -10,5 +10,6 @@ namespace ObrasPublicas.Entities
     {
         public int IdMaterial { get; set; }
         public String Nombre { get; set; }
+        public String UnidadMedida { get; set; }
     }
 }

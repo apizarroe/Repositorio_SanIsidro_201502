@@ -12,6 +12,7 @@ namespace ObrasPublicas.Entities
         public const String STR_ID_ESTADO_VIABLE = "V";
         public const String STR_ID_ESTADO_INVIABLE = "I";
         public const String STR_ID_ESTADO_ADJUDICADO = "A";
+        public const String STR_ID_ESTADO_CERRADO = "C";
 
         public int IdProyecto { get; set; }
         public String CodSNIP { get; set; }

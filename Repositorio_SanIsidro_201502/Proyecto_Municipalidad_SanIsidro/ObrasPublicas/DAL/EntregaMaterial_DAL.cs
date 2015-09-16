@@ -21,7 +21,8 @@ namespace ObrasPublicas.DAL
                 ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
                 ProyectoInversion objProyectoInversion =  objProyectoInversion_DAL.ObtieneXId(pIntIdProyecto);
 
-                if (objProyectoInversion.IdEstado == ProyectoInversion.STR_ID_ESTADO_ADJUDICADO)
+                if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+                    objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
                 {
                     intResultado = -998;
                 }
@@ -67,7 +68,8 @@ namespace ObrasPublicas.DAL
                 ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
                 ProyectoInversion objProyectoInversion =  objProyectoInversion_DAL.ObtieneXId(pIntIdProyecto);
 
-                if (objProyectoInversion.IdEstado == ProyectoInversion.STR_ID_ESTADO_ADJUDICADO)
+                if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+                    objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
                 {
                     intResultado = -998;
                 }
@@ -174,7 +176,7 @@ namespace ObrasPublicas.DAL
             return objEntregaMaterialOP;
         }
 
-        public List<EntregaMaterialOP> ObtieneEntregasXIdProyecto(int pIntIdProyecto)
+        public List<EntregaMaterialOP> ObtieneEntregasXIdProyecto(int pIntIdProyecto, int pIntFlagInforme)
         {
             List<EntregaMaterialOP> lstEntregas = new List<EntregaMaterialOP>();
             try
@@ -182,17 +184,10 @@ namespace ObrasPublicas.DAL
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
                 //MUNI_INTEGRADOEntities1 objContextIntegrado = new MUNI_INTEGRADOEntities1();
 
-                var objResult = objContext.sp_gop_get_ent_mat_x_proy(pIntIdProyecto).ToList();
+                var objResult = objContext.sp_gop_get_ent_mat_x_proy(pIntIdProyecto, pIntFlagInforme).ToList();
 
                 List<sp_gop_get_ent_mat_x_proy_Result> lstEntregaTmp = objResult;
                 
-                //var lstEntregaTmp = (from ent in objContext.OP_ENTREGA_MATERIAL
-                //                     join prov in objContextIntegrado.MA_PROVEEDOR on ent.coProveedor equals prov.IdProveedor
-                //                     join emp in objContextIntegrado.MA_PERSONAJURIDICA on prov.IdPersona equals emp.idPersona
-                //                  join mat in objContext.OP_MATERIAL on ent.coMaterial equals mat.coMaterial
-                //                  select new { ent, prov,emp, mat }).ToList();
-                //where(ent.coEntrega == pIntIdProyecto)
-
                 foreach (var objEntregaTmp in lstEntregaTmp)
                 {
                     EntregaMaterialOP objEntregaMaterialOP = new EntregaMaterialOP();
@@ -235,6 +230,75 @@ namespace ObrasPublicas.DAL
                 throw new Exception(ex.ToString());
             }
             return lstEntregas;
+        }
+
+        public List<EntregaMaterialOP> ObtieneEntregasXIdInforme(int pIntIdInforme)
+        {
+            List<EntregaMaterialOP> lstEntregas = new List<EntregaMaterialOP>();
+            try
+            {
+                ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+
+                var objResult = objContext.sp_gop_get_ent_mat_x_informe(pIntIdInforme).ToList();
+
+                List<sp_gop_get_ent_mat_x_informe_Result> lstEntregaTmp = objResult;
+
+                foreach (var objEntregaTmp in lstEntregaTmp)
+                {
+                    EntregaMaterialOP objEntregaMaterialOP = new EntregaMaterialOP();
+
+                    ProyectoInversion objProyectoInversion = new ProyectoInversion();
+
+                    if (objEntregaTmp.coProyecto.HasValue)
+                    {
+                        objProyectoInversion.IdProyecto = objEntregaTmp.coProyecto.Value;
+                    }
+                    objEntregaMaterialOP.IdEntrega = objEntregaTmp.coEntrega;
+                    objEntregaMaterialOP.Proyecto = objProyectoInversion;
+
+                    Proveedor objProveedor = new Proveedor();
+                    objProveedor.IdProveedor = objEntregaTmp.coProveedor;
+                    objProveedor.RazonSocial = objEntregaTmp.RazonSocial;
+                    objEntregaMaterialOP.Proveedor = objProveedor;
+
+                    if (objEntregaTmp.nuCantidad.HasValue)
+                    {
+                        objEntregaMaterialOP.Cantidad = objEntregaTmp.nuCantidad.Value;
+                    }
+                    if (objEntregaTmp.feEntregaEfectiva.HasValue)
+                    {
+                        objEntregaMaterialOP.FecEntregaEfec = objEntregaTmp.feEntregaEfectiva.Value;
+                    }
+                    if (objEntregaTmp.feEntregaProgramada.HasValue)
+                    {
+                        objEntregaMaterialOP.FecEntregaProg = objEntregaTmp.feEntregaProgramada.Value;
+                    }
+
+                    MaterialOP objMaterial = new MaterialOP();
+                    objMaterial.IdMaterial = objEntregaTmp.coMaterial;
+                    objMaterial.Nombre = objEntregaTmp.noMaterial;
+                    objEntregaMaterialOP.Material = objMaterial;
+
+                    objEntregaMaterialOP.Observaciones = objEntregaTmp.txObservaciones;
+                    objEntregaMaterialOP.TipoEntrega = objEntregaTmp.noTipoEntrega;
+                    lstEntregas.Add(objEntregaMaterialOP);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            return lstEntregas;
+        }
+
+        public List<ItemCombo> ObtieneTiposEntrega()
+        {
+            List<ItemCombo> lstTipos = new List<ItemCombo>();
+
+            lstTipos.Add(new ItemCombo { Id = EntregaMaterialOP.STR_ID_TIPO_CONFORME, Nombre = "Conforme" });
+            lstTipos.Add(new ItemCombo { Id = EntregaMaterialOP.STR_ID_TIPO_FUERA_DE_FECHA, Nombre = "Fuera de fecha" });
+
+            return lstTipos;
         }
     }
 }

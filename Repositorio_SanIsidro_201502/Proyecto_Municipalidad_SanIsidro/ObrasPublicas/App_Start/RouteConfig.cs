@@ -16,12 +16,12 @@ namespace ObrasPublicas
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 //defaults: new { controller = "Reclamo", action = "RegistrarReclamo", id = UrlParameter.Optional }
                 //defaults: new { controller = "Atender", action = "AtenderReclamo", id = UrlParameter.Optional }
                 //defaults: new { controller = "Atender", action = "AtenderReclamos2", id = UrlParameter.Optional }
                 //defaults: new { controller = "Reclamo", action = "ConsultarReclamo", id = UrlParameter.Optional }
                 //defaults: new { controller = "Reclamo", action = "Index", id = UrlParameter.Optional }
-                defaults: new { controller = "Reclamo", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

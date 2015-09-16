@@ -9,11 +9,15 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
 {
     public class UpdateCronogramaEjecucionObraModel
     {
-        public int IdCronograma { get; set; }
-        public int IdExpediente { get; set; }
         public int IdProyecto { get; set; }
         public String NomProyecto { get; set; }
-        [Required]
+        public String UbicacionProyecto { get; set; }
+        public String ValorRefProyecto { get; set; }
+
+        public int IdCronograma { get; set; }
+        public int IdExpediente { get; set; }
+
+        [Required(ErrorMessage = "El campo Plazo de Ejecución es obligatorio")]
         public int PlazoEjecucion { get; set; }
     }
 }

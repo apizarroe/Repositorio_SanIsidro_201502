@@ -64,6 +64,19 @@
                     </div>
                     </div>
                     <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Ubicaci&oacute;n: <%: Html.DisplayFor(m => m.UbicacionProyecto) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
                     <label class="col-sm-3 control-label">Plazo ejecución:</label>
                     <div class="col-sm-9">
                             <%: Html.DisplayFor(m => m.PlazoEjecucion) %>
@@ -86,7 +99,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Fecha inicio programada:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaIniProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                            <%: Html.TextBoxFor(m => m.FechaIniProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
                         <%: Html.ValidationMessageFor(m => m.FechaIniProgAct) %>
                         <div id="Err_FechaIniProgAct" class="field-validation-error"></div>
                         <p></p>
@@ -95,7 +108,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Fecha fin programada:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaFinProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                            <%: Html.TextBoxFor(m => m.FechaFinProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
                         <%: Html.ValidationMessageFor(m => m.FechaFinProgAct) %>
                         <div id="Err_FechaFinProgAct" class="field-validation-error"></div>
                         <p></p>
@@ -104,7 +117,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Fecha inicio ejecución:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaIniEjecAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                            <%: Html.TextBoxFor(m => m.FechaIniEjecAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
                         <%: Html.ValidationMessageFor(m => m.FechaIniEjecAct) %>
                         <div id="Err_FechaIniEjecAct" class="field-validation-error"></div>
                         <p></p>
@@ -113,14 +126,14 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Fecha fin ejecución:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaFinEjecAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                            <%: Html.TextBoxFor(m => m.FechaFinEjecAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
                         <%: Html.ValidationMessageFor(m => m.FechaFinEjecAct) %>
                         <div id="Err_FechaFinEjecAct" class="field-validation-error"></div>
                         <p></p>
                     </div>
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">* Costo:</label>
+                    <label class="col-sm-3 control-label">* Costo (en S/.):</label>
                     <div class="col-sm-9">
                             <%: Html.TextBoxFor(m => m.CostoAct, new { @class = "form-control decimalsOnly", maxlength = "7"}) %>
                         <%: Html.ValidationMessageFor(m => m.CostoAct) %>
@@ -235,36 +248,8 @@
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
     <%: Scripts.Render("~/Scripts/jquery-ui-1.8.20.js") %>
+    <%: Scripts.Render("~/Scripts/utils.js") %>
     <script>
-        $(document).ready(function () {
-            $('.numbersOnly').keyup(function () {
-                this.value = this.value.replace(/[^0-9\.]/g, '');
-            });
-
-            $(".decimalsOnly").keyup(function () {
-                var $this = $(this);
-                $this.val($this.val().replace(/[^\d.]/g, ''));
-            });
-        });
-
-        $("#btnAgregarActividad").click(function () {
-            $.ajax({
-                url: "/CronogramaEjecucionObra/BlankEditorRow",
-                cache: false,
-                success: function (html) { $("#editorRow").append(html); }
-            });
-            return false;
-        });
-
-        $("#addItem").click(function () {
-            $.ajax({
-                url: this.href,
-                cache: false,
-                success: function (html) { $("#editorRow").append(html); }
-            });
-            return false;
-        });
-
         $(document).on('click', 'a.deleteRow', function () {
             $(this).parents("div.editRow:first").remove();
             return false;
@@ -273,6 +258,9 @@
         $("#btnGrabar").click(function () {
             //$("#frmCreate").submit();
             var infoForm = $("#frmUpdate");
+            $(".field-validation-error").html('');
+            $("#Err_General").hide();
+            $("#divMensajeOK").hide();
 
             //waitingDialog.show("Procesando..");
             $.ajax({
@@ -281,8 +269,6 @@
                 data: infoForm.serialize(),
                 dataType: "json",
                 success: function (data) {
-                    $(".field-validation-error").html('');
-                    $("#Err_General").hide();
                     if (data.Valid) {
                         $("#divMensajeOK").html("Se realizó la operación satisfactoriamente.");
                         $("#divMensajeOK").show();

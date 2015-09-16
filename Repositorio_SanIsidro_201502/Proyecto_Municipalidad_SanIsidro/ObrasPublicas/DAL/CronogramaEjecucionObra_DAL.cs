@@ -21,17 +21,44 @@ namespace ObrasPublicas.DAL
             {
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
 
-                OP_CRONOGRAMA_EJECUCION objCronogramaEjecucion = new OP_CRONOGRAMA_EJECUCION();
-                objCronogramaEjecucion.coExpediente = pIntIdExpediente;
-                objCronogramaEjecucion.feEmision = DateTime.Now;
-                objCronogramaEjecucion.nuPlazoEjecucion = pIntPlazoEjecucion;
+                
+                ExpedienteTecnicoOP_DAL objExpedienteTecnicoOP_DAL = new ExpedienteTecnicoOP_DAL();
+                ExpedienteTecnicoOP objExpedienteTecnicoOP = objExpedienteTecnicoOP_DAL.ObtieneXId(pIntIdExpediente);
 
-                objContext.AddToOP_CRONOGRAMA_EJECUCION(objCronogramaEjecucion);
-                intRows = objContext.SaveChanges();
-
-                if (intRows > 0)
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                if (objExpedienteTecnicoOP.Proyecto != null)
                 {
-                    intResultado = 1;
+                    ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(objExpedienteTecnicoOP.Proyecto.IdProyecto);
+
+                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+                        objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+                    {
+                        intResultado = -997;
+                    }
+                    else
+                    {
+                        bool bolExisteCrono = objContext.OP_CRONOGRAMA_EJECUCION.Any(cro => cro.coExpediente == pIntIdExpediente);
+
+                        if (bolExisteCrono)
+                        {
+                            intResultado = -996;
+                        }
+                        else
+                        {
+                            OP_CRONOGRAMA_EJECUCION objCronogramaEjecucion = new OP_CRONOGRAMA_EJECUCION();
+                            objCronogramaEjecucion.coExpediente = pIntIdExpediente;
+                            objCronogramaEjecucion.feEmision = DateTime.Now;
+                            objCronogramaEjecucion.nuPlazoEjecucion = pIntPlazoEjecucion;
+
+                            objContext.AddToOP_CRONOGRAMA_EJECUCION(objCronogramaEjecucion);
+                            intRows = objContext.SaveChanges();
+
+                            if (intRows > 0)
+                            {
+                                intResultado = 1;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -71,14 +98,31 @@ namespace ObrasPublicas.DAL
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
                 OP_CRONOGRAMA_EJECUCION objCronogramaEjecucion = objContext.OP_CRONOGRAMA_EJECUCION.First(x => x.coCronograma == pIntIdCronograma);
 
-                if (objCronogramaEjecucion != null) {
-                    objCronogramaEjecucion.nuPlazoEjecucion = pIntPlazoEjecucion;
+                ExpedienteTecnicoOP_DAL objExpedienteTecnicoOP_DAL = new ExpedienteTecnicoOP_DAL();
+                ExpedienteTecnicoOP objExpedienteTecnicoOP = objExpedienteTecnicoOP_DAL.ObtieneXId(pIntIdExpediente);
 
-                    intRows = objContext.SaveChanges();
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                if (objExpedienteTecnicoOP.Proyecto != null) {
+                    ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(objExpedienteTecnicoOP.Proyecto.IdProyecto);
 
-                    if (intRows > 0)
+                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+                        objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
                     {
-                        intResultado = 1;
+                        intResultado = -998;
+                    }
+                    else
+                    {
+                        if (objCronogramaEjecucion != null)
+                        {
+                            objCronogramaEjecucion.nuPlazoEjecucion = pIntPlazoEjecucion;
+
+                            intRows = objContext.SaveChanges();
+
+                            if (intRows > 0)
+                            {
+                                intResultado = 1;
+                            }
+                        }
                     }
                 }
             }
@@ -96,7 +140,7 @@ namespace ObrasPublicas.DAL
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
                 ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
 
-                objContext.sp_gop_upd_act_cron_ejec_obra(pIntIdCronograma, pIntIdActividad, pObjActividadCronogramaOP.Nombre, 
+                objContext.sp_gop_upd_act_cron_ejec_obra(pIntIdExpediente, pIntIdCronograma, pIntIdActividad, pObjActividadCronogramaOP.Nombre, 
                     pObjActividadCronogramaOP.FechaIniProg, pObjActividadCronogramaOP.FechaFinProg, 
                     pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
                     pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
@@ -155,13 +199,13 @@ namespace ObrasPublicas.DAL
             return objCronogramaEjecucionObra;
         }
 
-        public List<ActividadCronogramaOP> ObtieneActvidades(int pIntIdExpediente, int pIntIdCronograma)
+        public List<ActividadCronogramaOP> ObtieneActvidades(int pIntIdExpediente, int pIntIdCronograma, int pIntFlagInforme)
         {
             List<ActividadCronogramaOP> lstActividades = new List<ActividadCronogramaOP>();
             try
             {
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
-                var objResult = objContext.sp_gop_get_act_x_cron_ejec_obra(pIntIdExpediente, pIntIdCronograma).ToList();
+                var objResult = objContext.sp_gop_get_act_x_cron_ejec_obra(pIntIdExpediente, pIntIdCronograma, pIntFlagInforme).ToList();
 
                 List<sp_gop_get_act_x_cron_ejec_obra_Result> lstActividadesTmp = objResult;
 
@@ -363,6 +407,107 @@ namespace ObrasPublicas.DAL
                 throw new Exception(ex.ToString());
             }
             return lstEmpleados;
+        }
+
+        public bool ExisteCronograma(int pIntIdExpediente)
+        {
+            ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+            return objContext.OP_CRONOGRAMA_EJECUCION.Any(cro => cro.coExpediente == pIntIdExpediente);
+        }
+
+        public List<ActividadCronogramaOP> ObtieneActvidadesXIdInforme(int pIntIdInforme)
+        {
+            List<ActividadCronogramaOP> lstActividades = new List<ActividadCronogramaOP>();
+            try
+            {
+                ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+                var objResult = objContext.sp_gop_get_act_x_informe(pIntIdInforme).ToList();
+
+                List<sp_gop_get_act_x_informe_Result> lstActividadesTmp = objResult;
+
+                foreach (sp_gop_get_act_x_informe_Result objAct in lstActividadesTmp)
+                {
+                    ActividadCronogramaOP objActividadCronograma = new ActividadCronogramaOP();
+                    if (objAct.NUCANTIDADRRHH.HasValue)
+                    {
+                        objActividadCronograma.CantidadRRHH = objAct.NUCANTIDADRRHH.Value;
+                    }
+                    if (objAct.NUCOSTODIRECTO.HasValue)
+                    {
+                        objActividadCronograma.Costo = objAct.NUCOSTODIRECTO.Value;
+                    }
+                    if (objAct.FEFINEJECUCION.HasValue)
+                    {
+                        objActividadCronograma.FechaFinEjec = objAct.FEFINEJECUCION.Value;
+                    }
+                    if (objAct.FEFINPROGRAMADA.HasValue)
+                    {
+                        objActividadCronograma.FechaFinProg = objAct.FEFINPROGRAMADA.Value;
+                    }
+                    if (objAct.FEINICIOEJECUCION.HasValue)
+                    {
+                        objActividadCronograma.FechaIniEjec = objAct.FEINICIOEJECUCION.Value;
+                    }
+                    if (objAct.FEINICIOPROGRAMADA.HasValue)
+                    {
+                        objActividadCronograma.FechaIniProg = objAct.FEINICIOPROGRAMADA.Value;
+                    }
+                    if (objAct.idPersonaNatural.HasValue)
+                    {
+                        objActividadCronograma.IdEmpleado = objAct.idPersonaNatural.Value;
+                        objActividadCronograma.ResponsableNom = objAct.NOMBRES;
+                        objActividadCronograma.ResponsableApe = objAct.APELLIDOPATERNO;
+                        objActividadCronograma.IdTipoResponsable = "P";
+                    }
+                    if (objAct.idPersonaJuridica.HasValue)
+                    {
+                        objActividadCronograma.IdEmpleado = objAct.idPersonaJuridica.Value;
+                        objActividadCronograma.ResponsableRazSoc = objAct.RAZONSOCIAL;
+                        objActividadCronograma.IdTipoResponsable = "E";
+                    }
+                    objActividadCronograma.Nombre = objAct.noActividad;
+                    objActividadCronograma.IdActividad = objAct.COACTIVIDAD;
+
+                    lstActividades.Add(objActividadCronograma);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            return lstActividades;
+        }
+
+        public int EliminarActividad(int pIntIdCronograma, int pIntIdExpediente, int pIntIdActividad)
+        {
+            ExpedienteTecnicoOP_DAL objExpedienteTecnicoOP_DAL = new ExpedienteTecnicoOP_DAL();
+            ExpedienteTecnicoOP objExpedienteTecnicoOP = objExpedienteTecnicoOP_DAL.ObtieneXId(pIntIdExpediente);
+
+            int intResultado = -999;
+            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+            if (objExpedienteTecnicoOP.Proyecto != null)
+            {
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(objExpedienteTecnicoOP.Proyecto.IdProyecto);
+
+                if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+                    objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+                {
+                    intResultado = -998;
+                }
+                else
+                {
+                    ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+                    OP_ACTIVIDAD_EJECUCION objOP_ACTIVIDAD_EJECUCION = objContext.OP_ACTIVIDAD_EJECUCION.Where(act => act.coActividad == pIntIdActividad && act.coCronograma == pIntIdCronograma).First();
+
+                    if (objOP_ACTIVIDAD_EJECUCION != null)
+                    {
+                        objContext.OP_ACTIVIDAD_EJECUCION.DeleteObject(objOP_ACTIVIDAD_EJECUCION);
+                        objContext.SaveChanges();
+                        intResultado = 1;
+                    }
+                }
+            }
+            return intResultado;
         }
     }
 }

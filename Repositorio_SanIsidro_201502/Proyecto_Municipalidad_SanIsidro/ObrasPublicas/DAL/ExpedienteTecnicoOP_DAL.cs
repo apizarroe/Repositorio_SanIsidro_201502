@@ -34,23 +34,24 @@ namespace ObrasPublicas.DAL
 
                  int intIdExpediente = Convert.ToInt32(objResult.Value.ToString());
 
-                 foreach (var objDoc in pLstDocumentos) {
-                     OP_DOCUMENTO_EXPEDIENTE_TECNICO objOP_DOCUMENTO_EXPEDIENTE_TECNICO = new OP_DOCUMENTO_EXPEDIENTE_TECNICO();
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.coDocumento = objDoc.IdDocumento;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.coExpediente = intIdExpediente;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.feEmision = DateTime.Now;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.nomArchivo = objDoc.NomArchivo;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.noTipoDocExpTec = objDoc.TipoDocumento;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.nuNroDOcumento = objDoc.NroDocumento;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.txDescripcion = objDoc.Descripcion;
-                     objOP_DOCUMENTO_EXPEDIENTE_TECNICO.txRutaArchivo = objDoc.RutaArchivo;
-
-                     objContext.AddToOP_DOCUMENTO_EXPEDIENTE_TECNICO(objOP_DOCUMENTO_EXPEDIENTE_TECNICO);
-                 }
-                 objContext.SaveChanges();
-
                  if (intIdExpediente > 0)
                  {
+                     foreach (var objDoc in pLstDocumentos)
+                     {
+                         OP_DOCUMENTO_EXPEDIENTE_TECNICO objOP_DOCUMENTO_EXPEDIENTE_TECNICO = new OP_DOCUMENTO_EXPEDIENTE_TECNICO();
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.coDocumento = objDoc.IdDocumento;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.coExpediente = intIdExpediente;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.feEmision = DateTime.Now;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.nomArchivo = objDoc.NomArchivo;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.noTipoDocExpTec = objDoc.TipoDocumento;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.nuNroDOcumento = objDoc.NroDocumento;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.txDescripcion = objDoc.Descripcion;
+                         objOP_DOCUMENTO_EXPEDIENTE_TECNICO.txRutaArchivo = objDoc.RutaArchivo;
+
+                         objContext.AddToOP_DOCUMENTO_EXPEDIENTE_TECNICO(objOP_DOCUMENTO_EXPEDIENTE_TECNICO);
+                     }
+                     objContext.SaveChanges();
+
                      intResultado = 1;
                  }
                  else {
@@ -82,36 +83,35 @@ namespace ObrasPublicas.DAL
                    pStrTipoEjecutor, pStrNomEjecutor, pStrApeEjecutor, pStrRazonSocialEjecutor, pStrNomContacto,
                    pStrApeContaco, pStrEmailContacto, pStrTelfContacto, pStrDireccionContacto, pStrNomSupervisor, pStrApeSupervisor,
                    pStrTelfSupervisor, pStrEmailSupervisor, pIntIdEjecutor, pIntIdContacto,pIntIdSupervisor, objResult);
-
-
-                var lstDocumentos = objContext.OP_DOCUMENTO_EXPEDIENTE_TECNICO.Where(doc => doc.coExpediente == pIntIdExpediente).ToList();
-                
-                foreach (OP_DOCUMENTO_EXPEDIENTE_TECNICO objDoc in lstDocumentos)
-                {
-                    objContext.OP_DOCUMENTO_EXPEDIENTE_TECNICO.DeleteObject(objDoc);
-                }
-
-                if (pLstDocumentos != null)
-                {
-                    foreach (DocumentoExpedienteTecnicoOP objDocumento in pLstDocumentos)
-                    {
-                        OP_DOCUMENTO_EXPEDIENTE_TECNICO objDocumentoExpTec = new OP_DOCUMENTO_EXPEDIENTE_TECNICO();
-                        objDocumentoExpTec.coExpediente = pIntIdExpediente;
-                        objDocumentoExpTec.feEmision = objDocumento.FechaEmision;
-                        objDocumentoExpTec.noTipoDocExpTec = objDocumento.TipoDocumento;
-                        objDocumentoExpTec.nuNroDOcumento = objDocumento.NroDocumento;
-                        objDocumentoExpTec.txDescripcion = objDocumento.Descripcion;
-                        objDocumentoExpTec.txRutaArchivo = objDocumento.RutaArchivo;
-                        objDocumentoExpTec.nomArchivo = objDocumento.NomArchivo;
-                        objContext.AddToOP_DOCUMENTO_EXPEDIENTE_TECNICO(objDocumentoExpTec);
-                    }
-                }
-                objContext.SaveChanges();
-                
+                                
                 int intIdExpediente = Convert.ToInt32(objResult.Value.ToString());
 
                 if (intIdExpediente > 0)
                 {
+                    var lstDocumentos = objContext.OP_DOCUMENTO_EXPEDIENTE_TECNICO.Where(doc => doc.coExpediente == pIntIdExpediente).ToList();
+
+                    foreach (OP_DOCUMENTO_EXPEDIENTE_TECNICO objDoc in lstDocumentos)
+                    {
+                        objContext.OP_DOCUMENTO_EXPEDIENTE_TECNICO.DeleteObject(objDoc);
+                    }
+
+                    if (pLstDocumentos != null)
+                    {
+                        foreach (DocumentoExpedienteTecnicoOP objDocumento in pLstDocumentos)
+                        {
+                            OP_DOCUMENTO_EXPEDIENTE_TECNICO objDocumentoExpTec = new OP_DOCUMENTO_EXPEDIENTE_TECNICO();
+                            objDocumentoExpTec.coExpediente = pIntIdExpediente;
+                            objDocumentoExpTec.feEmision = objDocumento.FechaEmision;
+                            objDocumentoExpTec.noTipoDocExpTec = objDocumento.TipoDocumento;
+                            objDocumentoExpTec.nuNroDOcumento = objDocumento.NroDocumento;
+                            objDocumentoExpTec.txDescripcion = objDocumento.Descripcion;
+                            objDocumentoExpTec.txRutaArchivo = objDocumento.RutaArchivo;
+                            objDocumentoExpTec.nomArchivo = objDocumento.NomArchivo;
+                            objContext.AddToOP_DOCUMENTO_EXPEDIENTE_TECNICO(objDocumentoExpTec);
+                        }
+                    }
+                    objContext.SaveChanges();
+
                     intResultado = 1;
                 }
                 else{

@@ -13,24 +13,9 @@
           <EntitySet Name="OP_DOCUMENTO_EXPEDIENTE_TECNICO" EntityType="ObrasPublicasModel.Store.OP_DOCUMENTO_EXPEDIENTE_TECNICO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OP_ENTREGA_MATERIAL" EntityType="ObrasPublicasModel.Store.OP_ENTREGA_MATERIAL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OP_EXPEDIENTE_TECNICO" EntityType="ObrasPublicasModel.Store.OP_EXPEDIENTE_TECNICO" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="OP_INFORME_ACTIVIDAD" EntityType="ObrasPublicasModel.Store.OP_INFORME_ACTIVIDAD" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_ACTIVIDAD">
-            <DefiningQuery>SELECT 
-      [OP_INFORME_ACTIVIDAD].[coInforme] AS [coInforme], 
-      [OP_INFORME_ACTIVIDAD].[idActividad] AS [idActividad]
-      FROM [dbo].[OP_INFORME_ACTIVIDAD] AS [OP_INFORME_ACTIVIDAD]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OP_INFORME_CUADERNO" EntityType="ObrasPublicasModel.Store.OP_INFORME_CUADERNO" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_CUADERNO">
-            <DefiningQuery>SELECT 
-      [OP_INFORME_CUADERNO].[coInforme] AS [coInforme], 
-      [OP_INFORME_CUADERNO].[coIncidencia] AS [coIncidencia]
-      FROM [dbo].[OP_INFORME_CUADERNO] AS [OP_INFORME_CUADERNO]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OP_INFORME_ENTREGA" EntityType="ObrasPublicasModel.Store.OP_INFORME_ENTREGA" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_ENTREGA">
-            <DefiningQuery>SELECT 
-      [OP_INFORME_ENTREGA].[coInforme] AS [coInforme], 
-      [OP_INFORME_ENTREGA].[coEntrega] AS [coEntrega]
-      FROM [dbo].[OP_INFORME_ENTREGA] AS [OP_INFORME_ENTREGA]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="OP_INFORME_ACTIVIDAD" EntityType="ObrasPublicasModel.Store.OP_INFORME_ACTIVIDAD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_INFORME_CUADERNO" EntityType="ObrasPublicasModel.Store.OP_INFORME_CUADERNO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OP_INFORME_ENTREGA" EntityType="ObrasPublicasModel.Store.OP_INFORME_ENTREGA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OP_INFORME_OBRA" EntityType="ObrasPublicasModel.Store.OP_INFORME_OBRA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OP_INFORME_REFERENCIA" EntityType="ObrasPublicasModel.Store.OP_INFORME_REFERENCIA" store:Type="Tables" store:Schema="dbo" store:Name="OP_INFORME_REFERENCIA">
             <DefiningQuery>SELECT 
@@ -209,9 +194,6 @@
           <Property Name="coSupervisor" Type="int" />
           <Property Name="coContacto" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_ACTIVIDAD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="OP_INFORME_ACTIVIDAD">
           <Key>
             <PropertyRef Name="coInforme" />
@@ -220,9 +202,6 @@
           <Property Name="coInforme" Type="int" Nullable="false" />
           <Property Name="idActividad" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_CUADERNO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="OP_INFORME_CUADERNO">
           <Key>
             <PropertyRef Name="coInforme" />
@@ -231,9 +210,6 @@
           <Property Name="coInforme" Type="int" Nullable="false" />
           <Property Name="coIncidencia" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'MUNI_INTEGRADO.dbo.OP_INFORME_ENTREGA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="OP_INFORME_ENTREGA">
           <Key>
             <PropertyRef Name="coInforme" />
@@ -528,6 +504,10 @@
         <Function Name="sp_gop_get_act_x_cron_ejec_obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pIntIdExp" Type="int" Mode="In" />
           <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
+          <Parameter Name="pFlagInforme" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_act_x_informe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdInforme" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_gop_get_areas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_gop_get_emp_perj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -538,8 +518,12 @@
           <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
           <Parameter Name="pIntIdEntrega" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_gop_get_ent_mat_x_informe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdInforme" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_gop_get_ent_mat_x_proy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pIntIdProyecto" Type="int" Mode="In" />
+          <Parameter Name="pFlagInforme" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_gop_get_exp_x_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pIntIdExp" Type="int" Mode="In" />
@@ -557,6 +541,12 @@
           <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_gop_get_proy_con_exp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pVarNom" Type="varchar" Mode="In" />
+          <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
+          <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
+          <Parameter Name="pVarEstado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_gop_get_proy_con_infobra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pVarNom" Type="varchar" Mode="In" />
           <Parameter Name="pVarCodSNIP" Type="varchar" Mode="In" />
           <Parameter Name="pVarUbicacion" Type="varchar" Mode="In" />
@@ -618,6 +608,7 @@
           <Parameter Name="pIntIdExp_out" Type="int" Mode="InOut" />
         </Function>
         <Function Name="sp_gop_upd_act_cron_ejec_obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pIntIdExp" Type="int" Mode="In" />
           <Parameter Name="pIntIdCrono" Type="int" Mode="In" />
           <Parameter Name="pIntIdActividad" Type="int" Mode="In" />
           <Parameter Name="pVarNom" Type="varchar" Mode="In" />
@@ -735,6 +726,7 @@
           <FunctionImport Name="sp_gop_get_act_x_cron_ejec_obra" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_act_x_cron_ejec_obra_Result)">
             <Parameter Name="pIntIdExp" Mode="In" Type="Int32" />
             <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
+            <Parameter Name="pFlagInforme" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_gop_get_areas" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_areas_Result)" />
           <FunctionImport Name="sp_gop_get_emp_perj" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_emp_perj_Result)" />
@@ -743,6 +735,7 @@
           </FunctionImport>
           <FunctionImport Name="sp_gop_get_ent_mat_x_proy" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_ent_mat_x_proy_Result)">
           <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="pFlagInforme" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_gop_get_exp_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_exp_x_id_Result)">
           <Parameter Name="pIntIdExp" Mode="In" Type="Int32" />
@@ -821,6 +814,7 @@
             <Parameter Name="pIntIdExp_out" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_gop_upd_act_cron_ejec_obra">
+            <Parameter Name="pIntIdExp" Mode="In" Type="Int32" />
             <Parameter Name="pIntIdCrono" Mode="In" Type="Int32" />
             <Parameter Name="pIntIdActividad" Mode="In" Type="Int32" />
             <Parameter Name="pVarNom" Mode="In" Type="String" />
@@ -862,6 +856,18 @@
             <Parameter Name="pIntIdContacto" Mode="In" Type="Int32" />
             <Parameter Name="pIntIdSupervisor" Mode="In" Type="Int32" />
             <Parameter Name="pIntIdExp_out" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_act_x_informe" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_act_x_informe_Result)">
+          <Parameter Name="pIntIdInforme" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_ent_mat_x_informe" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_ent_mat_x_informe_Result)">
+          <Parameter Name="pIntIdInforme" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_gop_get_proy_con_infobra" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_proy_con_infobra_Result)">
+            <Parameter Name="pVarNom" Mode="In" Type="String" />
+            <Parameter Name="pVarCodSNIP" Mode="In" Type="String" />
+            <Parameter Name="pVarUbicacion" Mode="In" Type="String" />
+            <Parameter Name="pVarEstado" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="OP_ACTIVIDAD_EJECUCION">
@@ -1389,6 +1395,52 @@
           <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="sp_gop_get_act_x_informe_Result">
+          <Property Type="Int32" Name="COPROYECTO" Nullable="false" />
+          <Property Type="String" Name="NONOMBRE" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="COACTIVIDAD" Nullable="false" />
+          <Property Type="DateTime" Name="FEINICIOPROGRAMADA" Nullable="true" />
+          <Property Type="DateTime" Name="FEFINPROGRAMADA" Nullable="true" />
+          <Property Type="DateTime" Name="FEINICIOEJECUCION" Nullable="true" />
+          <Property Type="DateTime" Name="FEFINEJECUCION" Nullable="true" />
+          <Property Type="Decimal" Name="NUCOSTODIRECTO" Nullable="true" Precision="11" Scale="2" />
+          <Property Type="Int32" Name="NUCANTIDADRRHH" Nullable="true" />
+          <Property Type="Int32" Name="IDPERSONA" Nullable="false" />
+          <Property Type="Int32" Name="idPersonaJuridica" Nullable="true" />
+          <Property Type="Int32" Name="idPersonaNatural" Nullable="true" />
+          <Property Type="String" Name="noActividad" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="APELLIDOPATERNO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RAZONSOCIAL" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_ent_mat_x_informe_Result">
+          <Property Type="Int32" Name="coEntrega" Nullable="false" />
+          <Property Type="Int32" Name="coMaterial" Nullable="false" />
+          <Property Type="Int32" Name="coProveedor" Nullable="false" />
+          <Property Type="Int32" Name="coProyecto" Nullable="true" />
+          <Property Type="DateTime" Name="feEntregaEfectiva" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="feEntregaProgramada" Nullable="true" Precision="23" />
+          <Property Type="String" Name="noTipoEntrega" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="nuCantidad" Nullable="true" />
+          <Property Type="String" Name="txObservaciones" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="noMaterial" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_gop_get_proy_con_infobra_Result">
+          <Property Type="Int32" Name="coProyecto" Nullable="false" />
+          <Property Type="String" Name="coSNIP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="txDescripcion" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="noNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="coVia" Nullable="false" />
+          <Property Type="String" Name="txUbicacion" Nullable="true" MaxLength="120" />
+          <Property Type="Int32" Name="nuBeneficiarios" Nullable="true" />
+          <Property Type="Decimal" Name="nuValorReferencialPerfil" Nullable="false" Precision="11" Scale="2" />
+          <Property Type="DateTime" Name="feRegistro" Nullable="true" />
+          <Property Type="String" Name="noEstado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noNomVia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="noTipoVia" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="coExpediente" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1864,6 +1916,64 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ObrasPublicasModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="sp_gop_upd_exp" FunctionName="ObrasPublicasModel.Store.sp_gop_upd_exp" />
+          <FunctionImportMapping FunctionImportName="sp_gop_get_act_x_informe" FunctionName="ObrasPublicasModel.Store.sp_gop_get_act_x_informe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_act_x_informe_Result">
+                <ScalarProperty Name="COPROYECTO" ColumnName="COPROYECTO" />
+                <ScalarProperty Name="NONOMBRE" ColumnName="NONOMBRE" />
+                <ScalarProperty Name="COACTIVIDAD" ColumnName="COACTIVIDAD" />
+                <ScalarProperty Name="FEINICIOPROGRAMADA" ColumnName="FEINICIOPROGRAMADA" />
+                <ScalarProperty Name="FEFINPROGRAMADA" ColumnName="FEFINPROGRAMADA" />
+                <ScalarProperty Name="FEINICIOEJECUCION" ColumnName="FEINICIOEJECUCION" />
+                <ScalarProperty Name="FEFINEJECUCION" ColumnName="FEFINEJECUCION" />
+                <ScalarProperty Name="NUCOSTODIRECTO" ColumnName="NUCOSTODIRECTO" />
+                <ScalarProperty Name="NUCANTIDADRRHH" ColumnName="NUCANTIDADRRHH" />
+                <ScalarProperty Name="IDPERSONA" ColumnName="IDPERSONA" />
+                <ScalarProperty Name="idPersonaJuridica" ColumnName="idPersonaJuridica" />
+                <ScalarProperty Name="idPersonaNatural" ColumnName="idPersonaNatural" />
+                <ScalarProperty Name="noActividad" ColumnName="noActividad" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOPATERNO" ColumnName="APELLIDOPATERNO" />
+                <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_ent_mat_x_informe" FunctionName="ObrasPublicasModel.Store.sp_gop_get_ent_mat_x_informe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_ent_mat_x_informe_Result">
+                <ScalarProperty Name="coEntrega" ColumnName="coEntrega" />
+                <ScalarProperty Name="coMaterial" ColumnName="coMaterial" />
+                <ScalarProperty Name="coProveedor" ColumnName="coProveedor" />
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="feEntregaEfectiva" ColumnName="feEntregaEfectiva" />
+                <ScalarProperty Name="feEntregaProgramada" ColumnName="feEntregaProgramada" />
+                <ScalarProperty Name="noTipoEntrega" ColumnName="noTipoEntrega" />
+                <ScalarProperty Name="nuCantidad" ColumnName="nuCantidad" />
+                <ScalarProperty Name="txObservaciones" ColumnName="txObservaciones" />
+                <ScalarProperty Name="noMaterial" ColumnName="noMaterial" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_gop_get_proy_con_infobra" FunctionName="ObrasPublicasModel.Store.sp_gop_get_proy_con_infobra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ObrasPublicasModel.sp_gop_get_proy_con_infobra_Result">
+                <ScalarProperty Name="coProyecto" ColumnName="coProyecto" />
+                <ScalarProperty Name="coSNIP" ColumnName="coSNIP" />
+                <ScalarProperty Name="txDescripcion" ColumnName="txDescripcion" />
+                <ScalarProperty Name="noNombre" ColumnName="noNombre" />
+                <ScalarProperty Name="coVia" ColumnName="coVia" />
+                <ScalarProperty Name="txUbicacion" ColumnName="txUbicacion" />
+                <ScalarProperty Name="nuBeneficiarios" ColumnName="nuBeneficiarios" />
+                <ScalarProperty Name="nuValorReferencialPerfil" ColumnName="nuValorReferencialPerfil" />
+                <ScalarProperty Name="feRegistro" ColumnName="feRegistro" />
+                <ScalarProperty Name="noEstado" ColumnName="noEstado" />
+                <ScalarProperty Name="noNomVia" ColumnName="noNomVia" />
+                <ScalarProperty Name="noTipoVia" ColumnName="noTipoVia" />
+                <ScalarProperty Name="coExpediente" ColumnName="coExpediente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

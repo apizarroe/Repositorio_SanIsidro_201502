@@ -1330,3 +1330,28 @@ td.visible-print,th.visible-print{display:table-cell!important}}
 .btn-warning{background-image:-webkit-linear-gradient(#f5ac39,#f39c12 60%,#e5910c);background-image:-o-linear-gradient(#f5ac39,#f39c12 60%,#e5910c);background-image:linear-gradient(#f5ac39,#f39c12 60%,#e5910c);background-repeat:no-repeat;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5ac39', endColorstr='#ffe5910c', GradientType=0);filter:none;border-bottom:1px solid #c87f0a}
 .btn-danger{background-image:-webkit-linear-gradient(#e12b31,#c71c22 60%,#b5191f);background-image:-o-linear-gradient(#e12b31,#c71c22 60%,#b5191f);background-image:linear-gradient(#e12b31,#c71c22 60%,#b5191f);background-repeat:no-repeat;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe12b31', endColorstr='#ffb5191f', GradientType=0);filter:none;border-bottom:1px solid #9a161a}
 .panel-danger .panel-heading,.panel-danger .panel-title,.panel-info .panel-heading,.panel-info .panel-title,.panel-primary .panel-heading,.panel-primary .panel-title,.panel-success .panel-heading,.panel-success .panel-title,.panel-warning .panel-heading,.panel-warning .panel-title{color:#fff}
+.ui-autocomplete {
+    position: absolute;
+    z-index: 1000;
+    cursor: default;
+    padding: 0;
+    margin-top: 2px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.ui-autocomplete > li {
+  padding: 3px 20px;
+}
+.ui-autocomplete > li.ui-state-focus {
+  background-color: #DDD;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}

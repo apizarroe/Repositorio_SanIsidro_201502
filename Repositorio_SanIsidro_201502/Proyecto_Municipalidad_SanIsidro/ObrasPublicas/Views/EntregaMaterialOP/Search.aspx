@@ -27,7 +27,7 @@
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
                 <button id="btnIconModificar" type="button" class="btn btn-primary" onclick="document.location.href='/entregamaterialop/search'">
-                    <span class="fa fa-file" aria-hidden="true"></span> Modificar
+                    <span class="fa fa-pencil" aria-hidden="true"></span> Modificar
                 </button>
             </div>
         </div>

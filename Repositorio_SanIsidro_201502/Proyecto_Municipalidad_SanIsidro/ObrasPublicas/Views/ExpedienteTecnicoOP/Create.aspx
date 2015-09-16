@@ -45,7 +45,7 @@
     <section class="content">
     <div id="divPanelCrear" class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">Crear Expediente Técinco</h3>
+              <h3 class="panel-title">Crear Expediente Técnico</h3>
             </div>
             <div class="panel-body">
                 <div class="form-horizontal" role="form">
@@ -58,6 +58,20 @@
                         <strong><%: Html.DisplayFor(m => m.IdProyecto) %> - <%: Html.DisplayFor(m => m.NomProyecto) %></strong>
                         <%: Html.HiddenFor(m => m.IdProyecto)%>
                         <%: Html.HiddenFor(m => m.NomProyecto)%>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Ubicaci&oacute;n: <%: Html.DisplayFor(m => m.UbicacionProyecto) %></strong>
+                        <%: Html.HiddenFor(m => m.UbicacionProyecto)%>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <%: Html.HiddenFor(m => m.ValorRefProyecto)%>
                     </div>
                     </div>
 
@@ -248,7 +262,7 @@
                             <div class="form-group">
                             <label class="col-sm-3 control-label">* Fecha Emision</label>
                             <div class="col-sm-9">
-                                <%: Html.TextBoxFor(m => m.FechaEmisionDocAdj, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                                <%: Html.TextBoxFor(m => m.FechaEmisionDocAdj, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);" }) %>
                                 <%: Html.ValidationMessageFor(m => m.FechaEmisionDocAdj) %>
                             </div>
                             </div>
@@ -270,7 +284,7 @@
                             <label class="col-sm-3 control-label">* Archivo</label>
                             <div class="col-sm-9">
                                     <input type="file" name="documentoUpload" id="documentoUpload" />
-                                    <span class="field-validation-valid" data-valmsg-for="Err_documentoUpload" data-valmsg-replace="true"></span>
+                                    <%: Html.ValidationMessage("Err_documentoUpload") %>
                             </div>
                             </div>
                             <div class="form-group">
@@ -305,7 +319,7 @@
 	                                <tr>
 	                                <td></td>
 	                                <td><%:objDoc.NroDocumento%></td>
-	                                <td><%:objDoc.FechaEmision%></td>
+	                                <td><%:objDoc.FechaEmision.ToString("dd/MM/yyyy")%></td>
 	                                <td><%:objDoc.Descripcion%></td>
 	                                <td><%:objDoc.NomTipoDocumento%></td>
 	                                <td><%:objDoc.NomArchivo%></td>
@@ -355,6 +369,7 @@
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
     <%: Scripts.Render("~/Scripts/jquery-ui-1.8.20.js") %>
+    <%: Scripts.Render("~/Scripts/utils.js") %>
     <script>
         $(document).ready(function () {
             $('#DocumentoTipoDocmento').empty();
@@ -380,16 +395,6 @@
                         );
                     });
                 }
-            });
-
-
-            $('.numbersOnly').keyup(function () {
-                this.value = this.value.replace(/[^0-9\.]/g, '');
-            });
-
-            $(".decimalsOnly").keyup(function () {
-                var $this = $(this);
-                $this.val($this.val().replace(/[^\d.]/g, ''));
             });
         });
         
@@ -441,6 +446,14 @@
             $('#TipoBotonClick').val("REMOVER");
             $("#frmCreate").submit();
         }
+
+        $(function () {
+            $("#btnGrabar").click(function () {
+                if ($("#frmCreate").valid()) {
+                    waitingDialog.show('Procesando...');
+                }
+            });
+        });
     </script>
     <script type="text/javascript">
         var waitingDialog = waitingDialog || (function ($) {

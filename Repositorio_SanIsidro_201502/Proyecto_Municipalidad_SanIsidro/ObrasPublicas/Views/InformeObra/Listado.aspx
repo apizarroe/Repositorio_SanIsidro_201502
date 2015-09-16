@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<ObrasPublicas.Models.CronogramaEjecucionObra.ListadoCronogramaEjecucionObraModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<ObrasPublicas.Models.InformeObra.ListadoInformeObraModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Municipalidad de San Isidro - Entrega de Materiales
+    Municipalidad de San Isidro - Informes de Obra
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
@@ -18,27 +18,28 @@
     }
 </style>
     <%
-        List<ObrasPublicas.Entities.ActividadCronogramaOP> lstActividades = ViewBag.ListadoActividades;
+        List<ObrasPublicas.Entities.InformeObra> lstInformes = ViewBag.ListadoInformes;
 %>
     <section class="content-header" style="padding-bottom:5px">
-        <h1>Actualizar Cronograma de Ejecución de Obra</h1>
+        <h1>Actualizar Informe de Obra</h1>
         <div>&nbsp;</div>
         
         <div id="divControlButtons" class="panel panel-default">
             <div class="panel-body">
-                <button id="btnIconCrear" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/createactividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>'">
-                    <span class="fa fa-file" aria-hidden="true"></span> Nueva actividad
+                <button type="button" class="btn btn-default" onclick="document.location.href='/informeobra/listado?p=<%:Model.IdProyecto %>&e=<%:Model.IdExpediente %>'">
+                    <span class="fa fa-list-alt" aria-hidden="true"></span> Volver a listar informes
                 </button>
-                <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search'">
+                <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/informeobra/search'">
                     <span class="fa fa-arrow-left" aria-hidden="true"></span> Volver a buscar proyecto
                 </button>
+                
             </div>
         </div>
     </section>
     <section class="content">
     <div id="divPanelCrear" class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Cronograma de Ejecución de Obra</h3>
+            <h3 class="panel-title">Listado de Informes de Obra</h3>
         </div>
         <div class="panel-body">
                 <div class="form-horizontal" role="form">
@@ -47,7 +48,6 @@
                     <div class="col-sm-9">
                         <strong><%: Html.DisplayFor(m => m.IdProyecto) %> - <%: Html.DisplayFor(m => m.NomProyecto) %></strong>
                         <%: Html.HiddenFor(m => m.IdProyecto, new { Value = Request.QueryString["p"] })%>
-                        <%: Html.HiddenFor(m => m.IdExpediente, new { Value = Request.QueryString["e"] })%>
                     </div>
                     </div>
                     <div class="form-group">
@@ -65,21 +65,27 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Plazo ejecuci&oacute;n: <%: Html.DisplayFor(m => m.PlazoEjecucion) %> d&iacute;as</strong>
+                        <strong>Ejecutor: <%: Html.DisplayFor(m => m.NomEjecutor) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Supervisor: <%: Html.DisplayFor(m => m.NomSupervisor) %></strong>
                     </div>
                     </div>
                 </div>
-            <%if (ViewBag.OKEliminar == "1")
+            <%if (ViewBag.OKAnular == "1")
               {%>
                 <div id="divMensajeOK"  class="alert alert-success" role="alert">
-                    <%:ViewBag.MsgEliminar %>
+                    <%:ViewBag.MsgAnular %>
                 </div>
                 <%}
-              else if (ViewBag.OKEliminar == "0") { 
+              else if (ViewBag.OKAnular == "0") { 
               %>
                 <div class="alert alert-error" style="text-align:left">
                     <button type="button" class="close" data-dismiss="alert">×</button>
-                    <%:ViewBag.MsgEliminar %>
+                    <%:ViewBag.MsgAnular %>
                 </div>
                   <%
               }%>
@@ -88,11 +94,11 @@
                 &nbsp;
             </div>
 
-            <%if (lstActividades == null || lstActividades.Count() == 0)
+            <%if (lstInformes == null || lstInformes.Count() == 0)
               { 
             %>
                 <div>
-                    No se encontraron entregas registradas
+                    No se encontraron informes registrados
                 </div>
             <%
               }
@@ -103,48 +109,45 @@
                     <tr>
                         <th></th>
                         <th></th>
-                        <th>Actividad</th>
-                        <th>Fecha Ini. Prog.</th>
-                        <th>Fecha Fin Prog.</th>
-                        <th>Fecha Ini. Ejec.</th>
-                        <th>Fecha Fin Ejec.</th>
-                        <th>Responsable</th>
-                        <th>Cantidad RRHH</th>
-                        <th>Costo</th>
+                        <th>C&oacute;digo Informe</th>
+                        <th>T&iacute;tulo</th>
+                        <th>Fecha emisi&oacute;n</th>
+                        <th>Tipo Informe</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        int intSecuencia=1;
-                        foreach (ObrasPublicas.Entities.ActividadCronogramaOP objActividadCronogramaOP in lstActividades)
+                        foreach (ObrasPublicas.Entities.InformeObra objInformeObra in lstInformes)
                         {
                       %>
                         <tr>
-                            <td><a href="/CronogramaEjecucionObra/EditActividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>&a=<%:objActividadCronogramaOP.IdActividad%>">Modificar</a></td>
-                            <td><a href="/CronogramaEjecucionObra/DeleteActividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>&a=<%:objActividadCronogramaOP.IdActividad%>">Eliminar</a></td>
-                            <td><%:objActividadCronogramaOP.Nombre %></td>
-                            <td><%:objActividadCronogramaOP.FechaIniProg.ToString("dd/MM/yyyy") %></td>
-                            <td><%:objActividadCronogramaOP.FechaFinProg.ToString("dd/MM/yyyy") %></td>
-                            <td><%:objActividadCronogramaOP.FechaIniEjec.ToString("dd/MM/yyyy") %></td>
-                            <td><%:objActividadCronogramaOP.FechaFinEjec.ToString("dd/MM/yyyy") %></td>
+                            <td>
+                            <% if (objInformeObra.IdEstado == ObrasPublicas.Entities.InformeObra.INT_ID_ESTADO_GENERADO) { 
+                                   %>
+                                <a href="/informeobra/edit?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&i=<%:objInformeObra.IdInforme%>">Modificar</a>
                             <%
-                            if (objActividadCronogramaOP.IdTipoResponsable == "P")
-                            {
-                                %>
-                            <td><%:objActividadCronogramaOP.ResponsableNom %> <%:objActividadCronogramaOP.ResponsableApe %></td>
-                            <%
-                            }
-                            else { 
-                                %>
-                            <td><%:objActividadCronogramaOP.ResponsableRazSoc %></td>
-                            <%
-                            }
+                               }else{
                             %>
-                            <td><%:objActividadCronogramaOP.CantidadRRHH %></td>
-                            <td><%:objActividadCronogramaOP.Costo %></td>
+                                <a href="/informeobra/edit?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&i=<%:objInformeObra.IdInforme%>&consultar=1">Consultar</a>
+                                <%                               
+                               } %>
+                            </td>
+                            <td>
+                            <% if (objInformeObra.IdEstado == ObrasPublicas.Entities.InformeObra.INT_ID_ESTADO_GENERADO)
+                               { 
+                                   %>
+                                <a href="/informeobra/anular?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&i=<%:objInformeObra.IdInforme%>">Anular</a>
+                            <%
+                               } %>
+                            </td>
+                            <td><%:objInformeObra.IdInforme %></td>
+                            <td><%:objInformeObra.Titulo %></td>
+                            <td><%:objInformeObra.FechaEmision.ToString("dd/MM/yyyy") %></td>
+                            <td><%:objInformeObra.TipoInforme %></td>
+                            <td><%:objInformeObra.NomEstado %></td>
                         </tr>
                     <%
-                            intSecuencia++;
                       } %>
                 </tbody>
             </table>

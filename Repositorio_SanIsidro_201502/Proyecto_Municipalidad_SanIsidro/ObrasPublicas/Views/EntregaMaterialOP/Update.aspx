@@ -32,11 +32,19 @@
                                                                         new SelectListItem
                                                                         {
                                                                             Value = x.IdMaterial.ToString(),
-                                                                            Text = x.Nombre
+                                                                            Text = x.Nombre + " (en " + x.UnidadMedida + ")"
                                                                         }).OrderBy(x => x.Text);
+
+        ObrasPublicas.DAL.EntregaMaterial_DAL objEntregaMaterial_DAL = new ObrasPublicas.DAL.EntregaMaterial_DAL();
+        var lstTiposEntrega = objEntregaMaterial_DAL.ObtieneTiposEntrega().Select(x =>
+                                                                                  new SelectListItem
+                                                                                  {
+                                                                                      Value = x.Id.ToString(),
+                                                                                      Text = x.Nombre
+                                                                                  }).OrderBy(x => x.Text);
     %>
     <section class="content-header" style="padding-bottom:5px">
-        <h1>Modificar Entrega de Material</h1>
+        <h1>Actualizar Calendario de Entrega de Materiales</h1>
         <div>&nbsp;</div>
         
         <div id="divControlButtons" class="panel panel-default">
@@ -45,10 +53,10 @@
                     <span class="fa fa-file" aria-hidden="true"></span> Nueva Entrega
                 </button>
                 <button id="btnListado" type="button" class="btn btn-default" onclick="document.location.href='/entregamaterialop/listado?p=<%:Model.IdProyecto %>'">
-                    <span class="fa fa-pencil" aria-hidden="true"></span> Ver Entregas de Material
+                    <span class="fa fa-search" aria-hidden="true"></span> Ver Entregas de Material
                 </button>
                 <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/entregamaterialop/index'">
-                    <span class="fa fa-pencil" aria-hidden="true"></span> Volver a buscar proyecto
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span> Volver a buscar proyecto
                 </button>
             </div>
         </div>
@@ -72,9 +80,22 @@
                     </div>
                     </div>
                     <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Ubicaci&oacute;n: <%: Html.DisplayFor(m => m.UbicacionProyecto) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
                     <label class="col-sm-3 control-label">* Fecha de entrega programada:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FecEntregaProg, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                            <%: Html.TextBoxFor(m => m.FecEntregaProg, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);" }) %>
                         <%: Html.ValidationMessageFor(m => m.FecEntregaProg) %>
                         <div id="Err_FecEntregaProg" class="field-validation-error"></div>
                         <p></p>
@@ -83,7 +104,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Fecha de entrega efectiva:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FecEntregaEfec, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                            <%: Html.TextBoxFor(m => m.FecEntregaEfec, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);" }) %>
                         <%: Html.ValidationMessageFor(m => m.FecEntregaEfec) %>
                         <div id="Err_FecEntregaEfec" class="field-validation-error"></div>
                         <p></p>
@@ -92,7 +113,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Observaciones:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.Observaciones, new { @class = "form-control", maxlength = "500"}) %>
+                            <%: Html.TextAreaFor(m => m.Observaciones, new { @class = "form-control", maxlength = "500"}) %>
                         <%: Html.ValidationMessageFor(m => m.Observaciones) %>
                         <div id="Err_Observaciones" class="field-validation-error"></div>
                         <p></p>
@@ -101,7 +122,7 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Tipo de entrega:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.TipoEntrega, new { @class = "form-control", maxlength = "50"}) %>
+                        <%: Html.DropDownListFor(m => m.TipoEntrega, lstTiposEntrega, "----", new { @class = "form-control" })%>
                         <%: Html.ValidationMessageFor(m => m.TipoEntrega) %>
                         <div id="Err_TipoEntrega" class="field-validation-error"></div>
                         <p></p>
@@ -168,6 +189,8 @@
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
     <%: Scripts.Render("~/Scripts/jquery-ui-1.8.20.js") %>
+    <%: Scripts.Render("~/Scripts/utils.js") %>
+    
     <script type="text/javascript">
         var waitingDialog = waitingDialog || (function ($) {
             'use strict';
@@ -221,8 +244,6 @@
                 }
             };
         })(jQuery);
-
 	</script>
-    
     <%: Scripts.Render("~/bundles/jqueryval") %>
 </asp:Content>

@@ -174,6 +174,7 @@ namespace ObrasPublicas.DAL
                     objProyecto.Ubicacion = lstProyectosTmp[0].txUbicacion;
                     objProyecto.IdVia = lstProyectosTmp[0].coVia;
                     objProyecto.Ubicacion = lstProyectosTmp[0].txUbicacion;
+                    objProyecto.NomVia = lstProyectosTmp[0].noNomVia;
                     objProyecto.Descripcion = lstProyectosTmp[0].txDescripcion;
                     objProyecto.IdEstado = lstProyectosTmp[0].noEstado;
                     objProyecto.NomEstado = ObtieneEstados(null).Where(e => e.Id == lstProyectosTmp[0].noEstado).First().Nombre;
@@ -202,7 +203,7 @@ namespace ObrasPublicas.DAL
                 lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
                 lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_INVIABLE, Nombre = "Inviable" });
                 lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_ADJUDICADO, Nombre = "Adjudicado" });
-                lstEstados.Add(new ItemCombo { Id = "C", Nombre = "Cerrado" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_CERRADO, Nombre = "Cerrado" });
             }
             else if (pStrTipo == "EXP")
             {
@@ -211,6 +212,16 @@ namespace ObrasPublicas.DAL
             else if (pStrTipo == "CRO")
             {
                 lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_ADJUDICADO, Nombre = "Adjudicado" });
+            }
+            else if (pStrTipo == "INFO")
+            {
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_ADJUDICADO, Nombre = "Adjudicado" });
+            }
+            else if (pStrTipo == "ENTMAT")
+            {
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_ADJUDICADO, Nombre = "Adjudicado" });
             }
             else { 
             }
@@ -457,6 +468,52 @@ namespace ObrasPublicas.DAL
                     objProyecto.TipoVia = objProyTmp.noTipoVia;
                     objProyecto.IdEstado = objProyTmp.noEstado;
                     objProyecto.NomEstado = ObtieneEstados(null).Where(e => e.Id == objProyTmp.noEstado).First().Nombre;
+
+                    lstProyectos.Add(objProyecto);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            return lstProyectos;
+        }
+
+        public List<ProyectoInversion> BuscarXFiltroConInformesObra(String pStrCodSNIP, String pStrNombre, String pStrUbicacion, String pStrIdEstado)
+        {
+            List<ProyectoInversion> lstProyectos = new List<ProyectoInversion>();
+            try
+            {
+                if (String.IsNullOrWhiteSpace(pStrNombre))
+                {
+                    pStrNombre = "";
+                }
+                if (String.IsNullOrWhiteSpace(pStrUbicacion))
+                {
+                    pStrUbicacion = "";
+                }
+                if (String.IsNullOrWhiteSpace(pStrIdEstado))
+                {
+                    pStrIdEstado = "0";
+                }
+
+                ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+                var objResult = objContext.sp_gop_get_proy_con_infobra(pStrNombre, pStrCodSNIP, pStrUbicacion, pStrIdEstado).ToList();
+
+                List<sp_gop_get_proy_con_infobra_Result> lstProyectosTmp = objResult;
+
+                foreach (var objProyTmp in lstProyectosTmp)
+                {
+                    ProyectoInversion objProyecto = new ProyectoInversion();
+                    objProyecto.CodSNIP = objProyTmp.coSNIP;
+                    objProyecto.Nombre = objProyTmp.noNombre;
+                    objProyecto.IdProyecto = objProyTmp.coProyecto;
+                    objProyecto.Ubicacion = objProyTmp.txUbicacion;
+                    objProyecto.NomVia = objProyTmp.noNomVia;
+                    objProyecto.TipoVia = objProyTmp.noTipoVia;
+                    objProyecto.IdEstado = objProyTmp.noEstado;
+                    objProyecto.NomEstado = ObtieneEstados(null).Where(e => e.Id == objProyTmp.noEstado).First().Nombre;
+                    objProyecto.IdExpediente = objProyTmp.coExpediente;
 
                     lstProyectos.Add(objProyecto);
                 }

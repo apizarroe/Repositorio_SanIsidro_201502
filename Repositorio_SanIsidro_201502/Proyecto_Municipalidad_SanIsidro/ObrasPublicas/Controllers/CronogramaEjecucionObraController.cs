@@ -35,10 +35,19 @@ namespace ObrasPublicas.Controllers
         {
             ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
             ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
+            CronogramaEjecucionObra_DAL objCronogramaEjecucionObra_DAL  = new CronogramaEjecucionObra_DAL();
+
+            if (objCronogramaEjecucionObra_DAL.ExisteCronograma(e))
+            {
+                ModelState.AddModelError("Err_General2", "Ya existe un cronograma para el proyecto seleccionado.");
+                ViewBag.NoGrabar = "1";
+            }
             CreateCronogramaEjecucionObraModel objCreateCronogramaEjecucionObraModel = new CreateCronogramaEjecucionObraModel();
             objCreateCronogramaEjecucionObraModel.IdProyecto = objProyectoInversion.IdProyecto;
             objCreateCronogramaEjecucionObraModel.NomProyecto = objProyectoInversion.Nombre;
             objCreateCronogramaEjecucionObraModel.IdExpediente = e;
+            objCreateCronogramaEjecucionObraModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objCreateCronogramaEjecucionObraModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
             return View(objCreateCronogramaEjecucionObraModel);
         }
@@ -54,13 +63,21 @@ namespace ObrasPublicas.Controllers
             ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
             
             CronogramaEjecucionObra_DAL objCronogramaEjecucionObra_DAL = new CronogramaEjecucionObra_DAL();
-            List<ActividadCronogramaOP> lstActividades = objCronogramaEjecucionObra_DAL.ObtieneActvidades(e,c);
+            List<ActividadCronogramaOP> lstActividades = objCronogramaEjecucionObra_DAL.ObtieneActvidades(e,c,0);
+
+            CronogramaEjecucionOP objCronogramaEjecucionOP = objCronogramaEjecucionObra_DAL.ObtieneXId(e, c);
 
             ListadoCronogramaEjecucionObraModel objListadoCronogramaEjecucionObraModel = new ListadoCronogramaEjecucionObraModel();
             objListadoCronogramaEjecucionObraModel.IdProyecto = objProyectoInversion.IdProyecto;
             objListadoCronogramaEjecucionObraModel.NomProyecto = objProyectoInversion.Nombre;
             objListadoCronogramaEjecucionObraModel.IdExpediente = e;
             objListadoCronogramaEjecucionObraModel.IdCronograma = c;
+            objListadoCronogramaEjecucionObraModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objListadoCronogramaEjecucionObraModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+            objListadoCronogramaEjecucionObraModel.PlazoEjecucion = objCronogramaEjecucionOP.PlazoEjecucion;
+
+            ViewBag.OKEliminar = TempData["OKEliminar"];
+            ViewBag.MsgEliminar = TempData["MsgEliminar"];
 
             ViewBag.ListadoActividades = lstActividades;
             return View(objListadoCronogramaEjecucionObraModel);
@@ -87,7 +104,13 @@ namespace ObrasPublicas.Controllers
                     }
                     else if (intResultado == -997)
                     {
-                        ModelState.AddModelError("General", "No puede crear el cronograma debido a que el proyecto está en estado ADJUDICADO.");
+                        valid = false;
+                        ModelState.AddModelError("General", "No puede crear el cronograma debido a que el proyecto no está en estado VIABLE o ADJUDICADO.");
+                    }
+                    else if (intResultado == -996)
+                    {
+                        valid = false;
+                        ModelState.AddModelError("General", "Ya existe un cronograma para el proyecto seleccionado.");
                     }
                     else
                     {
@@ -124,6 +147,8 @@ namespace ObrasPublicas.Controllers
             ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
             ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
             objUpdateCronogramaEjecucionObraModel.NomProyecto = objProyectoInversion.Nombre;
+            objUpdateCronogramaEjecucionObraModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objUpdateCronogramaEjecucionObraModel.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
             CronogramaEjecucionObra_DAL objCronogramaEjecucionObra_DAL = new CronogramaEjecucionObra_DAL();
             CronogramaEjecucionOP objCronogramaEjecucionOP = objCronogramaEjecucionObra_DAL.ObtieneXId(e, c);
@@ -143,6 +168,8 @@ namespace ObrasPublicas.Controllers
             ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
             ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
             objUpdateActividadCronogramaEjecucionModel.NomProyecto = objProyectoInversion.Nombre;
+            objUpdateActividadCronogramaEjecucionModel.UbicacionProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objUpdateActividadCronogramaEjecucionModel.ValorRefProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
             CronogramaEjecucionObra_DAL objCronogramaEjecucionObra_DAL = new CronogramaEjecucionObra_DAL();
             CronogramaEjecucionOP objCronogramaEjecucionOP = objCronogramaEjecucionObra_DAL.ObtieneXId(e, c);
@@ -204,9 +231,9 @@ namespace ObrasPublicas.Controllers
                     //TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
                     //return RedirectToAction("Index");
                 }
-                else if (intResultado == -997)
+                else if (intResultado == -998)
                 {
-                    ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado ADJUDICADO.");
+                    ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado VIABLE o ADJUDICADO.");
                 }
                 else
                 {
@@ -233,6 +260,8 @@ namespace ObrasPublicas.Controllers
             objCreateActividadCronogramaEjecucionModel.IdExpediente = e;
             objCreateActividadCronogramaEjecucionModel.IdProyecto = p;
             objCreateActividadCronogramaEjecucionModel.NomProyecto = objProyectoInversion.Nombre;
+            objCreateActividadCronogramaEjecucionModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objCreateActividadCronogramaEjecucionModel.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
             
             return View(objCreateActividadCronogramaEjecucionModel);
         }
@@ -267,7 +296,7 @@ namespace ObrasPublicas.Controllers
                     }
                     else if (intResultado == -997)
                     {
-                        ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado ADJUDICADO.");
+                        ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto no está en estado VIABLE / ADJUDICADO.");
                     }
                     else
                     {
@@ -307,9 +336,15 @@ namespace ObrasPublicas.Controllers
         {
             UpdateActividadCronogramaEjecucionModel objUpdateActividadCronogramaEjecucionModel = new UpdateActividadCronogramaEjecucionModel();
 
+            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
+
             objUpdateActividadCronogramaEjecucionModel.IdCronograma = c;
             objUpdateActividadCronogramaEjecucionModel.IdExpediente = e;
             objUpdateActividadCronogramaEjecucionModel.IdProyecto = p;
+            objUpdateActividadCronogramaEjecucionModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objUpdateActividadCronogramaEjecucionModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+
             return View(objUpdateActividadCronogramaEjecucionModel);
         }
 
@@ -337,27 +372,27 @@ namespace ObrasPublicas.Controllers
                     objActividadCronogramaOP.FechaIniEjec = Convert.ToDateTime(pObjModel.FechaIniEjecAct);
                     objActividadCronogramaOP.FechaIniProg = Convert.ToDateTime(pObjModel.FechaIniProgAct);
                     objActividadCronogramaOP.IdTipoResponsable = pObjModel.ResponsableActTipo;
+                    
+                    intResultado = objCronogramaEjecucionObra_DAL.ActualizaActividad(pObjModel.IdExpediente,
+                         pObjModel.IdCronograma, pObjModel.IdActividad, objActividadCronogramaOP);
 
                     if (pObjModel.ResponsableActTipo == "P")
                     {
                         objActividadCronogramaOP.IdEmpleado = Convert.ToInt32(pObjModel.IdResponsablePersonaNatural);
-                    }
-                    else if (intResultado == -997)
-                    {
-                        ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto está en estado ADJUDICADO.");
                     }
                     else
                     {
                         objActividadCronogramaOP.IdEmpleado = Convert.ToInt32(pObjModel.IdResponsablePersonaJuridica);
                     }
 
-                    intResultado = objCronogramaEjecucionObra_DAL.ActualizaActividad(pObjModel.IdExpediente,
-                         pObjModel.IdCronograma, pObjModel.IdActividad, objActividadCronogramaOP);
-
                     if (intResultado == 1)
                     {
                         //TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
                         //return RedirectToAction("Index");
+                    }
+                    else if (intResultado == -997)
+                    {
+                        ModelState.AddModelError("General", "No puede modificar el cronograma debido a que el proyecto no está en estado VIABLE o ADJUDICADO.");
                     }
                     else
                     {
@@ -391,6 +426,48 @@ namespace ObrasPublicas.Controllers
                                                                            }).OrderBy(x => x.Text);
 
             return Json(lstEmpleados, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteActividad(int p, int e, int c, int a)
+        {
+            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
+
+            CronogramaEjecucionObra_DAL objCronogramaEjecucionObra_DAL = new CronogramaEjecucionObra_DAL();
+
+            CronogramaEjecucionOP objCronogramaEjecucionOP = objCronogramaEjecucionObra_DAL.ObtieneXId(e, c);
+
+            ListadoCronogramaEjecucionObraModel objListadoCronogramaEjecucionObraModel = new ListadoCronogramaEjecucionObraModel();
+            objListadoCronogramaEjecucionObraModel.IdProyecto = objProyectoInversion.IdProyecto;
+            objListadoCronogramaEjecucionObraModel.NomProyecto = objProyectoInversion.Nombre;
+            objListadoCronogramaEjecucionObraModel.IdExpediente = e;
+            objListadoCronogramaEjecucionObraModel.IdCronograma = c;
+            objListadoCronogramaEjecucionObraModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objListadoCronogramaEjecucionObraModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+            objListadoCronogramaEjecucionObraModel.PlazoEjecucion = objCronogramaEjecucionOP.PlazoEjecucion;
+
+            int intResultado = objCronogramaEjecucionObra_DAL.EliminarActividad(c, e, a);
+
+            if (intResultado == 1)
+            {
+                TempData["OKEliminar"] = "1";
+                TempData["MsgEliminar"] = "Se eliminó la actividad satisfactoriamente.";
+            }
+            else
+            {
+                ViewBag.OKEliminar = "0";
+                if (intResultado == -998)
+                {
+                    TempData["MsgEliminar"] = "No puede eliminar la actividad debido a que el proyecto no está en estado VIABLE o ADJUDICADO.";
+                }
+                else
+                {
+                    TempData["MsgEliminar"] = "No se pudo eliminar la actividad.";
+                }
+            }
+
+            //return Listado(p, e, c);
+            return RedirectToAction("Listado", new { p = p, e=e, c=c});
         }
         
     }

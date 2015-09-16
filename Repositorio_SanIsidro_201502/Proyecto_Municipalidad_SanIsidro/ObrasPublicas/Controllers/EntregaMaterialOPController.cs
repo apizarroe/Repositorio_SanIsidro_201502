@@ -32,6 +32,8 @@ namespace ObrasPublicas.Controllers
             CreateEntregaMaterialOP objCreateEntregaMaterialOP = new CreateEntregaMaterialOP();
             objCreateEntregaMaterialOP.IdProyecto = p;
             objCreateEntregaMaterialOP.NomProyecto = objProyectoInversion.Nombre;
+            objCreateEntregaMaterialOP.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objCreateEntregaMaterialOP.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
             return View(objCreateEntregaMaterialOP);
         }
@@ -46,11 +48,13 @@ namespace ObrasPublicas.Controllers
             EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
             ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
             ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
-            List<EntregaMaterialOP> lstEntregas = objEntregaMaterial_DAL.ObtieneEntregasXIdProyecto(p);
+            List<EntregaMaterialOP> lstEntregas = objEntregaMaterial_DAL.ObtieneEntregasXIdProyecto(p,0);
 
             ListadoEntregaMaterialModel objListadoEntregaMaterialModel = new ListadoEntregaMaterialModel();
             objListadoEntregaMaterialModel.IdProyecto = p;
             objListadoEntregaMaterialModel.NomProyecto = objProyectoInversion.Nombre;
+            objListadoEntregaMaterialModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objListadoEntregaMaterialModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
             ViewBag.ListadoEntregas = lstEntregas;
             return View(objListadoEntregaMaterialModel);
@@ -78,7 +82,7 @@ namespace ObrasPublicas.Controllers
                     }
                     else if (intResultado == -998)
                     {
-                        ModelState.AddModelError("", "No se pueden crear más entregas debido a que el proyecto está en estado ADJUDICADO.");
+                        ModelState.AddModelError("", "No se pueden crear más entregas debido a que el proyecto está en estado VIABLE o ADJUDICADO.");
                     }
                     else
                     {
@@ -100,12 +104,17 @@ namespace ObrasPublicas.Controllers
             EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
             EntregaMaterialOP objEntregaMaterialOP = objEntregaMaterial_DAL.ObtieneEntregaXId(p, ent);
 
+            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
+
             UpdateEntregaMaterialOP objUpdateEntregaMaterialOP = new UpdateEntregaMaterialOP();
             objUpdateEntregaMaterialOP.IdEntrega = objEntregaMaterialOP.IdEntrega;
             objUpdateEntregaMaterialOP.Cantidad = objEntregaMaterialOP.Cantidad;
             objUpdateEntregaMaterialOP.FecEntregaEfec = objEntregaMaterialOP.FecEntregaEfec.ToString("dd/MM/yyyy");
             objUpdateEntregaMaterialOP.FecEntregaProg = objEntregaMaterialOP.FecEntregaProg.ToString("dd/MM/yyyy");
             objUpdateEntregaMaterialOP.IdEntrega = objEntregaMaterialOP.IdEntrega;
+            objUpdateEntregaMaterialOP.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+            objUpdateEntregaMaterialOP.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
             if (objEntregaMaterialOP.Material != null) {
                 objUpdateEntregaMaterialOP.IdMaterial = objEntregaMaterialOP.Material.IdMaterial;
@@ -150,6 +159,10 @@ namespace ObrasPublicas.Controllers
                     {
                         bolGrabaOK = true;
                         ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
+                    }
+                    else if (intResultado == -998)
+                    {
+                        ModelState.AddModelError("", "No se pueden modificar la entrega debido a que el proyecto está en estado VIABLE o ADJUDICADO.");
                     }
                     else
                     {

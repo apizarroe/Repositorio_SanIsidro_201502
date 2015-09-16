@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Municipalidad de San Isidro - Expedientes Técnicos de Proyectos de Inversión
+    Municipalidad de San Isidro - Informes de Obra
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
@@ -17,21 +17,16 @@
     {
     }
 </style>
-    
-    <%
-        Infraestructura.Data.SQL.Via_DAL objVia_DAL = new Infraestructura.Data.SQL.Via_DAL();
-        var lstTipoVia = objVia_DAL.ObtieneVias(null).Select(v => v.Tipo).Distinct();
-    %>
     <section class="content-header" style="padding-bottom:5px">
-        <h1>Actualizar Expedientes Técnicos</h1>
+        <h1>Actualizar Informe de Obra</h1>
         <div>&nbsp;</div>
         
         <div id="divControlButtons" class="panel panel-default">
             <div class="panel-body">
-                <button id="btnIconCrear" type="button" class="btn btn-primary" onclick="document.location.href='/expedientetecnicoop/index'">
+                <button id="btnIconCrear" type="button" class="btn btn-default" onclick="document.location.href='/informeobra/index'">
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
-                <button id="btnIconModificar" type="button" class="btn btn-default" onclick="document.location.href='/expedientetecnicoop/search'">
+                <button id="btnIconModificar" type="button" class="btn btn-primary" onclick="document.location.href='/informeobra/search'">
                     <span class="fa fa-pencil" aria-hidden="true"></span> Modificar
                 </button>
             </div>
@@ -40,12 +35,12 @@
     <section class="content">
     <div id="divPanelCrear" class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">Crear Expediente Técnico</h3>
+              <h3 class="panel-title">Buscar proyecto</h3>
             </div>
             <div class="panel-body">
                 <%
                     ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel objSearchProyectoInversionModel = new ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel();
-                    objSearchProyectoInversionModel.Tipo = "EC";
+                    objSearchProyectoInversionModel.Tipo = "UIO";
                      %>
                 <%:Html.Partial("~/Views/ProyectoInversion/_search.ascx", objSearchProyectoInversionModel) %>
         </div>

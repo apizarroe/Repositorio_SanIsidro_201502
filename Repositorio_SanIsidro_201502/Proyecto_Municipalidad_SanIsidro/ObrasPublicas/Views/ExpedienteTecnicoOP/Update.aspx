@@ -64,6 +64,18 @@
                         <%: Html.HiddenFor(m => m.IdSupervisor) %>
                     </div>
                     </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Ubicaci&oacute;n: <%: Html.DisplayFor(m => m.UbicacionProyecto) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                    </div>
+                    </div>
 
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* Descripción:</label>
@@ -252,7 +264,7 @@
                             <div class="form-group">
                             <label class="col-sm-3 control-label">* Fecha Emision</label>
                             <div class="col-sm-9">
-                                <%: Html.TextBoxFor(m => m.FechaEmisionDocAdj, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy"}) %>
+                                <%: Html.TextBoxFor(m => m.FechaEmisionDocAdj, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);" }) %>
                                 <%: Html.ValidationMessageFor(m => m.FechaEmisionDocAdj) %>
                             </div>
                             </div>
@@ -309,10 +321,10 @@
 	                                <tr>
 	                                <td></td>
 	                                <td><%:objDoc.NroDocumento%></td>
-	                                <td><%:objDoc.FechaEmision%></td>
+	                                <td><%:objDoc.FechaEmision.ToString("dd/MM/yyyy")%></td>
 	                                <td><%:objDoc.Descripcion%></td>
 	                                <td><%:objDoc.NomTipoDocumento%></td>
-	                                <td><a href="<%:objDoc.NomArchivo %>" target="_blank"><%:objDoc.NomArchivo%></a></td>
+	                                <td><a href="<%:objDoc.RutaArchivo %>" target="_blank"><%:objDoc.NomArchivo%></a></td>
 	                                <td>
                                         <a href="javascript:f_eliminar_archivo(<%:intSec%>);">Eliminar</a></td>
 	                                </tr>
@@ -360,6 +372,7 @@
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
     <%: Scripts.Render("~/Scripts/jquery-ui-1.8.20.js") %>
+    <%: Scripts.Render("~/Scripts/utils.js") %>
     <script>
         $(document).ready(function () {
             $('#DocumentoTipoDocmento').empty();
@@ -385,16 +398,6 @@
                         );
                     });
                 }
-            });
-
-
-            $('.numbersOnly').keyup(function () {
-                this.value = this.value.replace(/[^0-9\.]/g, '');
-            });
-
-            $(".decimalsOnly").keyup(function () {
-                var $this = $(this);
-                $this.val($this.val().replace(/[^\d.]/g, ''));
             });
         });
 

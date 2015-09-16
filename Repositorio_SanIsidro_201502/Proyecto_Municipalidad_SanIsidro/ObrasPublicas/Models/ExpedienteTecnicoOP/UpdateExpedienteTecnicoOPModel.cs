@@ -12,6 +12,9 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
         public int IdProyecto { get; set; }
         public int IdExpediente { get; set; }
         public String NomProyecto { get; set; }
+        public String UbicacionProyecto { get; set; }
+        public String ValorRefProyecto { get; set; }
+
         public String Descripcion { get; set; }
         public String Especificaciones { get; set; }
         public Decimal ValorReferencial { get; set; }
@@ -84,7 +87,7 @@ namespace ObrasPublicas.Models.ExpedienteTecnicoOP
             {
                 if (String.IsNullOrWhiteSpace(this.Descripcion))
                 {
-                    lstValidations.Add(new ValidationResult("El campo Descripcion es obligatorio", new[] { "Descripcion" }));
+                    lstValidations.Add(new ValidationResult("El campo Descripción es obligatorio", new[] { "Descripcion" }));
                 }
                 if (String.IsNullOrWhiteSpace(this.Especificaciones))
                 {

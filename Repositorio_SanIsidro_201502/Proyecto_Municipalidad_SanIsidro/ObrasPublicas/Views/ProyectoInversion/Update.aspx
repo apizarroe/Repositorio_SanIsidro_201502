@@ -96,6 +96,9 @@
                         <p></p>
                     </div>
                     </div>
+                    <div class="col-sm-12 text-center">
+                        <button id="btnBuscarProyectos" class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
 
                     <%
                List<ObrasPublicas.Entities.ProyectoInversion> lstProyectos = ViewBag.lstProyectos;
@@ -152,9 +155,6 @@
                     <%
                         }
                     %>
-                    <div class="col-sm-12 text-center">
-                    <button id="btnBuscarProyectos" class="btn btn-primary" type="submit">Buscar</button>
-                    </div>
                 </div>
             </div>             
             <%
@@ -209,20 +209,20 @@
                     </div>
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">* Ubicación:</label>
-                    <div class="col-sm-1">
-                        <%: Html.DropDownListFor(m => m.TipoVia, new SelectList(lstTipoVia), "----", new { @class = "form-control" })%>
-                        <%: Html.ValidationMessageFor(m => m.TipoVia) %>
-                    </div>
-                    <div class="col-sm-3">
-                        <%: Html.DropDownListFor(m => m.IdVia, lstNomVias, new { @class = "form-control" })%>
-                        <%: Html.ValidationMessageFor(m => m.IdVia) %>
-                        <%: Html.HiddenFor(m => m.IdVia, new { @id="IdViaTmp" })%>
-                    </div>
-                    <div class="col-sm-5">
-                            <%: Html.TextBoxFor(m => m.Ubicacion, new { @class = "form-control", maxlength = "120"}) %>
-                        <%: Html.ValidationMessageFor(m => m.Ubicacion) %>
-                    </div>
+                        <label class="col-sm-3 control-label">* Ubicación:</label>
+                        <div class="col-sm-2">
+                            <%: Html.DropDownListFor(m => m.TipoVia, new SelectList(lstTipoVia), "----", new { @class = "form-control" })%>
+                            <%: Html.ValidationMessageFor(m => m.TipoVia) %>
+                        </div>
+                        <div class="col-sm-3">
+                            <%: Html.TextBoxFor(m => m.NomVia, new { @class = "form-control", maxlength = "100", @PlaceHolder="nombre de la vía"}) %>
+                            <%: Html.ValidationMessageFor(m => m.NomVia) %>
+                            <%: Html.HiddenFor(m => m.IdVia) %>
+                        </div>
+                        <div class="col-sm-4">
+                            <%: Html.TextBoxFor(m => m.Ubicacion, new { @class = "form-control", maxlength = "120", @PlaceHolder="ubicación adicional"}) %>
+                            <%: Html.ValidationMessageFor(m => m.Ubicacion) %>
+                        </div>
                     </div>
                     <div class="form-group">
                     <label class="col-sm-3 control-label">* # de beneficiarios:</label>
@@ -296,80 +296,85 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
-    <%: Scripts.Render("~/Scripts/jquery-ui-1.8.20.js") %>
+    <%: Scripts.Render("~/Scripts/jquery-ui-1.11.4.min.js") %>
     <script>
         $(document).ready(function () {
-            $('.numbersOnly').keyup(function () {
-                this.value = this.value.replace(/[^0-9\.]/g, '');
-            });
-
-            $(".decimalsOnly").keyup(function () {
-                var $this = $(this);
-                $this.val($this.val().replace(/[^\d.]/g, ''));
-            });
-
-            if ($('#TipoVia').val() != "") {
-                $('#IdVia').empty();
-                var dataToSend = {
-                    pStrTipoVia: $('#TipoVia').val()
+            $('.numbersOnly').keyup(function (e) {
+                if (e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 17 && e.keyCode != 16) {
+                    var $this = $(this);
+                    this.value = this.value.replace(/[^0-9\.]/g, '');
                 }
-                $.ajax({
-                    url: "/ProyectoInversion/Lista_NombreVias",
-                    data: dataToSend,
-                    success: function (result) {
-                        $('#IdVia').append(
-                            $('<option/>', {
-                                value: "",
-                                text: "(Seleccione)"
-                            })
-                        );
-                        $.each(result, function (index, item) {
-                            $('#IdVia').append(
-                                $('<option/>', {
-                                    value: item.Value,
-                                    text: item.Text
-                                })
-                            );
-                        });
+            });
 
-                        $("#IdVia").val($('#IdViaTmp').val());
-                    }
-                });
-            }
+            $(".decimalsOnly").keyup(function (e) {
+                if (e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 17 && e.keyCode != 16) {
+                    var $this = $(this);
+                    $this.val($this.val().replace(/[^\d.]/g, ''));
+                }
+            });
+
+            //if ($('#TipoVia').val() != "") {
+            //    $('#IdVia').empty();
+            //    var dataToSend = {
+            //        pStrTipoVia: $('#TipoVia').val()
+            //    }
+            //    $.ajax({
+            //        url: "/ProyectoInversion/Lista_NombreVias",
+            //        data: dataToSend,
+            //        success: function (result) {
+            //            $('#IdVia').append(
+            //                $('<option/>', {
+            //                    value: "",
+            //                    text: "(Seleccione)"
+            //                })
+            //            );
+            //            $.each(result, function (index, item) {
+            //                $('#IdVia').append(
+            //                    $('<option/>', {
+            //                        value: item.Value,
+            //                        text: item.Text
+            //                    })
+            //                );
+            //            });
+
+            //            $("#IdVia").val($('#IdViaTmp').val());
+            //        }
+            //    });
+            //}
         });
 
         $(document).ready(function () {
-            $(this).button('reset');
-            $('#TipoVia').change(function () {
-                $('#IdVia').empty();
+            //$(this).button('reset');
+            //$('#TipoVia').change(function () {
+            //    $('#IdVia').empty();
 
-                var selectedValue = $(this).val();
-                if (selectedValue != "") {
-                    var dataToSend = {
-                        pStrTipoVia: selectedValue
-                    };
-                    $.ajax({
-                        url: "/ProyectoInversion/Lista_NombreVias",
-                        data: dataToSend,
-                        success: function (result) {
-                            $('#IdVia').append(
-                                $('<option/>', {
-                                    value: "",
-                                    text: "(Seleccione)"
-                                })
-                            );
-                            $.each(result, function (index, item) {
-                                $('#IdVia').append(
-                                    $('<option/>', {
-                                        value: item.Value,
-                                        text: item.Text
-                                    })
-                                );
-                            });
-                        }
-                    });
-                }
-            });
+            //    var selectedValue = $(this).val();
+            //    if (selectedValue != "") {
+            //        var dataToSend = {
+            //            pStrTipoVia: selectedValue
+            //        };
+            //        $.ajax({
+            //            url: "/ProyectoInversion/Lista_NombreVias",
+            //            data: dataToSend,
+            //            success: function (result) {
+            //                $('#IdVia').append(
+            //                    $('<option/>', {
+            //                        value: "",
+            //                        text: "(Seleccione)"
+            //                    })
+            //                );
+            //                $.each(result, function (index, item) {
+            //                    $('#IdVia').append(
+            //                        $('<option/>', {
+            //                            value: item.Value,
+            //                            text: item.Text
+            //                        })
+            //                    );
+            //                });
+            //            }
+            //        });
+            //    }
+            //});
 
             $('#IdEstado').change(function () {
                 var selectedValue = $(this).val();
@@ -384,6 +389,39 @@
                     }
                 }
             });
+
+            $("#NomVia").autocomplete({
+                minLength: 3,
+                source: function (request, response) {
+                    $.ajax({
+                        //async: false,
+                        //cache: false,
+                        type: "POST",
+                        dataType: "json",
+                        url: "/proyectoinversion/FiltrarVias",
+                        data: { "pStrTipoVia": $('#TipoVia').val(), "pStrDesc": request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Nombre, value: item.IdVia };
+                            }))
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    $("#NomVia").val(ui.item.label);
+                    $("#IdVia").val(ui.item.value);
+                },
+                focus: function (event, ui) {
+                    $("#NomVia").val(ui.item.label);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li />")
+                    .data("ui-autocomplete", item)
+                    .append("<a>" + item.label + "</a>")
+                    .appendTo(ul);
+            };
 
             $(function () {
                 $("#btnGrabar").click(function () {
