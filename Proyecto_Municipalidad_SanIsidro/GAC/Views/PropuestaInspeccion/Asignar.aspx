@@ -7,13 +7,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Emitir Propuesta de Inspeccion
+        <h1>Asignar Técnico
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspeccion</a></li>
-            <li class="active">Lista de Solicitud Catastral</li>
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Asignar Técnico</a></li>
+            
 
         </ol>
     </section>
@@ -64,38 +64,18 @@
     <input type="hidden" id="int_IdLote" />
 
 
-    <section class="content">
+    <section class="content" id="sectionAsignartecnico" style="display:none">
         <div class="row">
             <div class='col-md-12'>
                 <!-- Form Element sizes -->
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Asignar Tecnico - Zona</h3>
+                        <h3 class="box-title">Asignar Técnico - Zona</h3>
                     </div>
                     <div class="box-body">
 
 
 
-
-
-
-                        <label>
-                            Tecnico
-                        </label>
-                        <div class="editor-field">
-                            <%: Html.DropDownList("idEmpleado",null,"",new { @class="form-control select2"} ) %>
-                        </div>
-                        <label>
-                            Zona
-                        </label>
-                        <select id="ddlZona1" class="ddlZona form-control">
-                            <option>Zona A </option>
-                            <option>Zona B </option>
-                            <option>Zona C </option>
-                            <option>Zona D </option>
-                            <option>Zona N </option>
-
-                        </select>
 
                         <div class="form-group">
                             <label>Tiempo de Inspeccion:</label>
@@ -107,24 +87,49 @@
                             </div>
                             <!-- /.input group -->
                         </div>
+                        <input type="hidden" id="hffechainicio" />
+                        <input type="hidden" id="hffechafin" />
+                        <label>
+                            Técnico
+                        </label>
+                        <div class="editor-field">
+                            
+                            <select id="Select1" class="form-control select2">
+                             </select>
+                        </div>
+                        <label>
+                            Zona
+                        </label>
+                        <select id="ddlZona1" class="ddlZona form-control">
+
+                        </select>
+
+
                         <!-- /.form group -->
                         <p>
 
-                            <input type="button" value="Asignar Tecnico" class="btn btn-success" id="btnAsignartecnico" />
-                            <%: Html.ActionLink("Cancelar", "Index","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
+                            <input type="button" value="Agregar Tecnico" class="btn btn-success" id="btnAsignartecnico" />
+                            
                         </p>
+                        <br />
                         <table class="table table-hover" id="tblDetalleAsignar">
                             <tr>
-                                <th>Tecnico
+                                <th>
                                 </th>
-                                <th>Asignar
+                                <th>Técnico
+                                </th>
+                                <th>
+                                </th>
+                                <th>Zona
                                 </th>
 
 
                                 <th></th>
                             </tr>
                         </table>
-
+                        <br />
+                            <input type="button" value="Asignar Técnicos" class="btn btn-success" id="btnasignarTecnicosconfir" style="display:none" />
+                            
 
                     </div>
                     <!-- /.box-body  -->
@@ -188,13 +193,20 @@
     <%: Scripts.Render("~/Scripts/jstemplate/select2/select2.full.min.js") %>
     <%: Styles.Render("~/Scripts/jstemplate/daterangepicker/daterangepicker-bs3.css") %>
     <%: Scripts.Render("~/Scripts/jstemplate/daterangepicker/daterangepicker.js") %>
-    
+
 
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".select2").select2();
-            $('#reservation').daterangepicker();
+            
+            $('#reservation').daterangepicker({
+                "autoApply": true,
+            }, function (start, end, label) {
+                    $('#hffechainicio').val(start.format('DD/MM/YYYY'));
+                    $('#hffechafin').val(end.format('DD/MM/YYYY'));
+                    ObtenerTecnicos();
+            });
+            
             $('#btnEmitirPropuesta').click(function () {
                 var menssaje = "";
                 if ($('#int_CantResponsable').val().length == 0) {

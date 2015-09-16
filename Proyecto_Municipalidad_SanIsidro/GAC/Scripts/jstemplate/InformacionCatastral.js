@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
 
   
-    
+    $('#btnasignarTecnicosconfir').click(function () {
+        ConfirmarAsignarTecnico();
+    })
     
     $('#btnModalSoicitud').click(function () {
         ObtenerSolicitud();
@@ -274,26 +276,7 @@
 
     
     $("#btnAsignartecnico").click(function () {
-        var asignar;
-        asignar = {
-            "int_IdPropuestaInspeccion": $("#int_IdSolicitud").val(),
-            "idEmpleado": $("#idEmpleado").val(),
-            "int_IdZona": $("#ddlZona1").val(),
-        };
-        $.ajax({
-            type: "post",
-            url: "/PropuestaInspeccion/InsertarAsignar",
-            error: function (jqXHR, textStatus, errorThrown) {
-                return console.log(jqXHR, errorThrown);
-            },
-            data: asignar,
-            dataType: "JSON"
-        }).success(function (json) {
-
-            // ObtenerZona();
-            
-            ObtenerAsignarTecnico();
-        });
+        agregartecnicotmp();
     });
 
     function ObtenerAsignarTecnico() {
@@ -614,12 +597,92 @@ function AgregarDetalleZona(tipoadd) {
     LimpiarCajasZonaDetalle();
     //EliminarDetalleZona();
 }
+function agregartecnicotmp() {
+    //$('#tbldetalleZona > tbody').children('tr:not(:first)').remove();
 
+    
+
+    var messajeError = ""
+    if ($("#hffechainicio").val() == 'Invalid date' || $("#hffechainicio").val() == '') {
+        messajeError = messajeError + "Las fechas seleccionadas no son validas  \n"
+        
+    }
+    if ($("#Select1").val() == null) {
+        messajeError = messajeError + "Debe Ingresar un Tecnico\n"
+    }
+    if ($("#ddlZona1").val() == '') {
+        messajeError = messajeError + "Debe Seleccionar una Zona  \n"
+    }
+    if (messajeError.length > 0) {
+        alert(messajeError);
+        return;
+    }
+    $('#btnasignarTecnicosconfir').show();
+    var error = true;
+    $("#tblDetalleAsignar > tbody tr:gt(0)").each(function () {
+        var this_row = $(this);
+        var marca = $.trim(this_row.find('td:eq(0)').html())
+        if ($("#Select1").val() == marca)
+        {
+            alert('El Técnico ya se encuentra signado, porfavor seleccione otro');
+            error=false
+            return false;
+        }
+    });
+    if (error)
+    {
+        $("#tblDetalleAsignar > tbody").append("<tr><td>" + $("#Select1").val() + "</td><td>" + $('#Select1  option:selected').text() + "</td><td>" + $("#ddlZona1").val() + "</td><td>" + $('#ddlZona1  option:selected').text() + "</td> <td><a href='javascript:void(0)' onclick='EliminarDetalleZona(this);' >Eliminar</a></td></tr>");
+        LimpiarCajasZonaDetalle();
+    }
+    
+    //EliminarDetalleZona();
+}
 
 
 
 function EliminarDetalleZona(Element) {
     $(Element).parent().parent().remove();
+}
+
+function ConfirmarAsignarTecnico() {
+    $("#tblDetalleAsignar > tbody tr:gt(0)").each(function () {
+        var this_row = $(this);
+
+
+        var idtecnico = $.trim(this_row.find('td:eq(0)').html())
+        var tecnico = $.trim(this_row.find('td:eq(1)').html())
+        var idzona = $.trim(this_row.find('td:eq(2)').html())
+        var zona = $.trim(this_row.find('td:eq(3)').html())
+        var int_IdSolicitud = $("#int_IdSolicitud").val();
+        var fechainicio = $("#hffechainicio").val();
+        var fechafin = $("#hffechafin").val();
+
+
+        var CT_PROPUESTAINSPECCION_EMPLEADO;
+        CT_PROPUESTAINSPECCION_EMPLEADO = {
+            "int_IdPropuestaInspeccion": int_IdSolicitud,
+            "idEmpleado": idtecnico,
+            "int_IdZona": idzona,
+            "dtm_FechaInicio": fechainicio,
+            "dtm_FechaFin": fechafin
+        };
+
+
+        $.ajax({
+            type: "post",
+            url: "/PropuestaInspeccion/InsertarAsignar",
+            error: function (jqXHR, textStatus, errorThrown) {
+                return console.log(jqXHR, errorThrown);
+            },
+            data: CT_PROPUESTAINSPECCION_EMPLEADO,
+            dataType: "JSON"
+        }).success(function (json) {
+            
+        });
+
+    });
+
+    alert('Los Técnico se asignaron correctamente');
 }
 
 function ConfirmarDetalleZona(tipoadd) {
@@ -693,7 +756,7 @@ function SeleccionarSolicitud() {
             $('#txtnroPropuesta').val('002');
 
             $('#myModal').modal('hide');
-
+            $('#sectionAsignartecnico').show();
 
         }
 
@@ -719,6 +782,29 @@ function ObtenerZona() {
                  $("#tblZonas > tbody").append("<tr><td>" + this.int_IdZona + "</td><td>" + this.var_Nombre + "</td><td><a id='" + this.int_IdZona + "'  onclick='SeleccionarManzana(this);' href='javascript:void(0)' >" + variable + "</a></td><td><input type='radio' name='mygroup2' id='" + this.int_IdZona + "' /></td></tr>");
                  sel.append('<option value="' + this.int_IdZona + '">' + this.var_Nombre + '</option>');
              });
+
+         }
+     );
+
+}
+
+function ObtenerTecnicos() {
+
+    $.get(
+         '../../PropuestaInspeccion/GetTecnico', //Action method del controller Expediente
+         {
+             strfechainicio: $('#hffechainicio').val(),
+             strfechafin: $('#hffechafin').val()
+         },       //Parametro para el action method
+         function (jsonResult) {
+             var sel = $("#Select1");
+             
+             sel.empty();
+             $.each(jsonResult, function () {
+                 console.log(this.idEmpleado);
+                 sel.append('<option value="' + this.idEmpleado + '">' + this.Description + '</option>');
+             });
+             $(".select2").select2();
 
          }
      );
@@ -889,4 +975,5 @@ function pad(str, max) {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
 }
+
 
