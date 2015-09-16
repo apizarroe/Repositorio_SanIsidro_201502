@@ -497,6 +497,7 @@
     <Content Include="Images\imgtemplate\credit\paypal2.png" />
     <Content Include="Images\imgtemplate\credit\visa.png" />
     <Content Include="Images\imgtemplate\default-50x50.gif" />
+    <Content Include="Images\imgtemplate\default-user.gif" />
     <Content Include="Images\imgtemplate\icons.png" />
     <Content Include="Images\imgtemplate\photo1.png" />
     <Content Include="Images\imgtemplate\photo2.png" />

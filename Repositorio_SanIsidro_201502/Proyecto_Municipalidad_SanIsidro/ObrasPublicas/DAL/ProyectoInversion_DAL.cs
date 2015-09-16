@@ -212,7 +212,6 @@ namespace ObrasPublicas.DAL
             else if (pStrTipo == "CRO")
             {
                 lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
-                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_ADJUDICADO, Nombre = "Adjudicado" });
             }
             else if (pStrTipo == "INFO")
             {

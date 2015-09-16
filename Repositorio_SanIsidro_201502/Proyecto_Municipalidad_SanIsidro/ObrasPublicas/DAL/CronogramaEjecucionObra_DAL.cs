@@ -30,8 +30,10 @@ namespace ObrasPublicas.DAL
                 {
                     ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(objExpedienteTecnicoOP.Proyecto.IdProyecto);
 
-                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
-                        objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+    //                if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+    //objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+
+                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
                     {
                         intResultado = -997;
                     }
@@ -105,8 +107,10 @@ namespace ObrasPublicas.DAL
                 if (objExpedienteTecnicoOP.Proyecto != null) {
                     ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(objExpedienteTecnicoOP.Proyecto.IdProyecto);
 
-                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
-                        objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+    //                if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_ADJUDICADO &&
+    //objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+
+                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
                     {
                         intResultado = -998;
                     }
