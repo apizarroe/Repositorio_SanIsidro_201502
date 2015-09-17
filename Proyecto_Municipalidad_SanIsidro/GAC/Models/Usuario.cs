@@ -7,8 +7,10 @@ namespace GSM.Models
 {
     public class Usuario
     {
-        public int CodVia{get;set;}
+        //public int CodVia{get;set;}
         public int CodUsuario{get;set;}
+        public int IdEmpleado { get; set; }
+
         private static Usuario miUsuario;
         private static bool flIniciado = false;
 
@@ -20,8 +22,9 @@ namespace GSM.Models
             {
                 flIniciado = true;
                 miUsuario = new Usuario();
-                miUsuario.CodUsuario=7;
-                miUsuario.CodVia=2;
+                miUsuario.CodUsuario=1;
+                miUsuario.IdEmpleado=4;
+                //miUsuario.CodVia=2;
             }
             return miUsuario;
         }

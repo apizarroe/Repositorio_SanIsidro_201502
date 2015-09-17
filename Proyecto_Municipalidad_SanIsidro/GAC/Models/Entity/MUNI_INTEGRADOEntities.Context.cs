@@ -32,15 +32,43 @@ namespace GSM.Models.Entity
         public DbSet<SM_CATEGORIA_SERVICIO> SM_CATEGORIA_SERVICIO { get; set; }
         public DbSet<SM_CLAUSULA_CONTRATO> SM_CLAUSULA_CONTRATO { get; set; }
         public DbSet<SM_CONTRATO_SERVICIO> SM_CONTRATO_SERVICIO { get; set; }
+        public DbSet<SM_ESTADO_EXPEDIENTE_SERVICIO> SM_ESTADO_EXPEDIENTE_SERVICIO { get; set; }
+        public DbSet<SM_ESTADO_INFORME_SERVICIO> SM_ESTADO_INFORME_SERVICIO { get; set; }
         public DbSet<SM_ESTADO_INSPECCION> SM_ESTADO_INSPECCION { get; set; }
+        public DbSet<SM_ESTADO_SERVICIO> SM_ESTADO_SERVICIO { get; set; }
+        public DbSet<SM_ESTADO_SOLICITUD_SERVICIO> SM_ESTADO_SOLICITUD_SERVICIO { get; set; }
         public DbSet<SM_EXPEDIENTE_SERVICIO> SM_EXPEDIENTE_SERVICIO { get; set; }
+        public DbSet<SM_INFORME_ESTADO> SM_INFORME_ESTADO { get; set; }
         public DbSet<SM_INFORME_INSPECCION> SM_INFORME_INSPECCION { get; set; }
+        public DbSet<SM_INFORME_SERVICIO> SM_INFORME_SERVICIO { get; set; }
         public DbSet<SM_INFORME_TECNICO> SM_INFORME_TECNICO { get; set; }
         public DbSet<SM_INSPECCION> SM_INSPECCION { get; set; }
+        public DbSet<SM_MEMORANDUM> SM_MEMORANDUM { get; set; }
         public DbSet<SM_OBSERVACION> SM_OBSERVACION { get; set; }
         public DbSet<SM_RECURSOS> SM_RECURSOS { get; set; }
         public DbSet<SM_SERVICIO> SM_SERVICIO { get; set; }
         public DbSet<SM_SOLICITUD_SERVICIO> SM_SOLICITUD_SERVICIO { get; set; }
+    
+        public virtual ObjectResult<USP_GSM_BuscarExpedienteServicio_Result> USP_GSM_BuscarExpedienteServicio(Nullable<int> idServicio, string nombre, Nullable<int> pagina, Nullable<int> paginacion)
+        {
+            var idServicioParameter = idServicio.HasValue ?
+                new ObjectParameter("IdServicio", idServicio) :
+                new ObjectParameter("IdServicio", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var paginaParameter = pagina.HasValue ?
+                new ObjectParameter("Pagina", pagina) :
+                new ObjectParameter("Pagina", typeof(int));
+    
+            var paginacionParameter = paginacion.HasValue ?
+                new ObjectParameter("Paginacion", paginacion) :
+                new ObjectParameter("Paginacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_BuscarExpedienteServicio_Result>("USP_GSM_BuscarExpedienteServicio", idServicioParameter, nombreParameter, paginaParameter, paginacionParameter);
+        }
     
         public virtual ObjectResult<USP_GSM_BuscarPersona_Result> USP_GSM_BuscarPersona(string nombre, string paterno, string materno)
         {
@@ -57,6 +85,15 @@ namespace GSM.Models.Entity
                 new ObjectParameter("Materno", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_BuscarPersona_Result>("USP_GSM_BuscarPersona", nombreParameter, paternoParameter, maternoParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_BuscarPersonaGeneral_Result> USP_GSM_BuscarPersonaGeneral(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_BuscarPersonaGeneral_Result>("USP_GSM_BuscarPersonaGeneral", nombreParameter);
         }
     
         public virtual ObjectResult<USP_GSM_BuscarServicio_Result> USP_GSM_BuscarServicio(Nullable<int> idServicio, string nombre, Nullable<int> tipo, Nullable<int> pagina, Nullable<int> paginacion)
@@ -84,6 +121,57 @@ namespace GSM.Models.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_BuscarServicio_Result>("USP_GSM_BuscarServicio", idServicioParameter, nombreParameter, tipoParameter, paginaParameter, paginacionParameter);
         }
     
+        public virtual ObjectResult<USP_GSM_BuscarServicioGeneral_Result> USP_GSM_BuscarServicioGeneral(Nullable<int> idServicio, string nombre, Nullable<int> tipo, Nullable<int> pagina, Nullable<int> paginacion, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        {
+            var idServicioParameter = idServicio.HasValue ?
+                new ObjectParameter("IdServicio", idServicio) :
+                new ObjectParameter("IdServicio", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(int));
+    
+            var paginaParameter = pagina.HasValue ?
+                new ObjectParameter("Pagina", pagina) :
+                new ObjectParameter("Pagina", typeof(int));
+    
+            var paginacionParameter = paginacion.HasValue ?
+                new ObjectParameter("Paginacion", paginacion) :
+                new ObjectParameter("Paginacion", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_BuscarServicioGeneral_Result>("USP_GSM_BuscarServicioGeneral", idServicioParameter, nombreParameter, tipoParameter, paginaParameter, paginacionParameter, fechaInicioParameter, fechaFinParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_GET_INFORME_INSPECCION_Result> USP_GSM_GET_INFORME_INSPECCION(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_GET_INFORME_INSPECCION_Result>("USP_GSM_GET_INFORME_INSPECCION", idParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_GET_INFORME_SERVICIO_Result> USP_GSM_GET_INFORME_SERVICIO(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_GET_INFORME_SERVICIO_Result>("USP_GSM_GET_INFORME_SERVICIO", idParameter);
+        }
+    
         public virtual ObjectResult<USP_GSM_GetInspeccion_Result> USP_GSM_GetInspeccion(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -91,6 +179,74 @@ namespace GSM.Models.Entity
                 new ObjectParameter("Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_GetInspeccion_Result>("USP_GSM_GetInspeccion", idParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_GetServicio_Result> USP_GSM_GetServicio(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_GetServicio_Result>("USP_GSM_GetServicio", idParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO_Result> USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO(Nullable<int> idServicio)
+        {
+            var idServicioParameter = idServicio.HasValue ?
+                new ObjectParameter("IdServicio", idServicio) :
+                new ObjectParameter("IdServicio", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO_Result>("USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO", idServicioParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_ListaInformeInspeccion_Result> USP_GSM_ListaInformeInspeccion(Nullable<int> idInspeccion, Nullable<int> pagina, Nullable<int> paginacion)
+        {
+            var idInspeccionParameter = idInspeccion.HasValue ?
+                new ObjectParameter("IdInspeccion", idInspeccion) :
+                new ObjectParameter("IdInspeccion", typeof(int));
+    
+            var paginaParameter = pagina.HasValue ?
+                new ObjectParameter("Pagina", pagina) :
+                new ObjectParameter("Pagina", typeof(int));
+    
+            var paginacionParameter = paginacion.HasValue ?
+                new ObjectParameter("Paginacion", paginacion) :
+                new ObjectParameter("Paginacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_ListaInformeInspeccion_Result>("USP_GSM_ListaInformeInspeccion", idInspeccionParameter, paginaParameter, paginacionParameter);
+        }
+    
+        public virtual ObjectResult<USP_GSM_ListaInformeServicio_Result> USP_GSM_ListaInformeServicio(Nullable<int> idInfoServ, Nullable<int> idServicio, Nullable<int> idTipoServicio, Nullable<System.DateTime> feIni, Nullable<System.DateTime> feFin, Nullable<int> pagina, Nullable<int> paginacion)
+        {
+            var idInfoServParameter = idInfoServ.HasValue ?
+                new ObjectParameter("IdInfoServ", idInfoServ) :
+                new ObjectParameter("IdInfoServ", typeof(int));
+    
+            var idServicioParameter = idServicio.HasValue ?
+                new ObjectParameter("IdServicio", idServicio) :
+                new ObjectParameter("IdServicio", typeof(int));
+    
+            var idTipoServicioParameter = idTipoServicio.HasValue ?
+                new ObjectParameter("IdTipoServicio", idTipoServicio) :
+                new ObjectParameter("IdTipoServicio", typeof(int));
+    
+            var feIniParameter = feIni.HasValue ?
+                new ObjectParameter("FeIni", feIni) :
+                new ObjectParameter("FeIni", typeof(System.DateTime));
+    
+            var feFinParameter = feFin.HasValue ?
+                new ObjectParameter("FeFin", feFin) :
+                new ObjectParameter("FeFin", typeof(System.DateTime));
+    
+            var paginaParameter = pagina.HasValue ?
+                new ObjectParameter("Pagina", pagina) :
+                new ObjectParameter("Pagina", typeof(int));
+    
+            var paginacionParameter = paginacion.HasValue ?
+                new ObjectParameter("Paginacion", paginacion) :
+                new ObjectParameter("Paginacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GSM_ListaInformeServicio_Result>("USP_GSM_ListaInformeServicio", idInfoServParameter, idServicioParameter, idTipoServicioParameter, feIniParameter, feFinParameter, paginaParameter, paginacionParameter);
         }
     
         public virtual ObjectResult<USP_GSM_ListaInspeccion_Result> USP_GSM_ListaInspeccion(Nullable<int> tipo, Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFin, Nullable<int> pagina, Nullable<int> paginacion)

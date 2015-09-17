@@ -17,5 +17,14 @@ namespace GSM.Controllers.GSM
             return vjson;
         }
 
+
+        public JsonResult ListaServicio()
+        {
+            List<Combo> lst = Servicio.GetServicioList();
+            var vjson = Json(lst, JsonRequestBehavior.AllowGet);
+            vjson.MaxJsonLength = int.MaxValue;
+            return vjson;
+        }
+         
     }
 }

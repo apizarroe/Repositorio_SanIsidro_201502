@@ -16,7 +16,7 @@ namespace GSM
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional},
+                defaults: new { controller = "GSMInspeccion", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "GSM.Controllers" }
             );
             routes.MapRoute(

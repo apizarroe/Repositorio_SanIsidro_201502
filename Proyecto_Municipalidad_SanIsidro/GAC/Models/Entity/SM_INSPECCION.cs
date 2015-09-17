@@ -21,7 +21,6 @@ namespace GSM.Models.Entity
     
         public int CodigoInspeccion { get; set; }
         public Nullable<System.DateTime> FechaInspeccion { get; set; }
-        public Nullable<int> coVia { get; set; }
         public string LugarInspeccion { get; set; }
         public Nullable<int> CodigoServicio { get; set; }
         public Nullable<int> coUsuario { get; set; }

@@ -18,6 +18,14 @@
     <script>
         var path = '@path';
     </script>
+    <style>
+          .spRojo {
+            color: red;
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
@@ -221,24 +229,8 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="header">NAVEGSMION PRINCIPAL</li>
-                    <li class="treeview active">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i><span>Catastro</span> <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="../../solicitudcatastro"><i class="fa fa-circle-o"></i>Registrar Solicitud</a>
-                            </li>
-
-                            <li>
-                                <a href="../../InformacionCatastral/Create"><i class="fa fa-circle-o"></i>Mantener Informacion Cat.</a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-
+                    <li class="header">MENÚ PRINCIPAL</li>
+                  
                     <li class="treeview active">
                         <a href="#">
                             <i class="fa fa-dashboard"></i><span>Gestión de Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -247,8 +239,14 @@
                             <li>
                                 <a href="@Url.Action("Index", "GSMInspeccion")"><i class="fa fa-circle-o"></i>Inspección</a>
                             </li>
+                             <li>
+                                <a href="@Url.Action("Index", "GSMInformeInspeccion")"><i class="fa fa-circle-o"></i>Informe Inspección</a>
+                            </li>
                             <li>
                                 <a href="@Url.Action("Index", "GSMInspeccion")"><i class="fa fa-circle-o"></i>Servicios</a>
+                            </li>
+                             <li>
+                                <a href="@Url.Action("InfoIndex", "GSMServicio")"><i class="fa fa-circle-o"></i>Informe Servicios</a>
                             </li>
                         </ul>
                     </li>

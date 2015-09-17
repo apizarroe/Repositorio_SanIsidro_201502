@@ -39,7 +39,6 @@ namespace GSM.Models.GSM
             }
         }
 
-
         public static List<Combo> GetTipoCategoria()
         {
             using (var cn = new Entity.MUNI_INTEGRADOEntities())
@@ -48,15 +47,37 @@ namespace GSM.Models.GSM
                 var lst = (from x in cn.SM_CATEGORIA_SERVICIO select x);
 
                 var combo = new List<Combo>();
-                         foreach(var x in lst){
-                             Combo xcombo = new Combo();
-                             xcombo.value = x.CodigoCategoriaServicio.ToString();
-                             xcombo.text = x.nombreCategoria;
-                             combo.Add(xcombo);
-                         }
+                foreach (var x in lst)
+                {
+                    Combo xcombo = new Combo();
+                    xcombo.value = x.CodigoCategoriaServicio.ToString();
+                    xcombo.text = x.nombreCategoria;
+                    combo.Add(xcombo);
+                }
 
 
-                return  combo;//lst;
+                return combo;//lst;
+            }
+        }
+
+        public static List<Combo> GetServicioList()
+        {
+            using (var cn = new Entity.MUNI_INTEGRADOEntities())
+            {
+
+                var lst = (from x in cn.SM_SERVICIO select x);
+
+                var combo = new List<Combo>();
+                foreach (var x in lst)
+                {
+                    Combo xcombo = new Combo();
+                    xcombo.value = x.CodigoServicio.ToString();
+                    xcombo.text = x.NombreServicio;
+                    combo.Add(xcombo);
+                }
+
+
+                return combo;//lst;
             }
         }
 

@@ -169,8 +169,23 @@ function fnGuardarServicio() {
 
     var obs = $('#txtNomServ').val();
     var ini = $('#txtResponsable').val();
+    var fec = $('#txtFeInspeccion').val();
+    var hini = $('#txthini').val();
+    var hfin = $('#txthfin').val();
+
 
     var str = '';
+
+    if (fec == '') {
+        str += 'Seleccione una Fecha<br/>';
+    }
+    if (hini == '') {
+        str += 'Seleccione una hora de inicio<br/>';
+    }
+    if (hfin == '') {
+        str += 'Seleccione una hora de fin<br/>';
+    } 
+
 
     if (ini == '') {
         str += 'Seleccione una Servicio<br/>';
@@ -236,17 +251,23 @@ function RegistrarServicio() {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            if (response.ID != "") {
-                strmsg = 'Mensaje : ' + response.ID;
 
-                LlamarAlert('Registro con Exito', strmsg, function () {
+            var nro = response.ID.substring(0,1);
+            var msj = response.ID.substring(1,response.ID.length);
+
+            console.log(nro);
+            console.log(msj);
+            if (nro==1) {
+                strmsg = 'Mensaje : ' + msj;
+
+                LlamarAlert('Registro con éxito', strmsg, function () {
                     var strUrl = path + 'GSMInspeccion/';
                     window.location = strUrl;
                 });
             } else {
-                strmsg = 'Inconvenientes para registrar el Requerimiento.';
+                strmsg = msj;
                 //alert(strmsg);
-                LlamarAlert('Registro con Exito', strmsg, function () { });
+                LlamarAlert('Registro con éxito', strmsg, function () { });
             }
         },
         failure: function (response) {
@@ -273,9 +294,9 @@ function AnularInspeccion() {
         success: function (response) {
             console.log(response);
             if (response.ID >0) {
-                strmsg = 'Mensaje : ' + response.ID;
+                strmsg = 'Mensaje : ' + "inspección cancelada";
 
-                LlamarAlert('Registro con Exito', strmsg, function () {
+                LlamarAlert('Registro con éxito', strmsg, function () {
                     var strUrl = path + 'GSMInspeccion/';
                     window.location = strUrl;
                 });
@@ -317,9 +338,7 @@ function fnActualizarServicio() {
     LlamarConfirmar('Actualizar Inspeccion', '¿Seguro que desea Actualizar la inspección?', function () { });
 
 }
-
-
-
+ 
 function ActualizarServicio() {
 
     var Inspeccion = {};
@@ -341,18 +360,26 @@ function ActualizarServicio() {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            if (response.ID != "") {
-                strmsg = 'Mensaje : ' + response.ID;
+             
+            var nro = response.ID.substring(0, 1);
+            var msj = response.ID.substring(1, response.ID.length);
 
-                LlamarAlert('Actualizado con Exito', strmsg, function () {
+            console.log(nro);
+            console.log(msj);
+            if (nro == 1) {
+                strmsg = 'Mensaje : ' + msj;
+
+                LlamarAlert('Actualizado con éxito', strmsg, function () {
                     var strUrl = path + 'GSMInspeccion/';
                     window.location = strUrl;
                 });
             } else {
-                strmsg = 'Inconvenientes para Actualizar el Requerimiento.';
+                strmsg = msj;
                 //alert(strmsg);
-                LlamarAlert('Actualizado con Exito', strmsg, function () { });
+                LlamarAlert('Actualizado con éxito' , strmsg, function () { });
             }
+
+
         },
         failure: function (response) {
         },

@@ -19,7 +19,7 @@ namespace GSM.Models.GSM
         public int IdPersona { get; set; }
         public bool nuevo { get; set; }
         public int IdUsuario { get; set; }
-        public int IdCodVia { get; set; }
+        //public int IdCodVia { get; set; }
         public int Filas { get; set; }
 
         #region "Acceso a Datos"
@@ -88,7 +88,7 @@ namespace GSM.Models.GSM
             obj.CodigoPersonaEjecutor = nuevo.IdPersona;
             obj.CodigoServicio = nuevo.oServicio.IdServicio;
             obj.coUsuario = nuevo.IdUsuario;
-            obj.coVia = nuevo.IdCodVia;
+            //obj.coVia = nuevo.IdCodVia;
             obj.ESTADO = (int)Global.EstadoInspeccion.Programado;
             obj.FechaCreacion = DateTime.Now;
             obj.FechaInspeccion = DateTime.Parse(nuevo.fechaProgramada);
@@ -103,13 +103,13 @@ namespace GSM.Models.GSM
                 cn.SM_INSPECCION.Add(obj);
                 cn.SaveChanges();
                 //nuevo.CodigoInspeccion = obj.CodigoInspeccion;
-                return  Inspeccion.getInspeccion(obj.CodigoInspeccion);
+                return Inspeccion.getInspeccion(obj.CodigoInspeccion);
             }
 
 
         }
 
-        
+
         public static Inspeccion Update(Inspeccion nuevo)
         {
             Ent.SM_INSPECCION obj = new Ent.SM_INSPECCION();
@@ -117,7 +117,7 @@ namespace GSM.Models.GSM
             obj.CodigoPersonaEjecutor = nuevo.IdPersona;
             obj.CodigoServicio = nuevo.oServicio.IdServicio;
             obj.coUsuario = nuevo.IdUsuario;
-            obj.coVia = nuevo.IdCodVia;
+            //obj.coVia = nuevo.IdCodVia;
             obj.ESTADO = (int)Global.EstadoInspeccion.Programado;
             obj.FechaActualizacion = DateTime.Now;
             obj.FechaInspeccion = DateTime.Parse(nuevo.fechaProgramada);
@@ -132,9 +132,9 @@ namespace GSM.Models.GSM
                 objx.Property(e => e.CodigoPersonaEjecutor).IsModified = true;
                 objx.Property(e => e.CodigoServicio).IsModified = true;
                 objx.Property(e => e.coUsuario).IsModified = true;
-                objx.Property(e => e.coVia).IsModified = true;
+                //objx.Property(e => e.coVia).IsModified = true;
                 objx.Property(e => e.ESTADO).IsModified = true;
-                objx.Property(e => e.FechaCreacion).IsModified = true;
+                //objx.Property(e => e.FechaCreacion).IsModified = true;
                 objx.Property(e => e.FechaInspeccion).IsModified = true;
                 objx.Property(e => e.HORAFIN).IsModified = true;
                 objx.Property(e => e.HORAINI).IsModified = true;
@@ -188,26 +188,145 @@ namespace GSM.Models.GSM
                     obj.ESTADO = (int)Global.EstadoInspeccion.Cancelado;
 
                     cn.SM_INSPECCION.Attach(obj);
-                    var objx = cn.Entry(obj);
-                    objx.Property(e => e.CodigoPersonaEjecutor).IsModified = true;
-                    objx.Property(e => e.CodigoServicio).IsModified = true;
-                    objx.Property(e => e.coUsuario).IsModified = true;
-                    objx.Property(e => e.coVia).IsModified = true;
+                    var objx = cn.Entry(obj); 
                     objx.Property(e => e.ESTADO).IsModified = true;
-                    objx.Property(e => e.FechaCreacion).IsModified = true;
-                    objx.Property(e => e.FechaInspeccion).IsModified = true;
-                    objx.Property(e => e.HORAFIN).IsModified = true;
-                    objx.Property(e => e.HORAINI).IsModified = true;
-                    objx.Property(e => e.LugarInspeccion).IsModified = true;
-                    objx.Property(e => e.ResponsableServicio).IsModified = true;
-                    //objx.Property(e => e.).IsModified = true;
-
+                    objx.Property(e => e.FechaActualizacion).IsModified = true;   
                     cn.SaveChanges();
                     return 1;
                 }
                 catch (Exception ex) { }
                 return -1;
             }
+        }
+
+        public static int Inspeccionado(int Id)
+        {
+            Ent.SM_INSPECCION obj = new Ent.SM_INSPECCION();
+
+            using (var cn = new Ent.MUNI_INTEGRADOEntities())
+            {
+                obj = (from x in cn.SM_INSPECCION where x.CodigoInspeccion == Id && x.ESTADO == (int)Global.EstadoInspeccion.Programado select x).FirstOrDefault();
+
+                if (obj == null)
+                {
+                    return -3;
+                }
+                try
+                {
+                    obj.FechaActualizacion = DateTime.Now;
+                    obj.ESTADO = (int)Global.EstadoInspeccion.Inspeccionado;
+
+                    cn.SM_INSPECCION.Attach(obj);
+                    var objx = cn.Entry(obj); 
+                    objx.Property(e => e.ESTADO).IsModified = true;
+                    objx.Property(e => e.FechaActualizacion).IsModified = true;  
+                    cn.SaveChanges();
+                    return 1;
+                }
+                catch (Exception ex) { }
+                return -1;
+            }
+        }
+
+        public static bool ValidarFechaPrograma(int IdUsuario, DateTime fecha, TimeSpan hini, TimeSpan hfin)
+        {
+
+            bool flag = false;
+            using (var cn = new Ent.MUNI_INTEGRADOEntities())
+            {
+                List<Ent.SM_INSPECCION> lst = (from x in cn.SM_INSPECCION
+                                               where x.CodigoPersonaEjecutor == IdUsuario
+                                                   && x.FechaInspeccion.Value.Year == fecha.Year
+                                                   && x.FechaInspeccion.Value.Month == fecha.Month
+                                                   && x.FechaInspeccion.Value.Day == fecha.Day
+                                               select x).ToList();
+
+                foreach (var item in lst)
+                {
+                    TimeSpan hindex = item.HORAINI.Value;
+
+                    if (hini.Hours < hindex.Hours && hfin.Hours > hindex.Hours)
+                    {
+                        flag = true;
+                        break;
+                    }
+
+                    while (hindex <= item.HORAFIN.Value)
+                    {
+                        if (hindex.Hours == hini.Hours || hindex.Hours == hfin.Hours)
+                        {
+                            flag = true;
+                            break;
+                        }
+
+                        if (hindex == hini || hindex == hfin)
+                        {
+                            flag = true;
+                            break;
+                        }
+
+                        hindex = hindex.Add(TimeSpan.FromMinutes(1));
+                    }
+                    if (flag)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return flag;
+        }
+
+
+        public static bool ValidarFechaPrograma(int IdUsuario, int IdRegistro, DateTime fecha, TimeSpan hini, TimeSpan hfin)
+        {
+
+            bool flag = false;
+            using (var cn = new Ent.MUNI_INTEGRADOEntities())
+            {
+                List<Ent.SM_INSPECCION> lst = (from x in cn.SM_INSPECCION
+                                               where x.CodigoPersonaEjecutor == IdUsuario
+                                                   && x.FechaInspeccion.Value.Year == fecha.Year
+                                                   && x.FechaInspeccion.Value.Month == fecha.Month
+                                                   && x.FechaInspeccion.Value.Day == fecha.Day
+                                                   && x.CodigoInspeccion != IdRegistro
+                                               select x).ToList();
+
+
+                foreach (var item in lst)
+                {
+                    TimeSpan hindex = item.HORAINI.Value;
+
+                    if (hini.Hours < hindex.Hours && hfin.Hours > hindex.Hours)
+                    {
+                        flag = true;
+                        break;
+                    }
+
+                    while (hindex <= item.HORAFIN.Value)
+                    {
+                        if (hindex.Hours == hini.Hours || hindex.Hours == hfin.Hours)
+                        {
+                            flag = true;
+                            break;
+                        }
+
+                        if (hindex == hini || hindex == hfin)
+                        {
+                            flag = true;
+                            break;
+                        }
+
+                        hindex = hindex.Add(TimeSpan.FromMinutes(1));
+                    }
+                    if (flag)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return flag;
         }
 
         #endregion

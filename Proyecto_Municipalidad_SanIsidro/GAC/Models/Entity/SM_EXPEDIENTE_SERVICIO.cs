@@ -29,7 +29,10 @@ namespace GSM.Models.Entity
         public int coUsuario { get; set; }
         public int CodigoSolicitudServicio { get; set; }
         public Nullable<int> CodigoPersonaEjecutor { get; set; }
+        public Nullable<int> ESTADO { get; set; }
+        public string NOMBRE_EXPEDIENTE { get; set; }
     
+        public virtual SM_ESTADO_EXPEDIENTE_SERVICIO SM_ESTADO_EXPEDIENTE_SERVICIO { get; set; }
         public virtual SM_SOLICITUD_SERVICIO SM_SOLICITUD_SERVICIO { get; set; }
         public virtual ICollection<SM_INFORME_TECNICO> SM_INFORME_TECNICO { get; set; }
         public virtual ICollection<SM_SERVICIO> SM_SERVICIO { get; set; }

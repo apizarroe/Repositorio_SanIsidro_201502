@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MUNI_INTEGRADOModelStoreContainer" CdmEntityContainer="MUNI_INTEGRADOEntities">
+  <EntityContainerMapping StorageEntityContainer="MUNI_INTEGRADOModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="SM_ANEXO">
       <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_ANEXO">
         <MappingFragment StoreEntitySet="SM_ANEXO">
@@ -47,9 +47,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SM_ESTADO_EXPEDIENTE_SERVICIO">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_ESTADO_EXPEDIENTE_SERVICIO">
+        <MappingFragment StoreEntitySet="SM_ESTADO_EXPEDIENTE_SERVICIO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_ESTADO_INFORME_SERVICIO">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_ESTADO_INFORME_SERVICIO">
+        <MappingFragment StoreEntitySet="SM_ESTADO_INFORME_SERVICIO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SM_ESTADO_INSPECCION">
       <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_ESTADO_INSPECCION">
         <MappingFragment StoreEntitySet="SM_ESTADO_INSPECCION">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_ESTADO_SERVICIO">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_ESTADO_SERVICIO">
+        <MappingFragment StoreEntitySet="SM_ESTADO_SERVICIO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_ESTADO_SOLICITUD_SERVICIO">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_ESTADO_SOLICITUD_SERVICIO">
+        <MappingFragment StoreEntitySet="SM_ESTADO_SOLICITUD_SERVICIO">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
         </MappingFragment>
@@ -67,6 +99,16 @@
           <ScalarProperty Name="coUsuario" ColumnName="coUsuario" />
           <ScalarProperty Name="CodigoSolicitudServicio" ColumnName="CodigoSolicitudServicio" />
           <ScalarProperty Name="CodigoPersonaEjecutor" ColumnName="CodigoPersonaEjecutor" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="NOMBRE_EXPEDIENTE" ColumnName="NOMBRE_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_INFORME_ESTADO">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_INFORME_ESTADO">
+        <MappingFragment StoreEntitySet="SM_INFORME_ESTADO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,6 +121,25 @@
           <ScalarProperty Name="DescripcionInforme" ColumnName="DescripcionInforme" />
           <ScalarProperty Name="CodigoInspeccion" ColumnName="CodigoInspeccion" />
           <ScalarProperty Name="CodigoExpedienteServicio" ColumnName="CodigoExpedienteServicio" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="IdInformeServicio" ColumnName="IdInformeServicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_INFORME_SERVICIO">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_INFORME_SERVICIO">
+        <MappingFragment StoreEntitySet="SM_INFORME_SERVICIO">
+          <ScalarProperty Name="CodigoInformeServicio" ColumnName="CodigoInformeServicio" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="CodigoEmpleadoAprobador" ColumnName="CodigoEmpleadoAprobador" />
+          <ScalarProperty Name="CodigoEmpleadoElaborador" ColumnName="CodigoEmpleadoElaborador" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -106,7 +167,6 @@
         <MappingFragment StoreEntitySet="SM_INSPECCION">
           <ScalarProperty Name="CodigoInspeccion" ColumnName="CodigoInspeccion" />
           <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
-          <ScalarProperty Name="coVia" ColumnName="coVia" />
           <ScalarProperty Name="LugarInspeccion" ColumnName="LugarInspeccion" />
           <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
           <ScalarProperty Name="coUsuario" ColumnName="coUsuario" />
@@ -117,6 +177,18 @@
           <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="HORAINI" ColumnName="HORAINI" />
           <ScalarProperty Name="HORAFIN" ColumnName="HORAFIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_MEMORANDUM">
+      <EntityTypeMapping TypeName="MUNI_INTEGRADOModel.SM_MEMORANDUM">
+        <MappingFragment StoreEntitySet="SM_MEMORANDUM">
+          <ScalarProperty Name="CodigoMemorandum" ColumnName="CodigoMemorandum" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaGeneracion" ColumnName="FechaGeneracion" />
+          <ScalarProperty Name="CodigoPersonaNotificacion" ColumnName="CodigoPersonaNotificacion" />
+          <ScalarProperty Name="CodigoInformeServicio" ColumnName="CodigoInformeServicio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -153,7 +225,6 @@
           <ScalarProperty Name="DescripcionServicio" ColumnName="DescripcionServicio" />
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
           <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
-          <ScalarProperty Name="coVia" ColumnName="coVia" />
           <ScalarProperty Name="LugarServicio" ColumnName="LugarServicio" />
           <ScalarProperty Name="CodigoTipoServicio" ColumnName="CodigoTipoServicio" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
@@ -162,6 +233,7 @@
           <ScalarProperty Name="CodigoCategoriaServicio" ColumnName="CodigoCategoriaServicio" />
           <ScalarProperty Name="CodigoExpedienteServicio" ColumnName="CodigoExpedienteServicio" />
           <ScalarProperty Name="CodigoPersonaResponsable" ColumnName="CodigoPersonaResponsable" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -176,6 +248,7 @@
           <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
           <ScalarProperty Name="idEmpleadoSolicitante" ColumnName="idEmpleadoSolicitante" />
           <ScalarProperty Name="idEmpleadoAprobador" ColumnName="idEmpleadoAprobador" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -187,6 +260,15 @@
         <ScalarProperty Name="CodigoInformeTecnico" ColumnName="CodigoInformeTecnico" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_BuscarExpedienteServicio" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_BuscarExpedienteServicio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_BuscarExpedienteServicio_Result">
+          <ScalarProperty Name="CodigoExpedienteServicio" ColumnName="CodigoExpedienteServicio" />
+          <ScalarProperty Name="NOMBRE_EXPEDIENTE" ColumnName="NOMBRE_EXPEDIENTE" />
+          <ScalarProperty Name="Filas" ColumnName="Filas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="USP_GSM_BuscarPersona" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_BuscarPersona">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_BuscarPersona_Result">
@@ -199,6 +281,14 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_BuscarPersonaGeneral" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_BuscarPersonaGeneral">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_BuscarPersonaGeneral_Result">
+          <ScalarProperty Name="NOMBREPERSONA" ColumnName="NOMBREPERSONA" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="USP_GSM_BuscarServicio" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_BuscarServicio">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_BuscarServicio_Result">
@@ -207,6 +297,53 @@
           <ScalarProperty Name="CodigoCategoriaServicio" ColumnName="CodigoCategoriaServicio" />
           <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
           <ScalarProperty Name="Filas" ColumnName="Filas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_BuscarServicioGeneral" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_BuscarServicioGeneral">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_BuscarServicioGeneral_Result">
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="CodigoCategoriaServicio" ColumnName="CodigoCategoriaServicio" />
+          <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+          <ScalarProperty Name="Filas" ColumnName="Filas" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="LugarServicio" ColumnName="LugarServicio" />
+          <ScalarProperty Name="coUsuario" ColumnName="coUsuario" />
+          <ScalarProperty Name="CodigoExpedienteServicio" ColumnName="CodigoExpedienteServicio" />
+          <ScalarProperty Name="NOMBRE_EXPEDIENTE" ColumnName="NOMBRE_EXPEDIENTE" />
+          <ScalarProperty Name="DescripcionServicio" ColumnName="DescripcionServicio" />
+          <ScalarProperty Name="CodigoPersonaResponsable" ColumnName="CodigoPersonaResponsable" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_GET_INFORME_INSPECCION" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_GET_INFORME_INSPECCION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_GET_INFORME_INSPECCION_Result">
+          <ScalarProperty Name="CodigoInformeInspeccion" ColumnName="CodigoInformeInspeccion" />
+          <ScalarProperty Name="CodigoInspeccion" ColumnName="CodigoInspeccion" />
+          <ScalarProperty Name="CuerpoInspeccion" ColumnName="CuerpoInspeccion" />
+          <ScalarProperty Name="DescripcionInforme" ColumnName="DescripcionInforme" />
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="FechaInformeInspeccion" ColumnName="FechaInformeInspeccion" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_GET_INFORME_SERVICIO" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_GET_INFORME_SERVICIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_GET_INFORME_SERVICIO_Result">
+          <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="CodigoInformeServicio" ColumnName="CodigoInformeServicio" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -228,6 +365,69 @@
           <ScalarProperty Name="CodigoCategoriaServicio" ColumnName="CodigoCategoriaServicio" />
           <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
           <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_GetServicio" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_GetServicio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_GetServicio_Result">
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="CodigoCategoriaServicio" ColumnName="CodigoCategoriaServicio" />
+          <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="LugarServicio" ColumnName="LugarServicio" />
+          <ScalarProperty Name="coUsuario" ColumnName="coUsuario" />
+          <ScalarProperty Name="CodigoExpedienteServicio" ColumnName="CodigoExpedienteServicio" />
+          <ScalarProperty Name="NOMBRE_EXPEDIENTE" ColumnName="NOMBRE_EXPEDIENTE" />
+          <ScalarProperty Name="DescripcionServicio" ColumnName="DescripcionServicio" />
+          <ScalarProperty Name="CodigoPersonaResponsable" ColumnName="CodigoPersonaResponsable" />
+          <ScalarProperty Name="NOMBREPERSONA" ColumnName="NOMBREPERSONA" />
+          <ScalarProperty Name="TipoServicio" ColumnName="TipoServicio" />
+          <ScalarProperty Name="CodigoTipoServicio" ColumnName="CodigoTipoServicio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO_Result">
+          <ScalarProperty Name="CodigoInformeInspeccion" ColumnName="CodigoInformeInspeccion" />
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="FechaInformeInspeccion" ColumnName="FechaInformeInspeccion" />
+          <ScalarProperty Name="IdInformeServicio" ColumnName="IdInformeServicio" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_ListaInformeInspeccion" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_ListaInformeInspeccion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_ListaInformeInspeccion_Result">
+          <ScalarProperty Name="CodigoInformeInspeccion" ColumnName="CodigoInformeInspeccion" />
+          <ScalarProperty Name="FechaInformeInspeccion" ColumnName="FechaInformeInspeccion" />
+          <ScalarProperty Name="CuerpoInspeccion" ColumnName="CuerpoInspeccion" />
+          <ScalarProperty Name="DescripcionInforme" ColumnName="DescripcionInforme" />
+          <ScalarProperty Name="CodigoInspeccion" ColumnName="CodigoInspeccion" />
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="Filas" ColumnName="Filas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_GSM_ListaInformeServicio" FunctionName="MUNI_INTEGRADOModel.Store.USP_GSM_ListaInformeServicio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MUNI_INTEGRADOModel.USP_GSM_ListaInformeServicio_Result">
+          <ScalarProperty Name="CodigoServicio" ColumnName="CodigoServicio" />
+          <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+          <ScalarProperty Name="CodigoCategoriaServicio" ColumnName="CodigoCategoriaServicio" />
+          <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+          <ScalarProperty Name="CodigoInformeServicio" ColumnName="CodigoInformeServicio" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="Filas" ColumnName="Filas" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

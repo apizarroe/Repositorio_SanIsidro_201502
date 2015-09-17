@@ -27,7 +27,9 @@ namespace GSM.Models.Entity
         public Nullable<System.DateTime> FechaAprobacion { get; set; }
         public int idEmpleadoSolicitante { get; set; }
         public int idEmpleadoAprobador { get; set; }
+        public Nullable<int> ESTADO { get; set; }
     
+        public virtual SM_ESTADO_SOLICITUD_SERVICIO SM_ESTADO_SOLICITUD_SERVICIO { get; set; }
         public virtual ICollection<SM_EXPEDIENTE_SERVICIO> SM_EXPEDIENTE_SERVICIO { get; set; }
     }
 }

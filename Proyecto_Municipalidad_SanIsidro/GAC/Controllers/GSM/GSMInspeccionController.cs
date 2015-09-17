@@ -29,10 +29,14 @@ namespace GSM.Controllers.GSM
             {
                 oInspeccion.IdRegistro = Id;
                 var cInspeccion = Inspeccion.getInspeccion(Id);
-                if (cInspeccion != null)
+                if (cInspeccion == null)
                 {
                     oInspeccion = new Inspeccion();
-
+                    oInspeccion.oServicio = new Servicio();
+                }
+                else
+                {
+                    oInspeccion = cInspeccion;
                 }
             }
             return View(oInspeccion);
@@ -80,6 +84,7 @@ namespace GSM.Controllers.GSM
                             select new
                             {
                                 IdRegistro = x.IdRegistro,
+                                IdServicio = x.oServicio.IdServicio,
                                 servicio = x.oServicio.Nombre,
                                 tipoServicio = x.oServicio.TipoServicio,
                                 fechaProgramada = x.fechaProgramada,
@@ -107,7 +112,7 @@ namespace GSM.Controllers.GSM
 
             return vjson2;
         }
-         
+
         [HttpPost]
         public JsonResult CancelInspeccion(Inspeccion oInspeccion)
         {
@@ -140,7 +145,7 @@ namespace GSM.Controllers.GSM
         [HttpPost]
         public JsonResult SaveInspeccion(Inspeccion oInspeccion)
         {
-
+            String msj = "";
             try
             {
                 DateTime fe = DateTime.Now;
@@ -151,43 +156,47 @@ namespace GSM.Controllers.GSM
                 TimeSpan hf = new TimeSpan(int.Parse(vhf[0]), int.Parse(vhf[1]), 0);
                 DateTime.TryParse(oInspeccion.fechaProgramada, out fe);
 
+
                 Inspeccion obj = new Inspeccion();
                 obj.oServicio = new Servicio();
                 obj.IdPersona = oInspeccion.IdPersona;
                 obj.oServicio.IdServicio = int.Parse(oInspeccion.personaAsignada);
                 obj.IdUsuario = Usuario.GetObject().CodUsuario; // oInspeccion.coUsuario; --> falta pagina de login
-                obj.IdCodVia = Usuario.GetObject().CodVia; // oInspeccion.coVi a;
+                //obj.IdCodVia = Usuario.GetObject().CodVia; // oInspeccion.coVi a;
                 obj.fechaProgramada = fe.ToString("dd/MM/yyyy");
                 obj.horaFin = hf.ToString("hh\\:mm");
                 obj.horaInicio = hi.ToString("hh\\:mm");
                 obj.direccion = oInspeccion.direccion;
 
-                var Ins = Inspeccion.SaveInspeccion(obj);
-
-                var oReq = new Inspeccion();
-                oReq.IdRegistro = Ins.IdRegistro;
-
-
-                var vjson = Json(new { ID = oReq.IdRegistro }, JsonRequestBehavior.AllowGet);
-                vjson.MaxJsonLength = int.MaxValue;
-
-                return vjson;
+                if (hi > hf)
+                {
+                    msj = "0La fecha de inicio debe ser menor a la de fin";
+                }
+                else if (Inspeccion.ValidarFechaPrograma(obj.IdPersona, fe, hf, hi))
+                {
+                    msj = "0Horario no valido para la fecha programada";
+                }
+                else
+                {
+                    var Ins = Inspeccion.SaveInspeccion(obj);
+                    msj = "1Registro creado con Id : " + Ins.IdRegistro;
+                }
             }
             catch (Exception ex)
             {
-
+                msj = "0Problemas para registrar inspección";
             }
 
-            var vjson2 = Json(new { ID = "Problemas a registrar inspeccion" }, JsonRequestBehavior.AllowGet);
-            vjson2.MaxJsonLength = int.MaxValue;
 
+            var vjson2 = Json(new { ID = msj }, JsonRequestBehavior.AllowGet);
+            vjson2.MaxJsonLength = int.MaxValue;
             return vjson2;
         }
-         
+
         [HttpPost]
         public JsonResult UpdateInspeccion(Inspeccion oInspeccion)
         {
-
+            String msj = "";
             try
             {
                 DateTime fe = DateTime.Now;
@@ -205,29 +214,67 @@ namespace GSM.Controllers.GSM
                 obj.IdPersona = oInspeccion.IdPersona;
                 obj.oServicio.IdServicio = int.Parse(oInspeccion.personaAsignada);
                 obj.IdUsuario = Usuario.GetObject().CodUsuario; // oInspeccion.coUsuario; --> falta pagina de login
-                obj.IdCodVia = Usuario.GetObject().CodVia; // oInspeccion.coVi a;
+                //obj.IdCodVia = Usuario.GetObject().CodVia; // oInspeccion.coVi a;
                 obj.fechaProgramada = fe.ToString("dd/MM/yyyy");
                 obj.horaFin = hf.ToString("hh\\:mm");
                 obj.horaInicio = hi.ToString("hh\\:mm");
                 obj.direccion = oInspeccion.direccion;
 
-                var Ins = Inspeccion.Update(obj);
-                 
-                var vjson = Json(new { ID = Ins.IdRegistro }, JsonRequestBehavior.AllowGet);
-                vjson.MaxJsonLength = int.MaxValue;
 
-                return vjson;
+                if (hi > hf)
+                {
+                    msj = "0La fecha de inicio debe ser menor a la de fin";
+                }
+                else if (Inspeccion.ValidarFechaPrograma(obj.IdPersona,obj.IdRegistro, fe, hf, hi))
+                {
+                    msj = "0Horario no valido para la fecha programada";
+                }
+                else
+                {
+                    var Ins = Inspeccion.Update(obj); 
+                    msj = "1Registro con Id nro " + Ins.IdRegistro + " actualizado.";
+                } 
             }
             catch (Exception ex)
             {
-
+                msj="0Problemas para actualizar inspeccion" ;
             }
 
-            var vjson2 = Json(new { ID = "Problemas para actualizar inspeccion" }, JsonRequestBehavior.AllowGet);
+            var vjson2 = Json(new { ID =msj }, JsonRequestBehavior.AllowGet);
             vjson2.MaxJsonLength = int.MaxValue;
 
             return vjson2;
         }
+
+        public JsonResult GetInspeccion(String id)
+        {
+            Inspeccion oInspeccion = new Inspeccion();
+            oInspeccion.oServicio = new Servicio();
+            oInspeccion.nuevo = true;//Es nuevo por defecto
+            int Id = 0;
+            int.TryParse(id, out Id);
+
+            if (id != null && Id > 0)
+            {
+                oInspeccion.IdRegistro = Id;
+                var cInspeccion = Inspeccion.getInspeccion(Id);
+                if (cInspeccion == null)
+                {
+                    oInspeccion = new Inspeccion();
+                    oInspeccion.oServicio = new Servicio();
+                }
+                else
+                {
+                    oInspeccion = cInspeccion;
+                }
+            }
+
+            var vjson2 = Json(oInspeccion, JsonRequestBehavior.AllowGet);
+            vjson2.MaxJsonLength = int.MaxValue;
+
+            return vjson2;
+        }
+
 
     }
 }

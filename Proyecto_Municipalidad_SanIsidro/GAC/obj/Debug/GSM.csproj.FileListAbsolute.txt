@@ -101,5 +101,6 @@ D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_S
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\GAC\bin\ru\System.Spatial.resources.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\GAC\bin\zh-Hans\System.Spatial.resources.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\GAC\bin\zh-Hant\System.Spatial.resources.dll
+D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\GAC\obj\Debug\GSM.csprojResolveAssemblyReference.cache
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\GAC\obj\Debug\GSM.dll
 D:\Proyectos\TP3 Integrado\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\GAC\obj\Debug\GSM.pdb

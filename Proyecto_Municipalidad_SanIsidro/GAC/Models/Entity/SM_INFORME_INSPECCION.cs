@@ -25,6 +25,8 @@ namespace GSM.Models.Entity
         public string DescripcionInforme { get; set; }
         public Nullable<int> CodigoInspeccion { get; set; }
         public int CodigoExpedienteServicio { get; set; }
+        public Nullable<int> ESTADO { get; set; }
+        public Nullable<int> IdInformeServicio { get; set; }
     
         public virtual SM_INSPECCION SM_INSPECCION { get; set; }
         public virtual ICollection<SM_OBSERVACION> SM_OBSERVACION { get; set; }

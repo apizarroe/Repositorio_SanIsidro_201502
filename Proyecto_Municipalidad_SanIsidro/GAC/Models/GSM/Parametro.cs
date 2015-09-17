@@ -13,6 +13,7 @@ namespace GSM.Models.GSM
         public int Paginacion { get; set; }
         public int Tipo { get; set; }
         public int Id { get; set; }
+        public int Id2 { get; set; }
         public DateTime fecha1 { get; set; }
         public DateTime fecha2 { get; set; }
     }

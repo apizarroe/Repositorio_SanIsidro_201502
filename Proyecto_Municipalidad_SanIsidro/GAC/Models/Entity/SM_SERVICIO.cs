@@ -25,7 +25,6 @@ namespace GSM.Models.Entity
         public string DescripcionServicio { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaFin { get; set; }
-        public Nullable<int> coVia { get; set; }
         public string LugarServicio { get; set; }
         public Nullable<int> CodigoTipoServicio { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
@@ -34,9 +33,11 @@ namespace GSM.Models.Entity
         public Nullable<int> CodigoCategoriaServicio { get; set; }
         public int CodigoExpedienteServicio { get; set; }
         public Nullable<int> CodigoPersonaResponsable { get; set; }
+        public Nullable<int> ESTADO { get; set; }
     
         public virtual SM_CATEGORIA_SERVICIO SM_CATEGORIA_SERVICIO { get; set; }
         public virtual ICollection<SM_CONTRATO_SERVICIO> SM_CONTRATO_SERVICIO { get; set; }
+        public virtual SM_ESTADO_SERVICIO SM_ESTADO_SERVICIO { get; set; }
         public virtual SM_EXPEDIENTE_SERVICIO SM_EXPEDIENTE_SERVICIO { get; set; }
         public virtual ICollection<SM_INSPECCION> SM_INSPECCION { get; set; }
     }

@@ -184,6 +184,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GSM\GSMInformeInspeccionController.cs" />
     <Compile Include="Controllers\GSM\GSMmaestroController.cs" />
     <Compile Include="Controllers\GSM\GSMInspeccionController.cs" />
     <Compile Include="Controllers\GSM\GSMPersonaController.cs" />
@@ -221,19 +222,40 @@
     <Compile Include="Models\Entity\SM_CONTRATO_SERVICIO.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\SM_ESTADO_EXPEDIENTE_SERVICIO.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\SM_ESTADO_INFORME_SERVICIO.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\SM_ESTADO_INSPECCION.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\SM_ESTADO_SERVICIO.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\SM_ESTADO_SOLICITUD_SERVICIO.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\SM_EXPEDIENTE_SERVICIO.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\SM_INFORME_ESTADO.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\SM_INFORME_INSPECCION.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\SM_INFORME_SERVICIO.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\SM_INFORME_TECNICO.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\SM_INSPECCION.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\SM_MEMORANDUM.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\SM_OBSERVACION.cs">
@@ -248,7 +270,16 @@
     <Compile Include="Models\Entity\SM_SOLICITUD_SERVICIO.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\USP_GSM_BuscarExpedienteServicio_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\USP_GSM_BuscarPersonaGeneral_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\USP_GSM_BuscarPersona_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\USP_GSM_BuscarServicioGeneral_Result.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\USP_GSM_BuscarServicio_Result.cs">
@@ -257,10 +288,30 @@
     <Compile Include="Models\Entity\USP_GSM_GetInspeccion_Result.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\USP_GSM_GetServicio_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\USP_GSM_GET_INFORME_INSPECCION_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\USP_GSM_GET_INFORME_SERVICIO_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\USP_GSM_ListaInformeInspeccion_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\USP_GSM_ListaInformeServicio_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\USP_GSM_ListaInspeccion_Result.cs">
       <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\USP_GSM_LIST_INFO_SERVICIO_BYSERVICIO_Result.cs">
+      <DependentUpon>MUNI_INTEGRADOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GSM\Combo.cs" />
+    <Compile Include="Models\GSM\InformeInspeccion.cs" />
+    <Compile Include="Models\GSM\InformeServicio.cs" />
     <Compile Include="Models\GSM\Inspeccion.cs" />
     <Compile Include="Models\GSM\Parametro.cs" />
     <Compile Include="Models\GSM\Persona.cs" />
@@ -474,8 +525,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GSM\General.js" />
+    <Content Include="Scripts\GSM\InformeInspeccion\Index.js" />
+    <Content Include="Scripts\GSM\InformeInspeccion\InfoInspeccion.js" />
     <Content Include="Scripts\GSM\Inspeccion\Index.js" />
     <Content Include="Scripts\GSM\Inspeccion\Inspeccion.js" />
+    <Content Include="Scripts\GSM\Servicio\InfoIndex.js" />
+    <Content Include="Scripts\GSM\Servicio\InfoServicio.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -552,6 +607,10 @@
     <Content Include="Views\GSMInspeccion\Index.cshtml" />
     <Content Include="Views\GSMInspeccion\Inspecciones.cshtml" />
     <Content Include="Views\Shared\Site_Intranet.Master" />
+    <Content Include="Views\GSMInformeInspeccion\Index.cshtml" />
+    <Content Include="Views\GSMInformeInspeccion\InfoInspeccion.cshtml" />
+    <Content Include="Views\GSMServicio\InfoIndex.cshtml" />
+    <Content Include="Views\GSMServicio\InfoServicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -587,7 +646,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2575</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:30529/</IISUrl>
+          <IISUrl>http://localhost:30666/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -6,6 +6,7 @@
 }
 
 @section ScriptsSection {
+ 
 
     <script>
         $(document).ready(function () {
@@ -67,7 +68,8 @@
             </div>
             <div class="col-xs-6 col-sm-5">
                 <input id="txtNomServ" value="@(Model.oServicio.Nombre)" class="form-control" style="width: 100%" disabled />
-            </div>
+             </div>
+             <span class="spRojo">*</span>
         </div>
 
     </div>
@@ -91,6 +93,7 @@
             <div class="col-xs-6 col-sm-3">
                 <input id="txtFeInspeccion" value="@Model.fechaProgramada" class="form-control" style="width: 100%"   />
             </div>
+             <span class="spRojo">*</span>
         </div>
     </div>
 
@@ -102,6 +105,7 @@
             <div class="col-xs-6 col-sm-3">
                 <input id="txthini" value="@Model.horaInicio" class="form-control" style="width: 100%"   />
             </div>
+             <span class="spRojo">*</span>
         </div>
     </div>
     <div class="row show-grid" style="margin-top: 10px;">
@@ -112,6 +116,7 @@
             <div class="col-xs-6 col-sm-3">
                 <input id="txthfin" value="@Model.horaFin" class="form-control" style="width: 100%"   />
             </div>
+             <span class="spRojo">*</span>
         </div>
     </div>
     <div class="row show-grid" style="margin-top: 10px;">
@@ -136,6 +141,7 @@
                 <input id="txtResponsable" value="@Model.personaAsignada" class="form-control" style="width: 100%"   />
                 <input type="hidden" value="@Model.IdPersona" id="hidResponsable" />
             </div>
+             <span class="spRojo">*</span>
         </div>
     </div>
     <div class="row show-grid" style="margin-top: 10px;">
