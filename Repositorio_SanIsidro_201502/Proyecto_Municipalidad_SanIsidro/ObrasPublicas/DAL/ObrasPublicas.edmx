@@ -579,8 +579,6 @@
           <Parameter Name="pVarNom" Type="varchar" Mode="In" />
           <Parameter Name="pDatFecIniProg" Type="datetime" Mode="In" />
           <Parameter Name="pDatFecFinProg" Type="datetime" Mode="In" />
-          <Parameter Name="pDatFecIniEjec" Type="datetime" Mode="In" />
-          <Parameter Name="pDatFecFinEjec" Type="datetime" Mode="In" />
           <Parameter Name="pDecCosto" Type="decimal" Mode="In" />
           <Parameter Name="pIntCantidad" Type="int" Mode="In" />
           <Parameter Name="pVarTipoResp" Type="varchar" Mode="In" />
@@ -734,7 +732,7 @@
           <Parameter Name="pIntIdArea" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_gop_get_ent_mat_x_proy" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_ent_mat_x_proy_Result)">
-          <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="pIntIdProyecto" Mode="In" Type="Int32" />
             <Parameter Name="pFlagInforme" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_gop_get_exp_x_id" ReturnType="Collection(ObrasPublicasModel.sp_gop_get_exp_x_id_Result)">
@@ -785,8 +783,6 @@
             <Parameter Name="pVarNom" Mode="In" Type="String" />
             <Parameter Name="pDatFecIniProg" Mode="In" Type="DateTime" />
             <Parameter Name="pDatFecFinProg" Mode="In" Type="DateTime" />
-            <Parameter Name="pDatFecIniEjec" Mode="In" Type="DateTime" />
-            <Parameter Name="pDatFecFinEjec" Mode="In" Type="DateTime" />
             <Parameter Name="pDecCosto" Mode="In" Type="Decimal" />
             <Parameter Name="pIntCantidad" Mode="In" Type="Int32" />
             <Parameter Name="pVarTipoResp" Mode="In" Type="String" />

@@ -8,7 +8,7 @@ namespace ObrasPublicas.DAL
 {
     public class InformeObra_DAL
     {
-        public int Inserta(int pIntIdProyecto, String pStrTitulo, String pStrConclusion, String pStrRecomendacion, String pStrTipoInforme)
+        public int Inserta(int pIntIdProyecto, int pIntIdExpediente, String pStrTitulo, String pStrConclusion, String pStrRecomendacion, String pStrTipoInforme)
         {
             int intResultado = -999;
             int intRows;
@@ -34,12 +34,28 @@ namespace ObrasPublicas.DAL
                         objOP_INFORME_OBRA.txRecomendacion = pStrRecomendacion;
                         objOP_INFORME_OBRA.txTituloInforme = pStrTitulo;
 
+                        //Obtiene las entregas del proyecto que no estan en otros informes
+                        List<EntregaMaterialOP> lstEntregasTmp = objEntregaMaterial_DAL.ObtieneEntregasXIdProyecto(pIntIdProyecto, 1);
+
+                        //Obtiene todas las entregas del proyecto (esten o no en otros informes)
                         List<OP_ENTREGA_MATERIAL> lstEntregas = objContext.OP_ENTREGA_MATERIAL.Where(ent => ent.coProyecto == pIntIdProyecto).ToList();
 
-                        foreach (var objEntrega in lstEntregas) {
-                            objEntrega.OP_INFORME_OBRA.Add(objOP_INFORME_OBRA);
+                        foreach (var objEntregaTmp in lstEntregasTmp)
+                        {
+                            foreach (var objEntrega in lstEntregas) {
+                                if (objEntregaTmp.IdEntrega == objEntrega.coEntrega)
+                                {
+                                    objEntrega.OP_INFORME_OBRA.Add(objOP_INFORME_OBRA);
+                                }
+                            }
                         }
 
+                        CronogramaEjecucionObra_DAL objCronogramaEjecucionObra_DAL = new CronogramaEjecucionObra_DAL();
+
+                        //Obtiene las actividades del proyecto que no estan en otros informes
+                        List<ActividadCronogramaOP> lstActividadesTmp = objCronogramaEjecucionObra_DAL.ObtieneActvidades(pIntIdExpediente, -1, 1);
+
+                        //Obtiene todas las actividades del proyecto (esten o no en otros informes)
                         var lstActividades = (from act in objContext.OP_ACTIVIDAD_EJECUCION
                                               join cro in objContext.OP_CRONOGRAMA_EJECUCION on act.coCronograma equals cro.coCronograma
                                               join exp in objContext.OP_EXPEDIENTE_TECNICO on cro.coExpediente equals exp.coExpediente
@@ -47,10 +63,22 @@ namespace ObrasPublicas.DAL
                                               where proy.coProyecto == pIntIdProyecto
                                               select new { act }).ToList();
 
-                        foreach (var objActividad in lstActividades)
+                        foreach (var objActividadTmp in lstActividadesTmp)
                         {
-                            objActividad.act.OP_INFORME_OBRA.Add(objOP_INFORME_OBRA);
+                            foreach (var objActividad in lstActividades)
+                            {
+                                if (objActividadTmp.IdActividad == objActividad.act.coActividad)
+                                {
+                                    objActividad.act.OP_INFORME_OBRA.Add(objOP_INFORME_OBRA);
+                                }
+                            }
                         }
+
+
+                        //foreach (var objActividad in lstActividades)
+                        //{
+                        //    objActividad.act.OP_INFORME_OBRA.Add(objOP_INFORME_OBRA);
+                        //}
                         
                         objContext.AddToOP_INFORME_OBRA(objOP_INFORME_OBRA);
                         
@@ -70,6 +98,7 @@ namespace ObrasPublicas.DAL
             catch (Exception ex)
             {
                 intResultado = -999;
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -113,6 +142,7 @@ namespace ObrasPublicas.DAL
             catch (Exception ex)
             {
                 intResultado = -999;
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -129,7 +159,7 @@ namespace ObrasPublicas.DAL
                                      where io.coInforme == pIntIdInforme
                                      select new { io, proy }).ToList();
 
-                if (lstInformeObra != null)
+                if (lstInformeObra != null && lstInformeObra.Count> 0)
                 {
                     objInformeObra = new InformeObra();
 
@@ -254,6 +284,7 @@ namespace ObrasPublicas.DAL
             catch (Exception ex)
             {
                 intResultado = -999;
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }

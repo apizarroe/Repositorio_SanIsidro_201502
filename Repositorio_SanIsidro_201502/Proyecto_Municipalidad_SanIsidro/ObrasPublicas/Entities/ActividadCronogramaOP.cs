@@ -12,8 +12,8 @@ namespace ObrasPublicas.Entities
         public String Nombre { get; set; }
         public DateTime FechaIniProg { get; set; }
         public DateTime FechaFinProg { get; set; }
-        public DateTime FechaIniEjec { get; set; }
-        public DateTime FechaFinEjec { get; set; }
+        public DateTime? FechaIniEjec { get; set; }
+        public DateTime? FechaFinEjec { get; set; }
         public decimal Costo { get; set; }
         public int CantidadRRHH { get; set; }
         public String IdTipoResponsable { get; set; }

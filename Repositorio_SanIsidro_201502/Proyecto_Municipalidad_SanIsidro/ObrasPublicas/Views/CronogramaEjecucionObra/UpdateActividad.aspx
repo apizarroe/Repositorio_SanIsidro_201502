@@ -38,7 +38,7 @@
                     <span class="fa fa-pencil" aria-hidden="true"></span> Volver a buscar proyecto
                 </button>
                 <button id="btnRegresar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/listado?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>'">
-                    <span class="fa fa-pencil" aria-hidden="true"></span> Ver cronograma
+                    <span class="fa fa-search" aria-hidden="true"></span> Ver cronograma
                 </button>
             </div>
         </div>
@@ -72,7 +72,13 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <strong>Valor referencial: S/. <%: Html.DisplayFor(m => m.ValorRefExpediente) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Costo del proyecto: S/. <%: Html.DisplayFor(m => m.CostoProyecto) %></strong>
                     </div>
                     </div>
 
@@ -97,19 +103,19 @@
                     </div>
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">* Fecha inicio programada:</label>
+                    <label class="col-sm-3 control-label">Fecha inicio programada:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaIniProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
-                        <%: Html.ValidationMessageFor(m => m.FechaIniProgAct) %>
+                        <%: Html.DisplayFor(m=> m.FechaIniProgAct) %>
+                            <%: Html.HiddenFor(m => m.FechaIniProgAct) %>
                         <div id="Err_FechaIniProgAct" class="field-validation-error"></div>
                         <p></p>
                     </div>
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">* Fecha fin programada:</label>
+                    <label class="col-sm-3 control-label">Fecha fin programada:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaFinProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
-                        <%: Html.ValidationMessageFor(m => m.FechaFinProgAct) %>
+                        <%: Html.DisplayFor(m => m.FechaFinProgAct) %>
+                        <%: Html.HiddenFor(m => m.FechaFinProgAct) %>
                         <div id="Err_FechaFinProgAct" class="field-validation-error"></div>
                         <p></p>
                     </div>

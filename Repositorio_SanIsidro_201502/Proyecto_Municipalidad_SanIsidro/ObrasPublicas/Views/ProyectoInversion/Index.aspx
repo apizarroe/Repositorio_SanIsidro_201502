@@ -19,8 +19,7 @@
 </style>
 
     <%
-        Infraestructura.Data.SQL.Via_DAL objVia_DAL = new Infraestructura.Data.SQL.Via_DAL();
-        var lstTipoVia = objVia_DAL.ObtieneVias(null).Select(v => v.Tipo).Distinct();
+        var lstTipoVia = ViewBag.ListaVias;
     %>
     <section class="content-header" style="padding-bottom:5px">
         <h1>Registrar Proyectos de Inversión</h1>

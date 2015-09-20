@@ -45,6 +45,7 @@
                     <div class="col-sm-9">
                         <strong><%: Html.DisplayFor(m => m.IdProyecto) %> - <%: Html.DisplayFor(m => m.NomProyecto) %></strong>
                         <%: Html.HiddenFor(m => m.IdProyecto, new { Value = Request.QueryString["p"] })%>
+                        <%: Html.HiddenFor(m => m.IdExpediente, new { Value = Request.QueryString["e"] })%>
                     </div>
                     </div>
                     <div class="form-group">
@@ -56,7 +57,13 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <strong>Valor referencial: S/. <%: Html.DisplayFor(m => m.ValorRefExpediente) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Costo del proyecto: S/. <%: Html.DisplayFor(m => m.CostoProyecto) %></strong>
                     </div>
                     </div>
                     <div class="form-group">
@@ -143,8 +150,29 @@
                                       %>
                                         <tr>
                                             <td><%:objActividad.Nombre %></td>
-                                            <td><%:objActividad.FechaIniEjec.ToString("dd/MM/yyyy") %></td>
-                                            <td><%:objActividad.FechaFinEjec.ToString("dd/MM/yyyy") %></td>
+                                            <td>
+                                                <%if (objActividad.FechaIniEjec.HasValue) { 
+                                                  %>
+                                                <%:objActividad.FechaIniEjec.Value.ToString("dd/MM/yyyy") %>
+                                                <%
+                                                  }
+                                                  else{
+                                                  %>
+                                                -
+                                                <%
+                                                  } %></td>
+                                            <td>
+                                                <%if (objActividad.FechaFinEjec.HasValue)
+                                                  { 
+                                                  %>
+                                                <%:objActividad.FechaFinEjec.Value.ToString("dd/MM/yyyy") %>
+                                                <%
+                                                  }
+                                                  else{
+                                                  %>
+                                                -
+                                                <%
+                                                  } %></td>
                                             <td><%:objActividad.CantidadRRHH %></td>
                                             <td><%:objActividad.Costo %></td>
                                         </tr>

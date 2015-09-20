@@ -12,7 +12,7 @@ namespace ObrasPublicas.DAL
 {
     public class EntregaMaterial_DAL
     {
-        public int Inserta(DateTime pDatFecEntregaProg,DateTime pDatFecEntregaEfec,String pStrObservaciones,
+        public int Inserta(DateTime pDatFecEntregaProg,String pStrObservaciones,
             String pStrTipoEntrega,int pIntIdProveedor,int pIntIdMaterial, int pIntCantidad, int pIntIdProyecto) {
             int intResultado = -999;
             ObrasPublicasEntities objContext = new ObrasPublicasEntities();
@@ -32,7 +32,7 @@ namespace ObrasPublicas.DAL
                     objEntregaMaterial.coMaterial = pIntIdMaterial;
                     objEntregaMaterial.coProveedor = pIntIdProveedor;
                     objEntregaMaterial.coProyecto = pIntIdProyecto;
-                    objEntregaMaterial.feEntregaEfectiva = pDatFecEntregaEfec;
+                    //objEntregaMaterial.feEntregaEfectiva = pDatFecEntregaEfec;
                     objEntregaMaterial.feEntregaProgramada = pDatFecEntregaProg;
                     objEntregaMaterial.noTipoEntrega = pStrTipoEntrega;
                     objEntregaMaterial.nuCantidad = pIntCantidad;

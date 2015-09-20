@@ -63,19 +63,24 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <strong>Valor referencial: S/. <%: Html.DisplayFor(m => m.ValorRefExpediente) %></strong>
                     </div>
                     </div>
-
-
                     <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Costo del proyecto: S/. <%: Html.DisplayFor(m => m.CostoProyecto) %></strong>
+                    </div>
+                    </div>
+
+                    <%--<div class="form-group">
                     <label class="col-sm-3 control-label">* Plazo ejecución (días calendario):</label>
                     <div class="col-sm-9">
                             <%: Html.TextBoxFor(m => m.PlazoEjecucion, new { @class = "form-control numbersOnly", maxlength = "4", @placeholder="dias calendario"}) %>
                         <%: Html.ValidationMessageFor(m => m.PlazoEjecucion) %>
                         <div id="Err_PlazoEjecucion" class="field-validation-error"></div>
                     </div>
-                    </div>
+                    </div>--%>
                     <div class="col-sm-12 text-center">
                         &nbsp;
                     </div>

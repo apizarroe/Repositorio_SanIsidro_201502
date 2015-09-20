@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ObrasPublicas.Models.CronogramaEjecucionObra
 {
@@ -13,6 +15,10 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
         public String NomProyecto { get; set; }
         public String UbicacionProyecto { get; set; }
         public String ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        public Decimal ValorRefExpediente { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        public Decimal CostoProyecto { get; set; }
         public int PlazoEjecucion { get; set; }
     }
 }

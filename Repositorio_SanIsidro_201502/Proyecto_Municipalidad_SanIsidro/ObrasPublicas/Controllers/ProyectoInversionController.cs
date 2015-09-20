@@ -18,9 +18,23 @@ namespace ObrasPublicas.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.MsgSuccess = TempData["MsgSuccess"];
-            ViewBag.Action = TempData["Action"];
-            return View();
+            try
+            {
+                ViewBag.MsgSuccess = TempData["MsgSuccess"];
+                ViewBag.Action = TempData["Action"];
+
+                Infraestructura.Data.SQL.Via_DAL objVia_DAL = new Infraestructura.Data.SQL.Via_DAL();
+                var lstVias = objVia_DAL.ObtieneVias(null).Select(v => v.Tipo).Distinct();
+
+                ViewBag.ListaVias = lstVias;
+
+                return View();
+            }
+            catch (Exception ex) {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
+            }
         }
 
         [HttpGet]
@@ -40,37 +54,50 @@ namespace ObrasPublicas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateProyectoInversionModel pObjModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-                    int intResultado = objProyectoInversion_DAL.Inserta(null, pObjModel.Descripcion,
-                        pObjModel.Nombre, pObjModel.IdVia, pObjModel.Ubicacion, pObjModel.Beneficiarios, pObjModel.ValorReferencial);
+                    try
+                    {
+                        ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                        int intResultado = objProyectoInversion_DAL.Inserta(null, pObjModel.Descripcion,
+                            pObjModel.Nombre, pObjModel.IdVia, pObjModel.Ubicacion, pObjModel.Beneficiarios, pObjModel.ValorReferencial);
 
-                    if (intResultado == 1)
-                    {
-                        TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
-                        return RedirectToAction("Index");
-                        //ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
+                        if (intResultado == 1)
+                        {
+                            TempData["MsgSuccess"] = "Se realizó la operación satisfactoriamente";
+                            return RedirectToAction("Index");
+                        }
+                        /*else if (intResultado == -998)
+                        {
+                            ModelState.AddModelError("", "El código SNIP " + pObjModel.CodSNIP+" ya ha sido registrado.");
+                        }*/
+                        else
+                        {
+                            ModelState.AddModelError("", "No se pudo insertar el proyecto");
+                        }
                     }
-                    /*else if (intResultado == -998)
+                    catch (Exception ex)
                     {
-                        ModelState.AddModelError("", "El código SNIP " + pObjModel.CodSNIP+" ya ha sido registrado.");
-                    }*/
-                    else
-                    {
-                        ModelState.AddModelError("", "No se pudo insertar el proyecto");
+                        //ModelState.AddModelError("", ErrorCodeToString(999));
+                        ModelState.AddModelError("", ex.ToString());
                     }
                 }
-                catch (Exception ex)
-                {
-                    //ModelState.AddModelError("", ErrorCodeToString(999));
-                    ModelState.AddModelError("", ex.ToString());
-                }
+
+                Infraestructura.Data.SQL.Via_DAL objVia_DAL = new Infraestructura.Data.SQL.Via_DAL();
+                var lstVias = objVia_DAL.ObtieneVias(null).Select(v => v.Tipo).Distinct();
+
+                ViewBag.ListaVias = lstVias;
+
+                return View("Index", pObjModel);
             }
-
-            return View("Index", pObjModel);
+            catch (Exception ex)
+            {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
+            }
         }
 
         [HttpPost]
@@ -78,13 +105,22 @@ namespace ObrasPublicas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Search(UpdateProyectoInversionModel pObjModel)
         {
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-            List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
-                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-            ViewBag.lstProyectos = lstProyectos;
-            ViewBag.Action = "UPD";
+            try
+            {
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
+                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                ViewBag.lstProyectos = lstProyectos;
+                ViewBag.Action = "UPD";
 
-            return View("Update", pObjModel);
+                return View("Update", pObjModel);
+            }
+            catch (Exception ex)
+            {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
+            }
         }
 
         [HttpPost]
@@ -92,124 +128,174 @@ namespace ObrasPublicas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Search2(Models.ProyectoInversion.SearchProyectoInversionModel pObjModel)
         {
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+            try
+            {
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
 
-            if (pObjModel.Tipo == "P")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
+                if (pObjModel.Tipo == "P")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("Update", pObjModel);
+                }
+                else if (pObjModel.Tipo == "EC")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroSinExpedientes(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/ExpedienteTecnicoOP/Index.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "EU")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/ExpedienteTecnicoOP/Search.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "CC")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroSinCronograma(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/CronogramaEjecucionObra/Index.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "CU")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConCronograma(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/CronogramaEjecucionObra/Search.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "CV")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConCronograma(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/CronogramaEjecucionObra/Search.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "EMC")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/EntregaMaterialOP/Index.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "EMU")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConEntregaMaterial(pObjModel.SearchCodSNIP,
+                        pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/EntregaMaterialOP/Search.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "CIO")
+                {
+                    //SOLO ADJUDICADOS
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
                     pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("Update", pObjModel);
-            }
-            else if (pObjModel.Tipo == "EC")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroSinExpedientes(pObjModel.SearchCodSNIP,
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/informeobra/Index.aspx", pObjModel);
+                }
+                else if (pObjModel.Tipo == "UIO")
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConInformesObra(pObjModel.SearchCodSNIP,
                     pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/ExpedienteTecnicoOP/Index.aspx", pObjModel);
-            }
-            else if (pObjModel.Tipo == "EU")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("~/Views/informeobra/search.aspx", pObjModel);
+                }
+                else
+                {
+                    List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
                     pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/ExpedienteTecnicoOP/Search.aspx", pObjModel);
+                    ViewBag.lstProyectos = lstProyectos;
+                    return View("Update", pObjModel);
+                }
             }
-            else if (pObjModel.Tipo == "CC")
+            catch (Exception ex)
             {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroSinCronograma(pObjModel.SearchCodSNIP,
-                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/CronogramaEjecucionObra/Index.aspx", pObjModel);
-            }
-            else if (pObjModel.Tipo == "CU")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConCronograma(pObjModel.SearchCodSNIP,
-                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/CronogramaEjecucionObra/Search.aspx", pObjModel);
-            }
-            else if (pObjModel.Tipo == "EMC")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
-                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/EntregaMaterialOP/Index.aspx", pObjModel);
-            }
-            else if (pObjModel.Tipo == "EMU")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConEntregaMaterial(pObjModel.SearchCodSNIP,
-                    pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/EntregaMaterialOP/Search.aspx", pObjModel);
-            }
-            else if (pObjModel.Tipo == "CIO")
-            {
-                //SOLO ADJUDICADOS
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConExpedientes(pObjModel.SearchCodSNIP,
-                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/informeobra/Index.aspx", pObjModel);
-            }
-            else if (pObjModel.Tipo == "UIO")
-            {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltroConInformesObra(pObjModel.SearchCodSNIP,
-                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("~/Views/informeobra/search.aspx", pObjModel);
-            }
-            else {
-                List<ProyectoInversion> lstProyectos = objProyectoInversion_DAL.BuscarXFiltro(pObjModel.SearchCodSNIP,
-                pObjModel.SearchNombre, pObjModel.SearchUbicacion, pObjModel.SearchIdEstado);
-                ViewBag.lstProyectos = lstProyectos;
-                return View("Update", pObjModel);
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
             }
         }
 
         public ActionResult Edit(int id)
         {
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(id);
+            try {
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(id);
 
-            if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
-            {
-                if (TempData["CambioViable"] != "1")
+                if (objProyectoInversion == null)
                 {
-                    ViewBag.MsgError = "No puede modificar el proyecto debido a que se encuentra en estado " + objProyectoInversion.NomEstado.ToUpper();                
+                    ViewBag.MensajeError = "El código de proyecto no existe";
+                    return View("~/Views/Shared/ErrorInterno.aspx");
                 }
-                return Detail(objProyectoInversion.IdProyecto);
-            }
-            else {
-                UpdateProyectoInversionModel objModel = new UpdateProyectoInversionModel();
-                objModel.IdProyecto = objProyectoInversion.IdProyecto;
-                objModel.CodSNIP = objProyectoInversion.CodSNIP;
-                objModel.Descripcion = objProyectoInversion.Descripcion;
-                objModel.Nombre = objProyectoInversion.Nombre;
-                objModel.IdVia = objProyectoInversion.IdVia;
-                objModel.NomVia = objProyectoInversion.NomVia;
-                objModel.Ubicacion = objProyectoInversion.Ubicacion;
-                objModel.ValorReferencial = objProyectoInversion.ValorReferencial;
-                objModel.Beneficiarios = objProyectoInversion.Beneficiarios;
-                objModel.TipoVia = objProyectoInversion.TipoVia;
-                objModel.IdEstado = objProyectoInversion.IdEstado;
-                
-                ViewBag.MostrarSearch = "0";
+                else
+                {
+                    if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA)
+                    {
+                        if (TempData["CambioViable"]!=null && TempData["CambioViable"].ToString() != "1")
+                        {
+                            ViewBag.MsgError = "No puede modificar el proyecto debido a que se encuentra en estado " + objProyectoInversion.NomEstado.ToUpper();
+                        }
+                        return Detail(objProyectoInversion.IdProyecto);
+                    }
+                    else
+                    {
+                        UpdateProyectoInversionModel objModel = new UpdateProyectoInversionModel();
+                        objModel.IdProyecto = objProyectoInversion.IdProyecto;
+                        objModel.CodSNIP = objProyectoInversion.CodSNIP;
+                        objModel.Descripcion = objProyectoInversion.Descripcion;
+                        objModel.Nombre = objProyectoInversion.Nombre;
+                        objModel.IdVia = objProyectoInversion.IdVia;
+                        objModel.NomVia = objProyectoInversion.NomVia;
+                        objModel.Ubicacion = objProyectoInversion.Ubicacion;
+                        objModel.ValorReferencial = objProyectoInversion.ValorReferencial;
+                        objModel.Beneficiarios = objProyectoInversion.Beneficiarios;
+                        objModel.TipoVia = objProyectoInversion.TipoVia;
+                        objModel.IdEstado = objProyectoInversion.IdEstado;
 
-                ViewBag.MsgSuccess = TempData["MsgSuccess"];
-                
-                return View("Update", objModel);
+                        ViewBag.MostrarSearch = "0";
+
+                        ViewBag.MsgSuccess = TempData["MsgSuccess"];
+
+                        return View("Update", objModel);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
             }
         }
 
         public ActionResult Detail(int id)
         {
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(id);
+            try {
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(id);
 
-            ViewBag.FromUpdate = TempData["FromUpdate"];
-            ViewBag.MostrarSearch = "0";
+                if (objProyectoInversion == null)
+                {
+                    ViewBag.MensajeError = "El código de proyecto no existe";
+                    return View("~/Views/Shared/ErrorInterno.aspx");
+                }
+                else
+                {
+                    ViewBag.FromUpdate = TempData["FromUpdate"];
+                    ViewBag.MostrarSearch = "0";
 
-            return View("Detail", objProyectoInversion);
+                    return View("Detail", objProyectoInversion);
+                }
+            }
+            catch (Exception ex)
+            {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
+            }
         }
 
         public ActionResult Save_Update(UpdateProyectoInversionModel pObjModel)
@@ -274,50 +360,42 @@ namespace ObrasPublicas.Controllers
             }
         }
 
-        private static string ErrorCodeToString(Int16 pIntCodError)
-        {
-            switch (pIntCodError)
-            {
-                case 999:
-                    return "El nombre de usuario ya existe. Escriba un nombre de usuario diferente.";
-                default:
-                    return "Error desconocido. Compruebe los datos especificados e inténtelo de nuevo. Si el problema continúa, póngase en contacto con el administrador del sistema.";
-            }
-        }
-
-
         public ActionResult Lista_NombreVias(String pStrTipoVia)
         {
-            Via_DAL objVia_DAL = new Via_DAL();
+            try
+            {
+                Via_DAL objVia_DAL = new Via_DAL();
 
-            var lstNomVias = objVia_DAL.ObtieneVias(pStrTipoVia).Select(x =>
-                                                                           new SelectListItem
-                                                                           {
-                                                                               Value = x.IdVia.ToString(),
-                                                                               Text = x.Nombre
-                                                                           }).OrderBy(x => x.Text);
+                var lstNomVias = objVia_DAL.ObtieneVias(pStrTipoVia).Select(x =>
+                                                                               new SelectListItem
+                                                                               {
+                                                                                   Value = x.IdVia.ToString(),
+                                                                                   Text = x.Nombre
+                                                                               }).OrderBy(x => x.Text);
 
-            return Json(lstNomVias, JsonRequestBehavior.AllowGet);
+                return Json(lstNomVias, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult FiltrarVias(String pStrTipoVia, String pStrDesc)
         {
-            Via_DAL objVia_DAL = new Via_DAL();
+            try
+            {
+                Via_DAL objVia_DAL = new Via_DAL();
 
-            var lstNomVias = objVia_DAL.ObtieneVias(pStrTipoVia).Where(x => (x.Tipo + " " + x.Nombre).ToLower().Contains(pStrDesc.ToLower())).OrderBy(x => x.Nombre);
+                var lstNomVias = objVia_DAL.ObtieneVias(pStrTipoVia).Where(x => (x.Tipo + " " + x.Nombre).ToLower().Contains(pStrDesc.ToLower())).OrderBy(x => x.Nombre);
 
-            //((via.noTipoVia + " " + via.noNomVia + " " + pi.txUbicacion).ToLower().Contains(pStrUbicacion.ToLower()) || pStrUbicacion == "")
-
-            //var result = new List<KeyValuePair<string, string>>();
-
-            //foreach (var item in lstNomVias)
-            //{
-            //    result.Add(new KeyValuePair<string, string>(item.Nombre, item.IdVia.ToString()));
-            //}
-            //var result3 = result.Where(s => s.Value.ToLower().Contains
-            //              (pStrDesc.ToLower())).Select(w => w).ToList();
-            return Json(lstNomVias, JsonRequestBehavior.AllowGet);
+                return Json(lstNomVias, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

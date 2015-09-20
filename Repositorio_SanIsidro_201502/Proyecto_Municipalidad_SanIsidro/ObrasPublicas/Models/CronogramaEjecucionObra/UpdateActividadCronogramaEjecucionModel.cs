@@ -16,6 +16,10 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
         public int PlazoEjecucion { get; set; }
         public String UbicacionProyecto { get; set; }
         public String ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        public Decimal ValorRefExpediente { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n0}")]
+        public Decimal CostoProyecto { get; set; }
 
         public int IdActividad { get; set; }
 
@@ -64,7 +68,7 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha de inicio programada es incorrecta", new[] { "FechaIniProgAct" }));
             }
-            else if (Convert.ToDateTime(this.FechaIniProgAct) < DateTime.Now)
+            else if (Convert.ToDateTime(this.FechaIniProgAct) < DateTime.Now.Date)
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha de inicio programada debe ser mayor o igual a la fecha actual", new[] { "FechaIniProgAct" }));
             }
@@ -73,7 +77,7 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha fin programada es incorrecta", new[] { "FechaFinProgAct" }));
             }
-            else if (Convert.ToDateTime(this.FechaFinProgAct) < DateTime.Now)
+            else if (Convert.ToDateTime(this.FechaFinProgAct) < DateTime.Now.Date)
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha fin programada debe ser mayor o igual a la fecha actual", new[] { "FechaFinProgAct" }));
             }
@@ -90,7 +94,7 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha de inicio de ejecución es incorrecta", new[] { "FechaIniEjecAct" }));
             }
-            else if (Convert.ToDateTime(this.FechaIniEjecAct) < DateTime.Now)
+            else if (Convert.ToDateTime(this.FechaIniEjecAct) < DateTime.Now.Date)
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha de inicio de ejecución debe ser mayor o igual a la fecha actual", new[] { "FechaIniEjecAct" }));
             }
@@ -99,7 +103,7 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha fin de ejecución es incorrecta", new[] { "FechaFinEjecAct" }));
             }
-            else if (Convert.ToDateTime(this.FechaFinEjecAct) < DateTime.Now)
+            else if (Convert.ToDateTime(this.FechaFinEjecAct) < DateTime.Now.Date)
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha fin de ejecución debe ser mayor o igual a la fecha actual", new[] { "FechaFinEjecAct" }));
             }

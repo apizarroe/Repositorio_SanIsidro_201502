@@ -19,6 +19,7 @@
 </style>
     <%
         List<ObrasPublicas.Entities.ActividadCronogramaOP> lstActividades = ViewBag.ListadoActividades;
+        String strTipo = Request.QueryString["v"];
 %>
     <section class="content-header" style="padding-bottom:5px">
         <h1>Actualizar Cronograma de Ejecución de Obra</h1>
@@ -26,10 +27,14 @@
         
         <div id="divControlButtons" class="panel panel-default">
             <div class="panel-body">
-                <button id="btnIconCrear" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/createactividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>'">
-                    <span class="fa fa-file" aria-hidden="true"></span> Nueva actividad
-                </button>
-                <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search'">
+                
+                <%if (strTipo != "1") { 
+                %>
+                    <button id="btnIconCrear" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/createactividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>'">
+                        <span class="fa fa-file" aria-hidden="true"></span> Nueva actividad
+                    </button>
+                <% }%>
+                <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search/<%:strTipo %>'">
                     <span class="fa fa-arrow-left" aria-hidden="true"></span> Volver a buscar proyecto
                 </button>
             </div>
@@ -59,7 +64,13 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <strong>Valor referencial: S/. <%: Html.DisplayFor(m => m.ValorRefExpediente) %></strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Costo del proyecto: S/. <%: Html.DisplayFor(m => m.CostoProyecto) %></strong>
                     </div>
                     </div>
                     <div class="form-group">
@@ -101,8 +112,12 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
+                        <%if (strTipo != "1") { 
+                          %>
                         <th></th>
                         <th></th>
+                        <%
+                          } %>
                         <th>Actividad</th>
                         <th>Fecha Ini. Prog.</th>
                         <th>Fecha Fin Prog.</th>
@@ -120,13 +135,39 @@
                         {
                       %>
                         <tr>
+                            <%if (strTipo != "1") { 
+                            %>
                             <td><a href="/CronogramaEjecucionObra/EditActividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>&a=<%:objActividadCronogramaOP.IdActividad%>">Modificar</a></td>
                             <td><a href="/CronogramaEjecucionObra/DeleteActividad?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>&a=<%:objActividadCronogramaOP.IdActividad%>">Eliminar</a></td>
+                            <%} %>
                             <td><%:objActividadCronogramaOP.Nombre %></td>
                             <td><%:objActividadCronogramaOP.FechaIniProg.ToString("dd/MM/yyyy") %></td>
                             <td><%:objActividadCronogramaOP.FechaFinProg.ToString("dd/MM/yyyy") %></td>
-                            <td><%:objActividadCronogramaOP.FechaIniEjec.ToString("dd/MM/yyyy") %></td>
-                            <td><%:objActividadCronogramaOP.FechaFinEjec.ToString("dd/MM/yyyy") %></td>
+                            <td>
+                                <%if (objActividadCronogramaOP.FechaIniEjec.HasValue) { 
+                                  %>
+                                <%:objActividadCronogramaOP.FechaIniEjec.Value.ToString("dd/MM/yyyy") %>
+                                <%
+                                  }
+                                  else{
+                                  %>
+                                    -
+                                <%
+                                  } %>
+                            </td>
+                            <td>
+                                <%if (objActividadCronogramaOP.FechaFinEjec.HasValue)
+                                  { 
+                                  %>
+                                <%:objActividadCronogramaOP.FechaFinEjec.Value.ToString("dd/MM/yyyy") %>
+                                <%
+                                  }
+                                  else{
+                                  %>
+                                    -
+                                <%
+                                  } %>
+                            </td>
                             <%
                             if (objActividadCronogramaOP.IdTipoResponsable == "P")
                             {

@@ -97,6 +97,7 @@ namespace ObrasPublicas.DAL
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -184,6 +185,7 @@ namespace ObrasPublicas.DAL
                     }
                     objProyecto.ValorReferencial = lstProyectosTmp[0].nuValorReferencialPerfil;
                     objProyecto.TipoVia = lstProyectosTmp[0].noTipoVia;
+                    objProyecto.CostoProyecto = ObtieneCostoTotalXIdProyecto(pIntIdProyecto);
                 }
             }
             catch (Exception ex)
@@ -212,6 +214,14 @@ namespace ObrasPublicas.DAL
             else if (pStrTipo == "CRO")
             {
                 lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
+            }
+            else if (pStrTipo == "CROCONSULTA")
+            {
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_EN_CONSULTA, Nombre = "En consulta" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_VIABLE, Nombre = "Viable" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_INVIABLE, Nombre = "Inviable" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_ADJUDICADO, Nombre = "Adjudicado" });
+                lstEstados.Add(new ItemCombo { Id = ProyectoInversion.STR_ID_ESTADO_CERRADO, Nombre = "Cerrado" });
             }
             else if (pStrTipo == "INFO")
             {
@@ -524,5 +534,29 @@ namespace ObrasPublicas.DAL
             return lstProyectos;
         }
 
+        public Decimal ObtieneCostoTotalXIdProyecto(int pIntIdProyecto) {
+            Decimal decCostoTotal = 0;
+            try
+            {
+                ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+
+                var costo = (from act in objContext.OP_ACTIVIDAD_EJECUCION
+                                      join cro in objContext.OP_CRONOGRAMA_EJECUCION on act.coCronograma equals cro.coCronograma
+                                      join exp in objContext.OP_EXPEDIENTE_TECNICO on cro.coExpediente equals exp.coExpediente
+                                      join proy in objContext.OP_PROYECTO_INVERSION_PUBLICA on exp.coProyecto equals proy.coProyecto
+                                      where proy.coProyecto == pIntIdProyecto
+                                      group act by new { proy.coProyecto } into a
+                                      select new { Amount = a.Sum(x=> x.nuCostoDirecto) }).ToList();
+
+                if(costo.Count > 0){
+                    decCostoTotal = Convert.ToDecimal(costo[0].Amount);                
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            return decCostoTotal;
+        }
     }
 }

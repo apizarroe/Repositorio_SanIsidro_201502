@@ -26,6 +26,7 @@ namespace ObrasPublicas.Entities
         public String NomVia { get; set; }
         public String IdEstado { get; set; }
         public String NomEstado { get; set; }
+        public Decimal CostoProyecto { get; set; }
 
         public int IdExpediente { get; set; }
         public int IdCronograma { get; set; }

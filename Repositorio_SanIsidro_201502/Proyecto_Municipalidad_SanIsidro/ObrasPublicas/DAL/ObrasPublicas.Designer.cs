@@ -850,14 +850,12 @@ namespace ObrasPublicas.DAL
         /// <param name="pVarNom">No Metadata Documentation available.</param>
         /// <param name="pDatFecIniProg">No Metadata Documentation available.</param>
         /// <param name="pDatFecFinProg">No Metadata Documentation available.</param>
-        /// <param name="pDatFecIniEjec">No Metadata Documentation available.</param>
-        /// <param name="pDatFecFinEjec">No Metadata Documentation available.</param>
         /// <param name="pDecCosto">No Metadata Documentation available.</param>
         /// <param name="pIntCantidad">No Metadata Documentation available.</param>
         /// <param name="pVarTipoResp">No Metadata Documentation available.</param>
         /// <param name="pIntIdEmpleado">No Metadata Documentation available.</param>
         /// <param name="pIntResult_out">No Metadata Documentation available.</param>
-        public int sp_gop_ins_act_cron_ejec_obra(Nullable<global::System.Int32> pIntIdCrono, Nullable<global::System.Int32> pIntIdProyecto, global::System.String pVarNom, Nullable<global::System.DateTime> pDatFecIniProg, Nullable<global::System.DateTime> pDatFecFinProg, Nullable<global::System.DateTime> pDatFecIniEjec, Nullable<global::System.DateTime> pDatFecFinEjec, Nullable<global::System.Decimal> pDecCosto, Nullable<global::System.Int32> pIntCantidad, global::System.String pVarTipoResp, Nullable<global::System.Int32> pIntIdEmpleado, ObjectParameter pIntResult_out)
+        public int sp_gop_ins_act_cron_ejec_obra(Nullable<global::System.Int32> pIntIdCrono, Nullable<global::System.Int32> pIntIdProyecto, global::System.String pVarNom, Nullable<global::System.DateTime> pDatFecIniProg, Nullable<global::System.DateTime> pDatFecFinProg, Nullable<global::System.Decimal> pDecCosto, Nullable<global::System.Int32> pIntCantidad, global::System.String pVarTipoResp, Nullable<global::System.Int32> pIntIdEmpleado, ObjectParameter pIntResult_out)
         {
             ObjectParameter pIntIdCronoParameter;
             if (pIntIdCrono.HasValue)
@@ -909,26 +907,6 @@ namespace ObrasPublicas.DAL
                 pDatFecFinProgParameter = new ObjectParameter("pDatFecFinProg", typeof(global::System.DateTime));
             }
     
-            ObjectParameter pDatFecIniEjecParameter;
-            if (pDatFecIniEjec.HasValue)
-            {
-                pDatFecIniEjecParameter = new ObjectParameter("pDatFecIniEjec", pDatFecIniEjec);
-            }
-            else
-            {
-                pDatFecIniEjecParameter = new ObjectParameter("pDatFecIniEjec", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter pDatFecFinEjecParameter;
-            if (pDatFecFinEjec.HasValue)
-            {
-                pDatFecFinEjecParameter = new ObjectParameter("pDatFecFinEjec", pDatFecFinEjec);
-            }
-            else
-            {
-                pDatFecFinEjecParameter = new ObjectParameter("pDatFecFinEjec", typeof(global::System.DateTime));
-            }
-    
             ObjectParameter pDecCostoParameter;
             if (pDecCosto.HasValue)
             {
@@ -969,7 +947,7 @@ namespace ObrasPublicas.DAL
                 pIntIdEmpleadoParameter = new ObjectParameter("pIntIdEmpleado", typeof(global::System.Int32));
             }
     
-            return base.ExecuteFunction("sp_gop_ins_act_cron_ejec_obra", pIntIdCronoParameter, pIntIdProyectoParameter, pVarNomParameter, pDatFecIniProgParameter, pDatFecFinProgParameter, pDatFecIniEjecParameter, pDatFecFinEjecParameter, pDecCostoParameter, pIntCantidadParameter, pVarTipoRespParameter, pIntIdEmpleadoParameter, pIntResult_out);
+            return base.ExecuteFunction("sp_gop_ins_act_cron_ejec_obra", pIntIdCronoParameter, pIntIdProyectoParameter, pVarNomParameter, pDatFecIniProgParameter, pDatFecFinProgParameter, pDecCostoParameter, pIntCantidadParameter, pVarTipoRespParameter, pIntIdEmpleadoParameter, pIntResult_out);
         }
     
         /// <summary>

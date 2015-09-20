@@ -242,6 +242,7 @@
     <Compile Include="Helpers\HtmlPrefixScopeExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\ErrorHelper.cs" />
     <Compile Include="Helpers\Validations.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -573,6 +574,7 @@
     <Content Include="Views\ExpedienteTecnicoOP\Search.aspx" />
     <Content Include="Views\ExpedienteTecnicoOP\Update.aspx" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\InformeObra\Create.aspx" />
     <Content Include="Views\InformeObra\Index.aspx" />
@@ -586,6 +588,7 @@
     <Content Include="Views\ProyectoInversion\Update.aspx" />
     <Content Include="Views\ProyectoInversion\_Search.ascx" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\ErrorInterno.aspx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Shared\Site_Inicio.Master" />
     <Content Include="Views\Shared\Site_Intranet.Master" />

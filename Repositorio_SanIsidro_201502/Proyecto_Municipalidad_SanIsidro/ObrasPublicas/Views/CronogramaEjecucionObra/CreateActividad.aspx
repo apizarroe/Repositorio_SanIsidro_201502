@@ -32,7 +32,7 @@
                                                                         {
                                                                             Value = x.Id,
                                                                             Text = x.Nombre
-                                                                        }).OrderBy(x => x.Text); ;
+                                                                        }).OrderBy(x => x.Text);
 %>
     <section class="content-header" style="padding-bottom:5px">
         <h1>Actualizar Cronograma de Ejecución de Obra</h1>
@@ -43,9 +43,14 @@
                 <button id="btnBuscar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/index'">
                     <span class="fa fa-arrow-left" aria-hidden="true"></span> Volver a buscar proyecto
                 </button>
+                <%if (Request.QueryString["c"]!="0")
+                  { 
+                  %>
                 <button id="btnRegresar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/listado?p=<%:Request.QueryString["p"]%>&e=<%:Request.QueryString["e"]%>&c=<%:Request.QueryString["c"]%>'">
                     <span class="fa fa-search" aria-hidden="true"></span> Ver cronograma
-                </button>
+                </button>                
+                <%
+                  } %>
             </div>
         </div>
     </section>
@@ -66,6 +71,7 @@
                         <%: Html.HiddenFor(m => m.IdProyecto, new { Value = Request.QueryString["p"] })%>
                         <%: Html.HiddenFor(m => m.IdExpediente, new { Value = Request.QueryString["e"] })%>
                         <%: Html.HiddenFor(m => m.IdCronograma, new { Value = Request.QueryString["c"] })%>
+                        <%: Html.HiddenFor(m => m.PlazoEjecucion, Model.PlazoEjecucion)%>
                     </div>
                     </div>
                     <div class="form-group">
@@ -77,10 +83,17 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <strong>Valor referencial: S/. <%: Html.DisplayFor(m => m.ValorRefExpediente)%></strong>
+                         <%: Html.HiddenFor(m => m.ValorRefProyecto) %>
                     </div>
                     </div>
-
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <strong>Costo del proyecto: S/. <%: Html.DisplayFor(m => m.CostoProyecto)%></strong>
+                         <%: Html.HiddenFor(m => m.CostoProyecto) %>
+                    </div>
+                    </div>
 
                     <!--DIV QUE OCULTE CREAR UNA ACTIVIDAD SI NO HA INGRESADO EL PLAZO Y HA CREADO EL CRONOGRAMA VACIO PRIMERO-->
                     <div class="form-group">
@@ -111,24 +124,6 @@
                             <%: Html.TextBoxFor(m => m.FechaFinProgAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
                         <%: Html.ValidationMessageFor(m => m.FechaFinProgAct) %>
                         <div id="Err_FechaFinProgAct" class="field-validation-error"></div>
-                        <p></p>
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <label class="col-sm-3 control-label">* Fecha inicio ejecución:</label>
-                    <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaIniEjecAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
-                        <%: Html.ValidationMessageFor(m => m.FechaIniEjecAct) %>
-                        <div id="Err_FechaIniEjecAct" class="field-validation-error"></div>
-                        <p></p>
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <label class="col-sm-3 control-label">* Fecha fin ejecución:</label>
-                    <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FechaFinEjecAct, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);"}) %>
-                        <%: Html.ValidationMessageFor(m => m.FechaFinEjecAct) %>
-                        <div id="Err_FechaFinEjecAct" class="field-validation-error"></div>
                         <p></p>
                     </div>
                     </div>
@@ -236,13 +231,14 @@
             $("#Err_General").hide();
             $("#divMensajeOK").hide();
 
-            //waitingDialog.show("Procesando..");
+            waitingDialog.show("Procesando..");
             $.ajax({
                 url: "/CronogramaEjecucionObra/CreateActividad",
                 type: "POST",
                 data: infoForm.serialize(),
                 dataType: "json",
                 success: function (data) {
+                    waitingDialog.hide();
                     //Sys.Mvc.FormContext._Application_Load();
                     if (data.Valid) {
                         //$("#divStudent").html(data.StudentsPartial);

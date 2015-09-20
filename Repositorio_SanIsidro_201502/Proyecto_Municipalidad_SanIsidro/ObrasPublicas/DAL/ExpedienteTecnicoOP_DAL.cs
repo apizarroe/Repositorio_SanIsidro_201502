@@ -59,7 +59,7 @@ namespace ObrasPublicas.DAL
                  }
             }
             catch (Exception ex) {
-
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -120,7 +120,7 @@ namespace ObrasPublicas.DAL
             }
             catch (Exception ex)
             {
-
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -229,7 +229,6 @@ namespace ObrasPublicas.DAL
             return objExpedienteTecnicoOP;
         }
 
-
         public List<ItemCombo> ObtieneTiposDocumento(String pStrTipo)
         {
             List<ItemCombo> lstTipo = new List<ItemCombo>();
@@ -245,6 +244,26 @@ namespace ObrasPublicas.DAL
             lstTipo.Add(new ItemCombo { Id = ExpedienteTecnicoOP.STR_ID_TIPO_DOC_EST_SUELO, Nombre = "Estudios de suelo" });
            
             return lstTipo;
+        }
+
+        public Decimal ObtieneValorReferencialXIdExpediente(int pIntIdExpediente)
+        {
+            Decimal decValorReferencial = 0;
+            try
+            {
+                ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+
+                var decValor = objContext.OP_EXPEDIENTE_TECNICO.Where(exp => exp.coExpediente == pIntIdExpediente).First().nuValorReferencial;
+
+                if (decValor.HasValue) {
+                    decValorReferencial = decValor.Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            return decValorReferencial;
         }
     }
 }

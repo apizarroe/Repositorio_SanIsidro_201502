@@ -26,8 +26,11 @@
                 <button id="btnIconCrear" type="button" class="btn btn-primary" onclick="document.location.href='/CronogramaEjecucionObra/index'">
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
-                <button id="btnIconModificar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search'">
+                <button id="btnIconModificar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search/0'">
                     <span class="fa fa-pencil" aria-hidden="true"></span> Modificar
+                </button>
+                <button id="btnIconConsultar" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/search/1'">
+                    <span class="fa fa-search" aria-hidden="true"></span> Consultar cronogramas
                 </button>
             </div>
         </div>

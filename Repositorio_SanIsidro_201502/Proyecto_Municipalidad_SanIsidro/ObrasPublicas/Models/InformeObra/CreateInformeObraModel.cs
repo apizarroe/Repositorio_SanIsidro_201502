@@ -10,11 +10,16 @@ namespace ObrasPublicas.Models.InformeObra
     public class CreateInformeObraModel
     {
         public int IdProyecto { get; set; }
+        public int IdExpediente { get; set; }
         public String NomProyecto { get; set; }
         public String UbicacionProyecto { get; set; }
         public String ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n0}")]
+        public Decimal CostoProyecto { get; set; }
         public String NomEjecutor { get; set; }
         public String NomSupervisor { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        public Decimal ValorRefExpediente { get; set; }
 
         [Required(ErrorMessage = "El campo Titulo es obligatorio")]
         public String Titulo { get; set; }

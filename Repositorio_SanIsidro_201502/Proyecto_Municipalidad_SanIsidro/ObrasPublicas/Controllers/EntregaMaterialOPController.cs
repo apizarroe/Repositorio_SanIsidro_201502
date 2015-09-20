@@ -23,19 +23,37 @@ namespace ObrasPublicas.Controllers
 
         public ActionResult Create(int p)
         {
-            //id=id de proyecto
-            ViewBag.MsgSuccess = TempData["MsgSuccess"];
-            ViewBag.Action = TempData["Action"];
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
-            
-            CreateEntregaMaterialOP objCreateEntregaMaterialOP = new CreateEntregaMaterialOP();
-            objCreateEntregaMaterialOP.IdProyecto = p;
-            objCreateEntregaMaterialOP.NomProyecto = objProyectoInversion.Nombre;
-            objCreateEntregaMaterialOP.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
-            objCreateEntregaMaterialOP.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+            try
+            {
+                //id=id de proyecto
+                ViewBag.MsgSuccess = TempData["MsgSuccess"];
+                ViewBag.Action = TempData["Action"];
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
 
-            return View(objCreateEntregaMaterialOP);
+                if (objProyectoInversion == null)
+                {
+                    ViewBag.MensajeError = "El código de proyecto no existe";
+                    return View("~/Views/Shared/ErrorInterno.aspx");
+                }
+                else
+                {
+                    CreateEntregaMaterialOP objCreateEntregaMaterialOP = new CreateEntregaMaterialOP();
+                    objCreateEntregaMaterialOP.IdProyecto = p;
+                    objCreateEntregaMaterialOP.NomProyecto = objProyectoInversion.Nombre;
+                    objCreateEntregaMaterialOP.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+                    objCreateEntregaMaterialOP.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+
+                    return View(objCreateEntregaMaterialOP);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
+            }
         }
 
         public ActionResult Search()
@@ -45,19 +63,37 @@ namespace ObrasPublicas.Controllers
 
         public ActionResult Listado(int p)
         {
-            EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
-            List<EntregaMaterialOP> lstEntregas = objEntregaMaterial_DAL.ObtieneEntregasXIdProyecto(p,0);
+            try
+            {
+                EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
 
-            ListadoEntregaMaterialModel objListadoEntregaMaterialModel = new ListadoEntregaMaterialModel();
-            objListadoEntregaMaterialModel.IdProyecto = p;
-            objListadoEntregaMaterialModel.NomProyecto = objProyectoInversion.Nombre;
-            objListadoEntregaMaterialModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
-            objListadoEntregaMaterialModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+                if (objProyectoInversion == null)
+                {
+                    ViewBag.MensajeError = "El código de proyecto no existe";
+                    return View("~/Views/Shared/ErrorInterno.aspx");
+                }
+                else
+                {
+                    List<EntregaMaterialOP> lstEntregas = objEntregaMaterial_DAL.ObtieneEntregasXIdProyecto(p, 0);
 
-            ViewBag.ListadoEntregas = lstEntregas;
-            return View(objListadoEntregaMaterialModel);
+                    ListadoEntregaMaterialModel objListadoEntregaMaterialModel = new ListadoEntregaMaterialModel();
+                    objListadoEntregaMaterialModel.IdProyecto = p;
+                    objListadoEntregaMaterialModel.NomProyecto = objProyectoInversion.Nombre;
+                    objListadoEntregaMaterialModel.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+                    objListadoEntregaMaterialModel.UbicacionProyecto = objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+
+                    ViewBag.ListadoEntregas = lstEntregas;
+                    return View(objListadoEntregaMaterialModel);
+                }
+            }
+            catch (Exception ex)
+            {
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
+            }
         }
 
         [HttpPost]
@@ -71,7 +107,7 @@ namespace ObrasPublicas.Controllers
                 {
                     EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
                     int intResultado = objEntregaMaterial_DAL.Inserta(Convert.ToDateTime(pObjModel.FecEntregaProg),
-                        Convert.ToDateTime(pObjModel.FecEntregaEfec), pObjModel.Observaciones, pObjModel.TipoEntrega,
+                         pObjModel.Observaciones, pObjModel.TipoEntrega,
                         pObjModel.IdProveedor, pObjModel.IdMaterial, pObjModel.Cantidad, pObjModel.IdProyecto);
 
                     if (intResultado == 1)
@@ -82,15 +118,18 @@ namespace ObrasPublicas.Controllers
                     }
                     else if (intResultado == -998)
                     {
+                        ViewBag.Error = "1";
                         ModelState.AddModelError("", "No se pueden crear más entregas debido a que el proyecto está en estado VIABLE o ADJUDICADO.");
                     }
                     else
                     {
+                        ViewBag.Error = "1";
                         ModelState.AddModelError("", "No se pudo insertar la entrega de material");
                     }
                 }
                 catch (Exception ex)
                 {
+                    ViewBag.Error = "1";
                     //ModelState.AddModelError("", ErrorCodeToString(999));
                     ModelState.AddModelError("", ex.ToString());
                 }
@@ -101,37 +140,59 @@ namespace ObrasPublicas.Controllers
 
         public ActionResult Edit(int p, int ent)
         {
-            EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
-            EntregaMaterialOP objEntregaMaterialOP = objEntregaMaterial_DAL.ObtieneEntregaXId(p, ent);
+            try {
+                EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
+                EntregaMaterialOP objEntregaMaterialOP = objEntregaMaterial_DAL.ObtieneEntregaXId(p, ent);
 
-            ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
-            ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(p);
 
-            UpdateEntregaMaterialOP objUpdateEntregaMaterialOP = new UpdateEntregaMaterialOP();
-            objUpdateEntregaMaterialOP.IdEntrega = objEntregaMaterialOP.IdEntrega;
-            objUpdateEntregaMaterialOP.Cantidad = objEntregaMaterialOP.Cantidad;
-            objUpdateEntregaMaterialOP.FecEntregaEfec = objEntregaMaterialOP.FecEntregaEfec.ToString("dd/MM/yyyy");
-            objUpdateEntregaMaterialOP.FecEntregaProg = objEntregaMaterialOP.FecEntregaProg.ToString("dd/MM/yyyy");
-            objUpdateEntregaMaterialOP.IdEntrega = objEntregaMaterialOP.IdEntrega;
-            objUpdateEntregaMaterialOP.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
-            objUpdateEntregaMaterialOP.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
+                if (objProyectoInversion == null)
+                {
+                    ViewBag.MensajeError = "El código de proyecto no existe";
+                    return View("~/Views/Shared/ErrorInterno.aspx");
+                }
+                else if (objEntregaMaterialOP == null)
+                {
+                    ViewBag.MensajeError = "El código de entrega no existe";
+                    return View("~/Views/Shared/ErrorInterno.aspx");
+                }
+                else {
+                    UpdateEntregaMaterialOP objUpdateEntregaMaterialOP = new UpdateEntregaMaterialOP();
+                    objUpdateEntregaMaterialOP.IdEntrega = objEntregaMaterialOP.IdEntrega;
+                    objUpdateEntregaMaterialOP.Cantidad = objEntregaMaterialOP.Cantidad;
+                    objUpdateEntregaMaterialOP.FecEntregaEfec = objEntregaMaterialOP.FecEntregaEfec.ToString("dd/MM/yyyy");
+                    objUpdateEntregaMaterialOP.FecEntregaProg = objEntregaMaterialOP.FecEntregaProg.ToString("dd/MM/yyyy");
+                    objUpdateEntregaMaterialOP.IdEntrega = objEntregaMaterialOP.IdEntrega;
+                    objUpdateEntregaMaterialOP.ValorRefProyecto = objProyectoInversion.ValorReferencial.ToString("#,##0.00");
+                    objUpdateEntregaMaterialOP.UbicacionProyecto = objProyectoInversion.TipoVia + " " + objProyectoInversion.NomVia + " " + objProyectoInversion.Ubicacion;
 
-            if (objEntregaMaterialOP.Material != null) {
-                objUpdateEntregaMaterialOP.IdMaterial = objEntregaMaterialOP.Material.IdMaterial;
+                    if (objEntregaMaterialOP.Material != null)
+                    {
+                        objUpdateEntregaMaterialOP.IdMaterial = objEntregaMaterialOP.Material.IdMaterial;
+                    }
+                    if (objEntregaMaterialOP.Proveedor != null)
+                    {
+                        objUpdateEntregaMaterialOP.IdProveedor = objEntregaMaterialOP.Proveedor.IdProveedor;
+                    }
+
+                    if (objEntregaMaterialOP.Proyecto != null)
+                    {
+                        objUpdateEntregaMaterialOP.IdProyecto = objEntregaMaterialOP.Proyecto.IdProyecto;
+                        objUpdateEntregaMaterialOP.NomProyecto = objEntregaMaterialOP.Proyecto.Nombre;
+                    }
+                    objUpdateEntregaMaterialOP.Observaciones = objEntregaMaterialOP.Observaciones;
+                    objUpdateEntregaMaterialOP.TipoEntrega = objEntregaMaterialOP.TipoEntrega;
+
+                    return View("Update", objUpdateEntregaMaterialOP);
+                }
             }
-            if (objEntregaMaterialOP.Proveedor != null) {
-                objUpdateEntregaMaterialOP.IdProveedor = objEntregaMaterialOP.Proveedor.IdProveedor;
-            }
-
-            if (objEntregaMaterialOP.Proyecto != null)
+            catch (Exception ex)
             {
-                objUpdateEntregaMaterialOP.IdProyecto = objEntregaMaterialOP.Proyecto.IdProyecto;
-                objUpdateEntregaMaterialOP.NomProyecto = objEntregaMaterialOP.Proyecto.Nombre;
+                String strMensaje = Helpers.ErrorHelper.ObtieneMensajeXException(ex);
+                ViewBag.MensajeError = strMensaje;
+                return View("~/Views/Shared/ErrorInterno.aspx");
             }
-            objUpdateEntregaMaterialOP.Observaciones = objEntregaMaterialOP.Observaciones;
-            objUpdateEntregaMaterialOP.TipoEntrega = objEntregaMaterialOP.TipoEntrega;
-
-            return View("Update",objUpdateEntregaMaterialOP);
         }
 
         [HttpPost]
@@ -141,7 +202,6 @@ namespace ObrasPublicas.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool bolGrabaOK = false;
                 try
                 {
                     EntregaMaterial_DAL objEntregaMaterial_DAL = new EntregaMaterial_DAL();
@@ -157,11 +217,11 @@ namespace ObrasPublicas.Controllers
 
                     if (intResultado == 1)
                     {
-                        bolGrabaOK = true;
                         ViewBag.MsgSuccess = "Se realizó la operación satisfactoriamente";
                     }
                     else if (intResultado == -998)
                     {
+                        ViewBag.Error = "1";
                         ModelState.AddModelError("", "No se pueden modificar la entrega debido a que el proyecto está en estado VIABLE o ADJUDICADO.");
                     }
                     else
@@ -172,6 +232,7 @@ namespace ObrasPublicas.Controllers
                 }
                 catch (Exception ex)
                 {
+                    ViewBag.Error = "1";
                     ModelState.AddModelError("", ex.ToString());
                 }
             }

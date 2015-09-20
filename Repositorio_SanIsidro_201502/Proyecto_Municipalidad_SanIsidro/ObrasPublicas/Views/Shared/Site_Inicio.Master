@@ -16,8 +16,6 @@
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
-
-
     <%: Styles.Render("~/Content/custom/css/bootstrap.min.css") %>
     <%: Styles.Render("~/Content/custom/css/AdminLTE.min.css") %>
     <%: Styles.Render("~/Content/custom/css/skins/_all-skins.min.css") %>

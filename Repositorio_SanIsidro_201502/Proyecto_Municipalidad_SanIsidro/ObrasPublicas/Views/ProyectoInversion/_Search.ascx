@@ -16,6 +16,11 @@
             strTipoFiltro = "CRO";
             bolMostrarOpcTodosEstado = false;
         }
+        else if (Model.Tipo == "CV")
+        {
+            strTipoFiltro = "CROCONSULTA";
+            bolMostrarOpcTodosEstado = true;
+        }
         else if (Model.Tipo == "EMC" || Model.Tipo == "EMU")
         {
             strTipoFiltro = "ENTMAT";
@@ -70,7 +75,6 @@
                     <div class="col-sm-12 text-center">
                         <button id="btnBuscarProyectos" class="btn btn-primary" type="submit">Buscar</button>
                     </div>
-
                     <%
                         List<ObrasPublicas.Entities.ProyectoInversion> lstProyectos = ViewBag.lstProyectos;
                         if (lstProyectos != null) {
@@ -85,7 +89,7 @@
                             <table class="table table-condensed">
                                 <thead>
                                   <tr>
-                                    <% if (Model.Tipo == "CU")
+                                    <% if (Model.Tipo == "CU" || Model.Tipo == "CV")
                                        { 
                                     %>
                                     <th></th>
@@ -93,7 +97,6 @@
                                     <th>C&oacute;digo</th>
                                     <th>Nombre</th>
                                     <th>Fecha emisión</th>
-                                    <th>Plazo Ejecución</th>
                                     <th>Estado</th>
                                 <% }%>
                                  <% 
@@ -130,13 +133,18 @@
                                               else if (Model.Tipo == "CC")
                                               {
                                              %> 
-                                            <a href="/cronogramaejecucionobra/create?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>">Crear</a>
+                                            <a href="/cronogramaejecucionobra/createactividad?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>&c=0">Crear</a>
                                             <%  }
                                               else if (Model.Tipo == "CU")
                                               {
                                              %> 
-                                            <a href="/cronogramaejecucionobra/edit?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>&c=<%:objProyecto.IdCronograma %>">Modificar</a>
-                                              <%  
+                                            <a href="/cronogramaejecucionobra/listado?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>&c=<%:objProyecto.IdCronograma %>">Modificar</a>
+                                            <%  }
+                                              else if (Model.Tipo == "CV")
+                                              {
+                                             %> 
+                                            <a href="/cronogramaejecucionobra/listado?p=<%:objProyecto.IdProyecto %>&e=<%:objProyecto.IdExpediente %>&c=<%:objProyecto.IdCronograma %>&v=1">Ver cronograma</a>
+                                              <% 
                                                 }
                                               else if (Model.Tipo == "EMC" || Model.Tipo == "EMU")
                                               {
@@ -170,22 +178,7 @@
                                                  %>
                                         </td>
                                         <td>
-                                            <%if (Model.Tipo == "EC" || Model.Tipo == "EU")
-                                              { 
-                                             %> 
-                                                                                            
-                                            <%  } %>
-                                            <%else if (Model.Tipo == "CU" || Model.Tipo == "CC" || Model.Tipo == "EMC" || Model.Tipo == "EMU" || Model.Tipo == "CIO" || Model.Tipo == "UIO")
-                                              { 
-                                             %> 
-                                            <%  }
-                                              else
-                                              {
-                                             %> 
-                                                  <a href="/cronogramaejecucionobra/detail?id=<%:objProyecto.IdExpediente %>">Detalle</a>                                  
-                                              <%  
-                                                }
-                                                 %>
+                                            
                                         </td>
                                         <% if (Model.Tipo == "CU") { 
                                         %>

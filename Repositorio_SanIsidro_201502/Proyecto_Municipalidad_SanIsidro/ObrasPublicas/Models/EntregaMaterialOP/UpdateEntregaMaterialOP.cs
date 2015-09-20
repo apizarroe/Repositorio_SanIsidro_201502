@@ -14,6 +14,8 @@ namespace ObrasPublicas.Models.EntregaMaterialOP
         public int IdEntrega { get; set; }
         public String UbicacionProyecto { get; set; }
         public String ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        public Decimal ValorRefExpediente { get; set; }
 
         [Required(ErrorMessage = "El campo Fecha de Entrega Programada es obligatorio")]
         public String FecEntregaProg { get; set; }

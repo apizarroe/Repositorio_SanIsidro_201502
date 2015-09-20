@@ -13,12 +13,14 @@ namespace ObrasPublicas.Models.EntregaMaterialOP
         public String NomProyecto { get; set; }
         public String UbicacionProyecto { get; set; }
         public String ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        public Decimal ValorRefExpediente { get; set; }
 
         [Required(ErrorMessage = "El campo Fecha de Entrega Programada es obligatorio")]
         public String FecEntregaProg { get; set; }
         [Required(ErrorMessage = "El campo Fecha de Entrega Efectiva es obligatorio")]
-        public String FecEntregaEfec { get; set; }
-        [Required(ErrorMessage = "El campo Observaciones es obligatorio")]
+        //public String FecEntregaEfec { get; set; }
+        //[Required(ErrorMessage = "El campo Observaciones es obligatorio")]
         public String Observaciones { get; set; }
         [Required(ErrorMessage = "El campo Tipo de Entrega es obligatorio")]
         public String TipoEntrega { get; set; }
@@ -42,14 +44,14 @@ namespace ObrasPublicas.Models.EntregaMaterialOP
             {
                 lstValidations.Add(new ValidationResult("La fecha de entrega programada debe ser mayor a la fecha actual", new[] { "FecEntregaProg" }));
             }
-            if (!DateTime.TryParse(FecEntregaEfec, out datFecTmp))
-            {
-                lstValidations.Add(new ValidationResult("La fecha de entrega efectiva es incorrecta", new[] { "FecEntregaEfec" }));
-            }
-            else if (Convert.ToDateTime(FecEntregaEfec) < DateTime.Now)
-            {
-                lstValidations.Add(new ValidationResult("La fecha de entrega efectiva debe ser mayor a la fecha actual", new[] { "FecEntregaEfec" }));
-            }
+            //if (!DateTime.TryParse(FecEntregaEfec, out datFecTmp))
+            //{
+            //    lstValidations.Add(new ValidationResult("La fecha de entrega efectiva es incorrecta", new[] { "FecEntregaEfec" }));
+            //}
+            //else if (Convert.ToDateTime(FecEntregaEfec) < DateTime.Now)
+            //{
+            //    lstValidations.Add(new ValidationResult("La fecha de entrega efectiva debe ser mayor a la fecha actual", new[] { "FecEntregaEfec" }));
+            //}
 
             if (this.Cantidad <= 0)
             {

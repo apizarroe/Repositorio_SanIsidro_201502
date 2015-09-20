@@ -15,7 +15,12 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
         public String NomProyecto { get; set; }
         public int PlazoEjecucion { get; set; }
         public String UbicacionProyecto { get; set; }
-        public String ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n0}")]
+        public Decimal ValorRefProyecto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n0}")]
+        public Decimal ValorRefExpediente { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n0}")]
+        public Decimal CostoProyecto { get; set; }
 
         [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public String NomAct { get; set; }
@@ -26,11 +31,11 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
         [Required(ErrorMessage = "El campo Fecha Fin Programada es obligatorio")]
         public String FechaFinProgAct { get; set; }
 
-        [Required(ErrorMessage = "El campo Fecha de Inicio de Ejecución es obligatorio")]
-        public String FechaIniEjecAct { get; set; }
+        //[Required(ErrorMessage = "El campo Fecha de Inicio de Ejecución es obligatorio")]
+        //public String FechaIniEjecAct { get; set; }
 
-        [Required(ErrorMessage = "El campo Fecha Fin de Ejecución es obligatorio")]
-        public String FechaFinEjecAct { get; set; }
+        //[Required(ErrorMessage = "El campo Fecha Fin de Ejecución es obligatorio")]
+        //public String FechaFinEjecAct { get; set; }
 
         [Required(ErrorMessage = "El campo Costo es obligatorio")]
         public decimal CostoAct { get; set; }
@@ -45,12 +50,6 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
         public String IdResponsablePersonaJuridica { get; set; }
 
         public String IdAreaResponsable { get; set; }
-        //[Required]
-        //public String ResponsableActNom { get; set; }
-        //[Required]
-        //public String ResponsableActApePat { get; set; }
-        //[Required]
-        //public String ResponsableActRazonSocial { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext context)
         {
@@ -62,7 +61,7 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha de inicio programada es incorrecta", new[] { "FechaIniProgAct" }));
             }
-            else if (Convert.ToDateTime(this.FechaIniProgAct) < DateTime.Now)
+            else if (Convert.ToDateTime(this.FechaIniProgAct) < DateTime.Now.Date)
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha de inicio programada debe ser mayor o igual a la fecha actual", new[] { "FechaIniProgAct" }));
             }
@@ -71,7 +70,7 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha fin programada es incorrecta", new[] { "FechaFinProgAct" }));
             }
-            else if (Convert.ToDateTime(this.FechaFinProgAct) < DateTime.Now)
+            else if (Convert.ToDateTime(this.FechaFinProgAct) < DateTime.Now.Date)
             {
                 lstValidations.Add(new ValidationResult("El campo Fecha fin programada debe ser mayor o igual a la fecha actual", new[] { "FechaFinProgAct" }));
             }
@@ -84,31 +83,31 @@ namespace ObrasPublicas.Models.CronogramaEjecucionObra
                 }
             }
 
-            if (!DateTime.TryParse(this.FechaIniEjecAct, out datFecTmp))
-            {
-                lstValidations.Add(new ValidationResult("El campo Fecha de inicio de ejecución es incorrecta", new[] { "FechaIniEjecAct" }));
-            }
-            else if (Convert.ToDateTime(this.FechaIniEjecAct) < DateTime.Now)
-            {
-                lstValidations.Add(new ValidationResult("El campo Fecha de inicio de ejecución debe ser mayor o igual a la fecha actual", new[] { "FechaIniEjecAct" }));
-            }
+            //if (!DateTime.TryParse(this.FechaIniEjecAct, out datFecTmp))
+            //{
+            //    lstValidations.Add(new ValidationResult("El campo Fecha de inicio de ejecución es incorrecta", new[] { "FechaIniEjecAct" }));
+            //}
+            //else if (Convert.ToDateTime(this.FechaIniEjecAct) < DateTime.Now.Date)
+            //{
+            //    lstValidations.Add(new ValidationResult("El campo Fecha de inicio de ejecución debe ser mayor o igual a la fecha actual", new[] { "FechaIniEjecAct" }));
+            //}
 
-            if (!DateTime.TryParse(this.FechaFinEjecAct, out datFecTmp))
-            {
-                lstValidations.Add(new ValidationResult("El campo Fecha fin de ejecución es incorrecta", new[] { "FechaFinEjecAct" }));
-            }
-            else if (Convert.ToDateTime(this.FechaFinEjecAct) < DateTime.Now)
-            {
-                lstValidations.Add(new ValidationResult("El campo Fecha fin de ejecución debe ser mayor o igual a la fecha actual", new[] { "FechaFinEjecAct" }));
-            }
+            //if (!DateTime.TryParse(this.FechaFinEjecAct, out datFecTmp))
+            //{
+            //    lstValidations.Add(new ValidationResult("El campo Fecha fin de ejecución es incorrecta", new[] { "FechaFinEjecAct" }));
+            //}
+            //else if (Convert.ToDateTime(this.FechaFinEjecAct) < DateTime.Now.Date)
+            //{
+            //    lstValidations.Add(new ValidationResult("El campo Fecha fin de ejecución debe ser mayor o igual a la fecha actual", new[] { "FechaFinEjecAct" }));
+            //}
 
-            if (DateTime.TryParse(this.FechaIniEjecAct, out datFecTmp) && DateTime.TryParse(this.FechaFinEjecAct, out datFecTmp))
-            {
-                if (Convert.ToDateTime(this.FechaIniEjecAct) > Convert.ToDateTime(this.FechaFinEjecAct))
-                {
-                    lstValidations.Add(new ValidationResult("La fecha fin de ejecución debe ser mayor a la fecha de inicio", new[] { "FechaFinEjecAct" }));
-                }
-            }
+            //if (DateTime.TryParse(this.FechaIniEjecAct, out datFecTmp) && DateTime.TryParse(this.FechaFinEjecAct, out datFecTmp))
+            //{
+            //    if (Convert.ToDateTime(this.FechaIniEjecAct) > Convert.ToDateTime(this.FechaFinEjecAct))
+            //    {
+            //        lstValidations.Add(new ValidationResult("La fecha fin de ejecución debe ser mayor a la fecha de inicio", new[] { "FechaFinEjecAct" }));
+            //    }
+            //}
             if (this.CostoAct <= 0)
             {
                 lstValidations.Add(new ValidationResult("El costo debe ser mayor a 0", new[] { "CostoAct" }));

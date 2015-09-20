@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Intranet.Master" Inherits="System.Web.Mvc.ViewPage<ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Municipalidad de San Isidro - Expedientes Técnicos de Proyectos de Inversión
@@ -17,6 +17,17 @@
     {
     }
 </style>
+    <%
+        String strTipo = Model.Tipo;
+        String strCSSBtnModificar = "btn btn-primary";
+        String strCSSBtnConsultar = "btn btn-default";
+
+        if (strTipo == "CV")
+        {
+            strCSSBtnModificar = "btn btn-default";
+            strCSSBtnConsultar = "btn btn-primary";
+        }
+         %>
     <section class="content-header" style="padding-bottom:5px">
         <h1>Actualizar Cronograma de Ejecución de Obra</h1>
         <div>&nbsp;</div>
@@ -26,8 +37,11 @@
                 <button id="btnIconCrear" type="button" class="btn btn-default" onclick="document.location.href='/CronogramaEjecucionObra/index'">
                     <span class="fa fa-file" aria-hidden="true"></span> Crear
                 </button>
-                <button id="btnIconModificar" type="button" class="btn btn-primary" onclick="document.location.href='/CronogramaEjecucionObra/search'">
+                <button id="btnIconModificar" type="button" class="<%:strCSSBtnModificar %>" onclick="document.location.href='/CronogramaEjecucionObra/search/0'">
                     <span class="fa fa-pencil" aria-hidden="true"></span> Modificar
+                </button>
+                <button id="btnIconConsultar" type="button" class="<%:strCSSBtnConsultar %>" onclick="document.location.href='/CronogramaEjecucionObra/search/1'">
+                    <span class="fa fa-search" aria-hidden="true"></span> Consultar cronogramas
                 </button>
             </div>
         </div>
@@ -39,10 +53,10 @@
             </div>
             <div class="panel-body">
                 <%
-                    ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel objSearchProyectoInversionModel = new ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel();
-                    objSearchProyectoInversionModel.Tipo = "CU";
+                    //ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel objSearchProyectoInversionModel = new ObrasPublicas.Models.ProyectoInversion.SearchProyectoInversionModel();
+                    //objSearchProyectoInversionModel.Tipo = ViewBag.TipoBusqueda;
                      %>
-                <%:Html.Partial("~/Views/ProyectoInversion/_search.ascx", objSearchProyectoInversionModel) %>
+                <%:Html.Partial("~/Views/ProyectoInversion/_search.ascx", Model) %>
         </div>
     </div>
     </section>

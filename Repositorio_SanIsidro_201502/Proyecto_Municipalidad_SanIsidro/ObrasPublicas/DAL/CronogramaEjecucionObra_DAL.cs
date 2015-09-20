@@ -66,6 +66,7 @@ namespace ObrasPublicas.DAL
             catch (Exception ex)
             {
                 intResultado = -999;
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -76,17 +77,56 @@ namespace ObrasPublicas.DAL
             try
             {
                 ObrasPublicasEntities objContext = new ObrasPublicasEntities();
-                ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
 
-                objContext.sp_gop_ins_act_cron_ejec_obra(pIntIdCronograma, pIntIdProyecto, pObjActividadCronogramaOP.Nombre, pObjActividadCronogramaOP.FechaIniEjec,
-                    pObjActividadCronogramaOP.FechaFinProg, pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
-                    pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
-                    pObjActividadCronogramaOP.IdEmpleado, objResult);
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
 
-                intResultado = Convert.ToInt32(objResult.Value.ToString());
+                ProyectoInversion objProyectoInversion = objProyectoInversion_DAL.ObtieneXId(pIntIdProyecto);
+
+                ExpedienteTecnicoOP_DAL objExpedienteTecnicoOP_DAL = new ExpedienteTecnicoOP_DAL();
+                Decimal decValorRefExp = objExpedienteTecnicoOP_DAL.ObtieneValorReferencialXIdExpediente(pIntIdExpediente);
+                Decimal decCostoProyecto = objProyectoInversion_DAL.ObtieneCostoTotalXIdProyecto(pIntIdProyecto);
+
+                if (objProyectoInversion.IdEstado != ProyectoInversion.STR_ID_ESTADO_VIABLE)
+                {
+                    intResultado = -997;
+                }
+                else if (decCostoProyecto + pObjActividadCronogramaOP.Costo > decValorRefExp)
+                {
+                    intResultado = -995;                    
+                }
+                else
+                {
+                    bool bolExisteCrono = objContext.OP_CRONOGRAMA_EJECUCION.Any(cro => cro.coExpediente == pIntIdExpediente);
+
+                    if (!bolExisteCrono)
+                    {
+                        OP_CRONOGRAMA_EJECUCION objCronogramaEjecucion = new OP_CRONOGRAMA_EJECUCION();
+                        objCronogramaEjecucion.coExpediente = pIntIdExpediente;
+                        objCronogramaEjecucion.feEmision = DateTime.Now;
+                        objCronogramaEjecucion.nuPlazoEjecucion = 0;
+
+                        objContext.AddToOP_CRONOGRAMA_EJECUCION(objCronogramaEjecucion);
+                        objContext.SaveChanges();
+                        pIntIdCronograma = objCronogramaEjecucion.coCronograma;
+                    }
+
+                    ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
+
+                    objContext.sp_gop_ins_act_cron_ejec_obra(pIntIdCronograma, pIntIdProyecto, pObjActividadCronogramaOP.Nombre, pObjActividadCronogramaOP.FechaFinProg,
+                        pObjActividadCronogramaOP.FechaFinProg, pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
+                        pObjActividadCronogramaOP.IdEmpleado, objResult);
+
+                    intResultado = Convert.ToInt32(objResult.Value.ToString());
+
+                    if (intResultado > 0)
+                    {
+                        intResultado = 1;
+                    }
+                }
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -132,28 +172,45 @@ namespace ObrasPublicas.DAL
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
 
-        public int ActualizaActividad(int pIntIdCronograma, int pIntIdExpediente, int pIntIdActividad, ActividadCronogramaOP pObjActividadCronogramaOP)
+        public int ActualizaActividad(int pIntIdCronograma, int pIntIdProyecto, int pIntIdExpediente, int pIntIdActividad, ActividadCronogramaOP pObjActividadCronogramaOP)
         {
             int intResultado = -999;
             try
             {
-                ObrasPublicasEntities objContext = new ObrasPublicasEntities();
-                ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
+                ProyectoInversion_DAL objProyectoInversion_DAL = new ProyectoInversion_DAL();
+                ExpedienteTecnicoOP_DAL objExpedienteTecnicoOP_DAL = new ExpedienteTecnicoOP_DAL();
+                Decimal decValorRefExp = objExpedienteTecnicoOP_DAL.ObtieneValorReferencialXIdExpediente(pIntIdExpediente);
+                Decimal decCostoProyecto = objProyectoInversion_DAL.ObtieneCostoTotalXIdProyecto(pIntIdProyecto);
 
-                objContext.sp_gop_upd_act_cron_ejec_obra(pIntIdExpediente, pIntIdCronograma, pIntIdActividad, pObjActividadCronogramaOP.Nombre, 
-                    pObjActividadCronogramaOP.FechaIniProg, pObjActividadCronogramaOP.FechaFinProg, 
-                    pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
-                    pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
-                    pObjActividadCronogramaOP.IdEmpleado, objResult);
+                ActividadCronogramaOP objActividadCronogramaOP =  ObtieneActvidadXId(pIntIdCronograma, pIntIdActividad);
+                decCostoProyecto -= objActividadCronogramaOP.Costo;
 
-                intResultado = Convert.ToInt32(objResult.Value.ToString());
+                if (decCostoProyecto + pObjActividadCronogramaOP.Costo > decValorRefExp)
+                {
+                    intResultado = -995;
+                }
+                else
+                {
+                    ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+                    ObjectParameter objResult = new ObjectParameter("pIntResult_out", typeof(int));
+
+                    objContext.sp_gop_upd_act_cron_ejec_obra(pIntIdExpediente, pIntIdCronograma, pIntIdActividad, pObjActividadCronogramaOP.Nombre,
+                        pObjActividadCronogramaOP.FechaIniProg, pObjActividadCronogramaOP.FechaFinProg,
+                        pObjActividadCronogramaOP.FechaIniEjec, pObjActividadCronogramaOP.FechaFinEjec,
+                        pObjActividadCronogramaOP.Costo, pObjActividadCronogramaOP.CantidadRRHH, pObjActividadCronogramaOP.IdTipoResponsable,
+                        pObjActividadCronogramaOP.IdEmpleado, objResult);
+
+                    intResultado = Convert.ToInt32(objResult.Value.ToString());
+                }
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.ToString());
             }
             return intResultado;
         }
@@ -171,7 +228,7 @@ namespace ObrasPublicas.DAL
                                       where exp.coExpediente == pIntIdExpediente && cro.coCronograma == pIntIdCronograma
                                       select new { exp, proy, cro }).ToList();
 
-                if (lstCronograma != null)
+                if (lstCronograma != null && lstCronograma.Count > 0)
                 {
                     objCronogramaEjecucionObra = new CronogramaEjecucionOP();
 
@@ -377,7 +434,6 @@ namespace ObrasPublicas.DAL
                     objItemCombo.Nombre = objEmpleado.ApellidoPaterno + " " + objEmpleado.Nombres;
 
                     lstEmpleados.Add(objItemCombo);
-                    break;
                 }
             }
             catch (Exception ex)
@@ -512,6 +568,16 @@ namespace ObrasPublicas.DAL
                 }
             }
             return intResultado;
+        }
+
+
+        public DateTime? Obtiene_MinFechaXCronograma(int pIntIdCronograma, int pIntIdExpediente)
+        {
+            ObrasPublicasEntities objContext = new ObrasPublicasEntities();
+
+            DateTime? datFecMinCronograma = objContext.OP_ACTIVIDAD_EJECUCION.Where(act => act.coCronograma == pIntIdCronograma).Select(act => act.feInicioProgramada).Min();
+
+            return datFecMinCronograma;
         }
     }
 }

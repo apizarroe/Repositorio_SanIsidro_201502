@@ -88,15 +88,15 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefProyecto) %></strong>
+                        <strong>Valor referencial: <%: Html.DisplayFor(m => m.ValorRefExpediente) %></strong>
                     </div>
                     </div>
 
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">* Fecha de entrega programada:</label>
+                    <label class="col-sm-3 control-label">Fecha de entrega programada:</label>
                     <div class="col-sm-9">
-                            <%: Html.TextBoxFor(m => m.FecEntregaProg, new { @class = "form-control", maxlength = "10", @placeholder="dd/mm/yyyy", @onkeydown="return f_OnKeyDown_fecha(this,event);", @onkeypress="return f_solo_numeros_fecha(event);", @onkeyup="return f_OnKeyUp_fecha(this,event);" }) %>
-                        <%: Html.ValidationMessageFor(m => m.FecEntregaProg) %>
+                            <%: Html.DisplayFor(m => m.FecEntregaProg) %>
+                            <%: Html.HiddenFor(m => m.FecEntregaProg) %>
                         <div id="Err_FecEntregaProg" class="field-validation-error"></div>
                         <p></p>
                     </div>
