@@ -15,16 +15,6 @@ D:\Desarrollo\GAC\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
 D:\Desarrollo\GAC\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll.config
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.pdb
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.dll
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.dll
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.pdb
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
-C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb
 C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll.config
 C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll
 C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.pdb
@@ -35,3 +25,13 @@ C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Mu
 C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
 C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
 C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll.config
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.dll
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Infraestructura.Data.SQL.pdb
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.dll
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.dll
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\Dominio.Core.Entities.pdb
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\bin\Debug\EntityFramework.xml
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.csprojResolveAssemblyReference.cache
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.dll
+C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Infraestructura.Data.SQL\obj\Debug\Infraestructura.Data.SQL.pdb

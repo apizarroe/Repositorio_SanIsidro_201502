@@ -610,9 +610,7 @@ function agregartecnicotmp() {
     if ($("#Select1").val() == null) {
         messajeError = messajeError + "Debe Ingresar un Tecnico\n"
     }
-    if ($("#ddlZona1").val() == '') {
-        messajeError = messajeError + "Debe Seleccionar una Zona  \n"
-    }
+    
     if (messajeError.length > 0) {
         alert(messajeError);
         return;
@@ -631,7 +629,7 @@ function agregartecnicotmp() {
     });
     if (error)
     {
-        $("#tblDetalleAsignar > tbody").append("<tr><td>" + $("#Select1").val() + "</td><td>" + $('#Select1  option:selected').text() + "</td><td>" + $("#ddlZona1").val() + "</td><td>" + $('#ddlZona1  option:selected').text() + "</td> <td><a href='javascript:void(0)' onclick='EliminarDetalleZona(this);' >Eliminar</a></td></tr>");
+        $("#tblDetalleAsignar > tbody").append("<tr><td>" + $("#Select1").val() + "</td><td>" + $('#Select1  option:selected').text() + "</td><td><a href='javascript:void(0)' onclick='EliminarDetalleZona(this);' >Eliminar</a></td></tr>");
         LimpiarCajasZonaDetalle();
     }
     
@@ -651,8 +649,6 @@ function ConfirmarAsignarTecnico() {
 
         var idtecnico = $.trim(this_row.find('td:eq(0)').html())
         var tecnico = $.trim(this_row.find('td:eq(1)').html())
-        var idzona = $.trim(this_row.find('td:eq(2)').html())
-        var zona = $.trim(this_row.find('td:eq(3)').html())
         var int_IdSolicitud = $("#int_IdSolicitud").val();
         var fechainicio = $("#hffechainicio").val();
         var fechafin = $("#hffechafin").val();
@@ -662,7 +658,7 @@ function ConfirmarAsignarTecnico() {
         CT_PROPUESTAINSPECCION_EMPLEADO = {
             "int_IdPropuestaInspeccion": int_IdSolicitud,
             "idEmpleado": idtecnico,
-            "int_IdZona": idzona,
+            "int_IdZona": 1,
             "dtm_FechaInicio": fechainicio,
             "dtm_FechaFin": fechafin
         };

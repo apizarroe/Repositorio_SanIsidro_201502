@@ -43,8 +43,9 @@ namespace GAC.Controllers
                                   select new
                                   {
                                       flt_Latitud = obj.flt_Latitud,
-                                      flt_Longitud = obj.flt_Longitud
-                                  }), JsonRequestBehavior.AllowGet);
+                                      flt_Longitud = obj.flt_Longitud,
+                                      marca = obj.var_Marca
+                                  }).OrderBy(x=>x.marca), JsonRequestBehavior.AllowGet);
 
             }
             if (opt == 2)

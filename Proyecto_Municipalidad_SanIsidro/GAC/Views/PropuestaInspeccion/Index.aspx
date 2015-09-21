@@ -88,7 +88,7 @@
                                 <td>
                                     <%if (item.int_Estado == 1 || item.int_Estado == 3) %>
                                     <% { %>
-                                    <%: Html.ActionLink("Edit", "Edit", new {  id=item.int_IdPropuestaInspeccion  }) %> |
+                                    <%: Html.ActionLink("Edit","Create", new {  id=item.int_IdPropuestaInspeccion  }) %> |
                                     
                                         
                                         

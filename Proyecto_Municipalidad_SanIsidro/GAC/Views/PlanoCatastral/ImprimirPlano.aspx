@@ -20,10 +20,11 @@
       <style type="text/css">
             html, body, #map-canvas { height: 600px; margin: 0; padding: 0;}
         </style>
-
-    <%: Styles.Render("~/Content/bootstrap.min.css") %>
-    <%: Styles.Render("~/Content/css/AdminLTE.min.css") %>
-    <%: Styles.Render("~/Content/css/skins/_all-skins.min.css") %>
+    <script src="<%:Url.Content("~/Content/custom/js/jquery-1.11.1.min.js")%>"></script>
+    <%: Styles.Render("~/Content/custom/css/bootstrap.min.css") %>
+    <%: Styles.Render("~/Content/custom/css/AdminLTE.min.css") %>
+    <%: Styles.Render("~/Content/custom/css/skins/_all-skins.min.css") %>
+    
 </head>
 <body>
     <div>
@@ -37,13 +38,13 @@
 
     </div>
     
-        <%: Scripts.Render("~/bundles/jquery") %>
+<link rel="stylesheet" href="<%:Url.Content("~/Content/custom/css/bootstrap.min.css")%>" media="screen">
     <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
-
     <%: Scripts.Render("~/Scripts/jstemplate/slimScroll/jquery.slimscroll.min.js") %>
     <%: Scripts.Render("~/Scripts/jstemplate/fastclick/fastclick.min.js") %>
     <%: Scripts.Render("~/Scripts/jstemplate/app.min.js") %>
     <%: Scripts.Render("~/Scripts/jstemplate/demo.js") %>
+
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
     <script type="text/javascript">

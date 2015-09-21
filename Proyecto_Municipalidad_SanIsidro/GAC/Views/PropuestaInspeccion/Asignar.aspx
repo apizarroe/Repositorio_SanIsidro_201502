@@ -97,12 +97,7 @@
                             <select id="Select1" class="form-control select2">
                              </select>
                         </div>
-                        <label>
-                            Zona
-                        </label>
-                        <select id="ddlZona1" class="ddlZona form-control">
-
-                        </select>
+                        
 
 
                         <!-- /.form group -->
@@ -118,10 +113,7 @@
                                 </th>
                                 <th>Técnico
                                 </th>
-                                <th>
-                                </th>
-                                <th>Zona
-                                </th>
+                                
 
 
                                 <th></th>

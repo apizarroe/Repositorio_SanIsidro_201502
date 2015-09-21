@@ -44,15 +44,31 @@ namespace GAC.Controllers
         //
         // GET: /PropuestaInspeccion/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
-            CT_PROPUESTAINSPECCION oCT_PROPUESTAINSPECCION = new CT_PROPUESTAINSPECCION();
-            oCT_PROPUESTAINSPECCION.dtm_FechaDocumento = DateTime.Now;
-            oCT_PROPUESTAINSPECCION.dtm_FechaRegistro  = DateTime.Now;
-            oCT_PROPUESTAINSPECCION.var_NroPropuesta= "";
+            int id_solicitud3 = 0;
+            CT_PROPUESTAINSPECCION oCT_PROPUESTAINSPECCION = null;
+            if (id > 0)
+            {
+                oCT_PROPUESTAINSPECCION=db.CT_PROPUESTAINSPECCION.Find(id);
+                id_solicitud3 = oCT_PROPUESTAINSPECCION.int_IdSolicitud.Value;
+
+                ViewBag.TextBotton = "Editar Propuesta";
+            }
+            else
+            {
+                oCT_PROPUESTAINSPECCION = new CT_PROPUESTAINSPECCION();
+                oCT_PROPUESTAINSPECCION.dtm_FechaDocumento = DateTime.Now;
+                oCT_PROPUESTAINSPECCION.dtm_FechaRegistro = DateTime.Now;
+                oCT_PROPUESTAINSPECCION.var_NroPropuesta = "";
+                ViewBag.TextBotton = "Emitir Propuesta";
+            }
 
 
-            ViewBag.int_IdSolicitud = new SelectList(db.CT_SOLICITUD, "int_IdSolicitud", "var_NroSolicitud");
+
+
+
+            ViewBag.int_IdSolicitud = new SelectList(db.CT_SOLICITUD, "int_IdSolicitud", "var_NroSolicitud", id_solicitud3);
             return View(oCT_PROPUESTAINSPECCION);
         }
 
@@ -161,10 +177,20 @@ namespace GAC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ct_propuestainspeccion.var_NroPropuesta = "";
-                ct_propuestainspeccion.int_Estado = 1;
-                db.CT_PROPUESTAINSPECCION.Add(ct_propuestainspeccion);
-                db.SaveChanges();
+                if (ct_propuestainspeccion.int_IdPropuestaInspeccion > 0)
+                {
+                    ct_propuestainspeccion.var_NroPropuesta = "";
+                    ct_propuestainspeccion.int_Estado = 1;
+                    db.Entry(ct_propuestainspeccion).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else {
+                    ct_propuestainspeccion.var_NroPropuesta = "";
+                    ct_propuestainspeccion.int_Estado = 1;
+                    db.CT_PROPUESTAINSPECCION.Add(ct_propuestainspeccion);
+                    db.SaveChanges();
+                }
+                
                 return RedirectToAction("Index");
             }
 

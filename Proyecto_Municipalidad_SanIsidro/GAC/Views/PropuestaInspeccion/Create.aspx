@@ -31,7 +31,19 @@
                                 <label>Nro Solicitud:</label>
 
                                 <div class="input-group">
-                                    <input type="text" class="form-control" disabled id="txtnroDolicitud">
+                                    
+
+                                    
+                                          <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new { @class = "form-control", @disabled = "true", @id="txtnroDolicitud" }) %>
+                                    
+                                           <%--<input type="text" class="form-control" disabled id="txtnroDolicitud">--%>
+                                    
+
+                                    
+
+
+                                    
+
                                     <span class="input-group-btn">
                                         <button class="btn btn-info btn-flat" type="button" data-toggle="modal" id="btnModalSoicitud"><i class="fa  fa-search"></i></button>
                                     </span>
@@ -40,12 +52,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tipo de Solicitud</label>
-                                <input type="text" class="form-control" id="txttiposolicitud" disabled>
+                                <%--<input type="text" class="form-control" id="txttiposolicitud" disabled>--%>
+                                <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.CT_TIPOSOLICITUD.var_TipoSolicitud, new {@class="form-control",@disabled="true",@id="txttiposolicitud" })%>
+                                
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nro Propuesta</label>
-                                <input type="email" class="form-control" id="txtnroPropuesta" disabled>
+                                <%--<input type="email" class="form-control" id="txtnroPropuesta" disabled>--%>
+                                <%: Html.TextBoxFor(model => Model.int_IdPropuestaInspeccion, new {@class="form-control",@disabled="true",@id="txtnroPropuesta" })%>
                             </div>
 
                         </div>
@@ -131,7 +146,7 @@
 
                         <p>
                             
-                            <input type="button"  value="Emitir Propuesta" class="btn btn-success" id="btnEmitirPropuesta"  />
+                            <input type="button"  value="<%:ViewBag.TextBotton%>" class="btn btn-success" id="btnEmitirPropuesta"  />
                             <%: Html.ActionLink("Cancelar", "Index","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
 
 
