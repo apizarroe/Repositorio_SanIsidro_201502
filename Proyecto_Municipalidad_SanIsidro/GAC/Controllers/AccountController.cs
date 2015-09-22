@@ -51,7 +51,9 @@ namespace GAC.Controllers
             MA_USUARIO user = ADUsuario.getOneUsuario(model.UserName, model.Password);
             if (user != null)
             {
-            return RedirectToLocal(returnUrl);
+                
+                    return RedirectToLocal(returnUrl);
+                
             }
             //if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             //{
@@ -75,7 +77,9 @@ namespace GAC.Controllers
             MA_USUARIO user = ADUsuario.getOneUsuario(model.UserName, model.Password);
             if (user != null)
             {
-                return RedirectToLocal(returnUrl);
+                
+                    return RedirectToLocal(returnUrl);
+                
             }
             //if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             //{
