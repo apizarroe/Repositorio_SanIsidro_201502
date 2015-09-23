@@ -1,0 +1,43 @@
+﻿@using System.Collections.ObjectModel
+
+@model PryMuniIntegrado.WEB.Models.ModeloInventario
+
+@{
+    ViewBag.Title = "Inventario";
+}
+
+<h2>Inventario</h2>
+
+@using (Html.BeginForm("Index", "Inventario", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <table style="border-collapse: separate; border-spacing: 3px; margin-bottom: 20px" >
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Cantidad)</td>
+            <td>@Html.TextBoxFor(model => model.Cantidad)</td>
+            <td>Ultimos Inventarios</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Periodo)</td>
+            <td>
+                @Html.DropDownListFor(model => model.Periodo, new
+                    SelectList(from i in Model.ListaInventario select i.Periodo), "TODOS",
+                    new { id = "cboPeriodo", style = "width: 137px;" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Estado)</td>
+            <td>
+                @Html.DropDownListFor(model => model.Estado, new
+                    SelectList(Enum.GetValues(typeof(PryMuniIntegrado.ET.EEstado))), "TODOS",
+                    new { id = "cboEstado", style = "width: 137px;" })
+            </td>
+            <td><input type="submit" value="Buscar" style="text-align:center" class="btn btn-default" /></td>
+        </tr>
+    </table>
+    @ViewBag.Error
+}
+<div id="paginador">
+    @Html.Partial("~/Views/Inventario/_ListaInventario.cshtml", Model.ListaInventarioFiltrada)
+</div>

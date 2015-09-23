@@ -1,0 +1,21 @@
+﻿@using PryMuniIntegrado.Seguridad
+
+@{
+    ViewBag.Title = "Bienvenido ";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Success</title>
+</head>
+<body>
+    <div>
+        Bienvenido @SessionPersister.NombreUsuario
+        <br/>
+        <a href="@Url.Action("Logout", "Cuenta")">Cerrar Sesion</a>
+    </div>
+</body>
+</html>

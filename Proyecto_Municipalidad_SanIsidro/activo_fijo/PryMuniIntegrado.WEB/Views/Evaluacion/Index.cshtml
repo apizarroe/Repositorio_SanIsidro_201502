@@ -1,0 +1,66 @@
+﻿@using System.Collections.ObjectModel
+
+@model PryMuniIntegrado.WEB.Models.ModeloEvaluacion
+
+@{
+    ViewBag.Title = "Evaluacion";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <div>
+        @using (Html.BeginForm("ListaPorCodigoEvaluacion", "Evaluacion", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table style="border-collapse: separate; border-spacing: 3px">
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.CodigoEvaluacion)</td>
+                    <td>
+                        @Html.DropDownList("codigoEvaluacion", new
+                SelectList(from i in Model.ListaEvaluacion select i.Codigo),
+                new { id = "cboEstado", style = "width: 137px;" })
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <input type="submit" value="Buscar" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            @ViewBag.Error
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("ListaPorCodigoInventario", "Evaluacion", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table style="border-collapse: separate; border-spacing: 3px; margin-bottom: 20px">
+                <tr>
+                    <td style="width:128px">@Html.DisplayNameFor(model => model.CodigoInventario)</td>
+                    <td>
+                        @Html.DropDownList("codigoInventario", new
+                        SelectList(from i in Model.ListaEvaluacion select i.CodInventario),
+                        new { id = "cboEstado", style = "width: 137px;" })
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <input type="submit" value="Buscar" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            @ViewBag.Error
+        }
+    </div>
+    <div id="paginador">
+        @Html.Partial("~/Views/Evaluacion/_ListaEvaluacion.cshtml", Model.ListaEvaluacionFiltrada)
+    </div>
+</div>
+

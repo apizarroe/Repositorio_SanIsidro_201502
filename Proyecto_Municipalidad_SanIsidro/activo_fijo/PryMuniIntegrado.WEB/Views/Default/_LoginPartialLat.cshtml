@@ -1,0 +1,18 @@
+﻿@using PryMuniIntegrado.Seguridad
+
+@if (!string.IsNullOrEmpty(SessionPersister.NombreUsuario))
+{
+    <div class="pull-left image">
+        <img src="@Url.Content("~/Images/imgtemplate/user2-160x160.jpg")" class="img-circle" alt="User Image" />
+    </div>
+    <div class="pull-left info">
+        <p>¡Hola, @SessionPersister.NombreUsuario!</p>
+        <p>
+            @using (Html.BeginForm("Logout", "Cuenta", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+            }
+        </p>        
+    </div>
+}

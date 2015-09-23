@@ -1,0 +1,39 @@
+﻿@model PryMuniIntegrado.ET.Usuario
+
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Cuenta", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Formulario de inicio de sesión</legend>
+        </fieldset>
+        <table style="border-collapse: separate; border-spacing: 3px;" width="100">
+            <tr>
+                <td>@Html.LabelFor(model => model.NombreUsuario)</td>
+                <td>@Html.TextBoxFor(model => model.NombreUsuario)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Contraseña)</td>
+                <td>@Html.PasswordFor(model => model.Contraseña)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Login" style="text-align:center" class="btn btn-default" /></td>
+            </tr>
+        </table>
+        @ViewBag.Error
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

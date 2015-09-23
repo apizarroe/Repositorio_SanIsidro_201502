@@ -1,0 +1,65 @@
+﻿@using System.Collections.ObjectModel
+
+@model PryMuniIntegrado.WEB.Models.ModeloInforme
+
+@{
+    ViewBag.Title = "Informe";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <div>
+        @using (Html.BeginForm("ListaInformePorCodigo", "Informe", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table style="border-collapse: separate; border-spacing: 3px; margin-bottom: 20px">
+                <tr>
+                    <td style="width:128px">@Html.DisplayNameFor(model => model.CodigoInforme)</td>
+                    <td>
+                        @Html.DropDownList("codigo", new
+                        SelectList(from i in Model.ListaInforme select i.Codigo),
+                        new { id = "cboInforme", style = "width: 137px;" })
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <input type="submit" value="Buscar" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            @ViewBag.Error
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("ListaInformePorCodigo", "Informe", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table style="border-collapse: separate; border-spacing: 3px">
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.CodigoEvaluacion)</td>
+                    <td>
+                        @Html.DropDownList("codigo", new
+                SelectList(from i in Model.ListaInforme select i.CodEvaluacion),
+                new { id = "cboEstado", style = "width: 137px;" })
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <input type="submit" value="Buscar" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            @ViewBag.Error
+        }
+    </div>    
+    <div id="paginador">
+        @Html.Partial("~/Views/Informe/_ListaInforme.cshtml", Model.ListaInformeFiltrada)
+    </div>
+</div>

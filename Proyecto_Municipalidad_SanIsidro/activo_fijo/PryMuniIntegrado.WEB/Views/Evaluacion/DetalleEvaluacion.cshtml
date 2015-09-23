@@ -1,0 +1,53 @@
+﻿@using System.Collections.ObjectModel
+
+@model PryMuniIntegrado.WEB.Models.DetalleEvaluacion
+
+@{
+    ViewBag.Title = "Evaluacion Tecnica";
+}
+
+<style type="text/css">
+
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <table style="width: 100%; margin-bottom: 30px">
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Evaluacion.CodInventario)</td>
+                <td><b>@Html.DisplayFor(model => model.Evaluacion.CodInventario)</b></td>
+                <td>@Html.DisplayNameFor(model => model.Evaluacion.Codigo)</td>
+                <td>@Html.EditorFor(model => model.Evaluacion.Codigo)</td>                
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Grabar Evaluacion" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Evaluacion.Estado)</td>
+                <td>@Html.EditorFor(model => model.Evaluacion.Estado)</td>
+            </tr>
+        </table>
+    </div>
+}
+
+<h3><ins>Detalle de Activos</ins></h3>
+
+<div id="paginador">
+    @Html.Partial("~/Views/Evaluacion/_ListaActivo.cshtml", Model.Activos)
+</div>
+<div>
+    <h4><b>@Html.ActionLink("<<Atras", "Index")</b></h4>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

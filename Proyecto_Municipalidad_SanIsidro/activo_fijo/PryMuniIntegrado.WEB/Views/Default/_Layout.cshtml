@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width">
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        ul {
+            list-style: none;
+        }
+
+        li {
+            list-style: none;
+            list-style-type: none;
+            border-bottom: 0px solid #CCCCCC;
+        }
+
+        #titulo {
+            margin-bottom: 5px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: bold;
+            background: #086f23;
+        }
+
+        .modal-content {
+            width: 600px !important;
+            margin: 30px auto !important;
+        }
+
+        #dialog-modal {
+            border: 1px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #ffffff;
+            width: 300px;
+            border-radius: 10px;
+        }
+    </style>
+
+    <title>@ViewBag.Title - Ciudad Sostenible</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/AdminLTE.min.css")
+    @Styles.Render("~/Content/css/skins/_all-skins.min.css")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    <script>
+        $(function () {
+            $("#dialog-modal").dialog({
+                autoOpen: false,
+                width: 300,
+                height: 250,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $("#modal-opener").click(function () {
+                $("#dialog-modal").dialog("open");
+            });
+        });
+
+        function onSuccess() {
+            $("#dialog-modal").dialog("close");
+        }
+    </script>
+</head>
+<body class="fixed sidebar-mini skin-green">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>SI</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                    <img src="@Url.Content("~/Images/logo-san-isidro.png")" class="user-image" alt="User Image">
+                </span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @Html.Partial("~/Views/Default/_LoginPartial.cshtml")
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="@Url.Content("~/images/imgtemplate/user2-160x160.jpg")" class="user-image" alt="User Image">
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    @Html.Partial("~/Views/Default/_LoginPartialLat.cshtml")
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <article class="treeview">
+                    @Html.Partial("~/Views/Default/_MenuPartial.cshtml")
+                </article>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0
+            </div>
+            <strong>Copyright &copy; 2014-2015 <a href="#">Municipalidad San Isidro</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/jstemplate/slimScroll/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/jstemplate/fastclick/fastclick.min.js")
+    @Scripts.Render("~/Scripts/jstemplate/app.min.js")
+    @Scripts.Render("~/Scripts/jstemplate/demo.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

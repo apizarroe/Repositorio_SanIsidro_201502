@@ -1,0 +1,12 @@
+﻿@using PryMuniIntegrado.Seguridad
+
+@if (!string.IsNullOrEmpty(SessionPersister.NombreUsuario))
+{
+    <ul class="treeview-menu">
+        <li id="titulo" class="header">ACTIVO FIJO</li>
+        <li>@Html.ActionLink("Inventario", "Index", "Inventario", new { area = "" }, new { @class = "fa fa-binoculars" })</li>
+        <li>@Html.ActionLink("Evaluación Tecnica", "Index", "Evaluacion", new { area = "" }, new { @class = "fa fa-area-chart" })</li>
+        <li>@Html.ActionLink("Informe Técnico", "Index", "Informe", new { area = "" }, new { @class = "fa fa-bullseye" })</li>
+        <li>@Html.ActionLink("Pecosa", "Index", "Pecosa", new { area = "" }, new { @class = "fa fa-book" })</li>
+    </ul>
+}

@@ -1,0 +1,7 @@
+﻿@using PryMuniIntegrado.Seguridad
+
+@if (!string.IsNullOrEmpty(SessionPersister.NombreUsuario))
+{
+    <img src="@Url.Content("~/images/imgtemplate/user2-160x160.jpg")" class="user-image" alt="User Image">
+    <span class="hidden-xs">¡Hola, @SessionPersister.NombreUsuario!</span>
+}

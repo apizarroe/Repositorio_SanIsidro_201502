@@ -1,0 +1,144 @@
+﻿@using System.Collections.ObjectModel
+
+@model PryMuniIntegrado.WEB.Models.ModeloInventario
+
+@{
+    ViewBag.Title = "Ejecucion de Inventario";
+
+}
+
+<h2>Ejecucion de Inventario</h2>
+@using (Html.BeginForm("GrabaInventario", "Inventario", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    @Html.HiddenFor(model => model.Inventario.Codigo)
+    @Html.HiddenFor(model => model.Inventario.Comite)
+    @Html.HiddenFor(model => model.Inventario.Periodo)
+    @Html.HiddenFor(model => model.Inventario.InicioProgramado)
+    @Html.HiddenFor(model => model.Inventario.FinalReal)
+    <div>
+        <table style="width: 100%; margin-bottom: 30px">
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Inventario.Codigo)</td>
+                <td><b>@Html.DisplayFor(model => model.Inventario.Codigo)</b></td>
+                <td>@Html.DisplayNameFor(model => model.Inventario.Comite)</td>
+                @*<td>
+                    <button id="modal-opener">@Model.Inventario.Comite</button> 
+                    <div id="dialog-modal">
+                        <p>This is test model popup</p>
+                    </div>                   
+                </td>*@
+                <td>@Html.ActionLink(Model.Inventario.Comite, "AbrirEmpleadoComite", "Inventario", new { codigo = Model.Inventario.Comite }, new { @class = "modal-link btn btn-success" })</td>
+                @*<td>@Html.DisplayFor(model => model.Inventario.Comite)</td>*@
+                <td>@Html.DisplayNameFor(model => model.Inventario.InicioProgramado)</td>
+                <td>@Html.DisplayFor(model => model.Inventario.InicioProgramado)</td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Grabar Inventario" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Inventario.Estado)</td>
+                <td>
+                    @Html.DropDownListFor(model => model.Inventario.Estado, new
+                        SelectList(Enum.GetValues(typeof(PryMuniIntegrado.ET.EEstado))),
+                        new { id = "cboPeriodo", style = "width: 137px;" })
+                </td>
+                <td>@Html.DisplayNameFor(model => model.Inventario.InicioReal)</td>
+                <td>@Html.EditorFor(model => model.Inventario.InicioReal)</td>
+                <td>@Html.DisplayNameFor(model => model.Inventario.FinalReal)</td>
+                <td>@Html.DisplayFor(model => model.Inventario.FinalReal)</td>
+            </tr>
+        </table>
+    </div>
+}
+
+<h3><ins>Detalle de Activos</ins></h3>
+
+@using (Html.BeginForm("DetalleInventario", "Inventario", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <table style="border-collapse: separate; border-spacing: 3px; margin-bottom: 20px">
+        @Html.HiddenFor(model => model.CodigoInventario)
+        <tr>
+            <td style="vertical-align:bottom"><b style="font-size:18px; margin:auto">@Html.DisplayNameFor(model => model.CodigoActivo)</b></td>
+            <td>
+                @Html.DropDownListFor(model => model.CodigoActivo, new
+                        SelectList(from a in Model.ListaActivo select a), string.Empty,
+                        new { id = "cboActivo", style = "width: 137px;" })
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="&#10010;" class="btn btn-default" />
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    @ViewBag.Error
+}
+
+<div id="paginador">
+    @*@Html.Partial("~/Views/Inventario/_ListaActivo.cshtml", Model.Inventario.Activos)*@
+    <table id="tblDatos" class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].CodigoActivo)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].Decripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].Marca)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].Modelo)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].Tipo)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].Sede)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].FechaAlta)</th>
+            <th>@Html.DisplayNameFor(model => model.Inventario.Activos[0].Evaluar)</th>
+            <th></th>
+        </tr>
+        @foreach (var a in Model.Inventario.Activos)
+        {
+            <tr>
+                <td>@Html.DisplayFor(item => a.CodigoActivo)</td>
+                <td>@Html.DisplayFor(item => a.Decripcion)</td>
+                <td>@Html.DisplayFor(item => a.Marca)</td>
+                <td>@Html.DisplayFor(item => a.Modelo)</td>
+                <td>@Html.DisplayFor(item => a.Tipo)</td>
+                <td>@Html.DisplayFor(item => a.Sede)</td>
+                @*<td>@Html.TextBoxFor(item => a.FechaAlta.ToString("d"))</td>*@
+                <td>@a.FechaAlta.ToString("d")</td>
+                <td>@Html.CheckBoxFor(item => a.Evaluar)Si</td>
+                <td style="display:table-cell; vertical-align:top">
+                    <div>
+                        @*<p>@Html.ActionLink("\u2714", "ActualizaActivo", "Inventario", new { codigoActivo = a.CodigoActivo, codigoInventario = Model.CodigoInventario, iEvaluar = a.Evaluar }, new { @class = "btn btn-default" })</p>
+                        <p>@Html.ActionLink("\u274C", "EliminarActivo", "Inventario", new { codigoActivo = a.CodigoActivo, codigoInventario = Model.CodigoInventario }, new { @class = "btn btn-default" })</p>*@
+                        <a style="width:35px; height:35px;" class="btn btn-default" title="Guardar" href="~/Inventario/ActualizaActivo/@a.CodigoActivo/@Model.CodigoInventario/@a.Evaluar"><p><b>&#10003;</b></p></a>
+                        <a style="width:35px; height:35px;" class="btn btn-default" title="Eliminar" onclick="return confirm('¿Estas seguro?');" href="~/Inventario/EliminaActivo/@a.CodigoActivo/@Model.CodigoInventario"><p><b>&#10007;</b></p></a>
+                    </div>
+                    @*<div>
+                            <input width="35" height="35" type="image" src="@Url.Content("~/Images/78.png")" onsubmit="submit();" class="btn btn-default" />
+                            <input width="35" height="35" type="image" src="@Url.Content("~/Images/77.png")" onsubmit="submit();" class="btn btn-default" />
+                        </div>*@
+                </td>
+            </tr>
+        }
+    </table>
+    @*<script type="text/javascript">
+                var p = new Paginador(
+                    document.getElementById('paginador'),
+                    document.getElementById('tblDatos'),
+                    4
+                );
+                p.Mostrar();
+        </script>*@
+</div>
+<div>
+    <h4><b>@Html.ActionLink("<<Atras", "Index")</b></h4>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
