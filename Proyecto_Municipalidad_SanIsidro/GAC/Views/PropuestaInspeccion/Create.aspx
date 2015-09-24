@@ -7,13 +7,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Emitir Propuesta de Inspeccion
+        <h1>Emitir Propuesta de Inspección
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspeccion</a></li>
-            <li class="active">Lista de Solicitud Catastral</li>
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Emitir Propuesta de Inspección</a></li>
+            
 
         </ol>
     </section>
@@ -23,7 +23,7 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class='box-header'>
-                        <h3 class="box-title">Informacion Solicitud</h3>
+                        <h3 class="box-title">Información Solicitud</h3>
                     </div>
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
@@ -118,13 +118,13 @@
                         </div>
                         <div class="form-group">
                             <label>Cantidad Responsable(*)</label>
-                            <%: Html.EditorFor(model => model.int_CantResponsable, new { @class = "form-control" ,@placeholder="Descripcion de Inspeccion"  }) %>
+                            <%: Html.EditorFor(model => model.int_CantResponsable, new { @class = "form-control" ,@placeholder="Descripción de Inspección"  }) %>
                             <%: Html.ValidationMessageFor(model => model.int_CantResponsable) %>
                         </div>
                         <div class="form-group">
-                            <label>Descripcion(*)</label>
+                            <label>Descripción(*)</label>
 
-                            <%: Html.TextAreaFor(model => model.var_Descripcion,htmlAttributes: new { @class = "form-control" ,@placeholder="Descripcion de Inspeccion"  })%>
+                            <%: Html.TextAreaFor(model => model.var_Descripcion,htmlAttributes: new { @class = "form-control" ,@placeholder="Descripción de Inspección"  })%>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
 

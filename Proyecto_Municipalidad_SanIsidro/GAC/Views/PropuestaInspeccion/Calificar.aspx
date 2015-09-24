@@ -7,12 +7,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Lista de Propuesta de Inspeccion
+        <h1>Lista de Propuesta de Inspección a calificar
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">Lista de Propuesta de Inspeccion</li>
+            <li class="active">Lista de Propuesta de Inspección a calificar</li>
 
         </ol>
     </section>

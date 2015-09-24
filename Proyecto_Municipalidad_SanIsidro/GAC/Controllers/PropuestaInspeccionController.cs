@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Dominio.Core.Entities.ModeloGestionCatastral;
+using Infraestructura.Data.SQL;
 
 namespace GAC.Controllers
 {
@@ -18,14 +19,13 @@ namespace GAC.Controllers
 
         public ActionResult Index()
         {
-            var ct_propuestainspeccion = db.CT_PROPUESTAINSPECCION.Include(c => c.CT_SOLICITUD);
-            return View(ct_propuestainspeccion.ToList());
+
+            return View(ADPropuestaInspeccion.getAll());
         }
 
         public ActionResult Calificar()
         {
-            var ct_propuestainspeccion = db.CT_PROPUESTAINSPECCION.Include(c => c.CT_SOLICITUD);
-            return View(ct_propuestainspeccion.ToList());
+            return View(ADPropuestaInspeccion.getAll());
         }
 
         //
@@ -33,7 +33,7 @@ namespace GAC.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            CT_PROPUESTAINSPECCION ct_propuestainspeccion = db.CT_PROPUESTAINSPECCION.Find(id);
+            CT_PROPUESTAINSPECCION ct_propuestainspeccion = ADPropuestaInspeccion.getOne(id);
             if (ct_propuestainspeccion == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace GAC.Controllers
             CT_PROPUESTAINSPECCION oCT_PROPUESTAINSPECCION = null;
             if (id > 0)
             {
-                oCT_PROPUESTAINSPECCION=db.CT_PROPUESTAINSPECCION.Find(id);
+                oCT_PROPUESTAINSPECCION=ADPropuestaInspeccion.getOne(id);
                 id_solicitud3 = oCT_PROPUESTAINSPECCION.int_IdSolicitud.Value;
 
                 ViewBag.TextBotton = "Editar Propuesta";
@@ -68,7 +68,7 @@ namespace GAC.Controllers
 
 
 
-            ViewBag.int_IdSolicitud = new SelectList(db.CT_SOLICITUD, "int_IdSolicitud", "var_NroSolicitud", id_solicitud3);
+            ViewBag.int_IdSolicitud = new SelectList(ADSolicitud.getAll(), "int_IdSolicitud", "var_NroSolicitud", id_solicitud3);
             return View(oCT_PROPUESTAINSPECCION);
         }
 
@@ -78,9 +78,7 @@ namespace GAC.Controllers
 
 
             var stands =
-                          db.MA_EMPLEADO
-                            .Where(s => s.MA_AREA.idArea==11)
-                            .ToList()
+                          ADEmpleado.getAll()
                             .Select(s => new
                             {
                                 idEmpleado = s.idEmpleado,
@@ -91,6 +89,11 @@ namespace GAC.Controllers
             ViewBag.idEmpleado = new SelectList(stands, "idEmpleado", "Description");
             return View();
         }
+        /// <summary>
+        /// Asigan  un tecnico a una propuesta especifica
+        /// </summary>
+        /// <param name="oCT_PROPUESTAINSPECCION_EMPLEADO"> Objeto que contiene todos los datos de la relaci</param>
+        /// <returns>True o false deacuerdo al exito</returns>
         public ActionResult InsertarAsignar(CT_PROPUESTAINSPECCION_EMPLEADO oCT_PROPUESTAINSPECCION_EMPLEADO)
         {
             if (ModelState.IsValid)
@@ -109,6 +112,12 @@ namespace GAC.Controllers
                 return Json(new { success = false });
             }
         }
+        /// <summary>
+        /// Obtiene los tecnicos disponibles para asignar
+        /// </summary>
+        /// <param name="strfechainicio">Fecha de Inicio de inspección</param>
+        /// <param name="strfechafin">Fecha fin de inspección</param>
+        /// <returns></returns>
         public ActionResult GetTecnico(String strfechainicio, String strfechafin)
         {
 

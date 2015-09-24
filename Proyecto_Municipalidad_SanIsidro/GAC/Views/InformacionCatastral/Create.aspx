@@ -7,12 +7,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Mantener Informacion Catastral
+        <h1>Mantener Información Catastral
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">Mantener Informacion catastral</li>
+            <li class="active">Mantener Información catastral</li>
 
         </ol>
     </section>
@@ -22,7 +22,7 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class='box-header'>
-                        <h3 class="box-title">Informacion Solicitud</h3>
+                        <h3 class="box-title">Información Solicitud</h3>
                     </div>
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
@@ -82,7 +82,7 @@
                                 <div class="tab-pane active" id="tab_1-1">
                                     <table class="table table-hover" id="tblZonas">
                                         <tr>
-                                            <th>Codigo
+                                            <th>Código
                                             </th>
                                             <th>Nombre
                                             </th>
@@ -118,7 +118,7 @@
                                         </div>
                                         <table class="table table-hover" id="tblManzanas">
                                             <tr>
-                                                <th>Codigo
+                                                <th>Código
                                                 </th>
                                                 <th>Nombre
                                                 </th>
@@ -170,7 +170,7 @@
 
                                         <table class="table table-hover" id="tblLotes">
                                             <tr>
-                                                <th>Codigo
+                                                <th>Código
                                                 </th>
                                                 <th>Nombre
                                                 </th>
@@ -240,7 +240,7 @@
                                     Lista de Predios
                                     <table class="table table-hover" id="tblPredio">
                                         <tr>
-                                            <th>Codigo
+                                            <th>Código
                                             </th>
                                             <th>Nombre
                                             </th>
@@ -564,7 +564,7 @@
                         <div class="col-xs-4">
 
                             <label for="exampleInputEmail1">Código Manzana</label>
-                            <input type="text" class="form-control" placeholder="Codigo Manzana" id="txtCodigoManzana">
+                            <input type="text" class="form-control" placeholder="Código Manzana" id="txtCodigoManzana">
                         </div>
                         <div class="col-xs-4">
 
@@ -595,8 +595,8 @@
                     </h5>
                     <div class="row">
                         <div class="col-xs-4">
-                            <label>Codigo Predio</label>
-                            <input type="text" class="form-control" placeholder="Codigo Predio" id="txtPreCodigo">
+                            <label>Código Predio</label>
+                            <input type="text" class="form-control" placeholder="Código Predio" id="txtPreCodigo">
                         </div>
 
                         <div class="col-xs-4">

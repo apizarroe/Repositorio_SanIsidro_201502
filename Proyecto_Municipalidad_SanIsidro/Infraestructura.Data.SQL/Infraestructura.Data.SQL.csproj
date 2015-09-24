@@ -87,6 +87,7 @@
     <Compile Include="EVENTO.cs">
       <DependentUpon>AtencionCiudadano.tt</DependentUpon>
     </Compile>
+    <Compile Include="GestionCatastral\ADEmpleado.cs" />
     <Compile Include="GestionCatastral\ADGeolocalizacion.cs" />
     <Compile Include="GestionCatastral\ADLote.cs" />
     <Compile Include="GestionCatastral\ADManzana.cs" />

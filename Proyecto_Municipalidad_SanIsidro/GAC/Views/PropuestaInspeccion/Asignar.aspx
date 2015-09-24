@@ -23,7 +23,7 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class='box-header'>
-                        <h3 class="box-title">Informacion Solicitud</h3>
+                        <h3 class="box-title">Información Solicitud</h3>
                     </div>
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
@@ -70,7 +70,7 @@
                 <!-- Form Element sizes -->
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Asignar Técnico - Zona</h3>
+                        <h3 class="box-title">Asignar Técnico</h3>
                     </div>
                     <div class="box-body">
 
@@ -78,7 +78,7 @@
 
 
                         <div class="form-group">
-                            <label>Tiempo de Inspeccion:</label>
+                            <label>Tiempo de Inspección:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
@@ -103,7 +103,7 @@
                         <!-- /.form group -->
                         <p>
 
-                            <input type="button" value="Agregar Tecnico" class="btn btn-success" id="btnAsignartecnico" />
+                            <input type="button" value="Agregar Técnico" class="btn btn-success" id="btnAsignartecnico" />
                             
                         </p>
                         <br />

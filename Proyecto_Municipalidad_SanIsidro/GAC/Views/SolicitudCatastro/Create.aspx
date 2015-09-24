@@ -23,7 +23,7 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class="box-header">
-                        <h3 class="box-title">Informacion de Catastro</h3>
+                        <h3 class="box-title">Información de Catastro</h3>
                     </div>
                     <% using (Html.BeginForm())
                        { %>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label>Descripción</label>
 
-                            <%: Html.TextAreaFor(model => model.var_Descripcion,3,6,new { @class = "form-control" ,@placeholder="Descripcion.." }) %>
+                            <%: Html.TextAreaFor(model => model.var_Descripcion,3,6,new { @class = "form-control" ,@placeholder="Descripción.." }) %>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
                     </div>
