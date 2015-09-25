@@ -12,8 +12,13 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+<<<<<<< HEAD
             <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspección</a></li>
             <li class="active">Lista de Solicitud Catastral</li>
+=======
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Calificar Propuesta de Inspección</a></li>
+            
+>>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
 
         </ol>
     </section>
@@ -102,16 +107,16 @@
                             
                         </div>
                         <div class="form-group">
-                            <label>Descripcion</label>
+                            <label>Descripción</label>
 
-                            <%: Html.TextAreaFor(model => model.var_Descripcion,htmlAttributes: new { @class = "form-control" ,@placeholder="Descripcion de Inspeccion" ,@disabled="true"  })%>
+                            <%: Html.TextAreaFor(model => model.var_Descripcion,htmlAttributes: new { @class = "form-control" ,@placeholder="Descripción de Inspección" ,@disabled="true"  })%>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
 
                         <div class="form-group">
-                            <label>Observacion</label>
+                            <label>Observación</label>
 
-                            <%: Html.TextAreaFor(model => model.var_Observacion,htmlAttributes: new { @class = "form-control" ,@placeholder="Observacion"   })%>
+                            <%: Html.TextAreaFor(model => model.var_Observacion,htmlAttributes: new { @class = "form-control" ,@placeholder="Observación"   })%>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
                         

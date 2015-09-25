@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label>Descripción</label>
 
-                            <%: Html.TextAreaFor(model => model.var_Descripcion,3,6,new { @class = "form-control" ,@placeholder="Descripcion.." }) %>
+                            <%: Html.TextAreaFor(model => model.var_Descripcion,3,6,new { @class = "form-control" ,@placeholder="Descripción.." }) %>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
                     </div>

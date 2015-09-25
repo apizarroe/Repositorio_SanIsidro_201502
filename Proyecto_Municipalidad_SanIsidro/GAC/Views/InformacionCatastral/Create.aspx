@@ -564,7 +564,7 @@
                         <div class="col-xs-4">
 
                             <label for="exampleInputEmail1">Código Manzana</label>
-                            <input type="text" class="form-control" placeholder="Codigo Manzana" id="txtCodigoManzana">
+                            <input type="text" class="form-control" placeholder="Código Manzana" id="txtCodigoManzana">
                         </div>
                         <div class="col-xs-4">
 
@@ -596,7 +596,11 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <label>Código Predio</label>
+<<<<<<< HEAD
                             <input type="text" class="form-control" placeholder="Codigo Predio" id="txtPreCodigo">
+=======
+                            <input type="text" class="form-control" placeholder="Código Predio" id="txtPreCodigo">
+>>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
                         </div>
 
                         <div class="col-xs-4">

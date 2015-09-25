@@ -228,16 +228,16 @@
                                 <a href="../../solicitudcatastro/Index"><i class="fa fa-circle-o"></i>Registrar Solicitud</a>
                             </li>
                             <li>
-                                <a href="../../propuestainspeccion/Index"><i class="fa fa-circle-o"></i>Emitir Propuesta de Inspeccion</a>
+                                <a href="../../propuestainspeccion/Index"><i class="fa fa-circle-o"></i>Emitir Propuesta de Inspección</a>
                             </li>
                             <li>
-                                <a href="../../propuestainspeccion/calificar"><i class="fa fa-circle-o"></i>Calificar Propuesta de Inspeccion</a>
+                                <a href="../../propuestainspeccion/calificar"><i class="fa fa-circle-o"></i>Calificar Propuesta de Inspección</a>
                             </li>
                             <li>
-                                <a href="../../propuestainspeccion/Asignar"><i class="fa fa-circle-o"></i>Asignar Tecnico</a>
+                                <a href="../../propuestainspeccion/Asignar"><i class="fa fa-circle-o"></i>Asignar Técnico</a>
                             </li>
                             <li>
-                                <a href="../../InformacionCatastral/Create"><i class="fa fa-circle-o"></i>Mantener Informacion Cat.</a>
+                                <a href="../../InformacionCatastral/Create"><i class="fa fa-circle-o"></i>Mantener Información Cat.</a>
                             </li>
 
                             <li>

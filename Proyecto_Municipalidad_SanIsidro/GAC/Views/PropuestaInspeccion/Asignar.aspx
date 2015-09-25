@@ -70,7 +70,7 @@
                 <!-- Form Element sizes -->
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Asignar Técnico - Zona</h3>
+                        <h3 class="box-title">Asignar Técnico</h3>
                     </div>
                     <div class="box-body">
 
