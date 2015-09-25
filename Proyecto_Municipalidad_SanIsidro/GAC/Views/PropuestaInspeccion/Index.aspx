@@ -12,7 +12,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">Lista de Propuesta de Inspeccion</li>
+            <li class="active">Lista de Propuesta de Inspección</li>
 
         </ol>
     </section>
@@ -88,7 +88,7 @@
                                 <td>
                                     <%if (item.int_Estado == 1 || item.int_Estado == 3) %>
                                     <% { %>
-                                    <%: Html.ActionLink("Edit", "Edit", new {  id=item.int_IdPropuestaInspeccion  }) %> |
+                                    <%: Html.ActionLink("Edit","Create", new {  id=item.int_IdPropuestaInspeccion  }) %> |
                                     
                                         
                                         

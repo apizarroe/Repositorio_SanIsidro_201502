@@ -1,13 +1,3 @@
-C:\Users\Fernando\Downloads\LayerCatastro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll
-C:\Users\Fernando\Downloads\LayerCatastro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.pdb
-C:\Users\Fernando\Downloads\LayerCatastro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.csprojResolveAssemblyReference.cache
-C:\Users\Fernando\Downloads\LayerCatastro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
-C:\Users\Fernando\Downloads\LayerCatastro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb
-D:\Desarrollo\GAC\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll
-D:\Desarrollo\GAC\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.pdb
-D:\Desarrollo\GAC\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
-D:\Desarrollo\GAC\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb
-D:\Desarrollo\GAC\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.csprojResolveAssemblyReference.cache
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll.config
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.pdb
@@ -15,10 +5,3 @@ C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipali
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\EntityFramework.xml
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
 C:\Users\jesus\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll.config
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.dll
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\Dominio.Core.Entities.pdb
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\EntityFramework.dll
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\bin\Debug\EntityFramework.xml
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.dll
-C:\Users\José La Rosa\Documents\GitHub\Repositorio_SanIsidro_201502\Proyecto_Municipalidad_SanIsidro\Dominio.Core.Entities\obj\Debug\Dominio.Core.Entities.pdb

@@ -1,18 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Catastro.Master" Inherits="System.Web.Mvc.ViewPage<Dominio.Core.Entities.ModeloGestionCatastral.CT_SOLICITUD>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Mantener Informacion Catastral
+    Mantener Información Catastral
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Mantener Informacion Catastral
+        <h1>Mantener Información Catastral
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">Mantener Informacion catastral</li>
+            <li class="active">Mantener Información catastral</li>
 
         </ol>
     </section>
@@ -22,12 +22,12 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class='box-header'>
-                        <h3 class="box-title">Informacion Solicitud</h3>
+                        <h3 class="box-title">Información Solicitud</h3>
                     </div>
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
                             <div class="form-group">
-                                <label>Nro Solicitud:</label>
+                                <label>Nro. Solicitud:</label>
 
                                 <div class="input-group">
                                     <input type="text" class="form-control" disabled id="txtnroDolicitud">
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nro Propuesta</label>
+                                <label for="exampleInputEmail1">Nro. Propuesta</label>
                                 <input type="email" class="form-control" id="txtnroPropuesta" disabled>
                             </div>
 
@@ -82,7 +82,7 @@
                                 <div class="tab-pane active" id="tab_1-1">
                                     <table class="table table-hover" id="tblZonas">
                                         <tr>
-                                            <th>Codigo
+                                            <th>Código
                                             </th>
                                             <th>Nombre
                                             </th>
@@ -118,7 +118,7 @@
                                         </div>
                                         <table class="table table-hover" id="tblManzanas">
                                             <tr>
-                                                <th>Codigo
+                                                <th>Código
                                                 </th>
                                                 <th>Nombre
                                                 </th>
@@ -170,7 +170,7 @@
 
                                         <table class="table table-hover" id="tblLotes">
                                             <tr>
-                                                <th>Codigo
+                                                <th>Código
                                                 </th>
                                                 <th>Nombre
                                                 </th>
@@ -240,7 +240,7 @@
                                     Lista de Predios
                                     <table class="table table-hover" id="tblPredio">
                                         <tr>
-                                            <th>Codigo
+                                            <th>Código
                                             </th>
                                             <th>Nombre
                                             </th>
@@ -286,7 +286,7 @@
                 <div class="modal-body">
                     <table class="table table-hover" id="tblSolicitudPendiente">
                         <tr>
-                            <th>Nro Solicitud
+                            <th>Nro. Solicitud
                             </th>
                             <th>Fecha Emisión
                             </th>
@@ -568,7 +568,7 @@
                         </div>
                         <div class="col-xs-4">
 
-                            <label for="exampleInputEmail1">Nombre Mz   </label>
+                            <label for="exampleInputEmail1">Nombre Mz.  </label>
                             <input type="text" class="form-control" placeholder="Nombre Mz" id="txtPreNombreMz">
                         </div>
                     </div>
@@ -595,7 +595,7 @@
                     </h5>
                     <div class="row">
                         <div class="col-xs-4">
-                            <label>Codigo Predio</label>
+                            <label>Código Predio</label>
                             <input type="text" class="form-control" placeholder="Codigo Predio" id="txtPreCodigo">
                         </div>
 

@@ -33,7 +33,7 @@
                                 <div class="tab-pane active" id="tab_1-1">
                                     <table class="table table-hover" id="tblZonas">
                                         <tr>
-                                            <th>Codigo
+                                            <th>Código
                                             </th>
                                             <th>Nombre
                                             </th>
@@ -69,7 +69,7 @@
                                         </div>
                                         <table class="table table-hover" id="tblManzanas">
                                             <tr>
-                                                <th>Codigo
+                                                <th>Código
                                                 </th>
                                                 <th>Nombre
                                                 </th>
@@ -119,7 +119,7 @@
 
                                         <table class="table table-hover" id="tblLotes">
                                             <tr>
-                                                <th>Codigo
+                                                <th>Código
                                                 </th>
                                                 <th>Nombre
                                                 </th>

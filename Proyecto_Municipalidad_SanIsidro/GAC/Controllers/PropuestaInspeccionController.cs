@@ -44,17 +44,35 @@ namespace GAC.Controllers
         //
         // GET: /PropuestaInspeccion/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
-            CT_PROPUESTAINSPECCION oCT_PROPUESTAINSPECCION = new CT_PROPUESTAINSPECCION();
-            oCT_PROPUESTAINSPECCION.dtm_FechaDocumento = DateTime.Now;
-            oCT_PROPUESTAINSPECCION.dtm_FechaRegistro  = DateTime.Now;
-            oCT_PROPUESTAINSPECCION.var_NroPropuesta= "";
+            int id_solicitud3 = 0;
+            CT_PROPUESTAINSPECCION oCT_PROPUESTAINSPECCION = null;
+            if (id > 0)
+            {
+                oCT_PROPUESTAINSPECCION=db.CT_PROPUESTAINSPECCION.Find(id);
+                id_solicitud3 = oCT_PROPUESTAINSPECCION.int_IdSolicitud.Value;
+
+                ViewBag.TextBotton = "Editar Propuesta";
+            }
+            else
+            {
+                oCT_PROPUESTAINSPECCION = new CT_PROPUESTAINSPECCION();
+                oCT_PROPUESTAINSPECCION.dtm_FechaDocumento = DateTime.Now;
+                oCT_PROPUESTAINSPECCION.dtm_FechaRegistro = DateTime.Now;
+                oCT_PROPUESTAINSPECCION.var_NroPropuesta = "";
+                ViewBag.TextBotton = "Emitir Propuesta";
+            }
 
 
-            ViewBag.int_IdSolicitud = new SelectList(db.CT_SOLICITUD, "int_IdSolicitud", "var_NroSolicitud");
+
+
+
+            ViewBag.int_IdSolicitud = new SelectList(db.CT_SOLICITUD, "int_IdSolicitud", "var_NroSolicitud", id_solicitud3);
             return View(oCT_PROPUESTAINSPECCION);
         }
+
+
         public ActionResult Asignar()
         {
 
@@ -78,13 +96,7 @@ namespace GAC.Controllers
             if (ModelState.IsValid)
             {
                 CT_SOLICITUD o = db.CT_SOLICITUD.Find(oCT_PROPUESTAINSPECCION_EMPLEADO.int_IdPropuestaInspeccion);
-
-
-                oCT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio = DateTime.Now;
-                oCT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin = DateTime.Now;
                 oCT_PROPUESTAINSPECCION_EMPLEADO.int_IdPropuestaInspeccion = o.CT_PROPUESTAINSPECCION.First().int_IdPropuestaInspeccion;
-
-
                 db.CT_PROPUESTAINSPECCION_EMPLEADO.Add(oCT_PROPUESTAINSPECCION_EMPLEADO);
                 db.SaveChanges();
                 return Json(new
@@ -97,6 +109,43 @@ namespace GAC.Controllers
                 return Json(new { success = false });
             }
         }
+        public ActionResult GetTecnico(String strfechainicio, String strfechafin)
+        {
+
+            if (strfechainicio == "Invalid date")
+            {
+                return Json(new { success = false });
+            }
+            DateTime pdtm_FechaInicio = DateTime.Parse(strfechainicio);
+            DateTime dtm_FechaFin = DateTime.Parse(strfechafin);
+
+            return this.Json((from E in db.MA_EMPLEADO
+                              from PN in db.MA_PERSONANATURAL
+                              where
+                              PN.idPersona == E.idPersona && 
+                                E.idArea == 11 &&
+                                !
+                                  (from CT_PROPUESTAINSPECCION_EMPLEADO in db.CT_PROPUESTAINSPECCION_EMPLEADO
+                                   where
+                                     (CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio <= pdtm_FechaInicio &&
+                                     CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin >= pdtm_FechaInicio) ||
+                                     (CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio <= dtm_FechaFin &&
+                                     CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin >= dtm_FechaFin) ||
+                                     (pdtm_FechaInicio >= CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio && pdtm_FechaInicio <= CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin &&
+                                     dtm_FechaFin >= CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio && dtm_FechaFin <= CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin) ||
+                                     (CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaInicio <= pdtm_FechaInicio &&
+                                     CT_PROPUESTAINSPECCION_EMPLEADO.dtm_FechaFin >= dtm_FechaFin)
+                                   select new
+                                   {
+                                       CT_PROPUESTAINSPECCION_EMPLEADO.idEmpleado
+                                   }).Contains(new { idEmpleado = E.idEmpleado })
+                              select new
+                              {
+                                  idEmpleado = E.idEmpleado,
+                                  Description = PN.ApellidoPaterno + PN.ApellidoMaterno  + PN.Nombres
+                              }).Distinct(), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetAsignar(int int_IdPropuestaInspeccion = 0)
         {
             CT_SOLICITUD o = db.CT_SOLICITUD.Find(int_IdPropuestaInspeccion);
@@ -128,10 +177,20 @@ namespace GAC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ct_propuestainspeccion.var_NroPropuesta = "";
-                ct_propuestainspeccion.int_Estado = 1;
-                db.CT_PROPUESTAINSPECCION.Add(ct_propuestainspeccion);
-                db.SaveChanges();
+                if (ct_propuestainspeccion.int_IdPropuestaInspeccion > 0)
+                {
+                    ct_propuestainspeccion.var_NroPropuesta = "";
+                    ct_propuestainspeccion.int_Estado = 1;
+                    db.Entry(ct_propuestainspeccion).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else {
+                    ct_propuestainspeccion.var_NroPropuesta = "";
+                    ct_propuestainspeccion.int_Estado = 1;
+                    db.CT_PROPUESTAINSPECCION.Add(ct_propuestainspeccion);
+                    db.SaveChanges();
+                }
+                
                 return RedirectToAction("Index");
             }
 
@@ -148,6 +207,8 @@ namespace GAC.Controllers
 
                 oCT_PROPUESTAINSPECCION.var_Observacion = ct_propuestainspeccion.var_Observacion;
                 oCT_PROPUESTAINSPECCION.int_Estado = ct_propuestainspeccion.int_Estado;
+                oCT_PROPUESTAINSPECCION.dtm_FechaDocumento = DateTime.Now;
+
 
                 db.Entry(oCT_PROPUESTAINSPECCION).State = EntityState.Modified;
                 db.SaveChanges();

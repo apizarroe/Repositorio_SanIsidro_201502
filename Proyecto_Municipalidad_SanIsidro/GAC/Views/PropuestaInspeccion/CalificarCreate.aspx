@@ -7,12 +7,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-        <h1>Calificar Propuesta de Inspeccion
+        <h1>Calificar Propuesta de Inspección
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspeccion</a></li>
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspección</a></li>
             <li class="active">Lista de Solicitud Catastral</li>
 
         </ol>
@@ -23,12 +23,12 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class='box-header'>
-                        <h3 class="box-title">Informacion Solicitud</h3>
+                        <h3 class="box-title">Información Solicitud</h3>
                     </div>
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
                             <div class="form-group">
-                                <label>Nro Solicitud:</label>
+                                <label>Nro. Solicitud:</label>
 
                                 <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new {@class="form-control",@disabled="true" })%>
                                 <!-- /input-group -->
@@ -173,7 +173,7 @@
                 <div class="modal-body">
                     <table class="table table-hover" id="tblSolicitudPendiente">
                         <tr>
-                            <th>Nro Solicitud
+                            <th>Nro. Solicitud
                             </th>
                             <th>Fecha Emisión
                             </th>

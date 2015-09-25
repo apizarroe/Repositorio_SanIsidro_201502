@@ -23,7 +23,7 @@
             <div class='col-md-12'>
                 <div class='box box-primary'>
                     <div class="box-header">
-                        <h3 class="box-title">Informacion de Catastro</h3>
+                        <h3 class="box-title">Información de Catastro</h3>
                     </div>
                     <% using (Html.BeginForm())
                        { %>
