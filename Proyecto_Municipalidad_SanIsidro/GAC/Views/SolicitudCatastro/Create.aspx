@@ -25,7 +25,7 @@
                     <div class="box-header">
                         <h3 class="box-title">Información de Catastro</h3>
                     </div>
-                    <% using (Html.BeginForm())
+                    <% using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formulariosolicitud" }))
                        { %>
                     <%: Html.AntiForgeryToken() %>
                     <%: Html.ValidationSummary(true) %>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success">Crear Nueva Solicitud</button>
+                        <input type="button" class="btn btn-success" id="btnNuevaSolcititud" value="Crear Nueva Solicitud"/>
                             <%: Html.ActionLink("Cancelar", "Index",null,new {@class="btn btn-primary"}) %>
                     </div>
 
@@ -86,4 +86,28 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
     <%: Scripts.Render("~/bundles/jqueryval") %>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnNuevaSolcititud').click(function () {
+                var menssaje = "";
+                
+                if ($('#var_NroSolicitud').val().length == 0) {
+                    menssaje += "Debe Ingresar Nro. Solicitud \n"
+                }
+                if ($('#var_Descripcion').val().length == 0) {
+                    menssaje += "Debe Ingresar Descripción \n"
+                }
+                
+                if (menssaje.length > 0) {
+                    alert(menssaje);
+                    return
+                }
+                else {
+                    $('#formulariosolicitud').submit();
+                }
+            });
+        });
+
+    </script>
 </asp:Content>

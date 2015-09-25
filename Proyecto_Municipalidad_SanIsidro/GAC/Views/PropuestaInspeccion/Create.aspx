@@ -12,13 +12,13 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-<<<<<<< HEAD
+
             <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspección</a></li>
             <li class="active">Lista de Solicitud Catastral</li>
-=======
+
             <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Emitir Propuesta de Inspección</a></li>
-            
->>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
+
+
 
         </ol>
     </section>
@@ -36,18 +36,18 @@
                                 <label>Nro. Solicitud:</label>
 
                                 <div class="input-group">
-                                    
-
-                                    
-                                          <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new { @class = "form-control", @disabled = "true", @id="txtnroDolicitud" }) %>
-                                    
-                                           <%--<input type="text" class="form-control" disabled id="txtnroDolicitud">--%>
-                                    
-
-                                    
 
 
-                                    
+
+                                    <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new { @class = "form-control", @disabled = "true", @id="txtnroDolicitud" }) %>
+
+                                    <%--<input type="text" class="form-control" disabled id="txtnroDolicitud">--%>
+
+
+
+
+
+
 
                                     <span class="input-group-btn">
                                         <button class="btn btn-info btn-flat" type="button" data-toggle="modal" id="btnModalSoicitud"><i class="fa  fa-search"></i></button>
@@ -59,7 +59,6 @@
                                 <label for="exampleInputEmail1">Tipo de Solicitud</label>
                                 <%--<input type="text" class="form-control" id="txttiposolicitud" disabled>--%>
                                 <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.CT_TIPOSOLICITUD.var_TipoSolicitud, new {@class="form-control",@disabled="true",@id="txttiposolicitud" })%>
-                                
                             </div>
 
                             <div class="form-group">
@@ -91,7 +90,6 @@
                     <div class="box-body">
 
                         <% using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formularioinspeccion" }))
-                           
                            { %>
                         <%: Html.ValidationSummary(true) %>
 
@@ -150,11 +148,9 @@
                         </div>
 
                         <p>
-                            
-                            <input type="button"  value="<%:ViewBag.TextBotton%>" class="btn btn-success" id="btnEmitirPropuesta"  />
+
+                            <input type="button" value="<%:ViewBag.TextBotton%>" class="btn btn-success" id="btnEmitirPropuesta" />
                             <%: Html.ActionLink("Cancelar", "Index","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
-
-
                         </p>
 
                         <% } %>
@@ -167,7 +163,7 @@
 
 
 
-    
+
 
 
 
@@ -237,6 +233,6 @@
                 }
             });
         });
-        
+
     </script>
 </asp:Content>
