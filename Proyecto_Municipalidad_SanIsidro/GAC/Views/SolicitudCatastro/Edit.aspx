@@ -32,10 +32,10 @@
                     <div class="box-body">
 
 
-                        <div class="form-group">
+                        <div class="form-group" style="display:none;">
                             <%--<%: Html.LabelFor(model => model.int_IdSolicitud) %>--%>
                             <label>Id. Solicitud</label>
-                            <%: Html.TextBoxFor(model => model.int_IdSolicitud,null, new { @class = "form-control" ,@placeholder="Codigo Solicitud",@disabled="true"  })%>
+                            <%: Html.TextBoxFor(model => model.int_IdSolicitud,null, new { @class = "form-control" ,@placeholder="Codigo Solicitud"  })%>
                             <%: Html.ValidationMessageFor(model => model.int_IdSolicitud) %>
                         </div>
                         <div class="form-group">
