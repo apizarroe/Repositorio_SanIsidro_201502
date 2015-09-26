@@ -7,20 +7,20 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <section class="content-header">
-<<<<<<< HEAD
-        <h1>Lista de Propuesta de Inspección
-=======
+
+
+
         <h1>Lista de Propuesta de Inspección a calificar
->>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
+
             
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-<<<<<<< HEAD
-            <li class="active">Lista de Propuesta de Inspección</li>
-=======
+
+
+
             <li class="active">Lista de Propuesta de Inspección a calificar</li>
->>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
+
 
         </ol>
     </section>
@@ -32,30 +32,23 @@
             <div class='col-md-12'>
                 <div class='box box-info'>
                     <div class='box-header'>
-                        
                     </div>
                     <div class='box-body pad'>
 
                         <table class="table table-hover">
                             <tr>
-                                <th>
-                                    Nro.
+                                <th>Nro.
                                 </th>
-                                <th>
-                                    Nro. Solicitud
+                                <th>Nro. Solicitud
                                 </th>
-                                
-                                <th>
-                                    Descripción
+
+                                <th>Descripción
                                 </th>
-                                <th>
-                                    Fecha de Documento
+                                <th>Fecha de Documento
                                 </th>
-                                <th>
-                                    Fecha de Registro
+                                <th>Fecha de Registro
                                 </th>
-                                <th>
-                                    Estado
+                                <th>Estado
                                 </th>
                                 <th></th>
                             </tr>
@@ -69,7 +62,7 @@
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.CT_SOLICITUD.var_NroSolicitud) %>
                                 </td>
-                                
+
                                 <td>
                                     <%: Html.DisplayFor(modelItem => item.var_Descripcion) %>
                                 </td>
@@ -80,15 +73,15 @@
                                     <%: Html.DisplayFor(modelItem => item.dtm_FechaRegistro) %>
                                 </td>
                                 <td>
-                                    <%if(item.int_Estado==1) %>
+                                    <%if (item.int_Estado == 1) %>
                                     <% { %>
                                         Pendiente
                                     <% } %>
-                                    <%if(item.int_Estado==2) %>
+                                    <%if (item.int_Estado == 2) %>
                                     <% { %>
                                         Aprobada
                                     <% } %>
-                                    <%if(item.int_Estado==3) %>
+                                    <%if (item.int_Estado == 3) %>
                                     <% { %>
                                         Observada
                                     <% } %>
@@ -96,7 +89,7 @@
                                 <td>
                                     <%if (item.int_Estado == 1 || item.int_Estado == 3) %>
                                     <% { %>
-                                        <%: Html.ActionLink("Calificar", "CalificarCreate", new {  id=item.int_IdPropuestaInspeccion  }) %> 
+                                    <%: Html.ActionLink("Calificar", "CalificarCreate", new {  id=item.int_IdPropuestaInspeccion  }) %>
                                     <% } %>
                                     
                                 </td>

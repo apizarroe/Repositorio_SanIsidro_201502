@@ -12,13 +12,11 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-<<<<<<< HEAD
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspección</a></li>
-            <li class="active">Lista de Solicitud Catastral</li>
-=======
+
+
+
             <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Calificar Propuesta de Inspección</a></li>
-            
->>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
+
 
         </ol>
     </section>
@@ -71,7 +69,6 @@
                     <div class="box-body">
 
                         <% using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formularioinspeccion" }))
-                           
                            { %>
                         <%: Html.ValidationSummary(true) %>
 
@@ -104,7 +101,6 @@
                         <div class="form-group">
                             <label>Cantidad Responsable</label>
                             <%: Html.TextBoxFor(model => Model.int_CantResponsable, new {@class="form-control",@disabled="true" })%>
-                            
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
@@ -119,11 +115,11 @@
                             <%: Html.TextAreaFor(model => model.var_Observacion,htmlAttributes: new { @class = "form-control" ,@placeholder="Observación"   })%>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
-                        
-                        
-                            <%: Html.HiddenFor(model => Model.int_Estado )%>
-                            
-                        
+
+
+                        <%: Html.HiddenFor(model => Model.int_Estado )%>
+
+
 
                         <div class="editor-label" style="display: none">
                             <%: Html.LabelFor(model => model.dtm_FechaDocumento) %>
@@ -142,12 +138,10 @@
                         </div>
 
                         <p>
-                            
-                            <input type="button"  value="Aprobar Propuesta" class="btn btn-primary" id="btnaprobarPropuesta"  />
-                            <input type="button" value="Observar Propuesta" class="btn btn-success" id="btnobservarpropuesta"  />
+
+                            <input type="button" value="Aprobar Propuesta" class="btn btn-primary" id="btnaprobarPropuesta" />
+                            <input type="button" value="Observar Propuesta" class="btn btn-success" id="btnobservarpropuesta" />
                             <%: Html.ActionLink("Cancelar", "Calificar","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
-
-
                         </p>
 
                         <% } %>
@@ -160,7 +154,7 @@
 
 
 
-    
+
 
 
 
@@ -211,7 +205,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $('#btnaprobarPropuesta').click(function(){
+            $('#btnaprobarPropuesta').click(function () {
                 $('#int_Estado').val('2');
                 $('#formularioinspeccion').submit();
             });
@@ -241,6 +235,6 @@
                 }
             });
         });
-        
+
     </script>
 </asp:Content>

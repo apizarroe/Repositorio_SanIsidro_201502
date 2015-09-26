@@ -39,7 +39,7 @@
                             <%: Html.ValidationMessageFor(model => model.int_IdSolicitud) %>
                         </div>
                         <div class="form-group">
-                            <label>Nro. Solicitud</label>
+                            <label>Nro. Solicitud (*)</label>
                             <%: Html.TextBoxFor(model => model.var_NroSolicitud,null, new { @class = "form-control" ,@placeholder="Nro Solicitud"  })%>
                             <%: Html.ValidationMessageFor(model => model.var_NroSolicitud) %>
                         </div>
@@ -60,14 +60,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Descripción</label>
+                            <label>Descripción (*)</label>
 
                             <%: Html.TextAreaFor(model => model.var_Descripcion,3,6,new { @class = "form-control" ,@placeholder="Descripción.." }) %>
                             <%: Html.ValidationMessageFor(model => model.var_Descripcion) %>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <input type="button" class="btn btn-success" id="btnNuevaSolcititud" value="Crear Nueva Solicitud"/>
+                        <input type="button" class="btn btn-success" id="btnNuevaSolicitud" value="Crear Nueva Solicitud"/>
                             <%: Html.ActionLink("Cancelar", "Index",null,new {@class="btn btn-primary"}) %>
                     </div>
 
@@ -78,7 +78,7 @@
         </div>
     </section>
     
-
+    
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
@@ -89,18 +89,22 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#btnNuevaSolcititud').click(function () {
+            $('#btnNuevaSolicitud').click(function () {
                 var menssaje = "";
                 
                 if ($('#var_NroSolicitud').val().length == 0) {
-                    menssaje += "Debe Ingresar Nro. Solicitud \n"
+                    menssaje += "* Debe Ingresar Nro. Solicitud </br>"
                 }
                 if ($('#var_Descripcion').val().length == 0) {
-                    menssaje += "Debe Ingresar Descripción \n"
+                    menssaje += "* Debe Ingresar Descripción </br>"
                 }
                 
                 if (menssaje.length > 0) {
-                    alert(menssaje);
+                    //alert(menssaje);
+                    //BootstrapDialog.show({ title: 'Error - validación de datos', message: menssaje, type: BootstrapDialog.TYPE_DANGER });
+                    $("#TituloModalConfir").html("Validación de datos");
+                    $("#p2ModalConfir").html(menssaje);
+                    $('#ModalValidacion').modal('show');
                     return
                 }
                 else {
