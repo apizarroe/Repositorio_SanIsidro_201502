@@ -216,16 +216,19 @@
             $('#btnEmitirPropuesta').click(function () {
                 var menssaje = "";
                 if ($('#int_CantResponsable').val().length == 0) {
-                    menssaje += "Debe Ingresar la Cantidad \n"
+                    menssaje += "* Debe Ingresar la Cantidad </br>"
                 }
                 if ($('#var_Descripcion').val().length == 0) {
-                    menssaje += "Debe Ingresar Descripción \n"
+                    menssaje += "* Debe Ingresar Descripción </br>"
                 }
                 if ($('#int_IdSolicitud').val().length == 0) {
-                    menssaje += "Debe Seleccionar Una Solicitud \n"
+                    menssaje += "* Debe Seleccionar Una Solicitud </br>"
                 }
                 if (menssaje.length > 0) {
-                    alert(menssaje);
+                    //alert(menssaje);
+                    $("#TituloModalConfir").html("Validación de datos");
+                    $("#p2ModalConfir").html(menssaje);
+                    $('#ModalValidacion').modal('show');
                     return
                 }
                 else {
