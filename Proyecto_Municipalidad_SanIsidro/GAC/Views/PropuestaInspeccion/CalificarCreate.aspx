@@ -12,8 +12,13 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+<<<<<<< HEAD
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspección</a></li>
+            <li class="active">Lista de Solicitud Catastral</li>
+=======
             <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Calificar Propuesta de Inspección</a></li>
             
+>>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
 
         </ol>
     </section>
@@ -28,7 +33,7 @@
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
                             <div class="form-group">
-                                <label>Nro Solicitud:</label>
+                                <label>Nro. Solicitud:</label>
 
                                 <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new {@class="form-control",@disabled="true" })%>
                                 <!-- /input-group -->
@@ -173,7 +178,7 @@
                 <div class="modal-body">
                     <table class="table table-hover" id="tblSolicitudPendiente">
                         <tr>
-                            <th>Nro Solicitud
+                            <th>Nro. Solicitud
                             </th>
                             <th>Fecha Emisión
                             </th>

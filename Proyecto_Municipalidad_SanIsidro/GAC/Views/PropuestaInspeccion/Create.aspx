@@ -12,8 +12,13 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Lista de Propuesta de Inspección</a></li>
+            <li class="active">Lista de Solicitud Catastral</li>
+
             <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Emitir Propuesta de Inspección</a></li>
-            
+
+
 
         </ol>
     </section>
@@ -28,21 +33,21 @@
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
                             <div class="form-group">
-                                <label>Nro Solicitud:</label>
+                                <label>Nro. Solicitud:</label>
 
                                 <div class="input-group">
-                                    
-
-                                    
-                                          <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new { @class = "form-control", @disabled = "true", @id="txtnroDolicitud" }) %>
-                                    
-                                           <%--<input type="text" class="form-control" disabled id="txtnroDolicitud">--%>
-                                    
-
-                                    
 
 
-                                    
+
+                                    <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.var_NroSolicitud, new { @class = "form-control", @disabled = "true", @id="txtnroDolicitud" }) %>
+
+                                    <%--<input type="text" class="form-control" disabled id="txtnroDolicitud">--%>
+
+
+
+
+
+
 
                                     <span class="input-group-btn">
                                         <button class="btn btn-info btn-flat" type="button" data-toggle="modal" id="btnModalSoicitud"><i class="fa  fa-search"></i></button>
@@ -54,11 +59,10 @@
                                 <label for="exampleInputEmail1">Tipo de Solicitud</label>
                                 <%--<input type="text" class="form-control" id="txttiposolicitud" disabled>--%>
                                 <%: Html.TextBoxFor(model => Model.CT_SOLICITUD.CT_TIPOSOLICITUD.var_TipoSolicitud, new {@class="form-control",@disabled="true",@id="txttiposolicitud" })%>
-                                
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nro Propuesta</label>
+                                <label for="exampleInputEmail1">Nro. Propuesta</label>
                                 <%--<input type="email" class="form-control" id="txtnroPropuesta" disabled>--%>
                                 <%: Html.TextBoxFor(model => Model.int_IdPropuestaInspeccion, new {@class="form-control",@disabled="true",@id="txtnroPropuesta" })%>
                             </div>
@@ -86,7 +90,6 @@
                     <div class="box-body">
 
                         <% using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formularioinspeccion" }))
-                           
                            { %>
                         <%: Html.ValidationSummary(true) %>
 
@@ -145,11 +148,9 @@
                         </div>
 
                         <p>
-                            
-                            <input type="button"  value="<%:ViewBag.TextBotton%>" class="btn btn-success" id="btnEmitirPropuesta"  />
+
+                            <input type="button" value="<%:ViewBag.TextBotton%>" class="btn btn-success" id="btnEmitirPropuesta" />
                             <%: Html.ActionLink("Cancelar", "Index","PropuestaInspeccion", new {@class = "btn  btn-default" }) %>
-
-
                         </p>
 
                         <% } %>
@@ -162,7 +163,7 @@
 
 
 
-    
+
 
 
 
@@ -180,7 +181,7 @@
                 <div class="modal-body">
                     <table class="table table-hover" id="tblSolicitudPendiente">
                         <tr>
-                            <th>Nro Solicitud
+                            <th>Nro. Solicitud
                             </th>
                             <th>Fecha Emisión
                             </th>
@@ -218,7 +219,7 @@
                     menssaje += "Debe Ingresar la Cantidad \n"
                 }
                 if ($('#var_Descripcion').val().length == 0) {
-                    menssaje += "Debe Ingresar Descripcion \n"
+                    menssaje += "Debe Ingresar Descripción \n"
                 }
                 if ($('#int_IdSolicitud').val().length == 0) {
                     menssaje += "Debe Seleccionar Una Solicitud \n"
@@ -232,6 +233,6 @@
                 }
             });
         });
-        
+
     </script>
 </asp:Content>

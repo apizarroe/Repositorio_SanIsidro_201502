@@ -14,7 +14,7 @@ namespace GAC.Controllers
         
         //
         // GET: /SolicitudCatastro/
-
+        
         public ActionResult Index()
         {
             return View(ADSolicitud.getAll());

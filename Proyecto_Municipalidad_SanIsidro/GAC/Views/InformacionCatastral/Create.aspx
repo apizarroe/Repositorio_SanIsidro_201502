@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site_Catastro.Master" Inherits="System.Web.Mvc.ViewPage<Dominio.Core.Entities.ModeloGestionCatastral.CT_SOLICITUD>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Mantener Informacion Catastral
+    Mantener Información Catastral
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -27,7 +27,7 @@
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
                             <div class="form-group">
-                                <label>Nro Solicitud:</label>
+                                <label>Nro. Solicitud:</label>
 
                                 <div class="input-group">
                                     <input type="text" class="form-control" disabled id="txtnroDolicitud">
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nro Propuesta</label>
+                                <label for="exampleInputEmail1">Nro. Propuesta</label>
                                 <input type="email" class="form-control" id="txtnroPropuesta" disabled>
                             </div>
 
@@ -286,7 +286,7 @@
                 <div class="modal-body">
                     <table class="table table-hover" id="tblSolicitudPendiente">
                         <tr>
-                            <th>Nro Solicitud
+                            <th>Nro. Solicitud
                             </th>
                             <th>Fecha Emisión
                             </th>
@@ -568,7 +568,7 @@
                         </div>
                         <div class="col-xs-4">
 
-                            <label for="exampleInputEmail1">Nombre Mz   </label>
+                            <label for="exampleInputEmail1">Nombre Mz.  </label>
                             <input type="text" class="form-control" placeholder="Nombre Mz" id="txtPreNombreMz">
                         </div>
                     </div>
@@ -596,7 +596,11 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <label>Código Predio</label>
+<<<<<<< HEAD
+                            <input type="text" class="form-control" placeholder="Codigo Predio" id="txtPreCodigo">
+=======
                             <input type="text" class="form-control" placeholder="Código Predio" id="txtPreCodigo">
+>>>>>>> 2af5c68726096c9dbf373f9826971c0c359689d9
                         </div>
 
                         <div class="col-xs-4">

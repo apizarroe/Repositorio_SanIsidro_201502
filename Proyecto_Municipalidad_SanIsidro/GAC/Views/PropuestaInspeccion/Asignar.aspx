@@ -28,7 +28,7 @@
                     <div class="box-body">
                         <div class="bootstrap-timepicker">
                             <div class="form-group">
-                                <label>Nro Solicitud:</label>
+                                <label>Nro. Solicitud:</label>
 
                                 <div class="input-group">
                                     <input type="text" class="form-control" disabled id="txtnroDolicitud">
@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nro Propuesta</label>
+                                <label for="exampleInputEmail1">Nro. Propuesta</label>
                                 <input type="email" class="form-control" id="txtnroPropuesta" disabled>
                             </div>
 
@@ -150,7 +150,7 @@
                 <div class="modal-body">
                     <table class="table table-hover" id="tblSolicitudPendiente">
                         <tr>
-                            <th>Nro Solicitud
+                            <th>Nro. Solicitud
                             </th>
                             <th>Fecha Emisión
                             </th>
