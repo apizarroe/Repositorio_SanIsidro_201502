@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage"  %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -291,6 +291,7 @@
     <%: Scripts.Render("~/Scripts/jstemplate/fastclick/fastclick.min.js") %>
     <%: Scripts.Render("~/Scripts/jstemplate/app.min.js") %>
     <%: Scripts.Render("~/Scripts/jstemplate/demo.js") %>
+<%: Scripts.Render("~/Scripts/jstemplate/InformacionCatastral.js") %>
 
     <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
 

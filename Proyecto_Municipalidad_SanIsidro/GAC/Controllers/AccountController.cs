@@ -77,7 +77,25 @@ namespace GAC.Controllers
             MA_USUARIO user = ADUsuario.getOneUsuario(model.UserName, model.Password);
             if (user != null)
             {
-                
+                //var stands =
+                //          ADEmpleado.getAll()
+                //            .Select(s => new
+                //            {
+                //                idEmpleado = s.idEmpleado,
+                //                Description = string.Format("{0},{1}", s.MA_PERSONA.MA_PERSONANATURAL.First().ApellidoPaterno, s.MA_PERSONA.MA_PERSONANATURAL.First().Nombres)
+                //            });
+                string _usuario = "";
+                try
+                {
+
+                 _usuario = user.MA_PERSONA.MA_PERSONANATURAL.First().Nombres + " " + user.MA_PERSONA.MA_PERSONANATURAL.First().ApellidoPaterno;
+                Session["Usuario"] = _usuario;
+                }
+                catch (Exception)
+                {
+
+                    Session["Usuario"] = "";
+                }
                     return RedirectToLocal(returnUrl);
                 
             }

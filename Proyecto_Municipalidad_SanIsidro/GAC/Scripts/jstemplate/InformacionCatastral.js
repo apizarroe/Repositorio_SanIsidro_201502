@@ -973,3 +973,42 @@ function pad(str, max) {
 }
 
 
+/*bto*/
+function AllowOnlyNumeric(event) {
+    // Get the ASCII value of the key that the user entered compatible with browsers
+    var key = (event.which) ? event.which : event.keyCode
+
+    if (event.shiftKey && key != 9) {
+        // If it was not, then dispose the key and continue with entry
+        event.returnValue = null;
+        try {
+            event.preventDefault();
+        } catch (err) {
+            //this is IE
+        }
+        return false;
+
+    }
+
+    var validVal = "0123456789";
+
+    //allow arrow keys , delete,BACKSPACE,tab,control
+    if (key == 9 || key == 37 || key == 39 || key == 46 || key == 8 || key == 17 || (key >= 96 && key <= 105) || key == 13 || key == 35 || key == 36) {
+        return true;
+    }
+    if (event.ctrlKey && (key == 88 || key == 67 || key == 86)) {
+        return true;
+    }
+    if (validVal.indexOf(String.fromCharCode(key)) == -1) {
+
+        // If it was not, then dispose the key and continue with entry
+        event.returnValue = null;
+        try {
+            event.preventDefault();
+        } catch (err) {
+            //this is IE
+        }
+        return false;
+    }
+    return true;
+}

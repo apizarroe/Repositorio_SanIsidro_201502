@@ -17,6 +17,7 @@ namespace GAC.Controllers
         
         public ActionResult Index()
         {
+            ViewBag.Usuario = Session["Usuario"].ToString();
             return View(ADSolicitud.getAll());
         }
         //public ActionResult GetSolicitud(int id=0)
@@ -67,8 +68,7 @@ namespace GAC.Controllers
             CT_SOLICITUD tbsolicitudcatastro = new CT_SOLICITUD();
             tbsolicitudcatastro.dtm_FechaEmision = DateTime.Now;
 
-
-
+            
             ViewBag.int_IdTipoSolicitud = new SelectList(ADTipoSolicitud.getAll(), "int_IdTipoSolicitud", "var_TipoSolicitud", 0);
 
             return View(tbsolicitudcatastro);

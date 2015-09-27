@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nro. Solicitud (*)</label>
-                            <%: Html.TextBoxFor(model => model.var_NroSolicitud,null, new { @class = "form-control" ,@placeholder="Nro Solicitud"  })%>
+                            <%: Html.TextBoxFor(model => model.var_NroSolicitud,null, new { @class = "form-control" ,@placeholder="Nro Solicitud" ,@type="number"  })%>
                             <%: Html.ValidationMessageFor(model => model.var_NroSolicitud) %>
                         </div>
                         <div class="form-group">
